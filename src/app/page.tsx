@@ -211,6 +211,8 @@ export default function Home() {
   const stageRef = useRef<HTMLDivElement>(null);
   const partnerContainerRef = useRef<HTMLDivElement>(null);
   const partnerContentRef = useRef<HTMLDivElement>(null);
+  const mobilePillarRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isManualToggling = useRef<boolean>(false);
   const processSectionRef = useRef<HTMLDivElement>(null);
   const teamSectionRef = useRef<HTMLDivElement>(null);
   const contactSectionRef = useRef<HTMLDivElement>(null);
@@ -593,6 +595,42 @@ export default function Home() {
 
     return () => ctx.revert();
   }, [activePillarIndex]);
+
+  // Mobile Why Partner: Auto-expand active pillar item on scroll
+  useEffect(() => {
+    const handleMobileScroll = () => {
+      if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+      if (isManualToggling.current) return;
+
+      const viewportCenter = window.innerHeight * 0.42;
+      let activeIndex = -1;
+      let minDistance = Infinity;
+
+      mobilePillarRefs.current.forEach((el, index) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight * 0.15 && rect.top < window.innerHeight * 0.85) {
+          const itemMiddle = rect.top + Math.min(rect.height, 120) / 2;
+          const distance = Math.abs(itemMiddle - viewportCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeIndex = index;
+          }
+        }
+      });
+
+      if (activeIndex !== -1) {
+        setOpenMobilePillar((prev) => (prev !== activeIndex ? activeIndex : prev));
+      }
+    };
+
+    window.addEventListener("scroll", handleMobileScroll, { passive: true });
+    handleMobileScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleMobileScroll);
+    };
+  }, []);
 
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scrolling
@@ -1455,14 +1493,14 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 3 (MOBILE): WHY PARTNER WITH SOLVEMPIRE (Interactive Accordion) */}
+      {/* SECTION 3 (MOBILE): WHY PARTNER WITH SOLVEMPIRE (Scroll-Reactive Stream) */}
       {/* ========================================================================= */}
       <section
         id="why-partner-mobile"
         className="block lg:hidden py-16 px-4 sm:px-6 bg-[#f3f6fc] border-t border-slate-200/70 relative"
       >
-        {/* Ambient Lighting Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
         <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
 
         <div className="max-w-xl mx-auto relative z-10">
@@ -1476,35 +1514,42 @@ export default function Home() {
               <span className="text-blue-600">SOLVEMPIRE?</span>
             </h2>
             <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
-              Tap each capability below to explore our multidisciplinary engineering process and tooling stack.
+              Explore our multidisciplinary engineering capabilities and tooling stack.
             </p>
           </div>
 
-          {/* Interactive Accordion Cards List */}
-          <div className="flex flex-col gap-3.5">
+          {/* Border-Divided Accordion Stream (Clean borders, No heavy drop shadows or box clutter) */}
+          <div className="flex flex-col divide-y divide-slate-200/80 border border-slate-200/90 bg-white/70 backdrop-blur-xs rounded-2xl overflow-hidden">
             {partnerPillars.map((pillar, idx) => {
               const isOpen = openMobilePillar === idx;
               return (
                 <div
                   key={`mob-acc-${pillar.id}`}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isOpen
-                      ? "bg-white border-blue-500/50 shadow-[0_12px_32px_-10px_rgba(37,99,235,0.18)] ring-2 ring-blue-500/10"
-                      : "bg-white/80 backdrop-blur-sm border-slate-200/90 shadow-sm hover:border-slate-300 hover:bg-white"
+                  ref={(el) => {
+                    mobilePillarRefs.current[idx] = el;
+                  }}
+                  className={`transition-colors duration-300 ${
+                    isOpen ? "bg-white" : "bg-transparent hover:bg-white/40"
                   }`}
                 >
                   {/* Header Bar / Trigger */}
                   <button
-                    onClick={() => setOpenMobilePillar(isOpen ? null : idx)}
+                    onClick={() => {
+                      isManualToggling.current = true;
+                      setOpenMobilePillar(isOpen ? null : idx);
+                      setTimeout(() => {
+                        isManualToggling.current = false;
+                      }, 800);
+                    }}
                     className="w-full flex items-center justify-between p-4 sm:p-5 text-left focus:outline-none cursor-pointer gap-3"
                     aria-expanded={isOpen}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       {/* Number Badge */}
                       <div
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-all duration-300 ${
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors duration-200 ${
                           isOpen
-                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105"
+                            ? "bg-blue-600 text-white"
                             : "bg-slate-100 text-slate-600 border border-slate-200/80"
                         }`}
                       >
@@ -1524,14 +1569,14 @@ export default function Home() {
 
                     {/* Plus / Minus (+) Icon Action */}
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                         isOpen
-                          ? "bg-blue-600 text-white rotate-45 shadow-sm shadow-blue-500/30"
-                          : "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-blue-50 hover:text-blue-600"
+                          ? "bg-blue-600 text-white rotate-45"
+                          : "bg-slate-100 text-slate-500 border border-slate-200"
                       }`}
                     >
                       <svg
-                        className="w-4 h-4 transition-transform duration-200"
+                        className="w-3.5 h-3.5"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={2.5}
@@ -1542,62 +1587,68 @@ export default function Home() {
                     </div>
                   </button>
 
-                  {/* Accordion Expandable Body Content */}
-                  {isOpen && (
-                    <div className="px-4 pb-5 pt-1 sm:px-5 sm:pb-6 border-t border-slate-100">
-                      {/* 3D Isometric Blueprint Visual Graphic Banner */}
-                      <div className="relative w-full h-44 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 my-3 overflow-hidden shadow-md shadow-blue-600/20 flex items-center justify-center">
-                        <div
-                          className="absolute inset-0 opacity-15 pointer-events-none"
-                          style={{
-                            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                            backgroundSize: "16px 16px",
-                          }}
-                        />
-                        {renderBlueprintGraphic(idx)}
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
-                        {pillar.description}
-                      </p>
-
-                      {/* Tool Badges */}
-                      <div className="flex flex-wrap items-center gap-1.5 mb-4">
-                        {pillar.tools.map((tool) => (
+                  {/* Accordion Expandable Body Content with Smooth CSS Grid Animation */}
+                  <div
+                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-1">
+                        {/* Visual Graphic Banner */}
+                        <div className="relative w-full h-40 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 my-2 overflow-hidden flex items-center justify-center border border-blue-500/30">
                           <div
-                            key={tool.name}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80"
-                          >
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-                            <span className="font-semibold text-slate-800 text-[11px] whitespace-nowrap">
-                              {tool.name}
-                            </span>
-                            <span className="text-[10px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1.5">
-                              {tool.category}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
+                            className="absolute inset-0 opacity-15 pointer-events-none"
+                            style={{
+                              backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+                              backgroundSize: "16px 16px",
+                            }}
+                          />
+                          {renderBlueprintGraphic(idx)}
+                        </div>
 
-                      {/* CTA Button */}
-                      <Link
-                        href="#contact"
-                        className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs px-6 py-2.5 rounded-full shadow-md shadow-blue-500/25 w-full transition-all duration-200"
-                      >
-                        <span>Contact Us Now</span>
-                        <svg
-                          className="w-3.5 h-3.5"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2.2}
-                          viewBox="0 0 24 24"
+                        {/* Description */}
+                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 mt-2">
+                          {pillar.description}
+                        </p>
+
+                        {/* Tool Badges */}
+                        <div className="flex flex-wrap items-center gap-1.5 mb-4">
+                          {pillar.tools.map((tool) => (
+                            <div
+                              key={tool.name}
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                              <span className="font-semibold text-slate-800 text-[11px] whitespace-nowrap">
+                                {tool.name}
+                              </span>
+                              <span className="text-[10px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1.5">
+                                {tool.category}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* CTA Button */}
+                        <Link
+                          href="#contact"
+                          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs px-6 py-2.5 rounded-lg w-full transition-colors"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </Link>
+                          <span>Contact Us Now</span>
+                          <svg
+                            className="w-3.5 h-3.5"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2.2}
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </Link>
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
