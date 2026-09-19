@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/case-studies";
+import { getAllJournalPosts } from "@/lib/journal-data";
 import { COMPANY } from "@/lib/company";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = COMPANY.websiteUrl;
-
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/journal`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -39,7 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${baseUrl}/work/${study.slug}`,
     lastModified: new Date(),
@@ -47,5 +52,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...caseStudyRoutes];
+  const journalRoutes: MetadataRoute.Sitemap = getAllJournalPosts().map((post) => ({
+    url: `${baseUrl}/journal/${post.slug}`,
+    lastModified: new Date(post.isoDate || Date.now()),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...caseStudyRoutes, ...journalRoutes];
 }
+

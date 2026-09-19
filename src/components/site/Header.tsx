@@ -77,6 +77,12 @@ export function Header() {
             Process
           </Link>
           <Link
+            href="/journal"
+            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+          >
+            Journal
+          </Link>
+          <Link
             href="/about"
             className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
           >
@@ -146,6 +152,13 @@ export function Header() {
             Our Process
           </Link>
           <Link
+            href="/journal"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+          >
+            Journal (Blog)
+          </Link>
+          <Link
             href="/about"
             onClick={() => setMobileMenuOpen(false)}
             className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
@@ -163,6 +176,7 @@ export function Header() {
           </div>
         </div>
       )}
+
     </header>
   );
 }

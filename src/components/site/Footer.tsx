@@ -37,10 +37,14 @@ export function Footer() {
               <Link href="/about#team" className="text-body hover:text-brand text-sm transition-colors duration-150">
                 Meet Our Team
               </Link>
+              <Link href="/journal" className="text-body hover:text-brand text-sm transition-colors duration-150">
+                Journal &amp; Insights
+              </Link>
               <Link href="/contact" className="text-body hover:text-brand text-sm transition-colors duration-150">
                 Contact Us
               </Link>
             </div>
+
 
             {/* Column 2: Services (4 cols on lg) */}
             <div className="lg:col-span-4 flex flex-col gap-3">
