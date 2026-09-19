@@ -346,9 +346,9 @@ export default function Home() {
           <div
             className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none"
             style={{
-              transform: `translateY(${arcShift * 52}vh)`,
-              marginTop: "1rem",
-              marginBottom: "0.5rem",
+              transform: `translateY(${arcShift * 50}vh)`,
+              marginTop: "0.25rem",
+              marginBottom: "0.25rem",
               transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
@@ -449,10 +449,10 @@ export default function Home() {
           </div>
 
           {/* ========================================================================= */}
-          {/* FEATURED SHOWCASE CARD (Reveals & morphs smoothly in sync with scroll) */}
+          {/* FEATURED SHOWCASE CARD (Elevated higher, clean minimalist composition) */}
           {/* ========================================================================= */}
           <div
-            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center pb-8 sm:pb-12 z-20"
+            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center my-auto pt-0 pb-6 sm:pb-8 z-20"
             style={{
               opacity: cardOpacity,
               transform: `translateY(${cardY}px) scale(${cardScale})`,
@@ -460,23 +460,23 @@ export default function Home() {
               transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Layered Showcase Visual */}
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+              {/* Left Column: Minimalist Layered Showcase Visual */}
               <div className="lg:col-span-7 relative w-full">
-                {/* Background Offset Card Layer 1 */}
+                {/* Subtle Background Offset Card 1 */}
                 <div
-                  className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/80 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
+                  className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-500"
                   aria-hidden="true"
                 />
 
-                {/* Background Offset Card Layer 2 */}
+                {/* Subtle Background Offset Card 2 */}
                 <div
-                  className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/50 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  className="absolute -bottom-3 -right-3 w-[92%] h-[92%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
                   aria-hidden="true"
                 />
 
                 {/* Main Image Container */}
-                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[280px] sm:max-h-[320px] md:max-h-[360px] w-full">
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[300px] sm:max-h-[340px] md:max-h-[380px] w-full">
                   <Image
                     key={projects[activeProjectIndex].id}
                     src={projects[activeProjectIndex].image}
@@ -485,59 +485,45 @@ export default function Home() {
                     unoptimized
                     sizes="(max-width: 1024px) 100vw, 55vw"
                     priority
-                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105"
+                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-in fade-in duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               </div>
 
-              {/* Right Column: Project Details & Action */}
+              {/* Right Column: Minimalist Project Details & Action */}
               <div
                 key={projects[activeProjectIndex].id}
-                className="lg:col-span-5 flex flex-col items-start justify-center text-left animate-in fade-in slide-in-from-bottom-3 duration-500"
+                className="lg:col-span-5 flex flex-col items-start justify-center text-left"
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-                  <span className="text-blue-600 font-semibold tracking-[0.16em] text-xs uppercase">
-                    {projects[activeProjectIndex].category}
-                  </span>
-                </div>
-
-                <h3 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-slate-950 mt-1 mb-3 leading-[1.15] tracking-tight">
+                {/* Title */}
+                <h3 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.65rem] font-bold text-slate-950 leading-[1.12] tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-2 duration-400 ease-out">
                   {projects[activeProjectIndex].title}
                 </h3>
 
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-5">
+                {/* Description */}
+                <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7 max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out">
                   {projects[activeProjectIndex].description}
                 </p>
 
-                {/* Tech Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {projects[activeProjectIndex].tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md bg-slate-100/90 border border-slate-200/80 text-slate-600 text-xs font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Link
-                  href={projects[activeProjectIndex].link}
-                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 sm:py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-                >
-                  <span>View Case Study</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.2}
-                    viewBox="0 0 24 24"
+                {/* CTA Action Button */}
+                <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-150 ease-out">
+                  <Link
+                    href={projects[activeProjectIndex].link}
+                    className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base px-8 py-3.5 rounded-full shadow-md shadow-blue-500/20 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
+                    <span>View Case Study</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
