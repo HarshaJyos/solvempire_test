@@ -347,12 +347,12 @@ export default function Home() {
             className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none"
             style={{
               transform: `translateY(${arcShift * 65}vh)`,
-              marginTop: "2rem",
-              marginBottom: "0px",
+              marginTop: "2.5rem",
+              marginBottom: "0.25rem",
               transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="relative w-full h-24 sm:h-28 md:h-30">
+            <div className="relative w-full h-24 sm:h-28 md:h-32">
               {/* SVG Glowing Arc Curve stretching across the entire screen */}
               <svg
                 viewBox="0 0 1920 140"
@@ -449,10 +449,10 @@ export default function Home() {
           </div>
 
           {/* ========================================================================= */}
-          {/* FEATURED SHOWCASE CARD (Elevated higher, clean minimalist composition) */}
+          {/* FEATURED SHOWCASE CARD (Scaled-up, filled proportions, balanced vertical rhythm) */}
           {/* ========================================================================= */}
           <div
-            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center mt-2 sm:mt-3 mb-auto pb-6 sm:pb-8 z-20"
+            className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center mt-3 sm:mt-5 mb-auto pb-8 sm:pb-12 z-20"
             style={{
               opacity: cardOpacity,
               transform: `translateY(${cardY}px) scale(${cardScale})`,
@@ -460,30 +460,30 @@ export default function Home() {
               transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-              {/* Left Column: Minimalist Layered Showcase Visual */}
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              {/* Left Column: Scaled-up Showcase Visual */}
               <div className="lg:col-span-7 relative w-full">
                 {/* Subtle Background Offset Card 1 */}
                 <div
-                  className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-500"
+                  className="absolute -top-3.5 -left-3.5 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-500"
                   aria-hidden="true"
                 />
 
                 {/* Subtle Background Offset Card 2 */}
                 <div
-                  className="absolute -bottom-3 -right-3 w-[92%] h-[92%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  className="absolute -bottom-3.5 -right-3.5 w-[92%] h-[92%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
                   aria-hidden="true"
                 />
 
-                {/* Main Image Container */}
-                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[300px] sm:max-h-[340px] md:max-h-[380px] w-full">
+                {/* Main Image Container (Scaled to fill gracefully) */}
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/11] max-h-[380px] sm:max-h-[440px] md:max-h-[480px] lg:max-h-[500px] w-full">
                   <Image
                     key={projects[activeProjectIndex].id}
                     src={projects[activeProjectIndex].image}
                     alt={projects[activeProjectIndex].title}
                     fill
                     unoptimized
-                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
                     priority
                     className="object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-in fade-in duration-500"
                   />
@@ -491,18 +491,18 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Column: Minimalist Project Details & Action */}
+              {/* Right Column: Scaled Project Details & Action */}
               <div
                 key={projects[activeProjectIndex].id}
                 className="lg:col-span-5 flex flex-col items-start justify-center text-left"
               >
                 {/* Title */}
-                <h3 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.65rem] font-bold text-slate-950 leading-[1.12] tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-2 duration-400 ease-out">
+                <h3 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-slate-950 leading-[1.10] tracking-tight mb-4 sm:mb-5 animate-in fade-in slide-in-from-bottom-2 duration-400 ease-out">
                   {projects[activeProjectIndex].title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-7 max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out">
+                <p className="text-slate-600 text-base sm:text-lg lg:text-[1.125rem] leading-relaxed mb-7 sm:mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out">
                   {projects[activeProjectIndex].description}
                 </p>
 
@@ -510,7 +510,7 @@ export default function Home() {
                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-150 ease-out">
                   <Link
                     href={projects[activeProjectIndex].link}
-                    className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base px-8 py-3.5 rounded-full shadow-md shadow-blue-500/20 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                    className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 sm:px-9 py-3.5 sm:py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                   >
                     <span>View Case Study</span>
                     <svg
