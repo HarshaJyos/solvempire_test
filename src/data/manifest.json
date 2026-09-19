@@ -1,13 +1,19 @@
 {
   "totalPages": 1,
-  "totalPosts": 1,
+  "totalPosts": 4,
   "postsPerPage": 6,
   "categories": [
     "All",
-    "ADHD Insights"
+    "Product Engineering",
+    "Hardware & Manufacturing",
+    "Product Strategy",
+    "Custom Automation"
   ],
   "types": [
     "All Types",
-    "Deep Dive"
+    "Deep Dive",
+    "Complete Guide",
+    "Industry Guide",
+    "Technical Guide"
   ]
 }

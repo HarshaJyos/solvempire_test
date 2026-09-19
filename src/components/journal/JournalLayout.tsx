@@ -153,6 +153,65 @@ export function JournalLayout({
           <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-heading tracking-tight leading-[1.14]">
             {post.title}
           </h1>
+
+          {/* Author Byline & Metadata Header */}
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-hairline/60">
+            <div className="flex items-center gap-3.5">
+              <Link
+                href={`/team/${authorSlug}`}
+                className="flex items-center gap-3 group focus:outline-none"
+              >
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-hairline shrink-0 bg-ice-light group-hover:border-brand transition-colors">
+                  {post.author.avatar ? (
+                    <Image
+                      src={post.author.avatar}
+                      alt={post.author.name}
+                      fill
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-brand text-xs font-bold uppercase">
+                      {post.author.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-display font-semibold text-sm text-heading group-hover:text-brand transition-colors">
+                      {post.author.name}
+                    </span>
+                    <span className="text-[10px] font-semibold text-brand bg-ice-light px-2 py-0.2 rounded-full border border-brand/20">
+                      Author
+                    </span>
+                  </div>
+                  <span className="text-xs text-muted block">
+                    {post.author.role}
+                  </span>
+                </div>
+              </Link>
+
+              <Link
+                href={`/team/${authorSlug}`}
+                className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface border border-hairline text-xs font-medium text-muted hover:text-brand hover:border-brand/40 transition-all shadow-xs"
+                title={`View ${post.author.name}'s profile`}
+              >
+                <User className="w-3 h-3 text-brand" />
+                <span>Profile</span>
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-3 text-xs text-muted">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                <Calendar className="w-3.5 h-3.5 opacity-70" />
+                <span>{post.publishedAt}</span>
+              </span>
+              <span className="opacity-40">•</span>
+              <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
+                <Clock className="w-3.5 h-3.5" />
+                <span>{post.readTime}</span>
+              </span>
+            </div>
+          </div>
         </header>
 
         {/* Table of Contents if headings provided */}
@@ -199,35 +258,50 @@ export function JournalLayout({
 
         {/* Author Bio & Post Meta Box */}
         <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-surface border border-hairline shadow-sm space-y-4">
-          {/* Top Row: Avatar + Name & Role Badge */}
-          <div className="flex items-center gap-3.5 sm:gap-4">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-brand/30 shrink-0 bg-ice-light shadow-xs">
-              {post.author.avatar ? (
-                <Image
-                  src={post.author.avatar}
-                  alt={post.author.name}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-brand text-lg font-bold uppercase">
-                  {post.author.name.charAt(0)}
-                </div>
-              )}
-            </div>
+          {/* Top Row: Avatar + Name & Role Badge + Profile Link Button */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <Link
+              href={`/team/${authorSlug}`}
+              className="flex items-center gap-3.5 sm:gap-4 group focus:outline-none"
+            >
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-brand/20 shrink-0 bg-ice-light shadow-xs group-hover:border-brand transition-colors">
+                {post.author.avatar ? (
+                  <Image
+                    src={post.author.avatar}
+                    alt={post.author.name}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-brand text-lg font-bold uppercase">
+                    {post.author.name.charAt(0)}
+                  </div>
+                )}
+              </div>
 
-            <div className="space-y-1 min-w-0">
-              <h4 className="font-display font-bold text-lg sm:text-xl text-heading">
-                {post.author.name}
-              </h4>
-              <span className="inline-block px-2.5 py-0.5 rounded-full bg-ice-light text-brand text-[11px] font-semibold border border-brand/20 whitespace-nowrap">
-                {post.author.role}
-              </span>
-            </div>
+              <div className="space-y-1 min-w-0">
+                <h4 className="font-display font-bold text-lg sm:text-xl text-heading group-hover:text-brand transition-colors">
+                  {post.author.name}
+                </h4>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-ice-light text-brand text-[11px] font-semibold border border-brand/20 whitespace-nowrap">
+                  {post.author.role}
+                </span>
+              </div>
+            </Link>
+
+            {/* View Profile Action Link */}
+            <Link
+              href={`/team/${authorSlug}`}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-ice-light hover:bg-brand text-brand hover:text-white border border-brand/20 text-xs font-semibold transition-all duration-200 shadow-xs self-start sm:self-auto group"
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>View Profile</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
 
           {/* Description */}
-          <p className="text-xs sm:text-sm text-body leading-relaxed w-full">
+          <p className="text-sm text-body leading-relaxed w-full">
             {post.author.bio || `${post.author.role} at SolveMpire.`}
           </p>
 
@@ -236,7 +310,7 @@ export function JournalLayout({
             <div className="flex items-center gap-3 sm:gap-4">
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                 <Calendar className="w-3.5 h-3.5 opacity-70" />
-                <span>{post.publishedAt}</span>
+                <span>Published on {post.publishedAt}</span>
               </span>
               <span className="opacity-40">•</span>
               <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">

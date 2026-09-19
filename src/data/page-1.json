@@ -1,33 +1,114 @@
 {
   "page": 1,
   "totalPages": 1,
-  "totalPosts": 1,
+  "totalPosts": 4,
   "posts": [
     {
       "id": "post-001",
-      "slug": "why-notes-apps-fail-adhd-brains",
-      "title": "Why Notes Apps Fail ADHD Brains (And How to Brain Dump Without Overwhelm)",
-      "excerpt": "Most notes apps force you to decide too early. Here is why capturing and organizing at the same time exhausts ADHD working memory—and the 3 simple rules to brain dump without overwhelm.",
-      "category": "ADHD Insights",
+      "slug": "what-is-end-to-end-product-engineering",
+      "title": "What Is End-to-End Product Engineering?",
+      "excerpt": "Why 'just an app' is never just an app. A practical breakdown of end-to-end product engineering from discovery, UX, and scalable architecture to DevOps, observability, and continuous feedback loops.",
+      "category": "Product Engineering",
       "type": "Deep Dive",
       "author": {
-        "name": "Pavan Duggirala",
-        "role": "Product & Community Lead",
-        "avatar": "/avatars/pavan.jpg",
-        "bio": "Product strategist living with ADHD, exploring calm, zero-friction externalization systems."
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
       },
-      "publishedAt": "Sep 15, 2026",
-      "isoDate": "2026-09-15T00:00:00Z",
-      "readTime": "3 min read",
+      "publishedAt": "Sep 18, 2026",
+      "isoDate": "2026-09-18T00:00:00Z",
+      "readTime": "7 min read",
       "tags": [
-        "ADHD",
-        "Brain Dump",
-        "Working Memory",
-        "Notes Apps",
-        "Calm Focus"
+        "Product Engineering",
+        "Architecture",
+        "DevOps",
+        "Software Development",
+        "MVP",
+        "Quality Engineering"
       ],
-      "featured": true,
-      "image": "/images/journals/time-blindness.svg"
+      "featured": true
+    },
+    {
+      "id": "post-002",
+      "slug": "how-to-develop-a-physical-product-from-idea-to-manufacturing",
+      "title": "How to Develop a Physical Product from Idea to Manufacturing",
+      "excerpt": "A realistic roadmap from napkin sketch and CAD to prototypes, DFM, tooling, factory vetting, quality control, and international logistics without expensive mistakes.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Sep 16, 2026",
+      "isoDate": "2026-09-16T00:00:00Z",
+      "readTime": "9 min read",
+      "tags": [
+        "Hardware",
+        "Manufacturing",
+        "DFM",
+        "Prototyping",
+        "Tooling",
+        "Quality Control",
+        "Logistics"
+      ],
+      "featured": true
+    },
+    {
+      "id": "post-003",
+      "slug": "product-engineering-company-in-india",
+      "title": "Product Engineering Company in India: Complete Guide",
+      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
+      "category": "Product Strategy",
+      "type": "Industry Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Sep 14, 2026",
+      "isoDate": "2026-09-14T00:00:00Z",
+      "readTime": "8 min read",
+      "tags": [
+        "Product Engineering",
+        "India Tech",
+        "Software Partner",
+        "MVP",
+        "Architecture",
+        "Founders",
+        "Strategy"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-004",
+      "slug": "how-to-build-a-custom-automated-machine",
+      "title": "How to Build a Custom Automated Machine",
+      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Sep 12, 2026",
+      "isoDate": "2026-09-12T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Custom Automation",
+        "PLC",
+        "Robotics",
+        "Machine Vision",
+        "Mechanical Design",
+        "FAT",
+        "Commissioning"
+      ],
+      "featured": false
     }
   ]
 }

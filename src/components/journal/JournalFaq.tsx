@@ -19,7 +19,7 @@ export interface JournalFaqProps {
 export function JournalFaq({
   items,
   title = "Frequently Asked Questions",
-  description = "Common questions about the science and application in this journal entry.",
+  description = "Common questions and engineering takeaways for this topic.",
   className,
 }: JournalFaqProps) {
   const [openIndexes, setOpenIndexes] = useState<number[]>([0]); // First item open by default
@@ -32,10 +32,29 @@ export function JournalFaq({
 
   if (!items || items.length === 0) return null;
 
+  // Schema.org FAQPage structured data
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: typeof item.answer === "string" ? item.answer : item.question,
+      },
+    })),
+  };
+
   return (
     <section className={cn("my-12 space-y-5 scroll-mt-24", className)} id="faq">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-ice-light border border-brand/20 text-xs font-semibold text-brand">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-light border border-brand/20 text-xs font-semibold text-brand">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>FAQ Breakdown</span>
         </div>
@@ -43,7 +62,7 @@ export function JournalFaq({
           {title}
         </h3>
         {description && (
-          <p className="font-body text-sm text-muted">{description}</p>
+          <p className="font-body text-sm sm:text-base text-body">{description}</p>
         )}
       </div>
 
@@ -57,7 +76,7 @@ export function JournalFaq({
                 "rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs",
                 isOpen
                   ? "bg-surface border-brand/40 shadow-sm"
-                  : "bg-surface border-hairline hover:border-brand/20"
+                  : "bg-surface border-hairline hover:border-brand/30"
               )}
             >
               <button
@@ -82,7 +101,7 @@ export function JournalFaq({
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 font-body text-sm sm:text-base text-body leading-relaxed animate-fade-in-scale border-t border-hairline">
+                <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 font-body text-sm sm:text-base text-body leading-relaxed border-t border-hairline bg-canvas/40">
                   {item.answer}
                 </div>
               )}
