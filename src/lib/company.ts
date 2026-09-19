@@ -10,7 +10,7 @@ export const COMPANY = {
   cin: "U62013AP2025PTC122808",
   domain: "www.solvempire.com",
   websiteUrl: "https://www.solvempire.com",
-  email: "hello@solvempire.com",
+  email: "support@solvempire.com",
   supportEmail: "support@solvempire.com",
   city: "Kakinada, Andhra Pradesh, India",
   fullAddress:

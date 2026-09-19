@@ -213,7 +213,7 @@ export function MultiStepContactWizard({ theme = "light", onSuccess }: MultiStep
       }
     } catch (err) {
       console.error(err);
-      setServerMessage("A network error occurred. Please try again or email hello@solvempire.com.");
+      setServerMessage("A network error occurred. Please try again or email support@solvempire.com.");
     } finally {
       setIsSubmitting(false);
     }

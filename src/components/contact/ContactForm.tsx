@@ -85,7 +85,7 @@ export function ContactForm() {
     } catch (err) {
       console.error(err);
       setSubmitStatus("error");
-      setStatusMessage("An unexpected network error occurred. Please try again or email hello@solvempire.com directly.");
+      setStatusMessage("An unexpected network error occurred. Please try again or email support@solvempire.com directly.");
     } finally {
       setIsSubmitting(false);
     }
