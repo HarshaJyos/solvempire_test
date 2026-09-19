@@ -199,6 +199,7 @@ export default function Home() {
   const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
   const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
   const [activePillarIndex, setActivePillarIndex] = useState<number>(0);
+  const [openMobilePillar, setOpenMobilePillar] = useState<number | null>(0);
   const [heroOpacity, setHeroOpacity] = useState<number>(1);
   const [heroY, setHeroY] = useState<number>(0);
   const [arcShift, setArcShift] = useState<number>(1); // 1 = at bottom of hero, 0 = at showcase position
@@ -1301,15 +1302,15 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: WHY PARTNER WITH SOLVEMPIRE (Scroll-Pinned Interactive Track) */}
+      {/* SECTION 3 (DESKTOP): WHY PARTNER WITH SOLVEMPIRE (Scroll-Pinned Interactive Track) */}
       {/* ========================================================================= */}
       <div
         ref={partnerContainerRef}
         id="why-partner"
-        className="relative h-[380vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
+        className="hidden lg:block relative h-[380vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
         {/* Sticky 100vh Viewport Stage */}
-        <div className="sticky top-0 h-screen min-h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden bg-[#f3f6fc] px-4 sm:px-8 lg:px-12 py-3 sm:py-6 relative">
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f3f6fc] px-8 lg:px-12 py-6 relative">
           {/* Ambient Lighting Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -1318,65 +1319,18 @@ export default function Home() {
 
           <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
             {/* Section Heading */}
-            <div className="w-full text-center max-w-4xl mx-auto mb-3 sm:mb-6 shrink-0">
-              <h2 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
+            <div className="w-full text-center max-w-4xl mx-auto mb-8 shrink-0">
+              <h2 className="font-[family-name:var(--font-bricolage)] text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
                 <span>WHY PARTNER WITH </span>
                 <span className="text-blue-600">SOLVEMPIRE?</span>
               </h2>
             </div>
 
             {/* Main Interactive Partner Showcase Card */}
-            <div className="bg-white rounded-3xl lg:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-5 sm:p-7 lg:p-10 relative w-full max-w-lg lg:max-w-none">
-              {/* Mobile/Tablet Horizontal Connected Stepper Bar */}
-              <div className="flex lg:hidden items-center justify-between w-full mb-3.5 relative px-2 shrink-0">
-                {/* Horizontal Background Track Line */}
-                <div className="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0" />
-                {/* Horizontal Active Blue Progress Fill */}
-                <div
-                  className="absolute left-6 top-1/2 -translate-y-1/2 h-[2px] bg-blue-600 z-0 transition-all duration-300 ease-out"
-                  style={{
-                    width: `${(activePillarIndex / (partnerPillars.length - 1)) * 88}%`,
-                  }}
-                />
-                {partnerPillars.map((pillar, idx) => {
-                  const isActive = activePillarIndex === idx;
-                  return (
-                    <button
-                      key={`mob-${pillar.id}`}
-                      onClick={() => scrollToPillar(idx)}
-                      aria-label={`Select pillar ${pillar.id}: ${pillar.title}`}
-                      className="relative z-10 focus:outline-none cursor-pointer"
-                    >
-                      {isActive ? (
-                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-blue-500/35 ring-4 ring-blue-100 scale-110 transition-all duration-300">
-                          <span>{pillar.id}</span>
-                        </div>
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-200 text-slate-400 font-semibold text-[11px] flex items-center justify-center transition-all duration-300">
-                          <span>{pillar.id}</span>
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Mobile/Tablet Isometric 3D Blueprint Graphic Showcase */}
-              <div className="block lg:hidden relative w-full h-40 sm:h-52 rounded-2xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 sm:p-5 mb-4 overflow-hidden shadow-lg shadow-blue-600/20">
-                {/* Blueprint Background Grid Pattern */}
-                <div
-                  className="absolute inset-0 opacity-15 pointer-events-none"
-                  style={{
-                    backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                    backgroundSize: "16px 16px",
-                  }}
-                />
-                {renderBlueprintGraphic(activePillarIndex)}
-              </div>
-
-              <div ref={partnerContentRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="bg-white rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-10 relative w-full">
+              <div ref={partnerContentRef} className="grid grid-cols-12 gap-12 items-center">
                 {/* Left Column: Numbered Timeline Stepper Rail (01 to 06) for Desktop */}
-                <div className="lg:col-span-1 hidden lg:flex flex-col items-center justify-between h-[340px] relative py-2">
+                <div className="col-span-1 flex flex-col items-center justify-between h-[340px] relative py-2">
                   {/* Vertical Connector Track Background */}
                   <div className="absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-[2px] bg-slate-200 z-0" />
 
@@ -1412,52 +1366,52 @@ export default function Home() {
                 </div>
 
                 {/* Middle Column: Pillar Content, Tools Badges & CTA */}
-                <div className="col-span-1 lg:col-span-6 flex flex-col items-start justify-center text-left w-full">
+                <div className="col-span-6 flex flex-col items-start justify-center text-left w-full">
                   {/* Tag Pill with GSAP minimal animation */}
-                  <div className="overflow-hidden mb-1.5 sm:mb-2.5">
+                  <div className="overflow-hidden mb-2.5">
                     <span
                       key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-[0.14em] uppercase"
+                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-sm tracking-[0.14em] uppercase"
                     >
                       {partnerPillars[activePillarIndex].tag}
                     </span>
                   </div>
 
                   {/* Title with GSAP minimal kinetic typography */}
-                  <div className="overflow-hidden w-full mb-2 sm:mb-3">
+                  <div className="overflow-hidden w-full mb-3">
                     <h3
                       key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-lg sm:text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-snug sm:leading-[1.16] tracking-tight"
+                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-[1.16] tracking-tight"
                     >
                       {partnerPillars[activePillarIndex].title}
                     </h3>
                   </div>
 
                   {/* Description with GSAP subtle staggered fade & slide */}
-                  <div className="overflow-hidden w-full mb-3 sm:mb-6">
+                  <div className="overflow-hidden w-full mb-6">
                     <p
                       key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-desc text-slate-600 text-xs sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg"
+                      className="gsap-pillar-desc text-slate-600 text-base lg:text-[1.05rem] leading-relaxed max-w-lg"
                     >
                       {partnerPillars[activePillarIndex].description}
                     </p>
                   </div>
 
-                  {/* Tool Badges / Chips with flex-wrap and clean styling */}
+                  {/* Tool Badges / Chips */}
                   <div
                     key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
-                    className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-4 sm:mb-7 w-full"
+                    className="flex flex-wrap items-center gap-2.5 mb-7 w-full"
                   >
                     {partnerPillars[activePillarIndex].tools.map((tool) => (
                       <div
                         key={tool.name}
-                        className="gsap-pillar-tool inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200 group"
+                        className="gsap-pillar-tool inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200 group"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 group-hover:scale-125 transition-transform" />
-                        <span className="font-semibold text-slate-800 text-xs sm:text-sm group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                        <span className="font-semibold text-slate-800 text-sm group-hover:text-blue-600 transition-colors whitespace-nowrap">
                           {tool.name}
                         </span>
-                        <span className="text-[10px] sm:text-xs text-slate-400 font-normal hidden sm:inline whitespace-nowrap border-l border-slate-200 pl-2">
+                        <span className="text-xs text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-2">
                           {tool.category}
                         </span>
                       </div>
@@ -1467,11 +1421,11 @@ export default function Home() {
                   {/* Contact CTA Button */}
                   <Link
                     href="#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-base px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-md sm:shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                   >
                     <span>Contact Us Now</span>
                     <svg
-                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-200 group-hover:translate-x-1"
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       strokeWidth={2.2}
@@ -1483,7 +1437,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column: Isometric 3D Blueprint Visual Graphic (Desktop) */}
-                <div className="hidden lg:flex lg:col-span-5 relative w-full aspect-square max-h-[380px] sm:max-h-[420px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/25">
+                <div className="col-span-5 relative w-full aspect-square max-h-[420px] rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-8 items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/25 flex">
                   {/* Blueprint Background Grid Pattern */}
                   <div
                     className="absolute inset-0 opacity-15 pointer-events-none"
@@ -1499,6 +1453,157 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* ========================================================================= */}
+      {/* SECTION 3 (MOBILE): WHY PARTNER WITH SOLVEMPIRE (Interactive Accordion) */}
+      {/* ========================================================================= */}
+      <section
+        id="why-partner-mobile"
+        className="block lg:hidden py-16 px-4 sm:px-6 bg-[#f3f6fc] border-t border-slate-200/70 relative"
+      >
+        {/* Ambient Lighting Glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
+
+        <div className="max-w-xl mx-auto relative z-10">
+          {/* Section Heading */}
+          <div className="text-center mb-8">
+            <span className="inline-block text-blue-600 font-bold text-xs tracking-widest uppercase mb-2">
+              WHY CHOOSE US
+            </span>
+            <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
+              <span>WHY PARTNER WITH </span>
+              <span className="text-blue-600">SOLVEMPIRE?</span>
+            </h2>
+            <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
+              Tap each capability below to explore our multidisciplinary engineering process and tooling stack.
+            </p>
+          </div>
+
+          {/* Interactive Accordion Cards List */}
+          <div className="flex flex-col gap-3.5">
+            {partnerPillars.map((pillar, idx) => {
+              const isOpen = openMobilePillar === idx;
+              return (
+                <div
+                  key={`mob-acc-${pillar.id}`}
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isOpen
+                      ? "bg-white border-blue-500/50 shadow-[0_12px_32px_-10px_rgba(37,99,235,0.18)] ring-2 ring-blue-500/10"
+                      : "bg-white/80 backdrop-blur-sm border-slate-200/90 shadow-sm hover:border-slate-300 hover:bg-white"
+                  }`}
+                >
+                  {/* Header Bar / Trigger */}
+                  <button
+                    onClick={() => setOpenMobilePillar(isOpen ? null : idx)}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left focus:outline-none cursor-pointer gap-3"
+                    aria-expanded={isOpen}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      {/* Number Badge */}
+                      <div
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-all duration-300 ${
+                          isOpen
+                            ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105"
+                            : "bg-slate-100 text-slate-600 border border-slate-200/80"
+                        }`}
+                      >
+                        <span>{pillar.id}</span>
+                      </div>
+
+                      {/* Title & Tag */}
+                      <div className="min-w-0">
+                        <span className="block text-[10px] font-bold text-blue-600 tracking-wider uppercase truncate">
+                          {pillar.tag}
+                        </span>
+                        <h3 className="font-[family-name:var(--font-bricolage)] text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                          {pillar.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Plus / Minus (+) Icon Action */}
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                        isOpen
+                          ? "bg-blue-600 text-white rotate-45 shadow-sm shadow-blue-500/30"
+                          : "bg-slate-100 text-slate-500 border border-slate-200 hover:bg-blue-50 hover:text-blue-600"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4 transition-transform duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* Accordion Expandable Body Content */}
+                  {isOpen && (
+                    <div className="px-4 pb-5 pt-1 sm:px-5 sm:pb-6 border-t border-slate-100">
+                      {/* 3D Isometric Blueprint Visual Graphic Banner */}
+                      <div className="relative w-full h-44 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 my-3 overflow-hidden shadow-md shadow-blue-600/20 flex items-center justify-center">
+                        <div
+                          className="absolute inset-0 opacity-15 pointer-events-none"
+                          style={{
+                            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+                            backgroundSize: "16px 16px",
+                          }}
+                        />
+                        {renderBlueprintGraphic(idx)}
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                        {pillar.description}
+                      </p>
+
+                      {/* Tool Badges */}
+                      <div className="flex flex-wrap items-center gap-1.5 mb-4">
+                        {pillar.tools.map((tool) => (
+                          <div
+                            key={tool.name}
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                            <span className="font-semibold text-slate-800 text-[11px] whitespace-nowrap">
+                              {tool.name}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1.5">
+                              {tool.category}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA Button */}
+                      <Link
+                        href="#contact"
+                        className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs px-6 py-2.5 rounded-full shadow-md shadow-blue-500/25 w-full transition-all duration-200"
+                      >
+                        <span>Contact Us Now</span>
+                        <svg
+                          className="w-3.5 h-3.5"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2.2}
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
       {/* ========================================================================= */}
       {/* SECTION 4: OUR PROCESS (Cinematic 3D Folded Ribbon Pipeline) */}
       {/* ========================================================================= */}
