@@ -1308,27 +1308,27 @@ export default function Home() {
         id="why-partner"
         className="relative h-[380vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
-        {/* Sticky 100vh Viewport Stage */}
-        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f3f6fc] px-3 sm:px-8 lg:px-12 py-2 sm:py-6 relative">
+        {/* Sticky 100vh / 100dvh Viewport Stage */}
+        <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden bg-[#f3f6fc] px-3 sm:px-8 lg:px-12 py-2 sm:py-6 relative">
           {/* Ambient Lighting Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
 
           {/* Micro Dot Matrix Grid Layer */}
           <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
 
-          <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
+          <div className="max-w-7xl w-full mx-auto flex-1 flex flex-col justify-between items-center relative z-10 h-full max-h-full py-1 sm:py-2">
             {/* Section Heading */}
-            <div className="w-full text-center max-w-4xl mx-auto mb-2 sm:mb-8 shrink-0">
+            <div className="w-full text-center max-w-4xl mx-auto mb-1.5 sm:mb-4 shrink-0">
               <h2 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
                 <span>WHY PARTNER WITH </span>
                 <span className="text-blue-600">SOLVEMPIRE?</span>
               </h2>
             </div>
 
-            {/* Main Interactive Partner Showcase Card */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-4 sm:p-7 lg:p-10 relative w-full max-w-xl lg:max-w-none">
+            {/* Main Interactive Partner Showcase Card - Fills Full Available Mobile Height */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-3.5 sm:p-7 lg:p-10 relative w-full flex-1 flex flex-col justify-between max-w-xl lg:max-w-none overflow-hidden">
               {/* Mobile/Tablet Horizontal Connected Stepper Bar */}
-              <div className="flex lg:hidden items-center justify-between w-full mb-3 relative px-1 sm:px-2 shrink-0">
+              <div className="flex lg:hidden items-center justify-between w-full mb-2 relative px-1 sm:px-2 shrink-0">
                 {/* Horizontal Background Track Line */}
                 <div className="absolute left-5 right-5 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0" />
                 {/* Horizontal Active Blue Progress Fill */}
@@ -1361,8 +1361,8 @@ export default function Home() {
                 })}
               </div>
 
-              {/* Mobile/Tablet Isometric 3D Blueprint Graphic Showcase */}
-              <div className="block lg:hidden relative w-full h-32 sm:h-44 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2 sm:p-4 mb-3 overflow-hidden shadow-lg shadow-blue-600/20">
+              {/* Mobile/Tablet Isometric 3D Blueprint Graphic Showcase (Expands to Fill Screen) */}
+              <div className="block lg:hidden relative w-full flex-1 min-h-[110px] max-h-[220px] rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2 sm:p-4 mb-2 overflow-hidden shadow-lg shadow-blue-600/20 shrink">
                 {/* Blueprint Background Grid Pattern */}
                 <div
                   className="absolute inset-0 opacity-15 pointer-events-none"
@@ -1374,7 +1374,7 @@ export default function Home() {
                 {renderBlueprintGraphic(activePillarIndex)}
               </div>
 
-              <div ref={partnerContentRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div ref={partnerContentRef} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center flex-1 lg:flex-none">
                 {/* Left Column: Numbered Timeline Stepper Rail (01 to 06) for Desktop */}
                 <div className="lg:col-span-1 hidden lg:flex flex-col items-center justify-between h-[340px] relative py-2">
                   {/* Vertical Connector Track Background */}
@@ -1412,62 +1412,64 @@ export default function Home() {
                 </div>
 
                 {/* Middle Column: Pillar Content, Tools Badges & CTA */}
-                <div className="col-span-1 lg:col-span-6 flex flex-col items-start justify-center text-left w-full">
-                  {/* Tag Pill with GSAP minimal animation */}
-                  <div className="overflow-hidden mb-1 sm:mb-2.5">
-                    <span
-                      key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-[0.14em] uppercase"
-                    >
-                      {partnerPillars[activePillarIndex].tag}
-                    </span>
-                  </div>
-
-                  {/* Title with GSAP minimal kinetic typography */}
-                  <div className="overflow-hidden w-full mb-1 sm:mb-3">
-                    <h3
-                      key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-base sm:text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-snug sm:leading-[1.16] tracking-tight"
-                    >
-                      {partnerPillars[activePillarIndex].title}
-                    </h3>
-                  </div>
-
-                  {/* Description with GSAP subtle staggered fade & slide */}
-                  <div className="overflow-hidden w-full mb-2.5 sm:mb-6">
-                    <p
-                      key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-desc text-slate-600 text-xs sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg line-clamp-2 sm:line-clamp-none"
-                    >
-                      {partnerPillars[activePillarIndex].description}
-                    </p>
-                  </div>
-
-                  {/* Tool Badges / Chips with flex-wrap and clean styling */}
-                  <div
-                    key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
-                    className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 mb-3 sm:mb-7 w-full"
-                  >
-                    {partnerPillars[activePillarIndex].tools.map((tool) => (
-                      <div
-                        key={tool.name}
-                        className="gsap-pillar-tool inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3.5 sm:py-2 rounded-lg sm:rounded-xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200 group"
+                <div className="col-span-1 lg:col-span-6 flex flex-col items-start justify-between text-left w-full h-full">
+                  <div>
+                    {/* Tag Pill with GSAP minimal animation */}
+                    <div className="overflow-hidden mb-0.5 sm:mb-2">
+                      <span
+                        key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
+                        className="gsap-pillar-tag inline-block text-blue-600 font-bold text-[11px] sm:text-sm tracking-[0.14em] uppercase"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 group-hover:scale-125 transition-transform" />
-                        <span className="font-semibold text-slate-800 text-[11px] sm:text-sm group-hover:text-blue-600 transition-colors whitespace-nowrap">
-                          {tool.name}
-                        </span>
-                        <span className="text-[10px] sm:text-xs text-slate-400 font-normal hidden sm:inline whitespace-nowrap border-l border-slate-200 pl-2">
-                          {tool.category}
-                        </span>
-                      </div>
-                    ))}
+                        {partnerPillars[activePillarIndex].tag}
+                      </span>
+                    </div>
+
+                    {/* Title with GSAP minimal kinetic typography */}
+                    <div className="overflow-hidden w-full mb-1 sm:mb-3">
+                      <h3
+                        key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
+                        className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-sm sm:text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-snug sm:leading-[1.16] tracking-tight"
+                      >
+                        {partnerPillars[activePillarIndex].title}
+                      </h3>
+                    </div>
+
+                    {/* Description with GSAP subtle staggered fade & slide */}
+                    <div className="overflow-hidden w-full mb-1.5 sm:mb-6">
+                      <p
+                        key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
+                        className="gsap-pillar-desc text-slate-600 text-[11px] sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg line-clamp-2 sm:line-clamp-none"
+                      >
+                        {partnerPillars[activePillarIndex].description}
+                      </p>
+                    </div>
+
+                    {/* Tool Badges / Chips with flex-wrap and clean styling */}
+                    <div
+                      key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
+                      className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 mb-2 sm:mb-7 w-full"
+                    >
+                      {partnerPillars[activePillarIndex].tools.map((tool) => (
+                        <div
+                          key={tool.name}
+                          className="gsap-pillar-tool inline-flex items-center gap-1 sm:gap-2 px-2 py-0.5 sm:px-3.5 sm:py-2 rounded-lg sm:rounded-xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200 group"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 group-hover:scale-125 transition-transform" />
+                          <span className="font-semibold text-slate-800 text-[10px] sm:text-sm group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                            {tool.name}
+                          </span>
+                          <span className="text-[10px] sm:text-xs text-slate-400 font-normal hidden sm:inline whitespace-nowrap border-l border-slate-200 pl-2">
+                            {tool.category}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Contact CTA Button */}
                   <Link
                     href="#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-base px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full shadow-md sm:shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-base px-5 sm:px-8 py-2 sm:py-3.5 rounded-full shadow-md sm:shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 w-full sm:w-auto mt-0.5 shrink-0"
                   >
                     <span>Contact Us Now</span>
                     <svg
