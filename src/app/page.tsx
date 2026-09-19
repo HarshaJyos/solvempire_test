@@ -113,13 +113,11 @@ export default function Home() {
       {/* Hero Section */}
       <main className="flex-1 flex flex-col justify-between items-center text-center px-4 sm:px-6 pt-16 sm:pt-24 md:pt-28 relative">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          {/* Main Headline - Optically balanced for equal visual width across both lines */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-bold text-slate-900 leading-[1.08] text-center flex flex-col items-center">
-            <span className="block text-[0.86em] font-bold text-slate-900 tracking-tight">
-              We Engineer Ideas Into
-            </span>
-            <span className="block text-[1.10em] font-bold text-blue-600 tracking-tight">
-              Working Products<span className="text-slate-900">.</span>
+          {/* Main Headline - Harmonious, uniform typography with balanced 2-line structure across all screens */}
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-[-0.03em] text-slate-950 leading-[1.14] text-center max-w-4xl mx-auto text-balance">
+            <span className="block">We Engineer Ideas Into</span>
+            <span className="block text-blue-600">
+              Working Products<span className="text-slate-950">.</span>
             </span>
           </h1>
 
