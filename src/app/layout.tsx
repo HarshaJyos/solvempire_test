@@ -37,7 +37,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-white text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-700`}
+        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-[#f8fafd] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-700`}
       >
         {children}
       </body>

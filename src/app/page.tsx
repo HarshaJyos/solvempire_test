@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import { THEME_COLORS } from "@/lib/theme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -726,7 +727,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-700">
+    <div className="w-full bg-[#f8fafd] text-slate-900 selection:bg-blue-100 selection:text-blue-700">
       {/* ========================================================================= */}
       {/* PINNED HERO & SHOWCASE STAGE (400vh scroll distance for smooth scrubbing) */}
       {/* ========================================================================= */}
@@ -734,8 +735,11 @@ export default function Home() {
         {/* Sticky 100vh Viewport Stage */}
         <div
           ref={stageRef}
-          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-white"
+          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#f8fafd] relative"
         >
+          {/* Subtle Ambient Studio Lighting behind Hero */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[520px] bg-gradient-to-b from-blue-100/40 via-blue-50/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
           {/* Header Navigation */}
           <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-40">
             {/* Logo */}
@@ -1133,10 +1137,10 @@ export default function Home() {
       <div
         ref={partnerContainerRef}
         id="why-partner"
-        className="relative h-[380vh] w-full bg-white border-t border-slate-100"
+        className="relative h-[380vh] w-full bg-[#f8fafd] border-t border-slate-200/60"
       >
         {/* Sticky 100vh Viewport Stage */}
-        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6">
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f8fafd] px-4 sm:px-8 lg:px-12 py-4 sm:py-6">
           <div className="max-w-7xl w-full mx-auto flex flex-col items-center">
             {/* Section Heading */}
             <div className="w-full text-center max-w-4xl mx-auto mb-6 sm:mb-8">
@@ -1147,7 +1151,7 @@ export default function Home() {
             </div>
 
             {/* Main Interactive Partner Showcase Card */}
-            <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-8 lg:p-10 relative w-full">
+            <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.06)] p-6 sm:p-8 lg:p-10 relative w-full">
               {/* Mobile/Tablet Horizontal Stepper Row */}
               <div className="flex lg:hidden items-center justify-between w-full mb-6 pb-2 border-b border-slate-100 gap-2 overflow-x-auto">
                 {partnerPillars.map((pillar, idx) => {
@@ -1470,7 +1474,7 @@ export default function Home() {
       <section
         ref={processSectionRef}
         id="process"
-        className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100"
+        className="py-24 sm:py-32 bg-[#f8fafd] relative overflow-hidden border-t border-slate-200/60"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Heading with GSAP Rack Focus & Unmask */}
@@ -1725,7 +1729,7 @@ export default function Home() {
       <section
         id="team"
         ref={teamSectionRef}
-        className="w-full bg-white py-24 sm:py-32 border-t border-slate-100 overflow-hidden relative"
+        className="w-full bg-[#f8fafd] py-24 sm:py-32 border-t border-slate-200/60 overflow-hidden relative"
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
@@ -1877,7 +1881,7 @@ export default function Home() {
 
             <div className="gsap-contact-btn mt-8 sm:mt-10">
               <Link
-                href="mailto:hello@solvempire.com"
+                href={`mailto:${THEME_COLORS.contact.email}`}
                 className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-full shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 hover:scale-105 active:scale-95 transition-all duration-300 group"
               >
                 <span>Start Your Project</span>
@@ -1891,7 +1895,7 @@ export default function Home() {
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 relative z-10">
           <div className="gsap-contact-card bg-white text-slate-900 rounded-[2rem] sm:rounded-[2.75rem] p-8 sm:p-12 lg:p-16 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] border border-slate-100">
             {/* Logo Row */}
-            <div className="flex items-center justify-between pb-10 sm:pb-12 border-b border-slate-100">
+            <div className="flex items-center justify-between pb-8 sm:pb-10 border-b border-slate-100">
               <Link href="/" className="inline-block group">
                 <Image
                   src="/logo.png"
@@ -1901,16 +1905,12 @@ export default function Home() {
                   className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
                 />
               </Link>
-              <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-3.5 py-1.5 rounded-full">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Available for Q3/Q4 Projects</span>
-              </div>
             </div>
 
             {/* 4-Column Navigation Links */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 py-10 sm:py-12 border-b border-slate-100">
-              {/* Column 1: Company */}
-              <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 py-10 sm:py-12 border-b border-slate-100">
+              {/* Column 1: Company (3 cols on lg) */}
+              <div className="lg:col-span-3 flex flex-col gap-3">
                 <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Company</h4>
                 <Link href="#about" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   About Us
@@ -1926,8 +1926,8 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Column 2: Services */}
-              <div className="flex flex-col gap-3">
+              {/* Column 2: Services (3 cols on lg) */}
+              <div className="lg:col-span-3 flex flex-col gap-3">
                 <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Services</h4>
                 <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   Web &amp; Mobile Development
@@ -1943,8 +1943,8 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Column 3: Resources */}
-              <div className="flex flex-col gap-3">
+              {/* Column 3: Resources (2 cols on lg) */}
+              <div className="lg:col-span-2 flex flex-col gap-3">
                 <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Resources</h4>
                 <Link href="#blog" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   Engineering Blog
@@ -1960,54 +1960,48 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Column 4: Contact */}
-              <div className="flex flex-col gap-3">
-                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Contact</h4>
+              {/* Column 4: Contact & Location (4 cols on lg) */}
+              <div className="lg:col-span-4 flex flex-col gap-4">
+                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-0.5">Contact</h4>
+                
+                {/* Support Email */}
                 <a
-                  href="mailto:hello@solvempire.com"
+                  href={`mailto:${THEME_COLORS.contact.email}`}
                   className="flex items-center gap-2.5 text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150 group"
                 >
-                  <svg
-                    className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span>hello@solvempire.com</span>
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <span className="font-medium">{THEME_COLORS.contact.email}</span>
                 </a>
-                <div className="flex items-center gap-2.5 text-slate-600 text-sm">
-                  <svg
-                    className="w-4 h-4 text-slate-400 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  <span>Chennai, India</span>
-                </div>
-                <div className="sm:hidden mt-2 flex items-center gap-2 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-3 py-1 rounded-full w-fit">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Available for new projects</span>
-                </div>
+
+                {/* Office Location & Address with Interactive Maps Link */}
+                <a
+                  href={THEME_COLORS.contact.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2.5 text-slate-600 hover:text-blue-600 text-xs sm:text-[13px] leading-relaxed transition-colors duration-150 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors mt-0.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors inline-flex items-center gap-1.5">
+                      {THEME_COLORS.contact.city}
+                      <svg className="w-3.5 h-3.5 text-blue-600 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 mt-1 leading-normal">
+                      {THEME_COLORS.contact.fullAddress}
+                    </span>
+                  </div>
+                </a>
               </div>
             </div>
 

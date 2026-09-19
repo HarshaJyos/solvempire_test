@@ -1,7 +1,33 @@
 @import "tailwindcss";
 
+/* ========================================================================= */
+/* CONFIGURABLE DESIGN SYSTEM TOKENS & PALETTE */
+/* ========================================================================= */
+:root {
+  /* Premium Off-White Canvas & Card Surfaces */
+  --bg-canvas: #f8fafd;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f1f5f9;
+  
+  /* Brand Blues */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-light: #3b82f6;
+  --color-periwinkle: #6c85c4;
+  --color-ice-blue: #c8d7f6;
+  --color-ice-light: #eff4fe;
+  
+  /* High-Contrast Typography */
+  --color-heading: #0a0f1d;
+  --color-body: #475569;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+}
+
 body {
   font-family: 'Google Sans', var(--font-sans), sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--color-heading);
 }
 
 html.lenis, html.lenis body {
