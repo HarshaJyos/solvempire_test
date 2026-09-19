@@ -52,10 +52,92 @@ const projects = [
   },
 ];
 
+const partnerPillars = [
+  {
+    id: "01",
+    subtitle: "CONCEPT TO DEPLOYMENT",
+    tag: "END-TO-END ENGINEERING",
+    title: "Turning Bold Concepts Into Production-Ready Products",
+    description:
+      "We transform early-stage ideas into functional products through structured engineering, prototyping, testing and refinement, ensuring every concept moves confidently from initial thinking to a practical, scalable and deployment-ready solution.",
+    tools: [
+      { name: "Figma", category: "UI/UX & Spec" },
+      { name: "SolidWorks", category: "Mechanical CAD" },
+      { name: "Altium Designer", category: "PCB & Hardware" },
+    ],
+  },
+  {
+    id: "02",
+    subtitle: "UNIFIED EXPERTISE",
+    tag: "MULTI-DISCIPLINARY",
+    title: "Multiple Disciplines Working Together As One Team",
+    description:
+      "Our multidisciplinary approach brings mechanical, electronics, embedded systems, software and product expertise together, allowing complex challenges to be addressed from multiple technical perspectives within one coordinated engineering process.",
+    tools: [
+      { name: "SolidWorks", category: "Enclosure Design" },
+      { name: "Altium Designer", category: "Circuit Layout" },
+      { name: "VS Code", category: "Firmware & Cloud" },
+    ],
+  },
+  {
+    id: "03",
+    subtitle: "INTELLIGENT SYSTEMS",
+    tag: "SMART SYSTEMS",
+    title: "Building Smarter Connected Systems For Real-World Use",
+    description:
+      "We develop connected and intelligent systems by integrating embedded hardware, software, sensors, communication technologies and intuitive interfaces to create products that work seamlessly across real-world applications and environments.",
+    tools: [
+      { name: "Arduino", category: "Rapid Embedded" },
+      { name: "ESP32", category: "Wireless IoT" },
+      { name: "Firebase", category: "Realtime Telemetry" },
+    ],
+  },
+  {
+    id: "04",
+    subtitle: "QUALITY & RELIABILITY",
+    tag: "RELIABILITY FIRST",
+    title: "Engineering Products For Reliable Real-World Performance",
+    description:
+      "We focus on validation, testing and continuous refinement to identify potential issues early, improve product performance and build dependable engineering solutions capable of delivering consistent results under real-world operating conditions.",
+    tools: [
+      { name: "MATLAB", category: "Algorithmic Analysis" },
+      { name: "Simulink", category: "Model-Based Test" },
+      { name: "LabVIEW", category: "Automated QA" },
+    ],
+  },
+  {
+    id: "05",
+    subtitle: "MANUFACTURING SUPPORT",
+    tag: "PRODUCTION READY",
+    title: "From Engineering Designs To Production-Ready Solutions",
+    description:
+      "We connect engineering with manufacturing by considering materials, production methods, component selection, assembly and design constraints early, helping transform technically sound designs into practical and manufacturable products.",
+    tools: [
+      { name: "SolidWorks", category: "DFM & Assembly" },
+      { name: "AutoCAD", category: "Technical Drawings" },
+      { name: "Fusion 360", category: "Toolpath & CNC" },
+    ],
+  },
+  {
+    id: "06",
+    subtitle: "LONG-TERM SUPPORT",
+    tag: "LIFECYCLE SUPPORT",
+    title: "Supporting Products Through Every Stage Of Their Journey",
+    description:
+      "Our engineering support continues beyond initial deployment through technical improvements, troubleshooting, iterations and product enhancements, helping solutions adapt to changing requirements while maintaining performance, reliability and long-term usability.",
+    tools: [
+      { name: "GitHub", category: "Version Control" },
+      { name: "Jira", category: "Agile Tracking" },
+      { name: "Grafana", category: "Live Telemetry" },
+    ],
+  },
+];
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
   const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
+  const [activePillarIndex, setActivePillarIndex] = useState<number>(0);
   const [heroOpacity, setHeroOpacity] = useState<number>(1);
   const [heroY, setHeroY] = useState<number>(0);
   const [arcShift, setArcShift] = useState<number>(1); // 1 = at bottom of hero, 0 = at showcase position
@@ -563,55 +645,290 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: CAPABILITIES & SERVICES */}
+      {/* SECTION 3: WHY PARTNER WITH SOLVEMPIRE */}
       {/* ========================================================================= */}
-      <section id="services" className="py-24 sm:py-32 bg-slate-50/50 border-t border-slate-100">
+      <section id="why-partner" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-blue-600 font-semibold tracking-wider text-xs sm:text-sm uppercase">
-              Our Capabilities
-            </span>
-            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-5xl font-bold text-slate-950 mt-2 mb-4 tracking-tight">
-              End-to-End Engineering for Visionary Teams.
+          {/* Section Heading */}
+          <div className="w-full text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
+              <span>WHY PARTNER WITH </span>
+              <span className="text-blue-600">SOLVEMPIRE?</span>
             </h2>
-            <p className="text-slate-600 text-base sm:text-lg">
-              We design, build, and deploy mission-critical software systems and connected hardware platforms.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Custom Web & Cloud Platforms",
-                desc: "Scalable microservices, distributed architectures, and modern web applications built for reliability under high load.",
-                icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
-              },
-              {
-                title: "IoT & Hardware Integration",
-                desc: "Firmware, embedded telemetry, and cloud orchestration bridging the physical world with real-time digital systems.",
-                icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
-              },
-              {
-                title: "AI & Machine Learning",
-                desc: "Applied computer vision, predictive intelligence, and specialized LLM pipelines embedded natively into workflows.",
-                icon: "M13 10V3L4 14h7v7l9-11h-7z",
-              },
-            ].map((service, i) => (
-              <div
-                key={i}
-                className="p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
-                  </svg>
-                </div>
-                <h3 className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-slate-950 mb-2.5">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{service.desc}</p>
+          {/* Main Interactive Partner Showcase Card */}
+          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column: Numbered Timeline Stepper (01 to 06) */}
+              <div className="lg:col-span-1 hidden sm:flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-3 lg:gap-6 relative py-2 lg:py-6">
+                {/* Vertical Connector Track */}
+                <div className="hidden lg:block absolute top-8 bottom-8 left-1/2 -translate-x-1/2 w-[2px] bg-slate-200 z-0" />
+
+                {partnerPillars.map((pillar, idx) => {
+                  const isActive = activePillarIndex === idx;
+                  return (
+                    <button
+                      key={pillar.id}
+                      onClick={() => setActivePillarIndex(idx)}
+                      aria-label={`Select pillar ${pillar.id}: ${pillar.title}`}
+                      className="relative z-10 group focus:outline-none cursor-pointer"
+                    >
+                      {isActive ? (
+                        <div className="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-blue-500/35 ring-4 ring-blue-100 scale-110 transition-all duration-300">
+                          <span>{pillar.id}</span>
+                        </div>
+                      ) : (
+                        <div className="w-9 h-9 rounded-full bg-white border-2 border-slate-200 group-hover:border-blue-500 text-slate-400 group-hover:text-blue-600 font-semibold text-xs flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-xs">
+                          <span>{pillar.id}</span>
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-            ))}
+
+              {/* Middle Column: Pillar Content, Tools Badges & CTA */}
+              <div className="lg:col-span-6 flex flex-col items-start justify-center text-left">
+                {/* Tag Pill */}
+                <span className="text-blue-600 font-bold text-xs sm:text-sm tracking-[0.18em] uppercase mb-3">
+                  {partnerPillars[activePillarIndex].tag}
+                </span>
+
+                {/* Title */}
+                <h3
+                  key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
+                  className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-slate-950 leading-[1.16] tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-3 duration-400 ease-out"
+                >
+                  {partnerPillars[activePillarIndex].title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
+                  className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out"
+                >
+                  {partnerPillars[activePillarIndex].description}
+                </p>
+
+                {/* Tool Badges / Logos */}
+                <div
+                  key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
+                  className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 w-full max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 ease-out"
+                >
+                  {partnerPillars[activePillarIndex].tools.map((tool) => (
+                    <div
+                      key={tool.name}
+                      className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col items-start gap-1 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
+                    >
+                      <div className="flex items-center gap-2 text-blue-600 mb-0.5">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-blue-600 transition-colors">
+                          {tool.name}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-slate-500 font-medium">
+                        {tool.category}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Contact CTA Button */}
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                >
+                  <span>Contact Us Now</span>
+                  <svg
+                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Right Column: Isometric 3D Blueprint Visual Graphic */}
+              <div className="lg:col-span-5 relative w-full aspect-square max-h-[460px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/30">
+                {/* Blueprint Background Grid Pattern */}
+                <div
+                  className="absolute inset-0 opacity-15 pointer-events-none"
+                  style={{
+                    backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+                    backgroundSize: "20px 20px",
+                  }}
+                />
+
+                {/* Dynamic Isometric Blueprint Graphics by Pillar */}
+                <div
+                  key={`graphic-${partnerPillars[activePillarIndex].id}`}
+                  className="relative w-full h-full flex items-center justify-center animate-in zoom-in-95 duration-600 ease-out"
+                >
+                  {/* Visual 01: Layered Isometric Wireframe Cube & Precision Base */}
+                  {activePillarIndex === 0 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      {/* Isometric Base Plate */}
+                      <path
+                        d="M 200 280 L 320 220 L 200 160 L 80 220 Z"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 4"
+                        className="opacity-40"
+                      />
+                      <path
+                        d="M 80 220 L 80 250 L 200 310 L 320 250 L 320 220"
+                        strokeWidth="1.5"
+                        className="opacity-50"
+                      />
+                      <path
+                        d="M 200 280 L 200 310"
+                        strokeWidth="1.5"
+                        className="opacity-50"
+                      />
+
+                      {/* Elevated Glass Cube Top Wireframe */}
+                      <g className="animate-pulse duration-1000">
+                        {/* Top Face */}
+                        <path d="M 200 80 L 270 120 L 200 160 L 130 120 Z" strokeWidth="2.5" className="fill-white/10" />
+                        {/* Left Face */}
+                        <path d="M 130 120 L 200 160 L 200 240 L 130 200 Z" strokeWidth="2.5" className="fill-white/15" />
+                        {/* Right Face */}
+                        <path d="M 270 120 L 200 160 L 200 240 L 270 200 Z" strokeWidth="2.5" className="fill-white/20" />
+                      </g>
+
+                      {/* Internal Laser Alignment Guides & Glowing Coordinate Points */}
+                      <line x1="200" y1="80" x2="200" y2="280" strokeWidth="1.5" strokeDasharray="3 3" className="stroke-blue-200 opacity-70" />
+                      <circle cx="200" cy="80" r="4" className="fill-white" />
+                      <circle cx="200" cy="160" r="3.5" className="fill-white" />
+                      <circle cx="200" cy="240" r="3.5" className="fill-white" />
+                      <circle cx="200" cy="280" r="4.5" className="fill-white" />
+
+                      {/* Dimensional Markers */}
+                      <line x1="330" y1="120" x2="330" y2="200" strokeWidth="1" className="opacity-40" />
+                      <circle cx="330" cy="120" r="1.5" className="fill-white" />
+                      <circle cx="330" cy="140" r="1.5" className="fill-white" />
+                      <circle cx="330" cy="160" r="1.5" className="fill-white" />
+                      <circle cx="330" cy="180" r="1.5" className="fill-white" />
+                      <circle cx="330" cy="200" r="1.5" className="fill-white" />
+                    </svg>
+                  )}
+
+                  {/* Visual 02: Interlocking Multidisciplinary Circuit & Gear Mesh */}
+                  {activePillarIndex === 1 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      <circle cx="200" cy="200" r="110" strokeWidth="1.5" strokeDasharray="6 6" className="opacity-30 animate-spin origin-center" style={{ animationDuration: "20s" }} />
+                      <circle cx="200" cy="200" r="80" strokeWidth="2" className="opacity-60" />
+                      <circle cx="200" cy="200" r="50" strokeWidth="2.5" className="fill-white/10" />
+
+                      {/* Integrated Circuit Traces */}
+                      <path d="M 80 140 L 140 140 L 170 170 L 200 170" strokeWidth="2" className="stroke-blue-200" />
+                      <path d="M 320 260 L 260 260 L 230 230 L 200 230" strokeWidth="2" className="stroke-blue-200" />
+                      <path d="M 140 260 L 170 230" strokeWidth="2" className="stroke-blue-200" />
+                      <path d="M 260 140 L 230 170" strokeWidth="2" className="stroke-blue-200" />
+
+                      <circle cx="80" cy="140" r="4" className="fill-white" />
+                      <circle cx="320" cy="260" r="4" className="fill-white" />
+                      <circle cx="200" cy="200" r="8" className="fill-white" />
+                    </svg>
+                  )}
+
+                  {/* Visual 03: Smart IoT Wireless Mesh & Sensor Matrix */}
+                  {activePillarIndex === 2 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      {/* Central Gateway Node */}
+                      <circle cx="200" cy="200" r="18" strokeWidth="2.5" className="fill-white/20" />
+                      <circle cx="200" cy="200" r="6" className="fill-white" />
+
+                      {/* Radiating Signal Waves */}
+                      <circle cx="200" cy="200" r="60" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                      <circle cx="200" cy="200" r="100" strokeWidth="1" strokeDasharray="6 6" className="opacity-30" />
+                      <circle cx="200" cy="200" r="140" strokeWidth="1" className="opacity-20" />
+
+                      {/* Mesh Nodes */}
+                      {[
+                        { x: 120, y: 130 },
+                        { x: 280, y: 120 },
+                        { x: 300, y: 270 },
+                        { x: 110, y: 280 },
+                        { x: 200, y: 80 },
+                      ].map((pt, i) => (
+                        <g key={i}>
+                          <line x1="200" y1="200" x2={pt.x} y2={pt.y} strokeWidth="1.5" className="stroke-blue-200 opacity-70" />
+                          <circle cx={pt.x} cy={pt.y} r="6" strokeWidth="2" className="fill-white" />
+                        </g>
+                      ))}
+                    </svg>
+                  )}
+
+                  {/* Visual 04: Oscilloscope Waveform & Reliability Stress Grid */}
+                  {activePillarIndex === 3 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      {/* Grid Frame */}
+                      <rect x="70" y="90" width="260" height="220" rx="16" strokeWidth="2" className="fill-white/5 opacity-80" />
+                      <line x1="70" y1="200" x2="330" y2="200" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+                      <line x1="200" y1="90" x2="200" y2="310" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+
+                      {/* Smooth Sine Waveform */}
+                      <path
+                        d="M 80 200 Q 110 120 140 200 T 200 200 T 260 200 T 320 200"
+                        strokeWidth="3"
+                        className="stroke-white"
+                      />
+                      <path
+                        d="M 80 200 Q 110 150 140 200 T 200 200 T 260 200 T 320 200"
+                        strokeWidth="1.5"
+                        strokeDasharray="4 4"
+                        className="stroke-blue-200 opacity-60"
+                      />
+                      <circle cx="140" cy="200" r="4" className="fill-white" />
+                      <circle cx="200" cy="200" r="4" className="fill-white" />
+                      <circle cx="260" cy="200" r="4" className="fill-white" />
+                    </svg>
+                  )}
+
+                  {/* Visual 05: CAD DFM Precision Toolpath & Fabrication Geometry */}
+                  {activePillarIndex === 4 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      {/* Isometric Machined Part Wireframe */}
+                      <polygon points="200,90 310,150 310,250 200,310 90,250 90,150" strokeWidth="2" className="fill-white/10" />
+                      <polygon points="200,130 270,170 270,230 200,270 130,230 130,170" strokeWidth="1.5" strokeDasharray="4 4" className="fill-white/15" />
+                      <circle cx="200" cy="200" r="28" strokeWidth="2" className="fill-white/20" />
+                      <circle cx="200" cy="200" r="6" className="fill-white" />
+
+                      {/* Toolpath Coordinates */}
+                      <line x1="90" y1="150" x2="200" y2="90" strokeWidth="2.5" className="stroke-blue-200" />
+                      <line x1="200" y1="90" x2="310" y2="150" strokeWidth="2.5" className="stroke-blue-200" />
+                      <circle cx="200" cy="90" r="4.5" className="fill-white" />
+                      <circle cx="310" cy="150" r="4.5" className="fill-white" />
+                      <circle cx="90" cy="150" r="4.5" className="fill-white" />
+                    </svg>
+                  )}
+
+                  {/* Visual 06: Infinite Continuous Lifecycle Orbit Loop */}
+                  {activePillarIndex === 5 && (
+                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                      {/* Infinity Loop Geometry */}
+                      <path
+                        d="M 140 200 C 100 140 60 200 140 200 C 220 200 260 140 300 200 C 340 260 300 200 260 200 C 180 200 180 260 140 200 Z"
+                        strokeWidth="3"
+                        className="stroke-white"
+                      />
+                      <ellipse cx="140" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
+                      <ellipse cx="260" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
+
+                      <circle cx="140" cy="200" r="5" className="fill-white" />
+                      <circle cx="260" cy="200" r="5" className="fill-white" />
+                      <circle cx="200" cy="200" r="7" className="fill-white" />
+                    </svg>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
