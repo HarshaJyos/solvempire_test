@@ -210,9 +210,8 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const partnerContainerRef = useRef<HTMLDivElement>(null);
+  const mobilePartnerContainerRef = useRef<HTMLDivElement>(null);
   const partnerContentRef = useRef<HTMLDivElement>(null);
-  const mobilePillarRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const isManualToggling = useRef<boolean>(false);
   const processSectionRef = useRef<HTMLDivElement>(null);
   const teamSectionRef = useRef<HTMLDivElement>(null);
   const contactSectionRef = useRef<HTMLDivElement>(null);
@@ -231,6 +230,26 @@ export default function Home() {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(targetScroll, {
         duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
+
+  const scrollToMobilePillar = (index: number) => {
+    if (!mobilePartnerContainerRef.current) return;
+    const rect = mobilePartnerContainerRef.current.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const containerTop = rect.top + scrollTop;
+    const scrollDistance = mobilePartnerContainerRef.current.offsetHeight - window.innerHeight;
+    const targetP = (index + 0.5) / partnerPillars.length;
+    const targetScroll = containerTop + targetP * scrollDistance;
+
+    setOpenMobilePillar(index);
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(targetScroll, {
+        duration: 0.9,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       });
     } else {
@@ -596,42 +615,6 @@ export default function Home() {
     return () => ctx.revert();
   }, [activePillarIndex]);
 
-  // Mobile Why Partner: Auto-expand active pillar item on scroll
-  useEffect(() => {
-    const handleMobileScroll = () => {
-      if (typeof window === "undefined" || window.innerWidth >= 1024) return;
-      if (isManualToggling.current) return;
-
-      const viewportCenter = window.innerHeight * 0.42;
-      let activeIndex = -1;
-      let minDistance = Infinity;
-
-      mobilePillarRefs.current.forEach((el, index) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.bottom > window.innerHeight * 0.15 && rect.top < window.innerHeight * 0.85) {
-          const itemMiddle = rect.top + Math.min(rect.height, 120) / 2;
-          const distance = Math.abs(itemMiddle - viewportCenter);
-          if (distance < minDistance) {
-            minDistance = distance;
-            activeIndex = index;
-          }
-        }
-      });
-
-      if (activeIndex !== -1) {
-        setOpenMobilePillar((prev) => (prev !== activeIndex ? activeIndex : prev));
-      }
-    };
-
-    window.addEventListener("scroll", handleMobileScroll, { passive: true });
-    handleMobileScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleMobileScroll);
-    };
-  }, []);
-
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scrolling
     const lenis = new Lenis({
@@ -735,7 +718,7 @@ export default function Home() {
         },
       });
 
-      // 3. Initialize Pinned ScrollTrigger for Why Partner with Solvempire
+      // 3. Initialize Pinned ScrollTrigger for Why Partner with Solvempire (Desktop)
       const partnerContainer = partnerContainerRef.current;
       if (partnerContainer) {
         ScrollTrigger.create({
@@ -751,6 +734,25 @@ export default function Home() {
             );
             setActivePillarIndex(clampedIdx);
             setPartnerProgress(p);
+          },
+        });
+      }
+
+      // 4. Initialize Pinned ScrollTrigger for Why Partner with Solvempire (Mobile - Long Calibrated Scroll Track)
+      const mobilePartnerContainer = mobilePartnerContainerRef.current;
+      if (mobilePartnerContainer) {
+        ScrollTrigger.create({
+          trigger: mobilePartnerContainer,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const p = self.progress; // 0.0 to 1.0
+            const clampedIdx = Math.min(
+              partnerPillars.length - 1,
+              Math.floor(p * (partnerPillars.length - 0.001))
+            );
+            setOpenMobilePillar(clampedIdx);
           },
         });
       }
@@ -1455,23 +1457,6 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-
-                  {/* Contact CTA Button */}
-                  <Link
-                    href="#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-base px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-                  >
-                    <span>Contact Us Now</span>
-                    <svg
-                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2.2}
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </Link>
                 </div>
 
                 {/* Right Column: Isometric 3D Blueprint Visual Graphic (Desktop) */}
@@ -1493,168 +1478,143 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 3 (MOBILE): WHY PARTNER WITH SOLVEMPIRE (Scroll-Reactive Stream) */}
+      {/* SECTION 3 (MOBILE): WHY PARTNER WITH SOLVEMPIRE (Pinned Deliberate Scroll Track) */}
       {/* ========================================================================= */}
-      <section
+      <div
+        ref={mobilePartnerContainerRef}
         id="why-partner-mobile"
-        className="block lg:hidden py-16 px-4 sm:px-6 bg-[#f3f6fc] border-t border-slate-200/70 relative"
+        className="block lg:hidden relative h-[320vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
-        {/* Subtle Ambient Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
-        <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
+        {/* Sticky Mobile Viewport Stage */}
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 overflow-hidden relative">
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+          <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
 
-        <div className="max-w-xl mx-auto relative z-10">
-          {/* Section Heading */}
-          <div className="text-center mb-8">
-            <span className="inline-block text-blue-600 font-bold text-xs tracking-widest uppercase mb-2">
-              WHY CHOOSE US
-            </span>
-            <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
-              <span>WHY PARTNER WITH </span>
-              <span className="text-blue-600">SOLVEMPIRE?</span>
-            </h2>
-            <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
-              Explore our multidisciplinary engineering capabilities and tooling stack.
-            </p>
-          </div>
+          <div className="w-full max-w-lg relative z-10 flex flex-col items-center">
+            {/* Section Heading */}
+            <div className="text-center mb-4 shrink-0">
+              <span className="inline-block text-blue-600 font-bold text-[10px] sm:text-xs tracking-widest uppercase mb-1">
+                WHY CHOOSE US
+              </span>
+              <h2 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-2xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
+                <span>WHY PARTNER WITH </span>
+                <span className="text-blue-600">SOLVEMPIRE?</span>
+              </h2>
+            </div>
 
-          {/* Border-Divided Accordion Stream (Clean borders, No heavy drop shadows or box clutter) */}
-          <div className="flex flex-col divide-y divide-slate-200/80 border border-slate-200/90 bg-white/70 backdrop-blur-xs rounded-2xl overflow-hidden">
-            {partnerPillars.map((pillar, idx) => {
-              const isOpen = openMobilePillar === idx;
-              return (
-                <div
-                  key={`mob-acc-${pillar.id}`}
-                  ref={(el) => {
-                    mobilePillarRefs.current[idx] = el;
-                  }}
-                  className={`transition-colors duration-300 ${
-                    isOpen ? "bg-white" : "bg-transparent hover:bg-white/40"
-                  }`}
-                >
-                  {/* Header Bar / Trigger */}
-                  <button
-                    onClick={() => {
-                      isManualToggling.current = true;
-                      setOpenMobilePillar(isOpen ? null : idx);
-                      setTimeout(() => {
-                        isManualToggling.current = false;
-                      }, 800);
-                    }}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left focus:outline-none cursor-pointer gap-3"
-                    aria-expanded={isOpen}
-                  >
-                    <div className="flex items-center gap-3 min-w-0">
-                      {/* Number Badge */}
-                      <div
-                        className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors duration-200 ${
-                          isOpen
-                            ? "bg-blue-600 text-white"
-                            : "bg-slate-100 text-slate-600 border border-slate-200/80"
-                        }`}
-                      >
-                        <span>{pillar.id}</span>
-                      </div>
-
-                      {/* Title & Tag */}
-                      <div className="min-w-0">
-                        <span className="block text-[10px] font-bold text-blue-600 tracking-wider uppercase truncate">
-                          {pillar.tag}
-                        </span>
-                        <h3 className="font-[family-name:var(--font-bricolage)] text-sm sm:text-base font-bold text-slate-900 leading-snug">
-                          {pillar.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Plus / Minus (+) Icon Action */}
-                    <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        isOpen
-                          ? "bg-blue-600 text-white rotate-45"
-                          : "bg-slate-100 text-slate-500 border border-slate-200"
-                      }`}
-                    >
-                      <svg
-                        className="w-3.5 h-3.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                      </svg>
-                    </div>
-                  </button>
-
-                  {/* Accordion Expandable Body Content with Smooth CSS Grid Animation */}
+            {/* Border-Divided Accordion Stream (Clean borders, No heavy drop shadows or boxes) */}
+            <div className="w-full flex flex-col divide-y divide-slate-200/90 border border-slate-200/90 bg-white/80 backdrop-blur-xs rounded-2xl overflow-hidden shadow-none">
+              {partnerPillars.map((pillar, idx) => {
+                const isOpen = openMobilePillar === idx;
+                return (
                   <div
-                    className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                    key={`mob-acc-${pillar.id}`}
+                    className={`transition-colors duration-300 ${
+                      isOpen ? "bg-white" : "bg-transparent hover:bg-white/40"
                     }`}
                   >
-                    <div className="overflow-hidden">
-                      <div className="px-4 pb-5 sm:px-5 sm:pb-6 pt-1">
-                        {/* Visual Graphic Banner */}
-                        <div className="relative w-full h-40 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 my-2 overflow-hidden flex items-center justify-center border border-blue-500/30">
-                          <div
-                            className="absolute inset-0 opacity-15 pointer-events-none"
-                            style={{
-                              backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                              backgroundSize: "16px 16px",
-                            }}
-                          />
-                          {renderBlueprintGraphic(idx)}
-                        </div>
-
-                        {/* Description */}
-                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4 mt-2">
-                          {pillar.description}
-                        </p>
-
-                        {/* Tool Badges */}
-                        <div className="flex flex-wrap items-center gap-1.5 mb-4">
-                          {pillar.tools.map((tool) => (
-                            <div
-                              key={tool.name}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-                              <span className="font-semibold text-slate-800 text-[11px] whitespace-nowrap">
-                                {tool.name}
-                              </span>
-                              <span className="text-[10px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1.5">
-                                {tool.category}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* CTA Button */}
-                        <Link
-                          href="#contact"
-                          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs px-6 py-2.5 rounded-lg w-full transition-colors"
+                    {/* Header Bar / Trigger */}
+                    <button
+                      onClick={() => scrollToMobilePillar(idx)}
+                      className="w-full flex items-center justify-between py-2 px-3 sm:py-2.5 sm:px-4 text-left focus:outline-none cursor-pointer gap-2.5"
+                      aria-expanded={isOpen}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        {/* Number Badge */}
+                        <div
+                          className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center font-bold text-[11px] sm:text-xs shrink-0 transition-colors duration-200 ${
+                            isOpen
+                              ? "bg-blue-600 text-white"
+                              : "bg-slate-100 text-slate-600 border border-slate-200/80"
+                          }`}
                         >
-                          <span>Contact Us Now</span>
-                          <svg
-                            className="w-3.5 h-3.5"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2.2}
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
-                        </Link>
+                          <span>{pillar.id}</span>
+                        </div>
+
+                        {/* Title & Tag */}
+                        <div className="min-w-0">
+                          <span className="block text-[8.5px] sm:text-[9px] font-bold text-blue-600 tracking-wider uppercase truncate">
+                            {pillar.tag}
+                          </span>
+                          <h3 className="font-[family-name:var(--font-bricolage)] text-xs sm:text-sm font-bold text-slate-900 leading-tight truncate">
+                            {pillar.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      {/* Plus / Minus (+) Icon Action */}
+                      <div
+                        className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          isOpen
+                            ? "bg-blue-600 text-white rotate-45"
+                            : "bg-slate-100 text-slate-500 border border-slate-200"
+                        }`}
+                      >
+                        <svg
+                          className="w-3 h-3"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                        </svg>
+                      </div>
+                    </button>
+
+                    {/* Accordion Expandable Body Content with Smooth CSS Grid Animation */}
+                    <div
+                      className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${
+                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-3 pb-3 sm:px-4 sm:pb-3.5 pt-0.5">
+                          {/* Visual Graphic Banner */}
+                          <div className="relative w-full h-24 sm:h-28 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2 my-1 overflow-hidden flex items-center justify-center border border-blue-500/30">
+                            <div
+                              className="absolute inset-0 opacity-15 pointer-events-none"
+                              style={{
+                                backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+                                backgroundSize: "12px 12px",
+                              }}
+                            />
+                            {renderBlueprintGraphic(idx)}
+                          </div>
+
+                          {/* Description */}
+                          <p className="text-slate-600 text-[11px] sm:text-xs leading-snug mb-2 mt-1">
+                            {pillar.description}
+                          </p>
+
+                          {/* Tool Badges */}
+                          <div className="flex flex-wrap items-center gap-1">
+                            {pillar.tools.map((tool) => (
+                              <div
+                                key={tool.name}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/80"
+                              >
+                                <span className="w-1 h-1 rounded-full bg-blue-600 shrink-0" />
+                                <span className="font-semibold text-slate-800 text-[10px] whitespace-nowrap">
+                                  {tool.name}
+                                </span>
+                                <span className="text-[9px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1">
+                                  {tool.category}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
       {/* ========================================================================= */}
       {/* SECTION 4: OUR PROCESS (Cinematic 3D Folded Ribbon Pipeline) */}
       {/* ========================================================================= */}
