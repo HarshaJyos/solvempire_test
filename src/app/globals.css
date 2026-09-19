@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  font-family: 'Google Sans', var(--font-sans), sans-serif;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }

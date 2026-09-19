@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
+    <html lang="en" className="light" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -36,8 +36,8 @@ export default function RootLayout({
         />
       </head>
       <body
+        suppressHydrationWarning
         className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-white text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-700`}
-        style={{ fontFamily: "'Google Sans', var(--font-sans), sans-serif" }}
       >
         {children}
       </body>

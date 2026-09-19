@@ -1374,7 +1374,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p>&copy; {new Date().getFullYear()} Solvempire Inc. All rights reserved.</p>
+          <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Solvempire Inc. All rights reserved.</p>
           <p>Built with Next.js, Tailwind CSS &amp; GSAP.</p>
         </div>
       </footer>
