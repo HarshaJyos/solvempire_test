@@ -57,7 +57,11 @@ export default function Home() {
   const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
   const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
   const [heroOpacity, setHeroOpacity] = useState<number>(1);
+  const [heroY, setHeroY] = useState<number>(0);
+  const [arcShift, setArcShift] = useState<number>(1); // 1 = at bottom of hero, 0 = at showcase position
   const [cardOpacity, setCardOpacity] = useState<number>(0);
+  const [cardY, setCardY] = useState<number>(40);
+  const [cardScale, setCardScale] = useState<number>(0.96);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
@@ -90,36 +94,76 @@ export default function Home() {
         trigger: container,
         start: "top top",
         end: "bottom bottom",
-        scrub: 0.8,
+        scrub: 0.7,
         onUpdate: (self) => {
           const p = self.progress;
 
-          // Phase A: Hero fade out (p: 0 -> 0.18)
-          const hOp = Math.max(0, 1 - p / 0.16);
-          setHeroOpacity(hOp);
-
-          // Phase B: Card fade in (p: 0.08 -> 0.22)
-          const cOp = Math.min(1, Math.max(0, (p - 0.06) / 0.14));
-          setCardOpacity(cOp);
-
-          // Phase C: Continuous Dial Rotation along Arc
-          // At p = 0: u = -0.6 (clean arc, no numbers)
-          // At p = 0.20: u = 0.0 (project 01 at apex)
-          // At p = 0.45: u = 1.0 (project 02 at apex)
-          // At p = 0.70: u = 2.0 (project 03 at apex)
-          // At p = 0.95 -> 1.0: u = 3.0 (project 04 at apex)
-          let u = -0.6;
-          if (p <= 0.2) {
-            u = -0.6 + (p / 0.2) * 0.6; // -0.6 to 0.0
-          } else {
-            const normalizedP = (p - 0.2) / 0.8; // 0 to 1
-            u = Math.min(3.0, normalizedP * 3.0); // 0.0 to 3.0
+          // =========================================================================
+          // PHASE 1: HERO READING BUFFER (p: 0.0 -> 0.12)
+          // Hero remains 100% visible and readable for initial scroll duration
+          // =========================================================================
+          if (p <= 0.12) {
+            setHeroOpacity(1);
+            setHeroY(0);
+            setArcShift(1);
+            setCardOpacity(0);
+            setCardY(40);
+            setCardScale(0.96);
+            setRotationProgress(-0.6); // No numbers on arc
+            setActiveProjectIndex(0);
+            return;
           }
 
+          // =========================================================================
+          // PHASE 2: CINEMATIC HERO EXIT & ARC ELEVATION (p: 0.12 -> 0.26)
+          // Hero lifts smoothly upward like a video camera pan; Arc elevates to showcase position; stage below is clean
+          // =========================================================================
+          if (p > 0.12 && p <= 0.26) {
+            const transP = (p - 0.12) / 0.14; // 0 to 1
+            setHeroOpacity(Math.max(0, 1 - transP));
+            setHeroY(-transP * 90);
+            setArcShift(Math.max(0, 1 - transP));
+            setCardOpacity(0);
+            setCardY(40);
+            setCardScale(0.96);
+            setRotationProgress(-0.6); // Empty stage until number arrives
+            setActiveProjectIndex(0);
+            return;
+          }
+
+          // =========================================================================
+          // PHASE 3: NUMBER 01 GLIDES IN & PROJECT 01 CARD UNMASKS (p: 0.26 -> 0.40)
+          // =========================================================================
+          setHeroOpacity(0);
+          setHeroY(-100);
+          setArcShift(0);
+
+          if (p > 0.26 && p <= 0.40) {
+            const entryP = (p - 0.26) / 0.14; // 0 to 1
+            const u = -0.6 + entryP * 0.6; // -0.6 -> 0.0 (Project 01 arrives at apex)
+            setRotationProgress(u);
+
+            // Card cinematic entrance as number 01 hits apex
+            const cP = Math.max(0, (entryP - 0.2) / 0.8);
+            setCardOpacity(cP);
+            setCardY((1 - cP) * 35);
+            setCardScale(0.96 + 0.04 * cP);
+            setActiveProjectIndex(0);
+            return;
+          }
+
+          // =========================================================================
+          // PHASE 4: KINETIC NUMBER ROTATION ACROSS 01 -> 02 -> 03 -> 04 (p: 0.40 -> 1.0)
+          // =========================================================================
+          setCardOpacity(1);
+          setCardY(0);
+          setCardScale(1);
+
+          const rotP = (p - 0.40) / 0.58; // 0 to 1
+          const u = Math.min(3.0, Math.max(0.0, rotP * 3.0)); // 0.0 to 3.0
           setRotationProgress(u);
 
-          // Determine active project index
-          const activeIdx = Math.max(0, Math.min(projects.length - 1, Math.round(Math.max(0, u))));
+          const activeIdx = Math.max(0, Math.min(projects.length - 1, Math.round(u)));
           setActiveProjectIndex(activeIdx);
         },
       });
@@ -249,11 +293,12 @@ export default function Home() {
           {/* HERO CONTENT OVERLAY (Fades smoothly as scroll begins) */}
           {/* ========================================================================= */}
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none transition-opacity duration-300 z-30"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-30"
             style={{
               opacity: heroOpacity,
-              transform: `translateY(${(1 - heroOpacity) * -50}px)`,
+              transform: `translateY(${heroY}px)`,
               pointerEvents: heroOpacity > 0.4 ? "auto" : "none",
+              transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
             <div className="max-w-5xl mx-auto flex flex-col items-center pt-2">
@@ -274,7 +319,7 @@ export default function Home() {
                   onClick={() => {
                     const el = containerRef.current;
                     if (el) {
-                      const targetY = el.offsetTop + el.offsetHeight * 0.25;
+                      const targetY = el.offsetTop + el.offsetHeight * 0.35;
                       window.scrollTo({ top: targetY, behavior: "smooth" });
                     }
                   }}
@@ -299,11 +344,12 @@ export default function Home() {
           {/* THE GRAND ARC DIAL (Positioned at bottom of Hero, elevates smoothly on scroll) */}
           {/* ========================================================================= */}
           <div
-            className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none transition-transform duration-300 ease-out"
+            className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none"
             style={{
-              transform: `translateY(${heroOpacity * 54}vh)`,
+              transform: `translateY(${arcShift * 52}vh)`,
               marginTop: "1rem",
               marginBottom: "0.5rem",
+              transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
             <div className="relative w-full h-24 sm:h-28 md:h-32">
@@ -406,11 +452,12 @@ export default function Home() {
           {/* FEATURED SHOWCASE CARD (Reveals & morphs smoothly in sync with scroll) */}
           {/* ========================================================================= */}
           <div
-            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center pb-8 sm:pb-12 transition-all duration-500 z-20"
+            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center pb-8 sm:pb-12 z-20"
             style={{
               opacity: cardOpacity,
-              transform: `translateY(${(1 - cardOpacity) * 40}px)`,
+              transform: `translateY(${cardY}px) scale(${cardScale})`,
               pointerEvents: cardOpacity > 0.4 ? "auto" : "none",
+              transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
             <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
