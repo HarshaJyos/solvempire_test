@@ -186,17 +186,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Bottom Anchor Indicator */}
-        <div className="w-full pb-8 flex flex-col items-center select-none">
+        {/* Hero Bottom Anchor Indicator & Seamless Lead Line */}
+        <div className="w-full pb-0 flex flex-col items-center select-none relative z-20">
           <Link
             href="#showcase"
             aria-label="Scroll down to featured showcase"
-            className="w-9 h-9 rounded-full bg-blue-50 border border-blue-200 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center shadow-sm transition-all duration-300 hover:scale-110 active:scale-95"
+            className="w-10 h-10 rounded-full bg-blue-50 border border-blue-200 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 active:scale-95 mb-2"
           >
             <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </Link>
+          {/* Vertical line passing from Hero into Showcase */}
+          <div className="w-[1.5px] h-8 bg-gradient-to-b from-blue-300 to-blue-200" />
         </div>
       </section>
 
@@ -205,40 +207,44 @@ export default function Home() {
       {/* ========================================================================= */}
       <section
         id="showcase"
-        className="min-h-screen flex flex-col justify-between items-center relative px-4 sm:px-8 lg:px-12 pt-6 pb-12 sm:pb-16 overflow-hidden scroll-mt-0"
+        className="min-h-screen flex flex-col justify-between items-center relative px-4 sm:px-8 lg:px-12 pt-4 pb-10 sm:pb-14 overflow-hidden scroll-mt-0"
       >
+        {/* Continuous Lead Line entering at the top from Hero */}
+        <div className="w-[1.5px] h-6 bg-gradient-to-b from-blue-200 to-blue-300 pointer-events-none mb-1" />
+
         {/* Ambient Glow Background */}
         <div
           className="absolute left-1/2 -translate-x-1/2 top-1/4 -translate-y-1/2 w-[95vw] max-w-6xl h-72 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
-        {/* Top: Grand Edge-to-Edge Arc Dial */}
-        <div className="w-full relative select-none">
+        {/* Top: Grand Edge-to-Edge Arc Dial (Brought down with comfortable top margin) */}
+        <div className="w-full relative select-none pt-2 sm:pt-4">
           <div className="relative w-full max-w-6xl mx-auto h-24 sm:h-28">
             {/* SVG Arc Curve */}
             <svg
-              viewBox="0 0 1440 100"
+              viewBox="0 0 1440 120"
               preserveAspectRatio="none"
               className="w-full h-full stroke-blue-200 fill-none overflow-visible"
               style={{ strokeWidth: "2" }}
             >
-              <path d="M 0 95 Q 720 -30 1440 95" />
+              <path d="M 0 110 Q 720 -30 1440 110" />
             </svg>
 
-            {/* Dial Nodes along the Arc (Clock-style rotation) */}
+            {/* Dial Nodes along the Arc - Mathematically aligned 100% on the curve */}
             {projects.map((project, index) => {
               let diff = index - activeProjectIndex;
               if (diff > projects.length / 2) diff -= projects.length;
               if (diff < -projects.length / 2) diff += projects.length;
 
-              // Center is at t=0.5
+              // Map diff to parameter t on curve: t=0.5 is center apex
               let t = 0.5 + diff * 0.2;
               t = Math.max(0.08, Math.min(0.92, t));
 
+              // Exact X & Y coordinate percentage matching SVG path y(t) = 110 - 280*t*(1-t) in height 120
               const leftPercent = t * 100;
-              // Parabolic curve formula: y(t) = 95 - 380*t*(1-t)
-              const topPercent = ((95 - 380 * t * (1 - t)) / 100) * 100;
+              const yVal = 110 - 280 * t * (1 - t);
+              const topPercent = (yVal / 120) * 100;
 
               const isActive = activeProjectIndex === index;
 
@@ -268,8 +274,8 @@ export default function Home() {
               );
             })}
 
-            {/* Vertical Connector Line from Center Apex into Showcase Card */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[10%] bottom-0 w-[1.5px] bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200 pointer-events-none" />
+            {/* Vertical Connector Line from Center Apex into Showcase Card below */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-[33.3%] bottom-0 w-[1.5px] bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200 pointer-events-none" />
 
             {/* Left / Right Quick Prev / Next Controls */}
             <button
@@ -277,7 +283,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
               }
               aria-label="Previous Project"
-              className="absolute left-2 sm:left-6 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute left-2 sm:left-6 top-[65%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -288,7 +294,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
               }
               aria-label="Next Project"
-              className="absolute right-2 sm:right-6 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute right-2 sm:right-6 top-[65%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -298,7 +304,7 @@ export default function Home() {
         </div>
 
         {/* Middle / Bottom: The Featured Showcase Card (fits comfortably in this 100vh) */}
-        <div className="w-full max-w-6xl mx-auto flex flex-col items-center my-auto pt-2">
+        <div className="w-full max-w-6xl mx-auto flex flex-col items-center my-auto pt-4 pb-2">
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Layered Showcase Visual */}
             <div className="lg:col-span-7 relative w-full">
