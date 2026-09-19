@@ -203,7 +203,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                   <span>Document Outline</span>
                 </div>
                 <nav>
-                  <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-200px)] overflow-y-auto pr-1 scrollbar-thin">
+                  <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-200px)] overflow-y-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                     {tableOfContents.map((item, idx) => {
                       const isActive = activeSectionId === item.id;
                       return (
