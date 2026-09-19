@@ -133,6 +133,75 @@ const partnerPillars = [
   },
 ];
 
+const processSteps = [
+  {
+    step: "01",
+    name: "Discover",
+    description: "Understand goals, requirements & user needs",
+    isHigh: true,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    ),
+  },
+  {
+    step: "02",
+    name: "Design",
+    description: "Conceptualize, engineer & validate the solution",
+    isHigh: false,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+      </svg>
+    ),
+  },
+  {
+    step: "03",
+    name: "Develop",
+    description: "Build mechanical, electronic, software & integrations",
+    isHigh: true,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
+  {
+    step: "04",
+    name: "Prototype",
+    description: "Prototype, test & iterate for performance and reliability",
+    isHigh: false,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
+  },
+  {
+    step: "05",
+    name: "Manufacture",
+    description: "Support production, quality & supply chain",
+    isHigh: true,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    ),
+  },
+  {
+    step: "06",
+    name: "Deploy & Support",
+    description: "Deploy in the field and support for long-term success",
+    isHigh: false,
+    icon: (
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+  },
+];
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
@@ -1083,37 +1152,186 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: PROCESS */}
+      {/* SECTION 4: OUR PROCESS (6-Stage Chevron Ribbon Flow) */}
       {/* ========================================================================= */}
-      <section id="process" className="py-24 sm:py-32 bg-white">
+      <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="max-w-3xl mb-16">
-            <span className="text-blue-600 font-semibold tracking-wider text-xs sm:text-sm uppercase">
-              How We Work
-            </span>
-            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-5xl font-bold text-slate-950 mt-2 mb-4 tracking-tight">
-              Predictable Velocity. Rigorous Craft.
+          {/* Section Heading */}
+          <div className="w-full text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
+              <span>OUR </span>
+              <span className="text-blue-600">PROCESS</span>
             </h2>
-            <p className="text-slate-600 text-base sm:text-lg">
-              A disciplined, transparent delivery framework honed across dozens of successful product launches.
+            <p className="mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+              A structured, end-to-end engineering lifecycle from initial discovery to real-world deployment and long-term lifecycle support.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { num: "01", name: "Discover & Scope", text: "Deep technical audit, architecture roadmapping, and requirement validation." },
-              { num: "02", name: "System Design", text: "Component blueprints, data modeling, API contracts, and UX prototypes." },
-              { num: "03", name: "Rapid Build", text: "Iterative milestone-driven sprints with automated CI/CD and automated test suites." },
-              { num: "04", name: "Deploy & Scale", text: "Zero-downtime rollouts, telemetry dashboards, and 24/7 SLA infrastructure support." },
-            ].map((step) => (
-              <div key={step.num} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col">
-                <span className="font-[family-name:var(--font-bricolage)] text-3xl font-bold text-blue-600 mb-3">
-                  {step.num}
-                </span>
-                <h4 className="font-bold text-slate-950 text-base mb-2">{step.name}</h4>
-                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{step.text}</p>
-              </div>
-            ))}
+          {/* Main Process Flow Showcase Enclosure */}
+          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 xl:p-14 relative">
+            {/* Ambient Background Grid Detail */}
+            <div
+              className="absolute inset-0 opacity-10 pointer-events-none rounded-3xl sm:rounded-[2.5rem]"
+              style={{
+                backgroundImage: "radial-gradient(#2563eb 1px, transparent 1px)",
+                backgroundSize: "24px 24px",
+              }}
+            />
+
+            {/* Desktop / Widescreen: 6-Stage Interlocking Chevron Ribbon Flow (xl+) */}
+            <div className="hidden xl:flex items-center justify-between gap-3 py-10 relative z-10">
+              {processSteps.map((step, idx) => {
+                const isHigh = step.isHigh;
+                const isLast = idx === processSteps.length - 1;
+
+                return (
+                  <div
+                    key={step.step}
+                    className={`relative group flex-1 flex flex-col ${
+                      isHigh ? "justify-start" : "justify-end"
+                    }`}
+                  >
+                    {/* The Chevron Card */}
+                    <div
+                      className={`relative z-10 rounded-2xl p-6 flex flex-col justify-between h-[245px] text-white shadow-xl transition-all duration-300 group-hover:scale-[1.02] ${
+                        isHigh
+                          ? "bg-blue-600 shadow-blue-600/25 -translate-y-5 group-hover:-translate-y-6"
+                          : "bg-[#183980] shadow-blue-950/30 translate-y-5 group-hover:translate-y-6"
+                      }`}
+                    >
+                      {/* Top Row: Number & Outline Icon */}
+                      <div className="flex items-center justify-between w-full">
+                        <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                          {step.step}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white shadow-xs group-hover:rotate-6 group-hover:scale-110 transition-transform duration-300">
+                          {step.icon}
+                        </div>
+                      </div>
+
+                      {/* Content: Title & 2-Line Description */}
+                      <div className="pr-2">
+                        <h3 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-xl font-bold leading-tight mb-2 text-white">
+                          {step.name}
+                        </h3>
+                        <p className="text-white/85 text-xs sm:text-[13px] leading-relaxed font-normal">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      {/* Right Chevron Arrow Cap (Points into next card) */}
+                      {!isLast && (
+                        <div
+                          className="absolute -right-[15px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-[22px] border-y-transparent border-l-[16px] z-20 transition-transform group-hover:translate-x-0.5"
+                          style={{
+                            borderLeftColor: isHigh ? "#2563eb" : "#183980",
+                          }}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </div>
+
+                    {/* 3D Folded Ribbon Drop Shadow Connector */}
+                    {!isLast && (
+                      <div
+                        className={`absolute z-0 pointer-events-none ${
+                          isHigh
+                            ? "right-[-12px] top-[48%] w-5 h-20 bg-[#0d1f44] opacity-90 rounded-xs"
+                            : "right-[-12px] bottom-[48%] w-5 h-20 bg-[#0d1f44] opacity-90 rounded-xs"
+                        }`}
+                        style={{
+                          transform: isHigh ? "skewY(38deg)" : "skewY(-38deg)",
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Tablet / Medium Screens: 2-Row x 3-Column Stepped Chevron Grid (md to lg) */}
+            <div className="hidden md:grid xl:hidden grid-cols-3 gap-6 relative z-10 py-6">
+              {processSteps.map((step, idx) => {
+                const isHigh = step.isHigh;
+                return (
+                  <div
+                    key={`tab-${step.step}`}
+                    className={`relative rounded-2xl p-6 flex flex-col justify-between h-[230px] text-white shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+                      isHigh
+                        ? "bg-blue-600 shadow-blue-600/20"
+                        : "bg-[#183980] shadow-blue-950/25"
+                    }`}
+                  >
+                    {/* Top Row: Number & Icon */}
+                    <div className="flex items-center justify-between w-full">
+                      <span className="font-[family-name:var(--font-bricolage)] text-2xl font-bold tracking-tight text-white">
+                        {step.step}
+                      </span>
+                      <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white">
+                        {step.icon}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg font-bold leading-tight mb-2 text-white">
+                        {step.name}
+                      </h3>
+                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    {/* Step Connector Arrow for Grid Flow */}
+                    {idx < processSteps.length - 1 && (
+                      <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white text-blue-600 flex items-center justify-center text-xs font-bold shadow-md z-20">
+                        →
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Mobile Screens: Vertical Connected Flow Chain (< md) */}
+            <div className="flex md:hidden flex-col gap-4 relative z-10">
+              {processSteps.map((step, idx) => {
+                const isHigh = step.isHigh;
+                return (
+                  <div key={`mob-proc-${step.step}`} className="relative flex flex-col items-center">
+                    <div
+                      className={`w-full rounded-2xl p-5 flex flex-col justify-between text-white shadow-lg ${
+                        isHigh ? "bg-blue-600" : "bg-[#183980]"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between w-full mb-3">
+                        <span className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-white">
+                          {step.step}
+                        </span>
+                        <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white">
+                          {step.icon}
+                        </div>
+                      </div>
+
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-base font-bold mb-1.5 text-white">
+                        {step.name}
+                      </h3>
+                      <p className="text-white/85 text-xs leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    {/* Vertical Connecting Chevron Arrow */}
+                    {idx < processSteps.length - 1 && (
+                      <div className="my-1.5 w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shadow-xs">
+                        ↓
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
