@@ -1160,9 +1160,9 @@ export default function Home() {
             </div>
 
             {/* Main Interactive Partner Showcase Card */}
-            <div className="bg-white rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-3.5 sm:p-7 lg:p-10 relative w-full">
+            <div className="bg-white rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-5 sm:p-7 lg:p-10 relative w-full max-w-xl lg:max-w-none">
               {/* Mobile/Tablet Horizontal Stepper Row */}
-              <div className="flex lg:hidden items-center justify-between w-full mb-2.5 pb-2 border-b border-slate-100 gap-1.5 overflow-x-auto shrink-0 no-scrollbar [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex lg:hidden items-center justify-between w-full mb-3.5 pb-2.5 border-b border-slate-100 gap-1.5 overflow-x-auto shrink-0 no-scrollbar [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {partnerPillars.map((pillar, idx) => {
                   const isActive = activePillarIndex === idx;
                   return (
@@ -1226,54 +1226,50 @@ export default function Home() {
                 {/* Middle Column: Pillar Content, Tools Badges & CTA */}
                 <div className="col-span-1 lg:col-span-6 flex flex-col items-start justify-center text-left w-full">
                   {/* Tag Pill with GSAP minimal animation */}
-                  <div className="overflow-hidden mb-1 sm:mb-3">
+                  <div className="overflow-hidden mb-1.5 sm:mb-3">
                     <span
                       key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-[11px] sm:text-sm tracking-[0.14em] uppercase"
+                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-[0.14em] uppercase"
                     >
                       {partnerPillars[activePillarIndex].tag}
                     </span>
                   </div>
 
                   {/* Title with GSAP minimal kinetic typography */}
-                  <div className="overflow-hidden w-full mb-1.5 sm:mb-4">
+                  <div className="overflow-hidden w-full mb-2 sm:mb-4">
                     <h3
                       key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-base sm:text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-tight sm:leading-[1.16] tracking-tight line-clamp-2 sm:line-clamp-none"
+                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-lg sm:text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-snug sm:leading-[1.16] tracking-tight"
                     >
                       {partnerPillars[activePillarIndex].title}
                     </h3>
                   </div>
 
                   {/* Description with GSAP subtle staggered fade & slide */}
-                  <div className="overflow-hidden w-full mb-2.5 sm:mb-7">
+                  <div className="overflow-hidden w-full mb-3.5 sm:mb-7">
                     <p
                       key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-desc text-slate-600 text-xs sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg line-clamp-3 sm:line-clamp-none"
+                      className="gsap-pillar-desc text-slate-600 text-xs sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg"
                     >
                       {partnerPillars[activePillarIndex].description}
                     </p>
                   </div>
 
-                  {/* Tool Badges / Logos with GSAP stagger */}
+                  {/* Tool Badges / Chips with flex-wrap and clean styling */}
                   <div
                     key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
-                    className="grid grid-cols-3 gap-2 mb-3.5 sm:mb-8 w-full max-w-lg"
+                    className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-4 sm:mb-8 w-full"
                   >
                     {partnerPillars[activePillarIndex].tools.map((tool) => (
                       <div
                         key={tool.name}
-                        className="gsap-pillar-tool p-2 sm:p-3 rounded-lg sm:rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col items-center sm:items-start text-center sm:text-left gap-0.5 sm:gap-1 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
+                        className="gsap-pillar-tool inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200 group"
                       >
-                        <div className="flex items-center gap-1 sm:gap-2 text-blue-600 mb-0.5">
-                          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                          </svg>
-                          <span className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-blue-600 transition-colors truncate">
-                            {tool.name}
-                          </span>
-                        </div>
-                        <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium truncate hidden sm:block">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0 group-hover:scale-125 transition-transform" />
+                        <span className="font-semibold text-slate-800 text-xs sm:text-sm group-hover:text-blue-600 transition-colors whitespace-nowrap">
+                          {tool.name}
+                        </span>
+                        <span className="text-[10px] sm:text-xs text-slate-400 font-normal hidden sm:inline whitespace-nowrap border-l border-slate-200 pl-2">
                           {tool.category}
                         </span>
                       </div>
@@ -1283,7 +1279,7 @@ export default function Home() {
                   {/* Contact CTA Button */}
                   <Link
                     href="#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-xs sm:text-base px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full shadow-md sm:shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-base px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full shadow-md sm:shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 w-full sm:w-auto"
                   >
                     <span>Contact Us Now</span>
                     <svg
