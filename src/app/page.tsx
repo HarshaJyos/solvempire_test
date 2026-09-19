@@ -214,47 +214,53 @@ export default function Home() {
   // GSAP Driven Process Section Cinematic Video-Grade Animation
   useEffect(() => {
     if (!processSectionRef.current) return;
+
+    // Small timeout to guarantee DOM metrics & Lenis are calibrated
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
     const ctx = gsap.context(() => {
       // 1. Cinematic Heading Reveal with Rack Focus
       gsap.fromTo(
         ".gsap-process-heading",
-        { y: 35, opacity: 0, filter: "blur(10px)", rotateX: 10 },
+        { y: 40, opacity: 0, filter: "blur(12px)", rotateX: 12 },
         {
           y: 0,
           opacity: 1,
           filter: "blur(0px)",
           rotateX: 0,
-          duration: 0.85,
+          duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".gsap-process-heading",
-            start: "top 85%",
-            toggleActions: "play none none none",
+            start: "top 88%",
+            toggleActions: "play reverse play reverse",
           },
         }
       );
 
       gsap.fromTo(
         ".gsap-process-subheading",
-        { y: 20, opacity: 0, filter: "blur(5px)" },
+        { y: 22, opacity: 0, filter: "blur(6px)" },
         {
           y: 0,
           opacity: 1,
           filter: "blur(0px)",
-          duration: 0.7,
-          delay: 0.1,
+          duration: 0.75,
+          delay: 0.08,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ".gsap-process-subheading",
-            start: "top 88%",
-            toggleActions: "play none none none",
+            start: "top 90%",
+            toggleActions: "play reverse play reverse",
           },
         }
       );
 
-      // 2. Cascading 3D Origami Ribbon Unfold per Row
+      // 2. Cascading 3D Origami Ribbon Unfold per Row (Reactive On Scroll)
       const rows = gsap.utils.toArray<HTMLElement>(".gsap-process-row");
-      rows.forEach((row, i) => {
+      rows.forEach((row) => {
         const leftCard = row.querySelector(".gsap-process-left");
         const foldConnector = row.querySelector(".gsap-process-fold");
         const rightCard = row.querySelector(".gsap-process-right");
@@ -265,8 +271,9 @@ export default function Home() {
         const rowTL = gsap.timeline({
           scrollTrigger: {
             trigger: row,
-            start: "top 85%",
-            toggleActions: "play none none none",
+            start: "top 86%",
+            end: "bottom 14%",
+            toggleActions: "play reverse play reverse",
           },
         });
 
@@ -274,48 +281,51 @@ export default function Home() {
           // Left Card 3D Glide In
           .fromTo(
             leftCard,
-            { x: -50, opacity: 0, filter: "blur(6px)", scale: 0.95 },
-            { x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.75, ease: "power3.out" }
+            { x: -55, opacity: 0, filter: "blur(8px)", scale: 0.94 },
+            { x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.8, ease: "power3.out" }
           )
           // 3D Fold Ribbon Bevel Snaps into Place
           .fromTo(
             foldConnector,
             { scaleY: 0, opacity: 0, transformOrigin: "top center" },
-            { scaleY: 1, opacity: 1, duration: 0.6, ease: "back.out(1.5)" },
-            "-=0.55"
+            { scaleY: 1, opacity: 1, duration: 0.65, ease: "back.out(1.4)" },
+            "-=0.6"
           )
           // Right Card 3D Glide In
           .fromTo(
             rightCard,
-            { x: 50, opacity: 0, filter: "blur(6px)", scale: 0.95 },
-            { x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.75, ease: "power3.out" },
-            "-=0.6"
+            { x: 55, opacity: 0, filter: "blur(8px)", scale: 0.94 },
+            { x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.8, ease: "power3.out" },
+            "-=0.65"
           )
           // Number Kinetic Pop & Scale
           .fromTo(
             numberBadges,
-            { scale: 0.7, opacity: 0, y: 10 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.8)", stagger: 0.12 },
-            "-=0.45"
+            { scale: 0.6, opacity: 0, y: 12 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.8)", stagger: 0.12 },
+            "-=0.5"
           )
           // Text Titles & Descriptions Reveal
           .fromTo(
             textBlocks,
-            { y: 12, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.45, ease: "power2.out", stagger: 0.1 },
-            "-=0.4"
+            { y: 14, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.1 },
+            "-=0.45"
           )
           // Photo Cinematic Pull-Focus Zoom-Out
           .fromTo(
             photos,
-            { scale: 1.15, filter: "blur(4px)" },
-            { scale: 1.0, filter: "blur(0px)", duration: 0.95, ease: "power2.out" },
-            "-=0.65"
+            { scale: 1.16, filter: "blur(5px)" },
+            { scale: 1.0, filter: "blur(0px)", duration: 1.0, ease: "power2.out" },
+            "-=0.7"
           );
       });
     }, processSectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
   }, []);
 
   // GSAP Driven Minimal Transition Animation for Why Partner Elements
