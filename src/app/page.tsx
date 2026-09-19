@@ -1259,7 +1259,7 @@ export default function Home() {
           </div>
 
           {/* 3D Folded Ribbon Rows with 5px Gap Rhythm & Video Animator Cascade */}
-          <div className="max-w-[880px] mx-auto flex flex-col gap-[5px] relative">
+          <div className="max-w-5xl mx-auto flex flex-col gap-[5px] relative">
             {[
               {
                 left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
@@ -1298,20 +1298,20 @@ export default function Home() {
             ].map((row, rIdx) => (
               <div
                 key={`process-row-${rIdx}`}
-                className="gsap-process-row relative filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)] group transition-transform duration-300 hover:-translate-y-1"
+                className="gsap-process-row relative filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.06)] group transition-transform duration-300 hover:-translate-y-1"
               >
                 {/* Desktop / Tablet View: Continuous 3D Isometric Folded Row Pair */}
                 <div className="hidden md:flex relative w-full items-start">
                   {/* Left Step Card */}
                   <div
-                    className={`gsap-process-left w-[calc(50%-22px)] h-[190px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 transition-colors duration-200 ${
+                    className={`gsap-process-left w-[calc(50%-24px)] h-[225px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 transition-colors duration-200 ${
                       row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
                     {/* Text Panel */}
-                    <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
+                    <div className="w-[45%] p-6 lg:p-7 flex flex-col justify-between shrink-0">
                       <span
-                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${
+                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
                           row.left.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1319,14 +1319,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
                             row.left.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-[11px] lg:text-[12px] leading-snug ${
+                          className={`text-xs lg:text-[13px] leading-relaxed ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1341,15 +1341,15 @@ export default function Home() {
                         alt={row.left.name}
                         fill
                         unoptimized
-                        sizes="250px"
+                        sizes="320px"
                         className="gsap-process-photo object-cover transition-transform duration-700 group-hover:scale-108"
                       />
                     </div>
                   </div>
 
                   {/* Central 3D Isometric Fold Connector */}
-                  <div className="gsap-process-fold w-[44px] h-[216px] relative shrink-0 z-0 overflow-visible">
-                    <svg viewBox="0 0 44 216" className="w-full h-full block" preserveAspectRatio="none">
+                  <div className="gsap-process-fold w-[48px] h-[255px] relative shrink-0 z-0 overflow-visible">
+                    <svg viewBox="0 0 48 255" className="w-full h-full block" preserveAspectRatio="none">
                       <defs>
                         <linearGradient id={row.gradId} x1="0%" y1="0%" x2="100%" y2="100%">
                           {row.stops.map((stop, sIdx) => (
@@ -1359,17 +1359,17 @@ export default function Home() {
                       </defs>
 
                       {/* 3D Fold Surface */}
-                      <polygon points="0,0 44,26 44,216 0,190" fill={`url(#${row.gradId})`} />
+                      <polygon points="0,0 48,30 48,255 0,225" fill={`url(#${row.gradId})`} />
 
                       {/* Crease Highlights */}
-                      <line x1="0" y1="0" x2="44" y2="26" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
-                      <line x1="0" y1="190" x2="44" y2="216" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+                      <line x1="0" y1="0" x2="48" y2="30" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+                      <line x1="0" y1="225" x2="48" y2="255" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
                     </svg>
                   </div>
 
-                  {/* Right Step Card - Shifted down by 26px */}
+                  {/* Right Step Card - Shifted down by 30px */}
                   <div
-                    className={`gsap-process-right w-[calc(50%-22px)] h-[190px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[26px] transition-colors duration-200 ${
+                    className={`gsap-process-right w-[calc(50%-24px)] h-[225px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[30px] transition-colors duration-200 ${
                       row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
@@ -1380,14 +1380,14 @@ export default function Home() {
                         alt={row.right.name}
                         fill
                         unoptimized
-                        sizes="250px"
+                        sizes="320px"
                         className="gsap-process-photo object-cover transition-transform duration-700 group-hover:scale-108"
                       />
                     </div>
                     {/* Text Panel */}
-                    <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
+                    <div className="w-[45%] p-6 lg:p-7 flex flex-col justify-between items-end text-right shrink-0">
                       <span
-                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${
+                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
                           row.right.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1395,14 +1395,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
                             row.right.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-[11px] lg:text-[12px] leading-snug ${
+                          className={`text-xs lg:text-[13px] leading-relaxed ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1413,17 +1413,17 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Mobile View (< md): Clean stacked paired cards */}
-                <div className="flex md:hidden flex-col gap-3 rounded-2xl overflow-hidden shadow-lg">
+                {/* Mobile View (< md): Clean scaled paired cards */}
+                <div className="flex md:hidden flex-col gap-3.5 rounded-2xl overflow-hidden shadow-lg">
                   {/* Left Step */}
                   <div
-                    className={`flex h-40 overflow-hidden ${
+                    className={`flex h-48 sm:h-52 overflow-hidden ${
                       row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
-                    <div className="w-1/2 p-4 flex flex-col justify-between">
+                    <div className="w-1/2 p-5 sm:p-6 flex flex-col justify-between">
                       <span
-                        className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${
+                        className={`font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold ${
                           row.left.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1431,14 +1431,14 @@ export default function Home() {
                       </span>
                       <div>
                         <h3
-                          className={`font-bold text-base leading-tight ${
+                          className={`font-bold text-base sm:text-lg leading-tight ${
                             row.left.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-[11px] leading-tight mt-0.5 ${
+                          className={`text-xs sm:text-[13px] leading-snug mt-1 ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1447,22 +1447,22 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="w-1/2 relative bg-slate-900">
-                      <Image src={row.left.img} alt={row.left.name} fill unoptimized sizes="200px" className="object-cover" />
+                      <Image src={row.left.img} alt={row.left.name} fill unoptimized sizes="240px" className="object-cover" />
                     </div>
                   </div>
 
                   {/* Right Step */}
                   <div
-                    className={`flex h-40 overflow-hidden ${
+                    className={`flex h-48 sm:h-52 overflow-hidden ${
                       row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
                     <div className="w-1/2 relative bg-slate-900">
-                      <Image src={row.right.img} alt={row.right.name} fill unoptimized sizes="200px" className="object-cover" />
+                      <Image src={row.right.img} alt={row.right.name} fill unoptimized sizes="240px" className="object-cover" />
                     </div>
-                    <div className="w-1/2 p-4 flex flex-col justify-between items-end text-right">
+                    <div className="w-1/2 p-5 sm:p-6 flex flex-col justify-between items-end text-right">
                       <span
-                        className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${
+                        className={`font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold ${
                           row.right.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1470,14 +1470,14 @@ export default function Home() {
                       </span>
                       <div>
                         <h3
-                          className={`font-bold text-base leading-tight ${
+                          className={`font-bold text-base sm:text-lg leading-tight ${
                             row.right.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-[11px] leading-tight mt-0.5 ${
+                          className={`text-xs sm:text-[13px] leading-snug mt-1 ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
