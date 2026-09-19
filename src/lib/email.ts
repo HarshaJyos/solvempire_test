@@ -22,14 +22,24 @@ export interface EmailDispatchResult {
  * Creates and caches the Nodemailer transporter based on SMTP environment variables.
  */
 function getTransporter() {
-  const host = process.env.SMTP_HOST;
+  const host = process.env.SMTP_HOST || "smtp.gmail.com";
   const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const pass = process.env.SMTP_PASS?.replace(/\s+/g, ""); // sanitize Gmail app passwords with spaces
+  const port = parseInt(process.env.SMTP_PORT || "465", 10);
   const secure = process.env.SMTP_SECURE === "true" || port === 465;
 
-  if (!host || !user || !pass) {
+  if (!user || !pass) {
     return null;
+  }
+
+  if (host.includes("gmail") || user.endsWith("@gmail.com")) {
+    return nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user,
+        pass,
+      },
+    });
   }
 
   return nodemailer.createTransport({
@@ -42,6 +52,7 @@ function getTransporter() {
     },
   });
 }
+
 
 /**
  * Dispatches the project scoping inquiry to SolveMpire support/engineering team
