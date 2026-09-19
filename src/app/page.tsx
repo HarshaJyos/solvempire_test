@@ -138,67 +138,37 @@ const processSteps = [
     step: "01",
     name: "Discover",
     description: "Understand goals, requirements & user needs",
-    isHigh: true,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    ),
+    image: "/process-discover.jpg",
   },
   {
     step: "02",
     name: "Design",
     description: "Conceptualize, engineer & validate the solution",
-    isHigh: false,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-      </svg>
-    ),
+    image: "/freshpod.jpg",
   },
   {
     step: "03",
     name: "Develop",
     description: "Build mechanical, electronic, software & integrations",
-    isHigh: true,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
+    image: "/freshpod-kiosks.png",
   },
   {
     step: "04",
     name: "Prototype",
     description: "Prototype, test & iterate for performance and reliability",
-    isHigh: false,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-      </svg>
-    ),
+    image: "/freshpod.jpg",
   },
   {
     step: "05",
     name: "Manufacture",
     description: "Support production, quality & supply chain",
-    isHigh: true,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-      </svg>
-    ),
+    image: "/freshpod-kiosks.png",
   },
   {
     step: "06",
     name: "Deploy & Support",
     description: "Deploy in the field and support for long-term success",
-    isHigh: false,
-    icon: (
-      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    image: "/freshpod.jpg",
   },
 ];
 
@@ -1152,7 +1122,7 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: OUR PROCESS (Continuous 3D Geometric Ribbon Flow) */}
+      {/* SECTION 4: OUR PROCESS (3-Tier Continuous Isometric Ribbon Pipeline) */}
       {/* ========================================================================= */}
       <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -1167,161 +1137,90 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Main Process Flow Showcase Enclosure */}
-          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 xl:p-14 relative overflow-visible">
-            {/* Ambient Background Grid Detail */}
-            <div
-              className="absolute inset-0 opacity-10 pointer-events-none rounded-3xl sm:rounded-[2.5rem]"
-              style={{
-                backgroundImage: "radial-gradient(#2563eb 1px, transparent 1px)",
-                backgroundSize: "24px 24px",
-              }}
-            />
-
-            {/* Desktop / Widescreen: 6-Stage Continuous 3D Geometric Ribbon Flow (xl+) */}
-            <div className="hidden xl:flex items-center justify-between gap-1 py-12 relative z-10">
-              {processSteps.map((step, idx) => {
-                const isHigh = step.isHigh;
-                const isLast = idx === processSteps.length - 1;
-
-                return (
-                  <div
-                    key={step.step}
-                    className={`relative flex-1 flex flex-col transition-transform duration-300 hover:scale-[1.02] ${
-                      isHigh ? "justify-start -translate-y-6" : "justify-end translate-y-6"
-                    }`}
-                  >
-                    {/* The Ribbon Card Polygon Shape */}
-                    <div
-                      className={`relative z-10 p-6 sm:p-7 flex flex-col justify-between h-[250px] text-white shadow-xl transition-all duration-300 ${
-                        isHigh
-                          ? "bg-blue-600 rounded-2xl shadow-blue-600/25 hover:bg-blue-500"
-                          : isLast
-                          ? "bg-[#183980] rounded-2xl shadow-blue-950/30 hover:bg-[#1e4294]"
-                          : "bg-[#183980] rounded-l-2xl shadow-blue-950/30 hover:bg-[#1e4294]"
-                      }`}
-                      style={
-                        !isHigh && !isLast
-                          ? {
-                              clipPath: "polygon(0% 0%, calc(100% - 24px) 0%, 100% 50%, calc(100% - 24px) 100%, 0% 100%)",
-                            }
-                          : undefined
-                      }
-                    >
-                      {/* Top Row: Step Number & Minimal Outline Icon */}
-                      <div className="flex items-center justify-between w-full">
-                        <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                          {step.step}
-                        </span>
-                        <div className="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white">
-                          {step.icon}
-                        </div>
-                      </div>
-
-                      {/* Bottom Content: Title & 2-Line Description */}
-                      <div className={!isHigh && !isLast ? "pr-6" : "pr-2"}>
-                        <h3 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-[1.2rem] font-bold leading-tight mb-2 text-white">
-                          {step.name}
-                        </h3>
-                        <p className="text-white/85 text-xs leading-relaxed font-normal">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* 3D Folded Ribbon Triangular Shadow (Links High card down to Low card) */}
-                    {isHigh && !isLast && (
-                      <div
-                        className="absolute right-[-16px] top-[190px] w-4 h-[60px] bg-[#0a1836] z-0 pointer-events-none"
-                        style={{
-                          clipPath: "polygon(0 0, 100% 100%, 0 100%)",
-                        }}
-                        aria-hidden="true"
-                      />
-                    )}
-
-                    {/* 3D Folded Ribbon Triangular Shadow (Links Low card up to High card) */}
-                    {!isHigh && !isLast && (
-                      <div
-                        className="absolute right-[-16px] top-[0px] w-4 h-[60px] bg-[#0a1836] z-0 pointer-events-none"
-                        style={{
-                          clipPath: "polygon(0 100%, 100% 0, 0 0)",
-                        }}
-                        aria-hidden="true"
-                      />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Tablet / Medium Screens: 2-Row x 3-Column Stepped Chevron Ribbon Flow (md to lg) */}
-            <div className="hidden md:grid xl:hidden grid-cols-3 gap-6 relative z-10 py-6">
-              {processSteps.map((step) => {
-                const isHigh = step.isHigh;
-                return (
-                  <div
-                    key={`tab-${step.step}`}
-                    className={`relative rounded-2xl p-6 flex flex-col justify-between h-[230px] text-white shadow-xl transition-all duration-300 hover:-translate-y-1 ${
-                      isHigh
-                        ? "bg-blue-600 shadow-blue-600/20"
-                        : "bg-[#183980] shadow-blue-950/25"
-                    }`}
-                  >
-                    {/* Top Row: Number & Icon */}
-                    <div className="flex items-center justify-between w-full">
-                      <span className="font-[family-name:var(--font-bricolage)] text-2xl font-bold tracking-tight text-white">
-                        {step.step}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white">
-                        {step.icon}
-                      </div>
-                    </div>
-
-                    {/* Content */}
+          {/* 3-Row Process Ribbon Pipeline Showcase */}
+          <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:gap-8 relative">
+            {[
+              { left: processSteps[0], right: processSteps[1], rowIdx: 0 },
+              { left: processSteps[2], right: processSteps[3], rowIdx: 1 },
+              { left: processSteps[4], right: processSteps[5], rowIdx: 2 },
+            ].map((pair, rIdx) => (
+              <div
+                key={`row-${rIdx}`}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-0 items-center relative group"
+              >
+                {/* Left Card: Text on Left (45%), Image on Right (55%) */}
+                <div className="lg:col-span-6 relative z-10 rounded-2xl sm:rounded-3xl bg-[#5274cc] hover:bg-[#4768be] text-white flex flex-col sm:flex-row h-auto sm:h-[260px] overflow-hidden shadow-xl shadow-blue-900/10 transition-all duration-300 group-hover:-translate-y-1">
+                  {/* Left Text Panel */}
+                  <div className="w-full sm:w-[46%] p-6 sm:p-7 flex flex-col justify-between">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6 sm:mb-0">
+                      {pair.left.step}
+                    </span>
                     <div>
-                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg font-bold leading-tight mb-2 text-white">
-                        {step.name}
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-2xl font-bold leading-tight mb-2 text-white">
+                        {pair.left.name}
                       </h3>
-                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed">
-                        {step.description}
+                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-normal">
+                        {pair.left.description}
                       </p>
                     </div>
                   </div>
-                );
-              })}
-            </div>
 
-            {/* Mobile Screens: Vertical Flow Chain (< md) */}
-            <div className="flex md:hidden flex-col gap-4 relative z-10">
-              {processSteps.map((step) => {
-                const isHigh = step.isHigh;
-                return (
-                  <div
-                    key={`mob-proc-${step.step}`}
-                    className={`w-full rounded-2xl p-5 flex flex-col justify-between text-white shadow-lg ${
-                      isHigh ? "bg-blue-600" : "bg-[#183980]"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between w-full mb-3">
-                      <span className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-white">
-                        {step.step}
-                      </span>
-                      <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white">
-                        {step.icon}
-                      </div>
-                    </div>
-
-                    <h3 className="font-[family-name:var(--font-bricolage)] text-base font-bold mb-1.5 text-white">
-                      {step.name}
-                    </h3>
-                    <p className="text-white/85 text-xs leading-relaxed">
-                      {step.description}
-                    </p>
+                  {/* Right Image Container */}
+                  <div className="w-full sm:w-[54%] h-48 sm:h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src={pair.left.image}
+                      alt={pair.left.name}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#5274cc]/70 via-transparent to-transparent pointer-events-none" />
                   </div>
-                );
-              })}
-            </div>
+                </div>
+
+                {/* Central Isometric 3D Ribbon Fold Connector */}
+                <div
+                  className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-[72px] h-[100%] z-0 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(82, 116, 204, 0.95) 0%, rgba(30, 48, 92, 0.95) 50%, rgba(115, 143, 215, 0.95) 100%)",
+                    clipPath: "polygon(0 0, 100% 20%, 100% 100%, 0 80%)",
+                  }}
+                  aria-hidden="true"
+                />
+
+                {/* Right Card: Image on Left (55%), Text on Right (45%) */}
+                <div className="lg:col-span-6 relative z-10 rounded-2xl sm:rounded-3xl bg-[#738fd7] hover:bg-[#6683cc] text-white flex flex-col-reverse sm:flex-row h-auto sm:h-[260px] overflow-hidden shadow-xl shadow-blue-900/10 transition-all duration-300 group-hover:-translate-y-1 lg:ml-2">
+                  {/* Left Image Container */}
+                  <div className="w-full sm:w-[54%] h-48 sm:h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src={pair.right.image}
+                      alt={pair.right.name}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 30vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="hidden sm:block absolute inset-0 bg-gradient-to-l from-[#738fd7]/70 via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Right Text Panel */}
+                  <div className="w-full sm:w-[46%] p-6 sm:p-7 flex flex-col justify-between items-start sm:items-end text-left sm:text-right">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6 sm:mb-0">
+                      {pair.right.step}
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-2xl font-bold leading-tight mb-2 text-white">
+                        {pair.right.name}
+                      </h3>
+                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-normal">
+                        {pair.right.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
