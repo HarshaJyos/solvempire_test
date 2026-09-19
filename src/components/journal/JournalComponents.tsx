@@ -158,6 +158,8 @@ export const H4 = (props: JournalHeadingProps) => <JournalHeading as="h4" {...pr
 // ============================================================================
 // 4. UNORDERED LIST (UL) WITH NESTED LIST SUPPORT
 // ============================================================================
+// 4. UNORDERED LIST (UL) WITH NESTED LIST SUPPORT
+// ============================================================================
 export interface JournalListProps extends React.HTMLAttributes<HTMLUListElement> {
   nested?: boolean;
   bulletVariant?: "mint" | "dash" | "check";
@@ -173,8 +175,8 @@ export function JournalUL({
   return (
     <ul
       className={cn(
-        "space-y-2.5 text-body text-base leading-[1.7]",
-        nested ? "mt-2.5 ml-6 pl-2 border-l border-hairline space-y-2" : "my-5 pl-1",
+        "space-y-2.5 text-body text-base sm:text-[1.0625rem] leading-[1.75] list-disc list-outside pl-6 my-5 marker:text-brand",
+        nested ? "mt-2.5 ml-4 pl-4 border-l border-hairline space-y-2 list-circle marker:text-muted" : "my-5 pl-6",
         className
       )}
       {...props}
@@ -200,8 +202,8 @@ export function JournalOL({
   return (
     <ol
       className={cn(
-        "list-decimal list-outside space-y-2.5 text-body text-base leading-[1.7]",
-        nested ? "mt-2.5 ml-6 pl-2 border-l border-hairline space-y-2" : "my-5 pl-6",
+        "list-decimal list-outside space-y-3 text-body text-base sm:text-[1.0625rem] leading-[1.75] my-5 pl-6 marker:text-brand marker:font-semibold",
+        nested ? "mt-2.5 ml-4 pl-4 border-l border-hairline space-y-2 list-[lower-alpha]" : "my-5 pl-6",
         className
       )}
       {...props}
@@ -225,7 +227,7 @@ export function JournalListItem({
   ...props
 }: JournalListItemProps) {
   return (
-    <li className={cn("relative pl-1", className)} {...props}>
+    <li className={cn("pl-1 text-body text-base sm:text-[1.0625rem] leading-[1.75]", className)} {...props}>
       {icon && <span className="inline-block mr-2 align-middle">{icon}</span>}
       {children}
     </li>
