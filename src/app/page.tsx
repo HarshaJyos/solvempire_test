@@ -1262,8 +1262,8 @@ export default function Home() {
           <div className="max-w-5xl mx-auto flex flex-col gap-[5px] relative">
             {[
               {
-                left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
-                right: { step: "02", name: "Design", desc: "Conceptualize, engineer & validate the solution", img: "/freshpod.jpg", theme: "blue" },
+                left: { step: "01", name: "Discover", desc: "Define core goals, scope and user requirements.", img: "/process-discover.jpg", theme: "blue" },
+                right: { step: "02", name: "Design", desc: "Architect, engineer and validate product systems.", img: "/freshpod.jpg", theme: "blue" },
                 gradId: "foldGrad1",
                 stops: [
                   { offset: "0%", color: "#1a202c" },
@@ -1274,8 +1274,8 @@ export default function Home() {
                 ],
               },
               {
-                left: { step: "03", name: "Develop", desc: "Build mechanical, electronic, software & integrations", img: "/freshpod-kiosks.png", theme: "ice" },
-                right: { step: "04", name: "Prototype", desc: "Prototype, test & iterate for performance and reliability", img: "/freshpod.jpg", theme: "ice" },
+                left: { step: "03", name: "Develop", desc: "Build hardware, firmware and software systems.", img: "/freshpod-kiosks.png", theme: "ice" },
+                right: { step: "04", name: "Prototype", desc: "Fabricate working prototypes and test performance.", img: "/freshpod.jpg", theme: "ice" },
                 gradId: "foldGrad2",
                 stops: [
                   { offset: "0%", color: "#233238" },
@@ -1285,8 +1285,8 @@ export default function Home() {
                 ],
               },
               {
-                left: { step: "05", name: "Manufacture", desc: "Support production, quality & supply chain", img: "/freshpod-kiosks.png", theme: "blue" },
-                right: { step: "06", name: "Deploy & Support", desc: "Deploy in the field and support for long-term success", img: "/freshpod.jpg", theme: "blue" },
+                left: { step: "05", name: "Manufacture", desc: "Scale production, quality control and assembly.", img: "/freshpod-kiosks.png", theme: "blue" },
+                right: { step: "06", name: "Deploy & Support", desc: "Launch in field with continuous lifecycle support.", img: "/freshpod.jpg", theme: "blue" },
                 gradId: "foldGrad3",
                 stops: [
                   { offset: "0%", color: "#141c2b" },
@@ -1309,7 +1309,7 @@ export default function Home() {
                     }`}
                   >
                     {/* Text Panel */}
-                    <div className="w-[45%] p-6 lg:p-7 flex flex-col justify-between shrink-0">
+                    <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between shrink-0">
                       <span
                         className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
                           row.left.theme === "ice" ? "text-blue-600" : "text-white"
@@ -1319,14 +1319,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.3rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
                             row.left.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-xs lg:text-[13px] leading-relaxed ${
+                          className={`text-xs lg:text-[13px] leading-relaxed line-clamp-2 ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1335,7 +1335,7 @@ export default function Home() {
                       </div>
                     </div>
                     {/* Photo Container */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
+                    <div className="w-[52%] h-full relative overflow-hidden bg-slate-900 rounded-none">
                       <Image
                         src={row.left.img}
                         alt={row.left.name}
@@ -1374,7 +1374,7 @@ export default function Home() {
                     }`}
                   >
                     {/* Photo Container */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
+                    <div className="w-[52%] h-full relative overflow-hidden bg-slate-900 rounded-none">
                       <Image
                         src={row.right.img}
                         alt={row.right.name}
@@ -1385,7 +1385,7 @@ export default function Home() {
                       />
                     </div>
                     {/* Text Panel */}
-                    <div className="w-[45%] p-6 lg:p-7 flex flex-col justify-between items-end text-right shrink-0">
+                    <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between items-end text-right shrink-0">
                       <span
                         className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
                           row.right.theme === "ice" ? "text-blue-600" : "text-white"
@@ -1395,14 +1395,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.3rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
                             row.right.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-xs lg:text-[13px] leading-relaxed ${
+                          className={`text-xs lg:text-[13px] leading-relaxed line-clamp-2 ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1431,14 +1431,14 @@ export default function Home() {
                       </span>
                       <div>
                         <h3
-                          className={`font-bold text-base sm:text-lg leading-tight ${
+                          className={`font-bold text-base sm:text-lg leading-tight whitespace-nowrap ${
                             row.left.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-xs sm:text-[13px] leading-snug mt-1 ${
+                          className={`text-xs sm:text-[13px] leading-snug mt-1 line-clamp-2 ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1470,14 +1470,14 @@ export default function Home() {
                       </span>
                       <div>
                         <h3
-                          className={`font-bold text-base sm:text-lg leading-tight ${
+                          className={`font-bold text-base sm:text-lg leading-tight whitespace-nowrap ${
                             row.right.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-xs sm:text-[13px] leading-snug mt-1 ${
+                          className={`text-xs sm:text-[13px] leading-snug mt-1 line-clamp-2 ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
