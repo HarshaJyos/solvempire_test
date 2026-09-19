@@ -147,6 +147,80 @@ export default function Home() {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const partnerContainerRef = useRef<HTMLDivElement>(null);
+  const partnerContentRef = useRef<HTMLDivElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+  const [partnerProgress, setPartnerProgress] = useState<number>(0);
+
+  const scrollToPillar = (index: number) => {
+    if (!partnerContainerRef.current) return;
+    const rect = partnerContainerRef.current.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const containerTop = rect.top + scrollTop;
+    const scrollDistance = partnerContainerRef.current.offsetHeight - window.innerHeight;
+    const targetP = (index + 0.5) / partnerPillars.length;
+    const targetScroll = containerTop + targetP * scrollDistance;
+
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(targetScroll, {
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    }
+  };
+
+  // GSAP Driven Minimal Transition Animation for Why Partner Elements
+  useEffect(() => {
+    if (!partnerContentRef.current) return;
+    const ctx = gsap.context(() => {
+      // 1. Tag Animation
+      gsap.fromTo(
+        ".gsap-pillar-tag",
+        { y: 8, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" }
+      );
+
+      // 2. Title Animation with subtle rack unmask
+      gsap.fromTo(
+        ".gsap-pillar-title",
+        { y: 16, opacity: 0, filter: "blur(4px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }
+      );
+
+      // 3. Description Animation
+      gsap.fromTo(
+        ".gsap-pillar-desc",
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.48, delay: 0.05, ease: "power2.out" }
+      );
+
+      // 4. Staggered Tool Badges
+      gsap.fromTo(
+        ".gsap-pillar-tool",
+        { y: 8, opacity: 0, scale: 0.97 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          stagger: 0.04,
+          delay: 0.08,
+          ease: "power2.out",
+        }
+      );
+
+      // 5. Isometric Blueprint Graphic Rack-Focus & Subtle Scale
+      gsap.fromTo(
+        ".gsap-pillar-graphic",
+        { scale: 0.94, opacity: 0, filter: "blur(5px)" },
+        { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" }
+      );
+    }, partnerContentRef);
+
+    return () => ctx.revert();
+  }, [activePillarIndex]);
 
   useEffect(() => {
     // 1. Initialize Lenis Smooth Scrolling
@@ -157,6 +231,7 @@ export default function Home() {
       gestureOrientation: "vertical",
       smoothWheel: true,
     });
+    lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -249,12 +324,33 @@ export default function Home() {
           setActiveProjectIndex(activeIdx);
         },
       });
+
+      // 3. Initialize Pinned ScrollTrigger for Why Partner with Solvempire
+      const partnerContainer = partnerContainerRef.current;
+      if (partnerContainer) {
+        ScrollTrigger.create({
+          trigger: partnerContainer,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.5,
+          onUpdate: (self) => {
+            const p = self.progress; // 0.0 to 1.0
+            const clampedIdx = Math.min(
+              partnerPillars.length - 1,
+              Math.floor(p * (partnerPillars.length - 0.001))
+            );
+            setActivePillarIndex(clampedIdx);
+            setPartnerProgress(p);
+          },
+        });
+      }
     }, containerRef);
 
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
       lenis.destroy();
+      lenisRef.current = null;
       gsap.ticker.remove(updateTicker);
     };
   }, []);
@@ -402,7 +498,11 @@ export default function Home() {
                     const el = containerRef.current;
                     if (el) {
                       const targetY = el.offsetTop + el.offsetHeight * 0.35;
-                      window.scrollTo({ top: targetY, behavior: "smooth" });
+                      if (lenisRef.current) {
+                        lenisRef.current.scrollTo(targetY, { duration: 1.2 });
+                      } else {
+                        window.scrollTo({ top: targetY, behavior: "smooth" });
+                      }
                     }
                   }}
                   className="group inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
@@ -645,41 +745,43 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 3: WHY PARTNER WITH SOLVEMPIRE */}
+      {/* SECTION 3: WHY PARTNER WITH SOLVEMPIRE (Scroll-Pinned Interactive Track) */}
       {/* ========================================================================= */}
-      <section id="why-partner" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Section Heading */}
-          <div className="w-full text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
-              <span>WHY PARTNER WITH </span>
-              <span className="text-blue-600">SOLVEMPIRE?</span>
-            </h2>
-          </div>
+      <div
+        ref={partnerContainerRef}
+        id="why-partner"
+        className="relative h-[380vh] w-full bg-white border-t border-slate-100"
+      >
+        {/* Sticky 100vh Viewport Stage */}
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-white px-4 sm:px-8 lg:px-12 py-4 sm:py-6">
+          <div className="max-w-7xl w-full mx-auto flex flex-col items-center">
+            {/* Section Heading */}
+            <div className="w-full text-center max-w-4xl mx-auto mb-6 sm:mb-8">
+              <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase">
+                <span>WHY PARTNER WITH </span>
+                <span className="text-blue-600">SOLVEMPIRE?</span>
+              </h2>
+            </div>
 
-          {/* Main Interactive Partner Showcase Card */}
-          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Numbered Timeline Stepper (01 to 06) */}
-              <div className="lg:col-span-1 hidden sm:flex flex-row lg:flex-col items-center justify-between lg:justify-center gap-3 lg:gap-6 relative py-2 lg:py-6">
-                {/* Vertical Connector Track */}
-                <div className="hidden lg:block absolute top-8 bottom-8 left-1/2 -translate-x-1/2 w-[2px] bg-slate-200 z-0" />
-
+            {/* Main Interactive Partner Showcase Card */}
+            <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-8 lg:p-10 relative w-full">
+              {/* Mobile/Tablet Horizontal Stepper Row */}
+              <div className="flex lg:hidden items-center justify-between w-full mb-6 pb-2 border-b border-slate-100 gap-2 overflow-x-auto">
                 {partnerPillars.map((pillar, idx) => {
                   const isActive = activePillarIndex === idx;
                   return (
                     <button
-                      key={pillar.id}
-                      onClick={() => setActivePillarIndex(idx)}
+                      key={`mob-${pillar.id}`}
+                      onClick={() => scrollToPillar(idx)}
                       aria-label={`Select pillar ${pillar.id}: ${pillar.title}`}
-                      className="relative z-10 group focus:outline-none cursor-pointer"
+                      className="focus:outline-none cursor-pointer flex-shrink-0"
                     >
                       {isActive ? (
-                        <div className="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-blue-500/35 ring-4 ring-blue-100 scale-110 transition-all duration-300">
+                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-bold text-xs flex items-center justify-center shadow-md shadow-blue-500/30 ring-2 ring-blue-100 scale-105 transition-all duration-300">
                           <span>{pillar.id}</span>
                         </div>
                       ) : (
-                        <div className="w-9 h-9 rounded-full bg-white border-2 border-slate-200 group-hover:border-blue-500 text-slate-400 group-hover:text-blue-600 font-semibold text-xs flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-xs">
+                        <div className="w-8 h-8 rounded-full bg-white border border-slate-200 text-slate-400 font-semibold text-xs flex items-center justify-center transition-all duration-300">
                           <span>{pillar.id}</span>
                         </div>
                       )}
@@ -688,250 +790,297 @@ export default function Home() {
                 })}
               </div>
 
-              {/* Middle Column: Pillar Content, Tools Badges & CTA */}
-              <div className="lg:col-span-6 flex flex-col items-start justify-center text-left">
-                {/* Tag Pill */}
-                <span className="text-blue-600 font-bold text-xs sm:text-sm tracking-[0.18em] uppercase mb-3">
-                  {partnerPillars[activePillarIndex].tag}
-                </span>
+              <div ref={partnerContentRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Left Column: Numbered Timeline Stepper Rail (01 to 06) for Desktop */}
+                <div className="lg:col-span-1 hidden lg:flex flex-col items-center justify-between h-[340px] relative py-2">
+                  {/* Vertical Connector Track Background */}
+                  <div className="absolute top-4 bottom-4 left-1/2 -translate-x-1/2 w-[2px] bg-slate-200 z-0" />
 
-                {/* Title */}
-                <h3
-                  key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
-                  className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-slate-950 leading-[1.16] tracking-tight mb-4 animate-in fade-in slide-in-from-bottom-3 duration-400 ease-out"
-                >
-                  {partnerPillars[activePillarIndex].title}
-                </h3>
+                  {/* Dynamic Active Progress Bar Indicator */}
+                  <div
+                    className="absolute top-4 left-1/2 -translate-x-1/2 w-[2px] bg-blue-600 z-0 transition-all duration-300 ease-out"
+                    style={{
+                      height: `${(activePillarIndex / (partnerPillars.length - 1)) * 100}%`,
+                    }}
+                  />
 
-                {/* Description */}
-                <p
-                  key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
-                  className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out"
-                >
-                  {partnerPillars[activePillarIndex].description}
-                </p>
-
-                {/* Tool Badges / Logos */}
-                <div
-                  key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
-                  className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8 w-full max-w-lg animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 ease-out"
-                >
-                  {partnerPillars[activePillarIndex].tools.map((tool) => (
-                    <div
-                      key={tool.name}
-                      className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col items-start gap-1 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
-                    >
-                      <div className="flex items-center gap-2 text-blue-600 mb-0.5">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-blue-600 transition-colors">
-                          {tool.name}
-                        </span>
-                      </div>
-                      <span className="text-[11px] text-slate-500 font-medium">
-                        {tool.category}
-                      </span>
-                    </div>
-                  ))}
+                  {partnerPillars.map((pillar, idx) => {
+                    const isActive = activePillarIndex === idx;
+                    return (
+                      <button
+                        key={pillar.id}
+                        onClick={() => scrollToPillar(idx)}
+                        aria-label={`Select pillar ${pillar.id}: ${pillar.title}`}
+                        className="relative z-10 group focus:outline-none cursor-pointer"
+                      >
+                        {isActive ? (
+                          <div className="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg shadow-blue-500/35 ring-4 ring-blue-100 scale-110 transition-all duration-300">
+                            <span>{pillar.id}</span>
+                          </div>
+                        ) : (
+                          <div className="w-9 h-9 rounded-full bg-white border-2 border-slate-200 group-hover:border-blue-500 text-slate-400 group-hover:text-blue-600 font-semibold text-xs flex items-center justify-center transition-all duration-300 group-hover:scale-105 shadow-xs">
+                            <span>{pillar.id}</span>
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
 
-                {/* Contact CTA Button */}
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-                >
-                  <span>Contact Us Now</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.2}
-                    viewBox="0 0 24 24"
+                {/* Middle Column: Pillar Content, Tools Badges & CTA */}
+                <div className="lg:col-span-6 flex flex-col items-start justify-center text-left">
+                  {/* Tag Pill with GSAP minimal animation */}
+                  <div className="overflow-hidden mb-2 sm:mb-3">
+                    <span
+                      key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
+                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-[0.18em] uppercase"
+                    >
+                      {partnerPillars[activePillarIndex].tag}
+                    </span>
+                  </div>
+
+                  {/* Title with GSAP minimal kinetic typography */}
+                  <div className="overflow-hidden w-full mb-3.5 sm:mb-4">
+                    <h3
+                      key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
+                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-slate-950 leading-[1.16] tracking-tight"
+                    >
+                      {partnerPillars[activePillarIndex].title}
+                    </h3>
+                  </div>
+
+                  {/* Description with GSAP subtle staggered fade & slide */}
+                  <div className="overflow-hidden w-full mb-6 sm:mb-7">
+                    <p
+                      key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
+                      className="gsap-pillar-desc text-slate-600 text-sm sm:text-base lg:text-[1.05rem] leading-relaxed max-w-lg"
+                    >
+                      {partnerPillars[activePillarIndex].description}
+                    </p>
+                  </div>
+
+                  {/* Tool Badges / Logos with GSAP stagger */}
+                  <div
+                    key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
+                    className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-7 sm:mb-8 w-full max-w-lg"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-              </div>
+                    {partnerPillars[activePillarIndex].tools.map((tool) => (
+                      <div
+                        key={tool.name}
+                        className="gsap-pillar-tool p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col items-start gap-1 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
+                      >
+                        <div className="flex items-center gap-2 text-blue-600 mb-0.5">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                          </svg>
+                          <span className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-blue-600 transition-colors">
+                            {tool.name}
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-slate-500 font-medium">
+                          {tool.category}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
 
-              {/* Right Column: Isometric 3D Blueprint Visual Graphic */}
-              <div className="lg:col-span-5 relative w-full aspect-square max-h-[460px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/30">
-                {/* Blueprint Background Grid Pattern */}
-                <div
-                  className="absolute inset-0 opacity-15 pointer-events-none"
-                  style={{
-                    backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                    backgroundSize: "20px 20px",
-                  }}
-                />
-
-                {/* Dynamic Isometric Blueprint Graphics by Pillar */}
-                <div
-                  key={`graphic-${partnerPillars[activePillarIndex].id}`}
-                  className="relative w-full h-full flex items-center justify-center animate-in zoom-in-95 duration-600 ease-out"
-                >
-                  {/* Visual 01: Layered Isometric Wireframe Cube & Precision Base */}
-                  {activePillarIndex === 0 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      {/* Isometric Base Plate */}
-                      <path
-                        d="M 200 280 L 320 220 L 200 160 L 80 220 Z"
-                        strokeWidth="1.5"
-                        strokeDasharray="4 4"
-                        className="opacity-40"
-                      />
-                      <path
-                        d="M 80 220 L 80 250 L 200 310 L 320 250 L 320 220"
-                        strokeWidth="1.5"
-                        className="opacity-50"
-                      />
-                      <path
-                        d="M 200 280 L 200 310"
-                        strokeWidth="1.5"
-                        className="opacity-50"
-                      />
-
-                      {/* Elevated Glass Cube Top Wireframe */}
-                      <g className="animate-pulse duration-1000">
-                        {/* Top Face */}
-                        <path d="M 200 80 L 270 120 L 200 160 L 130 120 Z" strokeWidth="2.5" className="fill-white/10" />
-                        {/* Left Face */}
-                        <path d="M 130 120 L 200 160 L 200 240 L 130 200 Z" strokeWidth="2.5" className="fill-white/15" />
-                        {/* Right Face */}
-                        <path d="M 270 120 L 200 160 L 200 240 L 270 200 Z" strokeWidth="2.5" className="fill-white/20" />
-                      </g>
-
-                      {/* Internal Laser Alignment Guides & Glowing Coordinate Points */}
-                      <line x1="200" y1="80" x2="200" y2="280" strokeWidth="1.5" strokeDasharray="3 3" className="stroke-blue-200 opacity-70" />
-                      <circle cx="200" cy="80" r="4" className="fill-white" />
-                      <circle cx="200" cy="160" r="3.5" className="fill-white" />
-                      <circle cx="200" cy="240" r="3.5" className="fill-white" />
-                      <circle cx="200" cy="280" r="4.5" className="fill-white" />
-
-                      {/* Dimensional Markers */}
-                      <line x1="330" y1="120" x2="330" y2="200" strokeWidth="1" className="opacity-40" />
-                      <circle cx="330" cy="120" r="1.5" className="fill-white" />
-                      <circle cx="330" cy="140" r="1.5" className="fill-white" />
-                      <circle cx="330" cy="160" r="1.5" className="fill-white" />
-                      <circle cx="330" cy="180" r="1.5" className="fill-white" />
-                      <circle cx="330" cy="200" r="1.5" className="fill-white" />
+                  {/* Contact CTA Button */}
+                  <Link
+                    href="#contact"
+                    className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                  >
+                    <span>Contact Us Now</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
-                  )}
+                  </Link>
+                </div>
 
-                  {/* Visual 02: Interlocking Multidisciplinary Circuit & Gear Mesh */}
-                  {activePillarIndex === 1 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      <circle cx="200" cy="200" r="110" strokeWidth="1.5" strokeDasharray="6 6" className="opacity-30 animate-spin origin-center" style={{ animationDuration: "20s" }} />
-                      <circle cx="200" cy="200" r="80" strokeWidth="2" className="opacity-60" />
-                      <circle cx="200" cy="200" r="50" strokeWidth="2.5" className="fill-white/10" />
+                {/* Right Column: Isometric 3D Blueprint Visual Graphic */}
+                <div className="lg:col-span-5 relative w-full aspect-square max-h-[380px] sm:max-h-[420px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/25">
+                  {/* Blueprint Background Grid Pattern */}
+                  <div
+                    className="absolute inset-0 opacity-15 pointer-events-none"
+                    style={{
+                      backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
 
-                      {/* Integrated Circuit Traces */}
-                      <path d="M 80 140 L 140 140 L 170 170 L 200 170" strokeWidth="2" className="stroke-blue-200" />
-                      <path d="M 320 260 L 260 260 L 230 230 L 200 230" strokeWidth="2" className="stroke-blue-200" />
-                      <path d="M 140 260 L 170 230" strokeWidth="2" className="stroke-blue-200" />
-                      <path d="M 260 140 L 230 170" strokeWidth="2" className="stroke-blue-200" />
+                  {/* Dynamic Isometric Blueprint Graphics by Pillar */}
+                  <div
+                    key={`graphic-${partnerPillars[activePillarIndex].id}`}
+                    className="gsap-pillar-graphic relative w-full h-full flex items-center justify-center"
+                  >
+                    {/* Visual 01: Layered Isometric Wireframe Cube & Precision Base */}
+                    {activePillarIndex === 0 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        {/* Isometric Base Plate */}
+                        <path
+                          d="M 200 280 L 320 220 L 200 160 L 80 220 Z"
+                          strokeWidth="1.5"
+                          strokeDasharray="4 4"
+                          className="opacity-40"
+                        />
+                        <path
+                          d="M 80 220 L 80 250 L 200 310 L 320 250 L 320 220"
+                          strokeWidth="1.5"
+                          className="opacity-50"
+                        />
+                        <path
+                          d="M 200 280 L 200 310"
+                          strokeWidth="1.5"
+                          className="opacity-50"
+                        />
 
-                      <circle cx="80" cy="140" r="4" className="fill-white" />
-                      <circle cx="320" cy="260" r="4" className="fill-white" />
-                      <circle cx="200" cy="200" r="8" className="fill-white" />
-                    </svg>
-                  )}
-
-                  {/* Visual 03: Smart IoT Wireless Mesh & Sensor Matrix */}
-                  {activePillarIndex === 2 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      {/* Central Gateway Node */}
-                      <circle cx="200" cy="200" r="18" strokeWidth="2.5" className="fill-white/20" />
-                      <circle cx="200" cy="200" r="6" className="fill-white" />
-
-                      {/* Radiating Signal Waves */}
-                      <circle cx="200" cy="200" r="60" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
-                      <circle cx="200" cy="200" r="100" strokeWidth="1" strokeDasharray="6 6" className="opacity-30" />
-                      <circle cx="200" cy="200" r="140" strokeWidth="1" className="opacity-20" />
-
-                      {/* Mesh Nodes */}
-                      {[
-                        { x: 120, y: 130 },
-                        { x: 280, y: 120 },
-                        { x: 300, y: 270 },
-                        { x: 110, y: 280 },
-                        { x: 200, y: 80 },
-                      ].map((pt, i) => (
-                        <g key={i}>
-                          <line x1="200" y1="200" x2={pt.x} y2={pt.y} strokeWidth="1.5" className="stroke-blue-200 opacity-70" />
-                          <circle cx={pt.x} cy={pt.y} r="6" strokeWidth="2" className="fill-white" />
+                        {/* Elevated Glass Cube Top Wireframe */}
+                        <g className="animate-pulse duration-1000">
+                          {/* Top Face */}
+                          <path d="M 200 80 L 270 120 L 200 160 L 130 120 Z" strokeWidth="2.5" className="fill-white/10" />
+                          {/* Left Face */}
+                          <path d="M 130 120 L 200 160 L 200 240 L 130 200 Z" strokeWidth="2.5" className="fill-white/15" />
+                          {/* Right Face */}
+                          <path d="M 270 120 L 200 160 L 200 240 L 270 200 Z" strokeWidth="2.5" className="fill-white/20" />
                         </g>
-                      ))}
-                    </svg>
-                  )}
 
-                  {/* Visual 04: Oscilloscope Waveform & Reliability Stress Grid */}
-                  {activePillarIndex === 3 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      {/* Grid Frame */}
-                      <rect x="70" y="90" width="260" height="220" rx="16" strokeWidth="2" className="fill-white/5 opacity-80" />
-                      <line x1="70" y1="200" x2="330" y2="200" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
-                      <line x1="200" y1="90" x2="200" y2="310" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+                        {/* Internal Laser Alignment Guides & Glowing Coordinate Points */}
+                        <line x1="200" y1="80" x2="200" y2="280" strokeWidth="1.5" strokeDasharray="3 3" className="stroke-blue-200 opacity-70" />
+                        <circle cx="200" cy="80" r="4" className="fill-white" />
+                        <circle cx="200" cy="160" r="3.5" className="fill-white" />
+                        <circle cx="200" cy="240" r="3.5" className="fill-white" />
+                        <circle cx="200" cy="280" r="4.5" className="fill-white" />
 
-                      {/* Smooth Sine Waveform */}
-                      <path
-                        d="M 80 200 Q 110 120 140 200 T 200 200 T 260 200 T 320 200"
-                        strokeWidth="3"
-                        className="stroke-white"
-                      />
-                      <path
-                        d="M 80 200 Q 110 150 140 200 T 200 200 T 260 200 T 320 200"
-                        strokeWidth="1.5"
-                        strokeDasharray="4 4"
-                        className="stroke-blue-200 opacity-60"
-                      />
-                      <circle cx="140" cy="200" r="4" className="fill-white" />
-                      <circle cx="200" cy="200" r="4" className="fill-white" />
-                      <circle cx="260" cy="200" r="4" className="fill-white" />
-                    </svg>
-                  )}
+                        {/* Dimensional Markers */}
+                        <line x1="330" y1="120" x2="330" y2="200" strokeWidth="1" className="opacity-40" />
+                        <circle cx="330" cy="120" r="1.5" className="fill-white" />
+                        <circle cx="330" cy="140" r="1.5" className="fill-white" />
+                        <circle cx="330" cy="160" r="1.5" className="fill-white" />
+                        <circle cx="330" cy="180" r="1.5" className="fill-white" />
+                        <circle cx="330" cy="200" r="1.5" className="fill-white" />
+                      </svg>
+                    )}
 
-                  {/* Visual 05: CAD DFM Precision Toolpath & Fabrication Geometry */}
-                  {activePillarIndex === 4 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      {/* Isometric Machined Part Wireframe */}
-                      <polygon points="200,90 310,150 310,250 200,310 90,250 90,150" strokeWidth="2" className="fill-white/10" />
-                      <polygon points="200,130 270,170 270,230 200,270 130,230 130,170" strokeWidth="1.5" strokeDasharray="4 4" className="fill-white/15" />
-                      <circle cx="200" cy="200" r="28" strokeWidth="2" className="fill-white/20" />
-                      <circle cx="200" cy="200" r="6" className="fill-white" />
+                    {/* Visual 02: Interlocking Multidisciplinary Circuit & Gear Mesh */}
+                    {activePillarIndex === 1 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        <circle cx="200" cy="200" r="110" strokeWidth="1.5" strokeDasharray="6 6" className="opacity-30 animate-spin origin-center" style={{ animationDuration: "20s" }} />
+                        <circle cx="200" cy="200" r="80" strokeWidth="2" className="opacity-60" />
+                        <circle cx="200" cy="200" r="50" strokeWidth="2.5" className="fill-white/10" />
 
-                      {/* Toolpath Coordinates */}
-                      <line x1="90" y1="150" x2="200" y2="90" strokeWidth="2.5" className="stroke-blue-200" />
-                      <line x1="200" y1="90" x2="310" y2="150" strokeWidth="2.5" className="stroke-blue-200" />
-                      <circle cx="200" cy="90" r="4.5" className="fill-white" />
-                      <circle cx="310" cy="150" r="4.5" className="fill-white" />
-                      <circle cx="90" cy="150" r="4.5" className="fill-white" />
-                    </svg>
-                  )}
+                        {/* Integrated Circuit Traces */}
+                        <path d="M 80 140 L 140 140 L 170 170 L 200 170" strokeWidth="2" className="stroke-blue-200" />
+                        <path d="M 320 260 L 260 260 L 230 230 L 200 230" strokeWidth="2" className="stroke-blue-200" />
+                        <path d="M 140 260 L 170 230" strokeWidth="2" className="stroke-blue-200" />
+                        <path d="M 260 140 L 230 170" strokeWidth="2" className="stroke-blue-200" />
 
-                  {/* Visual 06: Infinite Continuous Lifecycle Orbit Loop */}
-                  {activePillarIndex === 5 && (
-                    <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
-                      {/* Infinity Loop Geometry */}
-                      <path
-                        d="M 140 200 C 100 140 60 200 140 200 C 220 200 260 140 300 200 C 340 260 300 200 260 200 C 180 200 180 260 140 200 Z"
-                        strokeWidth="3"
-                        className="stroke-white"
-                      />
-                      <ellipse cx="140" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
-                      <ellipse cx="260" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
+                        <circle cx="80" cy="140" r="4" className="fill-white" />
+                        <circle cx="320" cy="260" r="4" className="fill-white" />
+                        <circle cx="200" cy="200" r="8" className="fill-white" />
+                      </svg>
+                    )}
 
-                      <circle cx="140" cy="200" r="5" className="fill-white" />
-                      <circle cx="260" cy="200" r="5" className="fill-white" />
-                      <circle cx="200" cy="200" r="7" className="fill-white" />
-                    </svg>
-                  )}
+                    {/* Visual 03: Smart IoT Wireless Mesh & Sensor Matrix */}
+                    {activePillarIndex === 2 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        {/* Central Gateway Node */}
+                        <circle cx="200" cy="200" r="18" strokeWidth="2.5" className="fill-white/20" />
+                        <circle cx="200" cy="200" r="6" className="fill-white" />
+
+                        {/* Radiating Signal Waves */}
+                        <circle cx="200" cy="200" r="60" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-50" />
+                        <circle cx="200" cy="200" r="100" strokeWidth="1" strokeDasharray="6 6" className="opacity-30" />
+                        <circle cx="200" cy="200" r="140" strokeWidth="1" className="opacity-20" />
+
+                        {/* Mesh Nodes */}
+                        {[
+                          { x: 120, y: 130 },
+                          { x: 280, y: 120 },
+                          { x: 300, y: 270 },
+                          { x: 110, y: 280 },
+                          { x: 200, y: 80 },
+                        ].map((pt, i) => (
+                          <g key={i}>
+                            <line x1="200" y1="200" x2={pt.x} y2={pt.y} strokeWidth="1.5" className="stroke-blue-200 opacity-70" />
+                            <circle cx={pt.x} cy={pt.y} r="6" strokeWidth="2" className="fill-white" />
+                          </g>
+                        ))}
+                      </svg>
+                    )}
+
+                    {/* Visual 04: Oscilloscope Waveform & Reliability Stress Grid */}
+                    {activePillarIndex === 3 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        {/* Grid Frame */}
+                        <rect x="70" y="90" width="260" height="220" rx="16" strokeWidth="2" className="fill-white/5 opacity-80" />
+                        <line x1="70" y1="200" x2="330" y2="200" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+                        <line x1="200" y1="90" x2="200" y2="310" strokeWidth="1" strokeDasharray="3 3" className="opacity-40" />
+
+                        {/* Smooth Sine Waveform */}
+                        <path
+                          d="M 80 200 Q 110 120 140 200 T 200 200 T 260 200 T 320 200"
+                          strokeWidth="3"
+                          className="stroke-white"
+                        />
+                        <path
+                          d="M 80 200 Q 110 150 140 200 T 200 200 T 260 200 T 320 200"
+                          strokeWidth="1.5"
+                          strokeDasharray="4 4"
+                          className="stroke-blue-200 opacity-60"
+                        />
+                        <circle cx="140" cy="200" r="4" className="fill-white" />
+                        <circle cx="200" cy="200" r="4" className="fill-white" />
+                        <circle cx="260" cy="200" r="4" className="fill-white" />
+                      </svg>
+                    )}
+
+                    {/* Visual 05: CAD DFM Precision Toolpath & Fabrication Geometry */}
+                    {activePillarIndex === 4 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        {/* Isometric Machined Part Wireframe */}
+                        <polygon points="200,90 310,150 310,250 200,310 90,250 90,150" strokeWidth="2" className="fill-white/10" />
+                        <polygon points="200,130 270,170 270,230 200,270 130,230 130,170" strokeWidth="1.5" strokeDasharray="4 4" className="fill-white/15" />
+                        <circle cx="200" cy="200" r="28" strokeWidth="2" className="fill-white/20" />
+                        <circle cx="200" cy="200" r="6" className="fill-white" />
+
+                        {/* Toolpath Coordinates */}
+                        <line x1="90" y1="150" x2="200" y2="90" strokeWidth="2.5" className="stroke-blue-200" />
+                        <line x1="200" y1="90" x2="310" y2="150" strokeWidth="2.5" className="stroke-blue-200" />
+                        <circle cx="200" cy="90" r="4.5" className="fill-white" />
+                        <circle cx="310" cy="150" r="4.5" className="fill-white" />
+                        <circle cx="90" cy="150" r="4.5" className="fill-white" />
+                      </svg>
+                    )}
+
+                    {/* Visual 06: Infinite Continuous Lifecycle Orbit Loop */}
+                    {activePillarIndex === 5 && (
+                      <svg viewBox="0 0 400 400" className="w-full h-full max-w-[340px] text-white stroke-current fill-none">
+                        {/* Infinity Loop Geometry */}
+                        <path
+                          d="M 140 200 C 100 140 60 200 140 200 C 220 200 260 140 300 200 C 340 260 300 200 260 200 C 180 200 180 260 140 200 Z"
+                          strokeWidth="3"
+                          className="stroke-white"
+                        />
+                        <ellipse cx="140" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
+                        <ellipse cx="260" cy="200" rx="55" ry="35" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-40" />
+
+                        <circle cx="140" cy="200" r="5" className="fill-white" />
+                        <circle cx="260" cy="200" r="5" className="fill-white" />
+                        <circle cx="200" cy="200" r="7" className="fill-white" />
+                      </svg>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ========================================================================= */}
       {/* SECTION 4: PROCESS */}

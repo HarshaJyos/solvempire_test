@@ -19,3 +19,67 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+@keyframes pillarTitleFade {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes pillarDescFade {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pillarBadgeFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pillarGraphicFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pillar-title {
+  animation: pillarTitleFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pillar-desc {
+  animation: pillarDescFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+  opacity: 0;
+}
+
+.animate-pillar-badge {
+  animation: pillarBadgeFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.14s forwards;
+  opacity: 0;
+}
+
+.animate-pillar-graphic {
+  animation: pillarGraphicFade 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
