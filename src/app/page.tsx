@@ -172,6 +172,27 @@ const processSteps = [
   },
 ];
 
+const teamMembers = [
+  {
+    id: "01",
+    name: "JYOSYABHATLA HANISH",
+    role: "Founder & CEO",
+    image: "/hanish.webp",
+  },
+  {
+    id: "02",
+    name: "LOHITH MEDISETTI",
+    role: "Co-Founder & COO",
+    image: "/lohith.webp",
+  },
+  {
+    id: "03",
+    name: "TEJA MANDAPALLI",
+    role: "Co-Founder & Product Lead",
+    image: "/teja.webp",
+  },
+];
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
@@ -189,6 +210,7 @@ export default function Home() {
   const partnerContainerRef = useRef<HTMLDivElement>(null);
   const partnerContentRef = useRef<HTMLDivElement>(null);
   const processSectionRef = useRef<HTMLDivElement>(null);
+  const teamSectionRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const [partnerProgress, setPartnerProgress] = useState<number>(0);
 
@@ -321,6 +343,98 @@ export default function Home() {
           );
       });
     }, processSectionRef);
+
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
+  }, []);
+
+  // GSAP Driven Meet Our Team Section Cinematic Animation
+  useEffect(() => {
+    if (!teamSectionRef.current) return;
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    const ctx = gsap.context(() => {
+      // 1. Heading & Subheading Rack Focus Reveal
+      gsap.fromTo(
+        ".gsap-team-heading",
+        { y: 35, opacity: 0, filter: "blur(10px)", rotateX: 10 },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          rotateX: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".gsap-team-heading",
+            start: "top 88%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".gsap-team-subheading",
+        { y: 20, opacity: 0, filter: "blur(6px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.75,
+          delay: 0.08,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".gsap-team-subheading",
+            start: "top 90%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      // 2. Team Cards 3D Staggered Unfold
+      const cards = gsap.utils.toArray<HTMLElement>(".gsap-team-card");
+      gsap.fromTo(
+        cards,
+        { y: 50, opacity: 0, scale: 0.94, filter: "blur(6px)" },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.85,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: teamSectionRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      // 3. Bottom CTA Button Pop
+      gsap.fromTo(
+        ".gsap-team-cta",
+        { y: 20, opacity: 0, scale: 0.92 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.5)",
+          scrollTrigger: {
+            trigger: ".gsap-team-cta",
+            start: "top 95%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }, teamSectionRef);
 
     return () => {
       clearTimeout(timer);
@@ -557,6 +671,12 @@ export default function Home() {
               >
                 Process
               </Link>
+              <Link
+                href="#team"
+                className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
+              >
+                Team
+              </Link>
             </nav>
 
             {/* Desktop Contact CTA */}
@@ -613,6 +733,13 @@ export default function Home() {
                 className="text-slate-700 hover:text-blue-600 font-medium py-1"
               >
                 Process
+              </Link>
+              <Link
+                href="#team"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-slate-700 hover:text-blue-600 font-medium py-1"
+              >
+                Team
               </Link>
               <Link
                 href="#contact"
@@ -1494,6 +1621,96 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
+      {/* SECTION 5: MEET OUR TEAM */}
+      {/* ========================================================================= */}
+      <section
+        id="team"
+        ref={teamSectionRef}
+        className="w-full bg-white py-24 sm:py-32 border-t border-slate-100 overflow-hidden relative"
+      >
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
+            <h2 className="gsap-team-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+              MEET OUR <span className="text-blue-600">TEAM</span>
+            </h2>
+            <p className="gsap-team-subheading text-slate-500 text-sm sm:text-base md:text-lg mt-3 leading-relaxed">
+              A multidisciplinary team turning complex ideas into real-world solutions.
+            </p>
+          </div>
+
+          {/* Team Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 max-w-5xl mx-auto">
+            {teamMembers.map((member) => (
+              <div
+                key={member.id}
+                className="gsap-team-card group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] transition-all duration-500 hover:-translate-y-2 flex flex-col"
+              >
+                {/* Left Subtle Gradient Ribbon Accent */}
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-400 via-[#6c85c4] to-blue-600 z-10 opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Portrait Photo Container */}
+                <div className="relative w-full aspect-[4/4.7] sm:aspect-[4/4.5] overflow-hidden bg-slate-900">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Bottom Information Bar */}
+                <div className="bg-[#6c85c4] text-white px-5 py-4 sm:px-6 sm:py-4.5 flex items-center gap-3.5 sm:gap-4 relative z-10">
+                  {/* Large Index Number */}
+                  <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold text-white/95 leading-none shrink-0">
+                    {member.id}
+                  </span>
+
+                  {/* Vertical Divider */}
+                  <div className="w-[1.5px] h-8 sm:h-9 bg-white/35 shrink-0" />
+
+                  {/* Name and Role */}
+                  <div className="flex flex-col justify-center min-w-0 flex-1">
+                    <h3 className="font-bold text-sm sm:text-[15px] text-white tracking-wide uppercase leading-tight truncate">
+                      {member.name}
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-white/90 font-medium leading-tight mt-0.5 truncate">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Interactive CTA Button */}
+          <div className="flex justify-center mt-12 sm:mt-14 gsap-team-cta">
+            <Link
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 rounded-full shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-all duration-300 hover:scale-105 group"
+            >
+              <span>View Our Team</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M7 17L17 7M17 7H7M17 7V17"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* FOOTER */}
       {/* ========================================================================= */}
       <footer id="contact" className="py-16 bg-slate-950 text-white">
@@ -1520,6 +1737,9 @@ export default function Home() {
             </Link>
             <Link href="#process" className="text-slate-400 hover:text-white text-sm transition-colors">
               Process
+            </Link>
+            <Link href="#team" className="text-slate-400 hover:text-white text-sm transition-colors">
+              Team
             </Link>
             <Link
               href="mailto:contact@solvempire.com"
