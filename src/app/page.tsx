@@ -1224,7 +1224,7 @@ export default function Home() {
                 </div>
 
                 {/* Middle Column: Pillar Content, Tools Badges & CTA */}
-                <div className="lg:col-span-6 flex flex-col items-start justify-center text-left">
+                <div className="col-span-1 lg:col-span-6 flex flex-col items-start justify-center text-left w-full">
                   {/* Tag Pill with GSAP minimal animation */}
                   <div className="overflow-hidden mb-2 sm:mb-3">
                     <span
@@ -1298,8 +1298,8 @@ export default function Home() {
                   </Link>
                 </div>
 
-                {/* Right Column: Isometric 3D Blueprint Visual Graphic */}
-                <div className="lg:col-span-5 relative w-full aspect-square max-h-[380px] sm:max-h-[420px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/25">
+                {/* Right Column: Isometric 3D Blueprint Visual Graphic (Hidden on mobile, visible on lg+) */}
+                <div className="hidden lg:flex lg:col-span-5 relative w-full aspect-square max-h-[380px] sm:max-h-[420px] rounded-2xl sm:rounded-3xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-6 sm:p-8 items-center justify-center overflow-hidden shadow-2xl shadow-blue-600/25">
                   {/* Blueprint Background Grid Pattern */}
                   <div
                     className="absolute inset-0 opacity-15 pointer-events-none"
