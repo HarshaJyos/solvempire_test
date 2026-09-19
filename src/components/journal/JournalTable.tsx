@@ -32,24 +32,24 @@ export function JournalTable({
   return (
     <div className={cn("my-8 space-y-2.5", wrapperClassName)}>
       {caption && captionSide === "top" && (
-        <div className="flex items-center gap-2 px-1 font-body text-xs sm:text-sm text-slate-400">
-          <TableIcon className="w-3.5 h-3.5 text-brand-light" />
+        <div className="flex items-center gap-2 px-1 font-body text-xs sm:text-sm text-muted">
+          <TableIcon className="w-3.5 h-3.5 text-brand" />
           <span>{caption}</span>
         </div>
       )}
 
       <div
         className={cn(
-          "relative overflow-x-auto rounded-2xl bg-[#0B0F17]/90 backdrop-blur-md shadow-xl",
-          bordered && "border border-white/10 ring-1 ring-white/5",
-          "scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+          "relative overflow-x-auto rounded-2xl bg-surface shadow-xs",
+          bordered && "border border-hairline",
+          "scrollbar-thin scrollbar-thumb-slate-200 scrollbar-track-transparent"
         )}
       >
         <table
           className={cn(
             "w-full text-left border-collapse font-body text-sm sm:text-base",
-            striped && "[&_tbody_tr:nth-child(even)]:bg-white/[0.02]",
-            hoverable && "[&_tbody_tr:hover]:bg-white/[0.04] [&_tbody_tr]:transition-colors",
+            striped && "[&_tbody_tr:nth-child(even)]:bg-surface-subtle/50",
+            hoverable && "[&_tbody_tr:hover]:bg-ice-light/40 [&_tbody_tr]:transition-colors",
             compact && "[&_th]:py-2.5 [&_th]:px-3.5 [&_td]:py-2.5 [&_td]:px-3.5 text-xs sm:text-sm",
             className
           )}
@@ -60,8 +60,8 @@ export function JournalTable({
       </div>
 
       {caption && captionSide === "bottom" && (
-        <div className="flex items-center justify-center gap-2 px-1 font-body text-xs text-slate-400 text-center pt-1">
-          <TableIcon className="w-3 h-3 text-brand-light/70" />
+        <div className="flex items-center justify-center gap-2 px-1 font-body text-xs text-muted text-center pt-1">
+          <TableIcon className="w-3 h-3 text-brand/70" />
           <span>{caption}</span>
         </div>
       )}
@@ -78,7 +78,7 @@ export function JournalTableHead({ children, className, ...props }: JournalTable
   return (
     <thead
       className={cn(
-        "bg-[#161F2E] border-b border-white/10 text-xs font-heading font-bold uppercase tracking-wider text-slate-400",
+        "bg-surface-subtle border-b border-hairline text-xs font-display font-semibold uppercase tracking-wider text-muted",
         className
       )}
       {...props}
@@ -95,7 +95,7 @@ export interface JournalTableBodyProps extends React.HTMLAttributes<HTMLTableSec
 
 export function JournalTableBody({ children, className, ...props }: JournalTableBodyProps) {
   return (
-    <tbody className={cn("divide-y divide-white/[0.06] text-slate-300", className)} {...props}>
+    <tbody className={cn("divide-y divide-hairline text-body", className)} {...props}>
       {children}
     </tbody>
   );
@@ -110,7 +110,7 @@ export function JournalTableFooter({ children, className, ...props }: JournalTab
   return (
     <tfoot
       className={cn(
-        "bg-[#161F2E]/80 border-t-2 border-white/10 font-medium text-xs sm:text-sm text-[#F8FAFC]",
+        "bg-surface-subtle border-t-2 border-hairline font-medium text-xs sm:text-sm text-heading",
         className
       )}
       {...props}
@@ -137,19 +137,19 @@ export function JournalTableRow({
 }: JournalTableRowProps) {
   const variantStyles = {
     default: "",
-    highlight: "bg-brand/10 hover:bg-brand/15 text-[#F8FAFC]",
-    mint: "bg-brand/10 text-brand-light",
-    warning: "bg-amber-500/10 hover:bg-amber-500/15 text-amber-400",
-    danger: "bg-red-500/10 hover:bg-red-500/15 text-red-300",
+    highlight: "bg-ice-light/80 hover:bg-ice-light text-heading",
+    mint: "bg-ice-light text-brand font-medium",
+    warning: "bg-amber-50/80 hover:bg-amber-100/60 text-amber-900",
+    danger: "bg-red-50/80 hover:bg-red-100/60 text-red-900",
     muted: "opacity-60 bg-transparent",
   };
 
   return (
     <tr
       className={cn(
-        "border-b border-white/[0.04] last:border-none",
+        "border-b border-hairline last:border-none",
         variantStyles[variant],
-        selected && "bg-brand/15",
+        selected && "bg-ice-light",
         className
       )}
       {...props}
@@ -181,7 +181,7 @@ export function JournalTableHeaderCell({
   return (
     <th
       className={cn(
-        "px-4 sm:px-6 py-3.5 sm:py-4 font-heading font-semibold text-xs sm:text-sm text-[#F8FAFC] tracking-wider",
+        "px-4 sm:px-6 py-3.5 sm:py-4 font-display font-semibold text-xs sm:text-sm text-heading tracking-wider",
         alignStyles[align],
         className
       )}
@@ -214,11 +214,11 @@ export function JournalTableCell({
   };
 
   const variantStyles = {
-    default: "text-slate-300",
-    mint: "text-brand-light font-semibold",
-    bold: "font-semibold text-[#F8FAFC]",
-    mono: "font-mono text-xs sm:text-sm text-brand-light",
-    muted: "text-xs text-slate-400",
+    default: "text-body",
+    mint: "text-brand font-semibold",
+    bold: "font-semibold text-heading",
+    mono: "font-mono text-xs sm:text-sm text-brand",
+    muted: "text-xs text-muted",
     badge: "font-medium",
   };
 
@@ -249,7 +249,7 @@ export function JournalTableCaption({
 }: JournalTableCaptionProps) {
   return (
     <caption
-      className={cn("p-3 text-xs sm:text-sm text-[#94A3B8] text-center font-body", className)}
+      className={cn("p-3 text-xs sm:text-sm text-muted text-center font-body", className)}
       {...props}
     >
       {children}

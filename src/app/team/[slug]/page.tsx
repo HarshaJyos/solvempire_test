@@ -88,7 +88,7 @@ export default async function TeamMemberPage({
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#0B0F17] text-[#F8FAFC] relative selection:bg-brand/20 selection:text-brand-light">
+    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading relative selection:bg-brand/15 selection:text-brand">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
@@ -100,7 +100,7 @@ export default async function TeamMemberPage({
         <div className="flex items-center justify-between gap-4 mb-8">
           <Link
             href="/journal"
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-light transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors group font-medium"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Journal</span>
@@ -108,21 +108,21 @@ export default async function TeamMemberPage({
 
           <Link
             href="/team"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#161F2E] border border-white/10 text-xs font-medium text-slate-400 hover:text-white hover:border-brand/40 transition-all"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-hairline text-xs font-medium text-muted hover:text-heading hover:border-brand/40 transition-all shadow-xs"
           >
-            <User className="w-3.5 h-3.5" />
+            <User className="w-3.5 h-3.5 text-brand" />
             <span>SolveMpire Team</span>
           </Link>
         </div>
 
         {/* Profile Card */}
-        <section className="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-[#161F2E] via-[#111827] to-[#0B0F17] border border-white/10 shadow-2xl relative overflow-hidden mb-10">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
+        <section className="p-6 sm:p-10 rounded-3xl bg-surface border border-hairline shadow-sm relative overflow-hidden mb-10">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 relative z-10">
-            {/* High-res Avatar with Glow */}
+            {/* High-res Avatar */}
             <div className="relative shrink-0">
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-brand/40 shadow-[0_0_25px_rgba(37,99,235,0.2)] bg-[#161F2E] relative">
+              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-brand/20 shadow-xs bg-ice-light relative">
                 <Image
                   src={member.avatar}
                   alt={member.name}
@@ -135,22 +135,22 @@ export default async function TeamMemberPage({
 
             {/* Header Details */}
             <div className="space-y-3.5 text-center sm:text-left flex-1 min-w-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/15 text-brand-light text-xs font-semibold border border-brand/30 whitespace-nowrap">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20 whitespace-nowrap">
                 <Sparkles className="w-3.5 h-3.5 shrink-0" />
                 <span>{member.role}</span>
               </div>
 
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#F8FAFC] tracking-tight">
+              <h1 className="font-display font-bold text-3xl sm:text-4xl text-heading tracking-tight">
                 {member.name}
               </h1>
 
-              <p className="font-body text-base sm:text-lg text-slate-300 leading-relaxed">
+              <p className="font-body text-base sm:text-lg text-body leading-relaxed">
                 {member.shortBio}
               </p>
 
               {member.location && (
-                <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-slate-400">
-                  <MapPin className="w-3.5 h-3.5 text-brand-light shrink-0" />
+                <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-muted">
+                  <MapPin className="w-3.5 h-3.5 text-brand shrink-0" />
                   <span>{member.location}</span>
                 </div>
               )}
@@ -171,13 +171,13 @@ export default async function TeamMemberPage({
         {/* Story / About Section */}
         <section className="space-y-6 mb-12">
           <div className="space-y-2">
-            <h2 className="font-heading font-bold text-2xl text-[#F8FAFC] tracking-tight">
+            <h2 className="font-display font-bold text-2xl text-heading tracking-tight">
               About &amp; Perspective
             </h2>
             <div className="h-0.5 w-12 bg-brand rounded-full" />
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#161F2E]/60 border border-white/10 space-y-4 font-body text-slate-300 text-base leading-[1.75]">
+          <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-hairline space-y-4 font-body text-body text-base leading-[1.75] shadow-xs">
             {member.story.map((paragraph, idx) => (
               <p key={idx}>{paragraph}</p>
             ))}
@@ -186,19 +186,19 @@ export default async function TeamMemberPage({
           {/* Focus Areas as an Ordered List */}
           {member.focusAreas && member.focusAreas.length > 0 && (
             <div className="space-y-3 pt-4">
-              <h3 className="font-heading font-semibold text-sm text-slate-400 uppercase tracking-wider">
+              <h3 className="font-display font-semibold text-xs text-muted uppercase tracking-wider">
                 Focus Areas at SolveMpire
               </h3>
               <ol className="space-y-2.5 font-body list-none p-0 m-0">
                 {member.focusAreas.map((area, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-[#161F2E]/60 border border-white/[0.08] hover:border-brand/30 transition-colors"
+                    className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface border border-hairline hover:border-brand/30 transition-colors shadow-xs"
                   >
-                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-brand/15 text-brand-light font-mono font-bold text-xs shrink-0 border border-brand/30">
+                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-ice-light text-brand font-mono font-bold text-xs shrink-0 border border-brand/20">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-sm sm:text-base text-slate-200 font-medium">
+                    <span className="text-sm sm:text-base text-heading font-medium">
                       {area}
                     </span>
                   </li>
@@ -212,15 +212,15 @@ export default async function TeamMemberPage({
         <AuthorArticlesList posts={authorPosts} authorName={member.name} />
 
         {/* Scoping CTA Card */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#161F2E] to-[#0F172A] border border-brand/30 text-center space-y-6 shadow-2xl">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand/15 text-brand mx-auto">
+        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-surface border border-hairline text-center space-y-6 shadow-sm">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ice-light text-brand mx-auto border border-brand/20">
             <Sparkles className="w-6 h-6" />
           </div>
           <div className="space-y-2">
-            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-white">
+            <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading">
               Build Your Product with SolveMpire
             </h3>
-            <p className="font-body text-sm sm:text-base text-slate-300 max-w-md mx-auto leading-relaxed">
+            <p className="font-body text-sm sm:text-base text-body max-w-md mx-auto leading-relaxed">
               Connect with our team to bring your hardware, embedded firmware, or connected platform from idea to market.
             </p>
           </div>

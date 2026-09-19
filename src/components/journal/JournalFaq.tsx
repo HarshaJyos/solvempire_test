@@ -35,15 +35,15 @@ export function JournalFaq({
   return (
     <section className={cn("my-12 space-y-5 scroll-mt-24", className)} id="faq">
       <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-brand/10 border border-brand/20 text-xs font-semibold text-brand-light">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-ice-light border border-brand/20 text-xs font-semibold text-brand">
           <HelpCircle className="w-3.5 h-3.5" />
           <span>FAQ Breakdown</span>
         </div>
-        <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#F8FAFC] tracking-tight">
+        <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading tracking-tight">
           {title}
         </h3>
         {description && (
-          <p className="font-body text-sm text-slate-400">{description}</p>
+          <p className="font-body text-sm text-muted">{description}</p>
         )}
       </div>
 
@@ -54,10 +54,10 @@ export function JournalFaq({
             <div
               key={index}
               className={cn(
-                "rounded-2xl border transition-all duration-200 overflow-hidden",
+                "rounded-2xl border transition-all duration-200 overflow-hidden shadow-xs",
                 isOpen
-                  ? "bg-[#161F2E]/90 border-brand/40 shadow-lg shadow-brand/5"
-                  : "bg-[#161F2E]/40 border-white/10 hover:border-white/20"
+                  ? "bg-surface border-brand/40 shadow-sm"
+                  : "bg-surface border-hairline hover:border-brand/20"
               )}
             >
               <button
@@ -66,15 +66,15 @@ export function JournalFaq({
                 className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                 aria-expanded={isOpen}
               >
-                <span className="font-heading font-semibold text-base sm:text-lg text-[#F8FAFC]">
+                <span className="font-display font-semibold text-base sm:text-lg text-heading">
                   {item.question}
                 </span>
                 <div
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200",
                     isOpen
-                      ? "bg-brand/20 text-brand-light rotate-180"
-                      : "bg-white/5 text-slate-400"
+                      ? "bg-ice-light text-brand rotate-180"
+                      : "bg-surface-subtle text-muted"
                   )}
                 >
                   <ChevronDown className="w-4 h-4" />
@@ -82,7 +82,7 @@ export function JournalFaq({
               </button>
 
               {isOpen && (
-                <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 font-body text-sm sm:text-base text-slate-300 leading-relaxed animate-fade-in-scale border-t border-white/[0.04]">
+                <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 font-body text-sm sm:text-base text-body leading-relaxed animate-fade-in-scale border-t border-hairline">
                   {item.answer}
                 </div>
               )}

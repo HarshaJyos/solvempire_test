@@ -32,9 +32,9 @@ export function JournalParagraph({
   return (
     <p
       className={cn(
-        "text-slate-300 transition-colors",
+        "text-body transition-colors",
         lead
-          ? "text-lg sm:text-xl font-normal leading-[1.7] text-slate-100 mb-6"
+          ? "text-lg sm:text-xl font-normal leading-[1.7] text-heading mb-6"
           : "text-base sm:text-[1.0625rem] leading-[1.75] mb-5",
         className
       )}
@@ -73,18 +73,18 @@ export function JournalSpan({
 }: JournalSpanProps) {
   const variantStyles: Record<string, string> = {
     default: "",
-    bold: "font-semibold text-white",
-    italic: "italic text-slate-200",
+    bold: "font-semibold text-heading",
+    italic: "italic text-body",
     highlight:
-      "bg-brand/15 text-brand-light px-1.5 py-0.5 rounded border border-brand/30 font-medium",
-    mint: "text-brand-light font-semibold",
+      "bg-ice-light text-brand px-1.5 py-0.5 rounded border border-brand/20 font-medium",
+    mint: "text-brand font-semibold",
     gradient:
-      "text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-brand-light font-bold",
-    code: "font-mono text-[0.875em] bg-slate-900 text-brand-light px-1.5 py-0.5 rounded border border-slate-800",
+      "text-transparent bg-clip-text bg-gradient-to-r from-heading via-slate-700 to-brand font-bold",
+    code: "font-mono text-[0.875em] bg-surface-subtle text-brand px-1.5 py-0.5 rounded border border-hairline",
     badge:
-      "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-slate-800 border border-slate-700 text-slate-300",
-    kbd: "font-mono text-xs px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-white shadow-sm",
-    muted: "text-slate-400",
+      "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-subtle border border-hairline text-muted",
+    kbd: "font-mono text-xs px-1.5 py-0.5 rounded bg-surface-subtle border border-hairline text-heading shadow-xs",
+    muted: "text-muted",
   };
 
   return (
@@ -124,10 +124,10 @@ export function JournalHeading({
   const anchorId = id || slugify(children);
 
   const baseStyles = {
-    h1: "font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.15] mb-6 mt-10",
-    h2: "font-display font-bold text-2xl sm:text-3xl text-white tracking-tight leading-[1.25] mb-4 mt-10 pt-4 border-t border-slate-800",
-    h3: "font-display font-bold text-xl sm:text-2xl text-white tracking-tight leading-[1.3] mb-3 mt-7",
-    h4: "font-display font-semibold text-lg sm:text-xl text-white mb-2 mt-5",
+    h1: "font-display font-bold text-3xl sm:text-4xl md:text-5xl text-heading tracking-tight leading-[1.15] mb-6 mt-10",
+    h2: "font-display font-bold text-2xl sm:text-3xl text-heading tracking-tight leading-[1.25] mb-4 mt-10 pt-4 border-t border-hairline",
+    h3: "font-display font-bold text-xl sm:text-2xl text-heading tracking-tight leading-[1.3] mb-3 mt-7",
+    h4: "font-display font-semibold text-lg sm:text-xl text-heading mb-2 mt-5",
   };
 
   return (
@@ -139,7 +139,7 @@ export function JournalHeading({
       {anchorId && (
         <a
           href={`#${anchorId}`}
-          className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-brand-light p-1"
+          className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-muted hover:text-brand p-1"
           aria-label={`Link to ${anchorId}`}
         >
           <Hash className="w-4 h-4" />
@@ -173,8 +173,8 @@ export function JournalUL({
   return (
     <ul
       className={cn(
-        "space-y-2.5 text-slate-300 text-base leading-[1.7]",
-        nested ? "mt-2.5 ml-6 pl-2 border-l border-slate-800 space-y-2" : "my-5 pl-1",
+        "space-y-2.5 text-body text-base leading-[1.7]",
+        nested ? "mt-2.5 ml-6 pl-2 border-l border-hairline space-y-2" : "my-5 pl-1",
         className
       )}
       {...props}
@@ -200,8 +200,8 @@ export function JournalOL({
   return (
     <ol
       className={cn(
-        "list-decimal list-outside space-y-2.5 text-slate-300 text-base leading-[1.7]",
-        nested ? "mt-2.5 ml-6 pl-2 border-l border-slate-800 space-y-2" : "my-5 pl-6",
+        "list-decimal list-outside space-y-2.5 text-body text-base leading-[1.7]",
+        nested ? "mt-2.5 ml-6 pl-2 border-l border-hairline space-y-2" : "my-5 pl-6",
         className
       )}
       {...props}
@@ -258,7 +258,7 @@ export function JournalLink({
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "inline-flex items-center gap-1 text-brand-light hover:text-white font-medium underline underline-offset-4 decoration-brand/40 hover:decoration-brand transition-all",
+          "inline-flex items-center gap-1 text-brand hover:underline font-medium underline-offset-4 decoration-brand/30 hover:decoration-brand transition-all",
           className
         )}
         {...props}
@@ -273,7 +273,7 @@ export function JournalLink({
     <Link
       href={href}
       className={cn(
-        "text-brand-light hover:text-white font-medium underline underline-offset-4 decoration-brand/40 hover:decoration-brand transition-all",
+        "text-brand hover:underline font-medium underline-offset-4 decoration-brand/30 hover:decoration-brand transition-all",
         className
       )}
       {...props}
@@ -309,7 +309,7 @@ export function JournalImage({
     <figure className={cn("my-8 space-y-2.5", className)}>
       <div
         onClick={() => setIsZoomed(!isZoomed)}
-        className="relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 hover:border-brand/40 transition-all cursor-pointer group shadow-xl"
+        className="relative overflow-hidden rounded-2xl bg-surface border border-hairline hover:border-brand/40 transition-all cursor-pointer group shadow-sm"
         style={{ aspectRatio: aspectRatio === "auto" ? undefined : aspectRatio }}
       >
         <Image
@@ -322,13 +322,13 @@ export function JournalImage({
           className="object-cover w-full h-full group-hover:scale-[1.01] transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-          <span className="text-xs text-white font-medium bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-700">
+          <span className="text-xs text-white font-medium bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20">
             Click to view full image
           </span>
         </div>
       </div>
       {caption && (
-        <figcaption className="text-center text-xs sm:text-sm text-slate-400">
+        <figcaption className="text-center text-xs sm:text-sm text-muted">
           {caption}
         </figcaption>
       )}
@@ -371,33 +371,33 @@ export function JournalCallout({
 }: JournalCalloutProps) {
   const configs = {
     insight: {
-      icon: <Sparkles className="w-5 h-5 text-brand-light" />,
-      bg: "bg-slate-900/90 border-brand/40",
-      accent: "text-brand-light",
+      icon: <Sparkles className="w-5 h-5 text-brand" />,
+      bg: "bg-ice-light/60 border-brand/25 text-body shadow-xs",
+      accent: "text-brand",
       defaultTitle: "Engineering Insight",
     },
     science: {
-      icon: <Lightbulb className="w-5 h-5 text-blue-400" />,
-      bg: "bg-blue-950/30 border-blue-500/40",
-      accent: "text-blue-400",
+      icon: <Lightbulb className="w-5 h-5 text-blue-600" />,
+      bg: "bg-blue-50/70 border-blue-200 text-slate-700 shadow-xs",
+      accent: "text-blue-700",
       defaultTitle: "Technical Architecture Note",
     },
     takeaway: {
-      icon: <CheckCircle2 className="w-5 h-5 text-brand-light" />,
-      bg: "bg-slate-900/90 border-brand/40",
-      accent: "text-brand-light",
+      icon: <CheckCircle2 className="w-5 h-5 text-brand" />,
+      bg: "bg-surface border-hairline text-body shadow-xs",
+      accent: "text-brand",
       defaultTitle: "Key Takeaway",
     },
     warning: {
-      icon: <AlertCircle className="w-5 h-5 text-amber-400" />,
-      bg: "bg-amber-950/20 border-amber-500/40",
-      accent: "text-amber-400",
+      icon: <AlertCircle className="w-5 h-5 text-amber-600" />,
+      bg: "bg-amber-50/80 border-amber-200 text-amber-900 shadow-xs",
+      accent: "text-amber-800",
       defaultTitle: "Design Constraint / Warning",
     },
     tip: {
-      icon: <Info className="w-5 h-5 text-cyan-400" />,
-      bg: "bg-cyan-950/20 border-cyan-500/40",
-      accent: "text-cyan-400",
+      icon: <Info className="w-5 h-5 text-cyan-600" />,
+      bg: "bg-cyan-50/80 border-cyan-200 text-cyan-950 shadow-xs",
+      accent: "text-cyan-800",
       defaultTitle: "Practical Tip",
     },
   };
@@ -407,7 +407,7 @@ export function JournalCallout({
   return (
     <div
       className={cn(
-        "my-7 p-5 sm:p-6 rounded-2xl border backdrop-blur-sm space-y-2.5",
+        "my-7 p-5 sm:p-6 rounded-2xl border space-y-2.5",
         config.bg,
         className
       )}
@@ -418,7 +418,7 @@ export function JournalCallout({
           {title || config.defaultTitle}
         </h4>
       </div>
-      <div className="text-slate-300 text-sm sm:text-base leading-[1.7] pl-7">
+      <div className="text-body text-sm sm:text-base leading-[1.7] pl-7">
         {children}
       </div>
     </div>
@@ -444,14 +444,14 @@ export function JournalQuote({
   return (
     <blockquote
       className={cn(
-        "my-8 pl-6 border-l-2 border-brand italic text-lg sm:text-xl text-white leading-[1.6] bg-gradient-to-r from-slate-900/80 to-transparent py-3 pr-4 rounded-r-xl",
+        "my-8 pl-6 border-l-4 border-brand italic text-lg sm:text-xl text-heading leading-[1.6] bg-surface border-y border-r border-hairline py-4 pr-6 rounded-r-2xl shadow-xs",
         className
       )}
     >
       <p className="mb-2">“{children}”</p>
       {(author || source) && (
-        <footer className="text-xs sm:text-sm font-normal not-italic text-slate-400">
-          {author && <strong className="text-white font-medium">{author}</strong>}
+        <footer className="text-xs sm:text-sm font-normal not-italic text-muted">
+          {author && <strong className="text-heading font-medium">{author}</strong>}
           {author && source && " — "}
           {source && <span>{source}</span>}
         </footer>
@@ -485,7 +485,7 @@ export function JournalCode({
   };
 
   return (
-    <div className={cn("my-6 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 shadow-xl", className)}>
+    <div className={cn("my-6 rounded-2xl overflow-hidden border border-slate-800 bg-ink text-slate-100 shadow-md", className)}>
       <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800 text-xs text-slate-400">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -505,7 +505,7 @@ export function JournalCode({
           </button>
         </div>
       </div>
-      <pre className="p-4 sm:p-5 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed text-brand-light">
+      <pre className="p-4 sm:p-5 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed text-slate-200">
         <code>{code}</code>
       </pre>
     </div>
@@ -527,17 +527,17 @@ export function JournalTakeaways({
   className,
 }: JournalTakeawaysProps) {
   return (
-    <div className={cn("my-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-brand/40 shadow-xl", className)}>
+    <div className={cn("my-8 p-6 sm:p-8 rounded-2xl bg-ice-light/60 border border-brand/20 shadow-xs", className)}>
       <div className="flex items-center gap-2.5 mb-4">
-        <Sparkles className="w-5 h-5 text-brand-light" />
-        <h3 className="font-display font-bold text-lg sm:text-xl text-white">
+        <Sparkles className="w-5 h-5 text-brand" />
+        <h3 className="font-display font-bold text-lg sm:text-xl text-heading">
           {title}
         </h3>
       </div>
-      <ul className="space-y-3 text-sm sm:text-base text-slate-300">
+      <ul className="space-y-3 text-sm sm:text-base text-body">
         {points.map((point, idx) => (
           <li key={idx} className="flex items-start gap-3">
-            <CheckCircle2 className="w-4 h-4 text-brand-light mt-1 shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-brand mt-1 shrink-0" />
             <span>{point}</span>
           </li>
         ))}
@@ -552,9 +552,9 @@ export function JournalTakeaways({
 export function JournalDivider({ className }: { className?: string }) {
   return (
     <div className={cn("my-12 flex items-center justify-center gap-3", className)}>
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent flex-1" />
+      <div className="h-px bg-gradient-to-r from-transparent via-hairline to-transparent flex-1" />
       <div className="w-1.5 h-1.5 rounded-full bg-brand" />
-      <div className="h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent flex-1" />
+      <div className="h-px bg-gradient-to-r from-transparent via-hairline to-transparent flex-1" />
     </div>
   );
 }

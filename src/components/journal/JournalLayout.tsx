@@ -92,7 +92,7 @@ export function JournalLayout({
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-slate-950 text-slate-100 relative selection:bg-brand/25 selection:text-brand-light">
+    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading relative selection:bg-brand/15 selection:text-brand">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -100,7 +100,7 @@ export function JournalLayout({
       {/* Scroll Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50">
         <div
-          className="h-full bg-gradient-to-r from-brand to-brand-light transition-all duration-75 shadow-[0_0_8px_#2563eb]"
+          className="h-full bg-gradient-to-r from-brand to-brand-light transition-all duration-75 shadow-xs"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -112,7 +112,7 @@ export function JournalLayout({
         <div className="flex items-center justify-between gap-4 mb-8">
           <Link
             href="/journal"
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-light transition-colors group"
+            className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors group font-medium"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>All Journals</span>
@@ -120,13 +120,13 @@ export function JournalLayout({
 
           <button
             onClick={handleCopyLink}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-400 hover:text-white hover:border-slate-700 transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-hairline text-xs font-medium text-muted hover:text-heading hover:border-brand/40 transition-all cursor-pointer shadow-xs"
             aria-label="Share article"
           >
             {copiedLink ? (
               <>
-                <Check className="w-3.5 h-3.5 text-brand-light" />
-                <span className="text-brand-light">Link Copied!</span>
+                <Check className="w-3.5 h-3.5 text-brand" />
+                <span className="text-brand font-semibold">Link Copied!</span>
               </>
             ) : (
               <>
@@ -138,27 +138,27 @@ export function JournalLayout({
         </div>
 
         {/* Article Header */}
-        <header className="space-y-4 pb-6 border-b border-slate-800 mb-10">
+        <header className="space-y-4 pb-6 border-b border-hairline mb-10">
           {/* Category & Type Pills */}
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="px-3 py-1 rounded-full bg-brand/10 text-brand-light text-xs font-semibold border border-brand/20">
+            <span className="px-3 py-1 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20">
               {post.category}
             </span>
-            <span className="px-3 py-1 rounded-full bg-slate-900 text-slate-400 text-xs font-medium border border-slate-800">
+            <span className="px-3 py-1 rounded-full bg-surface-subtle text-muted text-xs font-medium border border-hairline">
               {post.type}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-[1.14]">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-heading tracking-tight leading-[1.14]">
             {post.title}
           </h1>
         </header>
 
         {/* Table of Contents if headings provided */}
         {headings.length > 0 && (
-          <nav className="mb-10 p-5 sm:p-6 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-sm">
-            <div className="flex items-center gap-2 mb-3 text-xs font-semibold text-brand-light uppercase tracking-wider">
+          <nav className="mb-10 p-5 sm:p-6 rounded-2xl bg-surface border border-hairline shadow-xs">
+            <div className="flex items-center gap-2 mb-3 text-xs font-semibold text-brand uppercase tracking-wider">
               <ListOrdered className="w-4 h-4" />
               <span>In This Journal Entry</span>
             </div>
@@ -167,7 +167,7 @@ export function JournalLayout({
                 <li key={i} className={h.level === 3 ? "pl-4 text-xs" : ""}>
                   <a
                     href={`#${h.id}`}
-                    className="text-slate-400 hover:text-brand-light transition-colors underline-offset-4 hover:underline"
+                    className="text-body hover:text-brand transition-colors underline-offset-4 hover:underline"
                   >
                     {h.text}
                   </a>
@@ -178,18 +178,18 @@ export function JournalLayout({
         )}
 
         {/* Article Body Content */}
-        <article className="prose-dark max-w-none">
+        <article className="max-w-none">
           {children}
         </article>
 
         {/* Tags Row */}
         {post.tags && post.tags.length > 0 && (
-          <div className="mt-12 pt-6 border-t border-slate-800 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-400 mr-2">Tags:</span>
+          <div className="mt-12 pt-6 border-t border-hairline flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold text-muted mr-2">Tags:</span>
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400"
+                className="px-2.5 py-1 rounded-lg bg-surface border border-hairline text-xs text-body font-medium shadow-xs"
               >
                 #{tag}
               </span>
@@ -198,10 +198,10 @@ export function JournalLayout({
         )}
 
         {/* Author Bio & Post Meta Box */}
-        <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800 shadow-xl space-y-4">
+        <div className="mt-10 p-6 sm:p-8 rounded-3xl bg-surface border border-hairline shadow-sm space-y-4">
           {/* Top Row: Avatar + Name & Role Badge */}
           <div className="flex items-center gap-3.5 sm:gap-4">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-brand/40 shrink-0 bg-slate-800 shadow-md">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 border-brand/30 shrink-0 bg-ice-light shadow-xs">
               {post.author.avatar ? (
                 <Image
                   src={post.author.avatar}
@@ -210,36 +210,36 @@ export function JournalLayout({
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-brand-light text-lg font-bold uppercase">
+                <div className="w-full h-full flex items-center justify-center text-brand text-lg font-bold uppercase">
                   {post.author.name.charAt(0)}
                 </div>
               )}
             </div>
 
             <div className="space-y-1 min-w-0">
-              <h4 className="font-display font-bold text-lg sm:text-xl text-white">
+              <h4 className="font-display font-bold text-lg sm:text-xl text-heading">
                 {post.author.name}
               </h4>
-              <span className="inline-block px-2.5 py-0.5 rounded-full bg-brand/15 text-brand-light text-[11px] font-semibold whitespace-nowrap">
+              <span className="inline-block px-2.5 py-0.5 rounded-full bg-ice-light text-brand text-[11px] font-semibold border border-brand/20 whitespace-nowrap">
                 {post.author.role}
               </span>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed w-full">
+          <p className="text-xs sm:text-sm text-body leading-relaxed w-full">
             {post.author.bio || `${post.author.role} at SolveMpire.`}
           </p>
 
           {/* Publishing Date, Read Time */}
-          <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-slate-400">
+          <div className="pt-4 border-t border-hairline flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs text-muted">
             <div className="flex items-center gap-3 sm:gap-4">
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                 <Calendar className="w-3.5 h-3.5 opacity-70" />
                 <span>{post.publishedAt}</span>
               </span>
               <span className="opacity-40">•</span>
-              <span className="inline-flex items-center gap-1.5 text-brand-light font-medium whitespace-nowrap">
+              <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
                 <Clock className="w-3.5 h-3.5" />
                 <span>{post.readTime}</span>
               </span>
@@ -252,10 +252,10 @@ export function JournalLayout({
           {prevPost ? (
             <Link
               href={`/journal/${prevPost.slug}`}
-              className="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand/40 transition-all text-left group"
+              className="p-5 rounded-xl bg-surface border border-hairline hover:border-brand/40 hover:shadow-md transition-all text-left group shadow-xs"
             >
-              <span className="text-xs text-slate-400 block mb-1">← Previous Entry</span>
-              <span className="font-display font-semibold text-sm text-white group-hover:text-brand-light line-clamp-1">
+              <span className="text-xs text-muted block mb-1">← Previous Entry</span>
+              <span className="font-display font-semibold text-sm text-heading group-hover:text-brand line-clamp-1">
                 {prevPost.title}
               </span>
             </Link>
@@ -264,10 +264,10 @@ export function JournalLayout({
           {nextPost && (
             <Link
               href={`/journal/${nextPost.slug}`}
-              className="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-brand/40 transition-all text-right group ml-auto w-full"
+              className="p-5 rounded-xl bg-surface border border-hairline hover:border-brand/40 hover:shadow-md transition-all text-right group ml-auto w-full shadow-xs"
             >
-              <span className="text-xs text-slate-400 block mb-1">Next Entry →</span>
-              <span className="font-display font-semibold text-sm text-white group-hover:text-brand-light line-clamp-1">
+              <span className="text-xs text-muted block mb-1">Next Entry →</span>
+              <span className="font-display font-semibold text-sm text-heading group-hover:text-brand line-clamp-1">
                 {nextPost.title}
               </span>
             </Link>
@@ -276,15 +276,15 @@ export function JournalLayout({
 
 
         {/* Bottom Engineering CTA Card */}
-        <div id="contact-cta" className="mt-16 scroll-mt-24 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#161F2E] to-[#0F172A] border border-brand/30 text-center space-y-6 shadow-2xl">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand/15 text-brand mx-auto">
+        <div id="contact-cta" className="mt-16 scroll-mt-24 p-8 sm:p-10 rounded-3xl bg-surface border border-hairline text-center space-y-6 shadow-sm">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ice-light text-brand mx-auto border border-brand/20">
             <Sparkles className="w-6 h-6" />
           </div>
           <div className="space-y-2">
-            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-white">
+            <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading">
               Turn Your Engineering Concept Into Reality
             </h3>
-            <p className="font-body text-sm sm:text-base text-slate-300 max-w-md mx-auto leading-relaxed">
+            <p className="text-body text-sm sm:text-base max-w-md mx-auto leading-relaxed">
               Scope your mechanical design, custom PCB, firmware, or connected platform with SolveMpire&apos;s engineering architects.
             </p>
           </div>

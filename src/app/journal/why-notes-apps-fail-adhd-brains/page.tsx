@@ -220,21 +220,21 @@ export default function WhyNotesAppsFailPage() {
         </P>
 
         {/* Call to action card */}
-        <div className="my-8 p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#161F2E] via-[#111827] to-[#0B0F17] border border-brand/40 shadow-xl space-y-4">
-          <div className="flex items-center gap-2 text-xs font-semibold text-brand-light uppercase tracking-wider">
+        <div className="my-8 p-6 sm:p-7 rounded-2xl bg-surface border border-hairline shadow-sm space-y-4">
+          <div className="flex items-center gap-2 text-xs font-semibold text-brand uppercase tracking-wider">
             <Video className="w-4 h-4" />
             <span>Behind The Scenes Engineering</span>
           </div>
-          <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#F8FAFC]">
+          <h3 className="font-display font-bold text-xl sm:text-2xl text-heading">
             Engineering connected devices &amp; modern software
           </h3>
-          <p className="font-body text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="font-body text-sm sm:text-base text-body leading-relaxed">
             Have a physical product, firmware, or hardware idea? Let&apos;s build and manufacture it together.
           </p>
           <div className="pt-2">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold text-sm sm:text-base transition-all shadow-lg hover:shadow-brand/25 hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold text-sm sm:text-base transition-all shadow-md hover:shadow-brand/25 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Schedule an engineering scoping session</span>
               <ArrowRight className="w-4 h-4" />

@@ -7,7 +7,7 @@ function XColorIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={cn("w-6 h-6 sm:w-7 sm:h-7", className)} aria-hidden="true">
       <path
-        fill="#F8FAFC"
+        fill="#0F172A"
         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
       />
     </svg>
@@ -78,7 +78,7 @@ function YoutubeColorIcon({ className }: { className?: string }) {
 // Original Full-Color GitHub Icon
 function GithubColorIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={cn("w-6 h-6 sm:w-7 sm:h-7 fill-[#F8FAFC]", className)} aria-hidden="true">
+    <svg viewBox="0 0 24 24" className={cn("w-6 h-6 sm:w-7 sm:h-7 fill-[#0F172A]", className)} aria-hidden="true">
       <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
     </svg>
   );
@@ -87,7 +87,7 @@ function GithubColorIcon({ className }: { className?: string }) {
 // Original Full-Color Threads Icon
 function ThreadsColorIcon({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={cn("w-6 h-6 sm:w-7 sm:h-7 fill-[#F8FAFC]", className)} aria-hidden="true">
+    <svg viewBox="0 0 24 24" className={cn("w-6 h-6 sm:w-7 sm:h-7 fill-[#0F172A]", className)} aria-hidden="true">
       <path d="M12.186 24C5.467 24 0 18.533 0 11.814 0 5.094 5.467 0 12.186 0c6.608 0 11.97 5.253 12.18 11.814v.667c0 4.133-2.906 7.234-7.234 7.234-2.484 0-4.66-1.11-5.787-3.048-.063.14-.143.276-.232.404-.764 1.106-2.023 1.776-3.374 1.776-2.316 0-4.198-1.882-4.198-4.198 0-2.315 1.882-4.197 4.198-4.197 1.351 0 2.61.67 3.374 1.776.089.128.169.264.232.404.996-1.706 2.894-2.673 4.987-2.673 3.036 0 5.034 2.146 5.034 5.127 0 .044 0 .089-.001.134-1.127-.271-2.416-.42-3.791-.42-4.475 0-7.397 2.474-7.397 5.86 0 3.238 2.645 5.567 6.136 5.567 2.84 0 5.195-1.575 6.07-4.004.839 2.43 3.195 4.004 6.035 4.004z" />
     </svg>
   );
@@ -233,7 +233,7 @@ export function TeamSocialLinks({
           rel={net.key === "email" ? undefined : "noopener noreferrer"}
           aria-label={`${memberName}'s ${net.label}`}
           title={`${memberName} on ${net.label}`}
-          className="inline-flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-125 active:scale-95 shrink-0 opacity-90 hover:opacity-100 drop-shadow-sm hover:drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+          className="inline-flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-125 active:scale-95 shrink-0 opacity-90 hover:opacity-100 drop-shadow-xs hover:drop-shadow-md"
         >
           {net.icon}
         </a>

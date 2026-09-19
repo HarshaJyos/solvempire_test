@@ -196,14 +196,14 @@ export default function JournalPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#0B0F17] text-[#F8FAFC] relative selection:bg-brand/20 selection:text-brand-light">
+    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading relative selection:bg-brand/15 selection:text-brand">
       <Header />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-16">
         {/* Top Back Link */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-brand-light transition-colors mb-6 group"
+          className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors mb-6 group font-medium"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           <span>Back to Home</span>
@@ -211,19 +211,19 @@ export default function JournalPage() {
 
         {/* Hero Title Section */}
         <div className="space-y-3 mb-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/20 text-xs font-semibold text-brand-light">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-light border border-brand/20 text-xs font-semibold text-brand">
             <BookOpen className="w-3.5 h-3.5" />
             <span>SolveMpire Engineering Journal</span>
           </div>
 
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl text-[#F8FAFC] tracking-tight leading-[1.15]">
+          <h1 className="font-display font-bold text-3xl sm:text-5xl text-heading tracking-tight leading-[1.15]">
             Engineering in public. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F8FAFC] via-[#E2E8F0] to-brand-light">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-heading via-slate-700 to-brand">
               Documenting the science &amp; systems.
             </span>
           </h1>
 
-          <p className="font-body text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+          <p className="font-body text-body text-sm sm:text-base max-w-2xl leading-relaxed">
             Hardware teardowns, embedded firmware architecture, DFM principles, and deep dives into connected product engineering.
           </p>
         </div>
@@ -231,8 +231,8 @@ export default function JournalPage() {
 
         {/* Breathable Floating Search Bar */}
         <div className="relative mb-8 group">
-          <div className="relative flex items-center rounded-2xl bg-[#161F2E]/90 border border-white/15 focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/20 transition-all duration-200 shadow-2xl backdrop-blur-md">
-            <div className="pl-4 sm:pl-5 text-slate-400 group-focus-within:text-brand-light transition-colors">
+          <div className="relative flex items-center rounded-2xl bg-surface border border-hairline focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/15 transition-all duration-200 shadow-sm">
+            <div className="pl-4 sm:pl-5 text-muted group-focus-within:text-brand transition-colors">
               <Search className="w-5 h-5" />
             </div>
 
@@ -244,7 +244,7 @@ export default function JournalPage() {
                 setCurrentPage(1);
               }}
               placeholder="Search journals by keyword, architecture topic, or author..."
-              className="w-full h-14 sm:h-16 pl-3.5 pr-28 rounded-2xl bg-transparent text-[#F8FAFC] placeholder-slate-400/60 text-sm sm:text-base font-body focus:outline-none"
+              className="w-full h-14 sm:h-16 pl-3.5 pr-28 rounded-2xl bg-transparent text-heading placeholder-muted text-sm sm:text-base font-body focus:outline-none"
             />
 
             <div className="absolute right-3.5 flex items-center gap-2">
@@ -254,14 +254,14 @@ export default function JournalPage() {
                     setSearchQuery("");
                     setCurrentPage(1);
                   }}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg text-muted hover:text-heading hover:bg-canvas transition-colors cursor-pointer"
                   aria-label="Clear search"
                 >
                   <X className="w-4 h-4" />
                 </button>
               )}
 
-              <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-[#0B0F17]/70 border border-white/10 text-[11px] font-mono text-slate-400">
+              <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-surface-subtle border border-hairline text-[11px] font-mono text-muted">
                 {filteredPosts.length} {filteredPosts.length === 1 ? "result" : "results"}
               </span>
             </div>
@@ -270,9 +270,9 @@ export default function JournalPage() {
           {/* Mobile Active Filter Chips Tray */}
           {isFiltering && (
             <div className="lg:hidden flex flex-wrap items-center gap-1.5 pt-3">
-              <span className="text-[11px] font-semibold text-slate-400 mr-1">Active:</span>
+              <span className="text-[11px] font-semibold text-muted mr-1">Active:</span>
               {searchQuery.trim() && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium">
                   <span>&quot;{searchQuery}&quot;</span>
                   <button onClick={() => setSearchQuery("")} aria-label="Clear query filter">
                     <X className="w-3 h-3" />
@@ -283,7 +283,7 @@ export default function JournalPage() {
               {selectedAuthors.map((author) => (
                 <span
                   key={author}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                 >
                   <span>Author: {author}</span>
                   <button onClick={() => toggleAuthor(author)} aria-label={`Remove ${author} filter`}>
@@ -295,7 +295,7 @@ export default function JournalPage() {
               {selectedCategories.map((cat) => (
                 <span
                   key={cat}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                 >
                   <span>{cat}</span>
                   <button onClick={() => toggleCategory(cat)} aria-label={`Remove ${cat} filter`}>
@@ -307,7 +307,7 @@ export default function JournalPage() {
               {selectedTypes.map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                 >
                   <span>{t}</span>
                   <button onClick={() => toggleType(t)} aria-label={`Remove ${t} filter`}>
@@ -319,7 +319,7 @@ export default function JournalPage() {
               {selectedTags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                 >
                   <span>#{tag}</span>
                   <button onClick={() => toggleTag(tag)} aria-label={`Remove ${tag} tag`}>
@@ -331,7 +331,7 @@ export default function JournalPage() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="text-xs text-brand-light hover:underline font-semibold ml-1 py-1 cursor-pointer"
+                className="text-xs text-brand hover:underline font-semibold ml-1 py-1 cursor-pointer"
               >
                 Clear all
               </button>
@@ -345,12 +345,12 @@ export default function JournalPage() {
           {/* DESKTOP SIDEBAR FILTERS (Flipkart Style) */}
           {/* ========================================================= */}
           <aside className="hidden lg:block lg:col-span-1 space-y-5 sticky top-6">
-            <div className="rounded-2xl bg-[#161F2E]/80 border border-white/10 p-5 shadow-xl backdrop-blur-sm space-y-5">
+            <div className="rounded-2xl bg-surface border border-hairline p-5 shadow-xs space-y-5">
               {/* Filter Panel Header */}
-              <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
+              <div className="flex items-center justify-between pb-3.5 border-b border-hairline">
                 <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-brand-light" />
-                  <h2 className="font-heading font-bold text-sm tracking-wider uppercase text-[#F8FAFC]">
+                  <Filter className="w-4 h-4 text-brand" />
+                  <h2 className="font-display font-bold text-sm tracking-wider uppercase text-heading">
                     Filters
                   </h2>
                 </div>
@@ -358,7 +358,7 @@ export default function JournalPage() {
                 {isFiltering && (
                   <button
                     onClick={handleResetFilters}
-                    className="text-xs font-semibold text-brand-light hover:text-white uppercase tracking-wider transition-colors cursor-pointer"
+                    className="text-xs font-semibold text-brand hover:text-brand-hover uppercase tracking-wider transition-colors cursor-pointer"
                   >
                     Clear All
                   </button>
@@ -367,17 +367,17 @@ export default function JournalPage() {
 
               {/* Applied Filter Chips (Tray) */}
               {isFiltering && (
-                <div className="space-y-2 pb-3.5 border-b border-white/[0.08]">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                <div className="space-y-2 pb-3.5 border-b border-hairline">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
                     Active Filters
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {searchQuery.trim() && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium">
                         <span>&quot;{searchQuery}&quot;</span>
                         <button
                           onClick={() => setSearchQuery("")}
-                          className="hover:text-white"
+                          className="hover:text-brand-hover"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -387,12 +387,12 @@ export default function JournalPage() {
                     {selectedAuthors.map((author) => (
                       <span
                         key={author}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                       >
                         <span>Author: {author}</span>
                         <button
                           onClick={() => toggleAuthor(author)}
-                          className="hover:text-white"
+                          className="hover:text-brand-hover"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -402,12 +402,12 @@ export default function JournalPage() {
                     {selectedCategories.map((cat) => (
                       <span
                         key={cat}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                       >
                         <span>{cat}</span>
                         <button
                           onClick={() => toggleCategory(cat)}
-                          className="hover:text-white"
+                          className="hover:text-brand-hover"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -417,12 +417,12 @@ export default function JournalPage() {
                     {selectedTypes.map((t) => (
                       <span
                         key={t}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                       >
                         <span>{t}</span>
                         <button
                           onClick={() => toggleType(t)}
-                          className="hover:text-white"
+                          className="hover:text-brand-hover"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -432,12 +432,12 @@ export default function JournalPage() {
                     {selectedTags.map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-brand/15 border border-brand/30 text-xs text-brand-light"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
                       >
                         <span>#{tag}</span>
                         <button
                           onClick={() => toggleTag(tag)}
-                          className="hover:text-white"
+                          className="hover:text-brand-hover"
                         >
                           <X className="w-3 h-3" />
                         </button>
@@ -449,19 +449,19 @@ export default function JournalPage() {
 
               {/* Filter Group: Authors */}
               {availableAuthors.length > 0 && (
-                <div className="space-y-3 pb-3.5 border-b border-white/[0.08]">
+                <div className="space-y-3 pb-3.5 border-b border-hairline">
                   <button
                     type="button"
                     onClick={() => setAuthorOpen(!authorOpen)}
                     className="w-full flex items-center justify-between text-left group cursor-pointer"
                   >
-                    <span className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-300 group-hover:text-white">
+                    <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
                       Authors
                     </span>
                     {authorOpen ? (
-                      <ChevronUp className="w-4 h-4 text-slate-400" />
+                      <ChevronUp className="w-4 h-4 text-muted" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-slate-400" />
+                      <ChevronDown className="w-4 h-4 text-muted" />
                     )}
                   </button>
 
@@ -474,7 +474,7 @@ export default function JournalPage() {
                           <label
                             key={author.name}
                             onClick={() => toggleAuthor(author.name)}
-                            className="flex items-center justify-between p-2 rounded-xl hover:bg-white/[0.04] transition-colors cursor-pointer select-none text-xs"
+                            className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
                           >
                             <div className="flex items-center gap-2.5">
                               <div
@@ -482,14 +482,14 @@ export default function JournalPage() {
                                   "w-4 h-4 rounded flex items-center justify-center border transition-all",
                                   isChecked
                                     ? "bg-brand border-brand text-white"
-                                    : "border-white/20 bg-[#0B0F17]"
+                                    : "border-hairline bg-surface-subtle"
                                 )}
                               >
                                 {isChecked && (
                                   <Check className="w-3 h-3 stroke-[3]" />
                                 )}
                               </div>
-                              <div className="relative w-5 h-5 rounded-full overflow-hidden bg-[#1E293B] shrink-0 border border-white/10">
+                              <div className="relative w-5 h-5 rounded-full overflow-hidden bg-ice-light shrink-0 border border-hairline">
                                 {author.avatar ? (
                                   <Image
                                     src={author.avatar}
@@ -498,7 +498,7 @@ export default function JournalPage() {
                                     className="object-cover"
                                   />
                                 ) : (
-                                  <div className="w-full h-full flex items-center justify-center text-brand-light text-[9px] font-bold">
+                                  <div className="w-full h-full flex items-center justify-center text-brand text-[9px] font-bold">
                                     {author.name.charAt(0)}
                                   </div>
                                 )}
@@ -506,14 +506,14 @@ export default function JournalPage() {
                               <span
                                 className={cn(
                                   isChecked
-                                    ? "text-[#F8FAFC] font-semibold"
-                                    : "text-slate-400"
+                                    ? "text-heading font-semibold"
+                                    : "text-body"
                                 )}
                               >
                                 {author.name}
                               </span>
                             </div>
-                            <span className="text-[11px] font-mono text-slate-400/70">
+                            <span className="text-[11px] font-mono text-muted">
                               ({count})
                             </span>
                           </label>
@@ -525,19 +525,19 @@ export default function JournalPage() {
               )}
 
               {/* Filter Group: Categories */}
-              <div className="space-y-3 pb-3.5 border-b border-white/[0.08]">
+              <div className="space-y-3 pb-3.5 border-b border-hairline">
                 <button
                   type="button"
                   onClick={() => setCategoryOpen(!categoryOpen)}
                   className="w-full flex items-center justify-between text-left group cursor-pointer"
                 >
-                  <span className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-300 group-hover:text-white">
+                  <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
                     Categories
                   </span>
                   {categoryOpen ? (
-                    <ChevronUp className="w-4 h-4 text-slate-400" />
+                    <ChevronUp className="w-4 h-4 text-muted" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-slate-400" />
+                    <ChevronDown className="w-4 h-4 text-muted" />
                   )}
                 </button>
 
@@ -550,7 +550,7 @@ export default function JournalPage() {
                         <label
                           key={cat}
                           onClick={() => toggleCategory(cat)}
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-white/[0.04] transition-colors cursor-pointer select-none text-xs"
+                          className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
                         >
                           <div className="flex items-center gap-2.5">
                             <div
@@ -558,7 +558,7 @@ export default function JournalPage() {
                                 "w-4 h-4 rounded flex items-center justify-center border transition-all",
                                 isChecked
                                   ? "bg-brand border-brand text-white"
-                                  : "border-white/20 bg-[#0B0F17]"
+                                  : "border-hairline bg-surface-subtle"
                               )}
                             >
                               {isChecked && (
@@ -568,14 +568,14 @@ export default function JournalPage() {
                             <span
                               className={cn(
                                 isChecked
-                                  ? "text-[#F8FAFC] font-semibold"
-                                  : "text-slate-400"
+                                  ? "text-heading font-semibold"
+                                  : "text-body"
                               )}
                             >
                               {cat}
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono text-slate-400/70">
+                          <span className="text-[11px] font-mono text-muted">
                             ({count})
                           </span>
                         </label>
@@ -586,19 +586,19 @@ export default function JournalPage() {
               </div>
 
               {/* Filter Group: Article Type */}
-              <div className="space-y-3 pb-3.5 border-b border-white/[0.08]">
+              <div className="space-y-3 pb-3.5 border-b border-hairline">
                 <button
                   type="button"
                   onClick={() => setTypeOpen(!typeOpen)}
                   className="w-full flex items-center justify-between text-left group cursor-pointer"
                 >
-                  <span className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-300 group-hover:text-white">
+                  <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
                     Article Type
                   </span>
                   {typeOpen ? (
-                    <ChevronUp className="w-4 h-4 text-slate-400" />
+                    <ChevronUp className="w-4 h-4 text-muted" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-slate-400" />
+                    <ChevronDown className="w-4 h-4 text-muted" />
                   )}
                 </button>
 
@@ -611,7 +611,7 @@ export default function JournalPage() {
                         <label
                           key={t}
                           onClick={() => toggleType(t)}
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-white/[0.04] transition-colors cursor-pointer select-none text-xs"
+                          className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
                         >
                           <div className="flex items-center gap-2.5">
                             <div
@@ -619,7 +619,7 @@ export default function JournalPage() {
                                 "w-4 h-4 rounded flex items-center justify-center border transition-all",
                                 isChecked
                                   ? "bg-brand border-brand text-white"
-                                  : "border-white/20 bg-[#0B0F17]"
+                                  : "border-hairline bg-surface-subtle"
                               )}
                             >
                               {isChecked && (
@@ -629,14 +629,14 @@ export default function JournalPage() {
                             <span
                               className={cn(
                                 isChecked
-                                  ? "text-[#F8FAFC] font-semibold"
-                                  : "text-slate-400"
+                                  ? "text-heading font-semibold"
+                                  : "text-body"
                               )}
                             >
                               {t}
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono text-slate-400/70">
+                          <span className="text-[11px] font-mono text-muted">
                             ({count})
                           </span>
                         </label>
@@ -654,13 +654,13 @@ export default function JournalPage() {
                     onClick={() => setTagsOpen(!tagsOpen)}
                     className="w-full flex items-center justify-between text-left group cursor-pointer"
                   >
-                    <span className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-300 group-hover:text-white">
+                    <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
                       Topics &amp; Tags
                     </span>
                     {tagsOpen ? (
-                      <ChevronUp className="w-4 h-4 text-slate-400" />
+                      <ChevronUp className="w-4 h-4 text-muted" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-slate-400" />
+                      <ChevronDown className="w-4 h-4 text-muted" />
                     )}
                   </button>
 
@@ -675,8 +675,8 @@ export default function JournalPage() {
                             className={cn(
                               "px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer",
                               isChecked
-                                ? "bg-brand text-white font-semibold shadow-sm"
-                                : "bg-[#0B0F17] text-slate-400 border border-white/10 hover:text-[#F8FAFC] hover:border-white/20"
+                                ? "bg-brand text-white font-semibold shadow-xs"
+                                : "bg-surface text-body border border-hairline hover:bg-canvas hover:text-heading"
                             )}
                           >
                             #{tag}{" "}
@@ -698,15 +698,15 @@ export default function JournalPage() {
           {/* ========================================================= */}
           <div className="lg:col-span-3 space-y-6">
             {/* Responsive Action Toolbar with Clean Hierarchy */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-[#161F2E]/80 border border-white/10 shadow-md space-y-3 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-surface border border-hairline shadow-xs space-y-3 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
               {/* Mobile View: Clean 2-Button Action Row */}
               <div className="flex items-center gap-2.5 sm:hidden">
                 <button
                   type="button"
                   onClick={() => setIsMobileFilterOpen(true)}
-                  className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-3.5 rounded-xl bg-[#0B0F17] border border-white/15 text-xs font-semibold text-[#F8FAFC] hover:border-brand/50 active:scale-95 transition-all cursor-pointer shadow-sm"
+                  className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-3.5 rounded-xl bg-surface border border-hairline text-xs font-semibold text-heading hover:border-brand/50 active:scale-95 transition-all cursor-pointer shadow-xs"
                 >
-                  <Filter className="w-3.5 h-3.5 text-brand-light" />
+                  <Filter className="w-3.5 h-3.5 text-brand" />
                   <span>Filters</span>
                   {totalActiveFilterCount > 0 && (
                     <span className="w-5 h-5 rounded-full bg-brand text-white text-[10px] font-bold flex items-center justify-center">
@@ -723,37 +723,37 @@ export default function JournalPage() {
                       setCurrentPage(1);
                     }}
                     aria-label="Sort journal entries"
-                    className="w-full h-10 pl-3 pr-8 rounded-xl bg-[#0B0F17] border border-white/15 text-xs font-medium text-[#F8FAFC] focus:outline-none focus:border-brand appearance-none cursor-pointer"
+                    className="w-full h-10 pl-3 pr-8 rounded-xl bg-surface-subtle border border-hairline text-xs font-medium text-heading focus:outline-none focus:border-brand appearance-none cursor-pointer"
                   >
-                    <option value="newest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="newest" className="bg-white text-heading">
                       Newest
                     </option>
-                    <option value="oldest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="oldest" className="bg-white text-heading">
                       Oldest
                     </option>
-                    <option value="shortest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="shortest" className="bg-white text-heading">
                       Quick Read
                     </option>
-                    <option value="longest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="longest" className="bg-white text-heading">
                       Deep Read
                     </option>
-                    <option value="alphabetical" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="alphabetical" className="bg-white text-heading">
                       Title (A-Z)
                     </option>
                   </select>
-                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" />
                 </div>
               </div>
 
               {/* Status Counter & Reset Link */}
-              <div className="flex items-center justify-between text-xs text-slate-400 px-1 sm:px-0">
+              <div className="flex items-center justify-between text-xs text-muted px-1 sm:px-0">
                 <p>
                   Showing{" "}
-                  <span className="font-semibold text-[#F8FAFC]">
+                  <span className="font-semibold text-heading">
                     {paginatedPosts.length}
                   </span>{" "}
                   of{" "}
-                  <span className="font-semibold text-[#F8FAFC]">
+                  <span className="font-semibold text-heading">
                     {filteredPosts.length}
                   </span>{" "}
                   {filteredPosts.length === 1 ? "article" : "articles"}
@@ -763,7 +763,7 @@ export default function JournalPage() {
                   <button
                     type="button"
                     onClick={handleResetFilters}
-                    className="text-xs text-brand-light hover:underline font-medium cursor-pointer sm:hidden"
+                    className="text-xs text-brand hover:underline font-medium cursor-pointer sm:hidden"
                   >
                     Reset filters
                   </button>
@@ -772,7 +772,7 @@ export default function JournalPage() {
 
               {/* Desktop Sort Control */}
               <div className="hidden sm:flex items-center gap-2.5">
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-muted uppercase tracking-wider">
                   Sort By:
                 </span>
                 <div className="relative">
@@ -783,61 +783,61 @@ export default function JournalPage() {
                       setCurrentPage(1);
                     }}
                     aria-label="Sort journal entries"
-                    className="h-9 pl-3.5 pr-8 rounded-xl bg-[#0B0F17] border border-white/10 text-xs font-medium text-[#F8FAFC] focus:outline-none focus:border-brand appearance-none cursor-pointer hover:border-white/20 transition-colors"
+                    className="h-9 pl-3.5 pr-8 rounded-xl bg-surface-subtle border border-hairline text-xs font-medium text-heading focus:outline-none focus:border-brand appearance-none cursor-pointer hover:border-slate-300 transition-colors"
                   >
-                    <option value="newest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="newest" className="bg-white text-heading">
                       Newest First
                     </option>
-                    <option value="oldest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="oldest" className="bg-white text-heading">
                       Oldest First
                     </option>
-                    <option value="shortest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="shortest" className="bg-white text-heading">
                       Reading Time (Shortest)
                     </option>
-                    <option value="longest" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="longest" className="bg-white text-heading">
                       Reading Time (Longest)
                     </option>
-                    <option value="alphabetical" className="bg-[#161F2E] text-[#F8FAFC]">
+                    <option value="alphabetical" className="bg-white text-heading">
                       Title (A-Z)
                     </option>
                   </select>
-                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" />
                 </div>
               </div>
             </div>
 
             {/* Featured Spotlight Card (Only on Page 1 without Active Search/Filters) */}
             {featuredPost && (
-              <div className="p-7 sm:p-9 rounded-3xl bg-gradient-to-br from-[#161F2E] to-[#0F172A] border border-brand/40 shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="p-7 sm:p-9 rounded-3xl bg-surface border border-hairline hover:border-brand/40 shadow-sm relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-80 h-80 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="relative z-10 space-y-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-brand/15 text-brand-light text-xs font-semibold border border-brand/30 whitespace-nowrap">
+                    <span className="px-3 py-1 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20 whitespace-nowrap">
                       {featuredPost.category}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-white/10 text-[#F8FAFC] text-xs font-medium whitespace-nowrap">
+                    <span className="px-3 py-1 rounded-full bg-surface-subtle text-muted text-xs font-medium border border-hairline whitespace-nowrap">
                       {featuredPost.type}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand bg-brand/10 px-3 py-1 rounded-full border border-brand/20 whitespace-nowrap">
                       <Sparkles className="w-3.5 h-3.5 shrink-0" />
                       <span>Featured Spotlight</span>
                     </span>
                   </div>
 
-                  <h2 className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl text-[#F8FAFC] group-hover:text-brand-light transition-colors leading-tight">
+                  <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-heading group-hover:text-brand transition-colors leading-tight">
                     <Link href={`/journal/${featuredPost.slug}`}>
                       {featuredPost.title}
                     </Link>
                   </h2>
 
-                  <p className="font-body text-slate-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+                  <p className="font-body text-body text-base sm:text-lg leading-relaxed max-w-3xl">
                     {featuredPost.excerpt}
                   </p>
 
-                  <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 text-xs sm:text-sm text-slate-400">
+                  <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-hairline text-xs sm:text-sm text-muted">
                     <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10 shrink-0 bg-[#1E293B]">
+                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-hairline shrink-0 bg-ice-light">
                         {featuredPost.author.avatar ? (
                           <Image
                             src={featuredPost.author.avatar}
@@ -846,7 +846,7 @@ export default function JournalPage() {
                             className="object-cover"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-brand-light text-xs font-bold uppercase">
+                          <div className="w-full h-full flex items-center justify-center text-brand text-xs font-bold uppercase">
                             {featuredPost.author.name.charAt(0)}
                           </div>
                         )}
@@ -854,18 +854,18 @@ export default function JournalPage() {
                       <div className="flex items-center gap-2 whitespace-nowrap">
                         <Link
                           href="/team/pavan-duggirala"
-                          className="text-[#F8FAFC] font-medium hover:text-brand-light transition-colors whitespace-nowrap"
+                          className="text-heading font-medium hover:text-brand transition-colors whitespace-nowrap"
                         >
                           {featuredPost.author.name}
                         </Link>
                         <span className="opacity-40">•</span>
-                        <span className="text-brand-light font-medium whitespace-nowrap">{featuredPost.readTime}</span>
+                        <span className="text-brand font-medium whitespace-nowrap">{featuredPost.readTime}</span>
                       </div>
                     </div>
 
                     <Link
                       href={`/journal/${featuredPost.slug}`}
-                      className="inline-flex items-center gap-1.5 font-heading font-bold text-xs sm:text-sm text-brand-light group-hover:translate-x-1 transition-transform whitespace-nowrap shrink-0 ml-auto sm:ml-0"
+                      className="inline-flex items-center gap-1.5 font-display font-bold text-xs sm:text-sm text-brand group-hover:translate-x-1 transition-transform whitespace-nowrap shrink-0 ml-auto sm:ml-0"
                     >
                       <span>Read Entry</span>
                       <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -886,22 +886,22 @@ export default function JournalPage() {
                 ))}
               </div>
             ) : (
-              <div className="py-16 px-6 text-center rounded-3xl bg-[#161F2E]/40 border border-white/10 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-[#161F2E] border border-white/10 flex items-center justify-center text-slate-400 mx-auto">
+              <div className="py-16 px-6 text-center rounded-3xl bg-surface border border-hairline space-y-4 shadow-xs">
+                <div className="w-12 h-12 rounded-full bg-surface-subtle border border-hairline flex items-center justify-center text-muted mx-auto">
                   <Search className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-heading text-lg text-[#F8FAFC] font-semibold">
+                  <p className="font-display text-lg text-heading font-bold">
                     No matching journal entries found
                   </p>
-                  <p className="font-body text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+                  <p className="font-body text-sm text-body max-w-md mx-auto leading-relaxed">
                     We couldn’t find any entries matching your filters. Try
                     adjusting your search query or clearing selected filters.
                   </p>
                 </div>
                 <button
                   onClick={handleResetFilters}
-                  className="px-5 py-2.5 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover transition-all cursor-pointer shadow-lg"
+                  className="px-5 py-2.5 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover transition-all cursor-pointer shadow-md shadow-brand/20"
                 >
                   Clear All Filters
                 </button>
@@ -930,28 +930,28 @@ export default function JournalPage() {
         {/* MOBILE SLIDE-OVER FILTER DRAWER */}
         {/* ========================================================= */}
         {isMobileFilterOpen && (
-          <div className="fixed inset-0 z-50 flex flex-col justify-end bg-[#0B0F17]/80 backdrop-blur-md lg:hidden animate-fade-in-scale">
+          <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/40 backdrop-blur-sm lg:hidden animate-fade-in-scale">
             <div
               className="fixed inset-0"
               onClick={() => setIsMobileFilterOpen(false)}
             />
-            <div className="relative z-10 w-full max-h-[85vh] overflow-y-auto rounded-t-3xl bg-[#161F2E] border-t border-white/15 p-6 space-y-6 shadow-2xl">
+            <div className="relative z-10 w-full max-h-[85vh] overflow-y-auto rounded-t-3xl bg-surface border-t border-hairline p-6 space-y-6 shadow-2xl">
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <div className="flex items-center justify-between pb-4 border-b border-hairline">
                 <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-brand-light" />
-                  <h3 className="font-heading font-bold text-base text-[#F8FAFC]">
+                  <Filter className="w-4 h-4 text-brand" />
+                  <h3 className="font-display font-bold text-base text-heading">
                     Filters
                   </h3>
                   {totalActiveFilterCount > 0 && (
-                    <span className="px-2 py-0.5 rounded-full bg-brand/20 text-brand-light text-xs font-bold">
+                    <span className="px-2 py-0.5 rounded-full bg-ice-light text-brand text-xs font-bold border border-brand/20">
                       {totalActiveFilterCount} Active
                     </span>
                   )}
                 </div>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-[#F8FAFC]"
+                  className="p-1.5 rounded-lg text-muted hover:text-heading"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -960,7 +960,7 @@ export default function JournalPage() {
               {/* Mobile Drawer: Authors */}
               {availableAuthors.length > 0 && (
                 <div className="space-y-3">
-                  <h4 className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-400">
+                  <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
                     Authors
                   </h4>
                   <div className="space-y-2">
@@ -971,7 +971,7 @@ export default function JournalPage() {
                         <label
                           key={author.name}
                           onClick={() => toggleAuthor(author.name)}
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-[#0B0F17]/60 border border-white/5 cursor-pointer text-xs"
+                          className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
                         >
                           <div className="flex items-center gap-2.5">
                             <div
@@ -979,7 +979,7 @@ export default function JournalPage() {
                                 "w-4 h-4 rounded flex items-center justify-center border",
                                 isChecked
                                   ? "bg-brand border-brand text-white"
-                                  : "border-white/20"
+                                  : "border-hairline bg-surface"
                               )}
                             >
                               {isChecked && (
@@ -989,14 +989,14 @@ export default function JournalPage() {
                             <span
                               className={
                                 isChecked
-                                  ? "text-[#F8FAFC] font-bold"
-                                  : "text-slate-400"
+                                  ? "text-heading font-bold"
+                                  : "text-body"
                               }
                             >
                               {author.name}
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono text-slate-400">
+                          <span className="text-[11px] font-mono text-muted">
                             ({count})
                           </span>
                         </label>
@@ -1008,7 +1008,7 @@ export default function JournalPage() {
 
               {/* Mobile Drawer: Categories */}
               <div className="space-y-3">
-                <h4 className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-400">
+                <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
                   Categories
                 </h4>
                 <div className="space-y-2">
@@ -1019,7 +1019,7 @@ export default function JournalPage() {
                       <label
                         key={cat}
                         onClick={() => toggleCategory(cat)}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-[#0B0F17]/60 border border-white/5 cursor-pointer text-xs"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
                       >
                         <div className="flex items-center gap-2.5">
                           <div
@@ -1027,7 +1027,7 @@ export default function JournalPage() {
                               "w-4 h-4 rounded flex items-center justify-center border",
                               isChecked
                                 ? "bg-brand border-brand text-white"
-                                : "border-white/20"
+                                : "border-hairline bg-surface"
                             )}
                           >
                             {isChecked && (
@@ -1037,14 +1037,14 @@ export default function JournalPage() {
                           <span
                             className={
                               isChecked
-                                ? "text-[#F8FAFC] font-bold"
-                                : "text-slate-400"
+                                ? "text-heading font-bold"
+                                : "text-body"
                             }
                           >
                             {cat}
                           </span>
                         </div>
-                        <span className="text-[11px] font-mono text-slate-400">
+                        <span className="text-[11px] font-mono text-muted">
                           ({count})
                         </span>
                       </label>
@@ -1055,7 +1055,7 @@ export default function JournalPage() {
 
               {/* Mobile Drawer: Article Types */}
               <div className="space-y-3">
-                <h4 className="font-heading font-semibold text-xs uppercase tracking-wider text-slate-400">
+                <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
                   Article Type
                 </h4>
                 <div className="space-y-2">
@@ -1066,7 +1066,7 @@ export default function JournalPage() {
                       <label
                         key={t}
                         onClick={() => toggleType(t)}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-[#0B0F17]/60 border border-white/5 cursor-pointer text-xs"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
                       >
                         <div className="flex items-center gap-2.5">
                           <div
@@ -1074,7 +1074,7 @@ export default function JournalPage() {
                               "w-4 h-4 rounded flex items-center justify-center border",
                               isChecked
                                 ? "bg-brand border-brand text-white"
-                                : "border-white/20"
+                                : "border-hairline bg-surface"
                             )}
                           >
                             {isChecked && (
@@ -1084,14 +1084,14 @@ export default function JournalPage() {
                           <span
                             className={
                               isChecked
-                                ? "text-[#F8FAFC] font-bold"
-                                : "text-slate-400"
+                                ? "text-heading font-bold"
+                                : "text-body"
                             }
                           >
                             {t}
                           </span>
                         </div>
-                        <span className="text-[11px] font-mono text-slate-400">
+                        <span className="text-[11px] font-mono text-muted">
                           ({count})
                         </span>
                       </label>
@@ -1101,16 +1101,16 @@ export default function JournalPage() {
               </div>
 
               {/* Drawer Actions */}
-              <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+              <div className="pt-4 border-t border-hairline flex items-center gap-3">
                 <button
                   onClick={handleResetFilters}
-                  className="flex-1 py-3 rounded-xl bg-[#0B0F17] border border-white/15 text-xs font-semibold text-slate-400 hover:text-white"
+                  className="flex-1 py-3 rounded-xl bg-surface-subtle border border-hairline text-xs font-semibold text-muted hover:text-heading cursor-pointer"
                 >
                   Clear All
                 </button>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="flex-1 py-3 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover"
+                  className="flex-1 py-3 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover cursor-pointer shadow-md shadow-brand/20"
                 >
                   Show ({filteredPosts.length})
                 </button>
@@ -1120,15 +1120,15 @@ export default function JournalPage() {
         )}
 
         {/* Engineering Scoping CTA Section */}
-        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#161F2E] to-[#0F172A] border border-brand/30 text-center space-y-6 shadow-2xl">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand/15 text-brand mx-auto">
+        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-surface border border-hairline text-center space-y-6 shadow-sm">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ice-light text-brand mx-auto border border-brand/20">
             <Sparkles className="w-6 h-6" />
           </div>
           <div className="space-y-2">
-            <h3 className="font-heading font-bold text-2xl sm:text-3xl text-white">
+            <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading">
               Have an Engineering Project to Build?
             </h3>
-            <p className="font-body text-sm sm:text-base text-slate-300 max-w-md mx-auto leading-relaxed">
+            <p className="font-body text-sm sm:text-base text-body max-w-md mx-auto leading-relaxed">
               Connect directly with our engineering architects to scope your CAD, custom PCB, firmware, or connected platform.
             </p>
           </div>

@@ -24,7 +24,7 @@ export function JournalPagination({
       <button
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
         disabled={currentPage === 1}
-        className="flex items-center gap-1 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm font-medium text-slate-400 hover:text-white hover:border-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+        className="flex items-center gap-1 px-3.5 py-2 rounded-xl bg-surface border border-hairline text-xs sm:text-sm font-medium text-muted hover:text-heading hover:bg-canvas hover:border-slate-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer shadow-xs"
         aria-label="Previous Page"
       >
         <ChevronLeft className="w-4 h-4" />
@@ -41,8 +41,8 @@ export function JournalPagination({
               onClick={() => onPageChange(p)}
               className={`w-9 h-9 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 isActive
-                  ? "bg-brand text-white shadow-lg shadow-brand/30"
-                  : "bg-slate-900 text-slate-400 border border-slate-800 hover:text-white hover:border-slate-700"
+                  ? "bg-brand text-white shadow-md shadow-brand/25"
+                  : "bg-surface text-muted border border-hairline hover:text-heading hover:bg-canvas hover:border-slate-300 shadow-xs"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
@@ -56,7 +56,7 @@ export function JournalPagination({
       <button
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
         disabled={currentPage === totalPages}
-        className="flex items-center gap-1 px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm font-medium text-slate-400 hover:text-white hover:border-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+        className="flex items-center gap-1 px-3.5 py-2 rounded-xl bg-surface border border-hairline text-xs sm:text-sm font-medium text-muted hover:text-heading hover:bg-canvas hover:border-slate-300 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer shadow-xs"
         aria-label="Next Page"
       >
         <span className="hidden sm:inline">Next</span>
