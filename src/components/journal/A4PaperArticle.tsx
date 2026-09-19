@@ -24,7 +24,6 @@ import {
   AlertCircle,
   Info,
   CheckCircle2,
-  Printer,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -76,12 +75,6 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handlePrint = () => {
-    if (typeof window !== "undefined") {
-      window.print();
     }
   };
 
@@ -177,15 +170,6 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
           </Link>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrint}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-surface border border-slate-300 text-xs font-medium text-muted hover:text-heading hover:border-brand transition-all shadow-xs cursor-pointer"
-              title="Print or Save as PDF"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print / PDF</span>
-            </button>
-
             <button
               onClick={handleCopy}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-surface border border-slate-300 text-xs font-medium text-muted hover:text-heading hover:border-brand transition-all shadow-xs cursor-pointer"
