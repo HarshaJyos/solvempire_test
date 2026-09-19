@@ -1,34 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SolveMpire — Marketing & Portfolio Website
 
-## Getting Started
+Official marketing website and engineering portfolio for **SolveMpire Private Limited** (`U62013AP2025PTC122808`), built with Next.js (App Router), React 19, TypeScript, Tailwind CSS v4, and GSAP.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+- **UI Library**: React 19
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with native `@theme` tokens & fluid typography
+- **Motion & Scrubbing**: GSAP 3 & ScrollTrigger (Hardware-composited `quickSetter` architecture)
+- **Validation**: [Zod](https://zod.dev/) for server-side form validation
+- **Type Safety**: TypeScript 5+
+
+---
+
+## 📁 Information Architecture
+
+```
+/                          Homepage (Server component composing performance-tuned sections)
+/work                      Portfolio Index (All 6 case studies)
+/work/[slug]               Individual Case Study Deep-Dives (SSG with generateStaticParams)
+/services                  Engineering Disciplines & Capabilities (#mechanical, #electronics, #hmi, #cloud)
+/about                     About Us, Leadership Team & Operating Model
+/contact                   Interactive Scoping Call Inquiry Form
+/privacy                   Privacy Policy
+/terms                     Terms of Service
+/sitemap.xml               Dynamic XML Sitemap
+/robots.txt                Robots Configuration
+/opengraph-image           Edge-rendered OpenGraph Image
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Content Management Guide
 
-## Learn More
+All content is strongly typed and centralized:
 
-To learn more about Next.js, take a look at the following resources:
+- **Case Studies**: [`src/content/case-studies.ts`](src/content/case-studies.ts)
+  Add or edit case studies, metrics, engineering sections, and deliverables.
+- **Team**: [`src/content/team.ts`](src/content/team.ts)
+  Manage leadership profiles, roles, and headshots.
+- **Disciplines & Pillars**: [`src/content/services.ts`](src/content/services.ts)
+  Configure engineering capabilities, tools, and Why Partner pillars.
+- **Entity Facts & Contacts**: [`src/lib/company.ts`](src/lib/company.ts)
+  Single source of truth for company name, CIN, addresses, and emails.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💻 Local Development
 
-## Deploy on Vercel
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env.local` and set required keys:
+```bash
+cp .env.example .env.local
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. Start Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 4. Build for Production
+```bash
+npm run build
+npm run start
+```
+
+### 5. Code Linting
+```bash
+npm run lint
+```
+
+---
+
+## 📄 License & Ownership
+
+© SolveMpire Private Limited. All rights reserved.
