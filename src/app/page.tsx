@@ -1152,7 +1152,7 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: OUR PROCESS (6-Stage Chevron Ribbon Flow) */}
+      {/* SECTION 4: OUR PROCESS (Continuous 3D Geometric Ribbon Flow) */}
       {/* ========================================================================= */}
       <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -1168,7 +1168,7 @@ export default function Home() {
           </div>
 
           {/* Main Process Flow Showcase Enclosure */}
-          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 xl:p-14 relative">
+          <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-2xl shadow-blue-500/5 p-6 sm:p-10 lg:p-12 xl:p-14 relative overflow-visible">
             {/* Ambient Background Grid Detail */}
             <div
               className="absolute inset-0 opacity-10 pointer-events-none rounded-3xl sm:rounded-[2.5rem]"
@@ -1178,8 +1178,8 @@ export default function Home() {
               }}
             />
 
-            {/* Desktop / Widescreen: 6-Stage Interlocking Chevron Ribbon Flow (xl+) */}
-            <div className="hidden xl:flex items-center justify-between gap-3 py-10 relative z-10">
+            {/* Desktop / Widescreen: 6-Stage Continuous 3D Geometric Ribbon Flow (xl+) */}
+            <div className="hidden xl:flex items-center justify-between gap-1 py-12 relative z-10">
               {processSteps.map((step, idx) => {
                 const isHigh = step.isHigh;
                 const isLast = idx === processSteps.length - 1;
@@ -1187,60 +1187,65 @@ export default function Home() {
                 return (
                   <div
                     key={step.step}
-                    className={`relative group flex-1 flex flex-col ${
-                      isHigh ? "justify-start" : "justify-end"
+                    className={`relative flex-1 flex flex-col transition-transform duration-300 hover:scale-[1.02] ${
+                      isHigh ? "justify-start -translate-y-6" : "justify-end translate-y-6"
                     }`}
                   >
-                    {/* The Chevron Card */}
+                    {/* The Ribbon Card Polygon Shape */}
                     <div
-                      className={`relative z-10 rounded-2xl p-6 flex flex-col justify-between h-[245px] text-white shadow-xl transition-all duration-300 group-hover:scale-[1.02] ${
+                      className={`relative z-10 p-6 sm:p-7 flex flex-col justify-between h-[250px] text-white shadow-xl transition-all duration-300 ${
                         isHigh
-                          ? "bg-blue-600 shadow-blue-600/25 -translate-y-5 group-hover:-translate-y-6"
-                          : "bg-[#183980] shadow-blue-950/30 translate-y-5 group-hover:translate-y-6"
+                          ? "bg-blue-600 rounded-2xl shadow-blue-600/25 hover:bg-blue-500"
+                          : isLast
+                          ? "bg-[#183980] rounded-2xl shadow-blue-950/30 hover:bg-[#1e4294]"
+                          : "bg-[#183980] rounded-l-2xl shadow-blue-950/30 hover:bg-[#1e4294]"
                       }`}
+                      style={
+                        !isHigh && !isLast
+                          ? {
+                              clipPath: "polygon(0% 0%, calc(100% - 24px) 0%, 100% 50%, calc(100% - 24px) 100%, 0% 100%)",
+                            }
+                          : undefined
+                      }
                     >
-                      {/* Top Row: Number & Outline Icon */}
+                      {/* Top Row: Step Number & Minimal Outline Icon */}
                       <div className="flex items-center justify-between w-full">
                         <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-white">
                           {step.step}
                         </span>
-                        <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white shadow-xs group-hover:rotate-6 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-xs flex items-center justify-center text-white">
                           {step.icon}
                         </div>
                       </div>
 
-                      {/* Content: Title & 2-Line Description */}
-                      <div className="pr-2">
-                        <h3 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-xl font-bold leading-tight mb-2 text-white">
+                      {/* Bottom Content: Title & 2-Line Description */}
+                      <div className={!isHigh && !isLast ? "pr-6" : "pr-2"}>
+                        <h3 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-[1.2rem] font-bold leading-tight mb-2 text-white">
                           {step.name}
                         </h3>
-                        <p className="text-white/85 text-xs sm:text-[13px] leading-relaxed font-normal">
+                        <p className="text-white/85 text-xs leading-relaxed font-normal">
                           {step.description}
                         </p>
                       </div>
-
-                      {/* Right Chevron Arrow Cap (Points into next card) */}
-                      {!isLast && (
-                        <div
-                          className="absolute -right-[15px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-[22px] border-y-transparent border-l-[16px] z-20 transition-transform group-hover:translate-x-0.5"
-                          style={{
-                            borderLeftColor: isHigh ? "#2563eb" : "#183980",
-                          }}
-                          aria-hidden="true"
-                        />
-                      )}
                     </div>
 
-                    {/* 3D Folded Ribbon Drop Shadow Connector */}
-                    {!isLast && (
+                    {/* 3D Folded Ribbon Triangular Shadow (Links High card down to Low card) */}
+                    {isHigh && !isLast && (
                       <div
-                        className={`absolute z-0 pointer-events-none ${
-                          isHigh
-                            ? "right-[-12px] top-[48%] w-5 h-20 bg-[#0d1f44] opacity-90 rounded-xs"
-                            : "right-[-12px] bottom-[48%] w-5 h-20 bg-[#0d1f44] opacity-90 rounded-xs"
-                        }`}
+                        className="absolute right-[-16px] top-[190px] w-4 h-[60px] bg-[#0a1836] z-0 pointer-events-none"
                         style={{
-                          transform: isHigh ? "skewY(38deg)" : "skewY(-38deg)",
+                          clipPath: "polygon(0 0, 100% 100%, 0 100%)",
+                        }}
+                        aria-hidden="true"
+                      />
+                    )}
+
+                    {/* 3D Folded Ribbon Triangular Shadow (Links Low card up to High card) */}
+                    {!isHigh && !isLast && (
+                      <div
+                        className="absolute right-[-16px] top-[0px] w-4 h-[60px] bg-[#0a1836] z-0 pointer-events-none"
+                        style={{
+                          clipPath: "polygon(0 100%, 100% 0, 0 0)",
                         }}
                         aria-hidden="true"
                       />
@@ -1250,9 +1255,9 @@ export default function Home() {
               })}
             </div>
 
-            {/* Tablet / Medium Screens: 2-Row x 3-Column Stepped Chevron Grid (md to lg) */}
+            {/* Tablet / Medium Screens: 2-Row x 3-Column Stepped Chevron Ribbon Flow (md to lg) */}
             <div className="hidden md:grid xl:hidden grid-cols-3 gap-6 relative z-10 py-6">
-              {processSteps.map((step, idx) => {
+              {processSteps.map((step) => {
                 const isHigh = step.isHigh;
                 return (
                   <div
@@ -1282,52 +1287,37 @@ export default function Home() {
                         {step.description}
                       </p>
                     </div>
-
-                    {/* Step Connector Arrow for Grid Flow */}
-                    {idx < processSteps.length - 1 && (
-                      <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-white text-blue-600 flex items-center justify-center text-xs font-bold shadow-md z-20">
-                        →
-                      </div>
-                    )}
                   </div>
                 );
               })}
             </div>
 
-            {/* Mobile Screens: Vertical Connected Flow Chain (< md) */}
+            {/* Mobile Screens: Vertical Flow Chain (< md) */}
             <div className="flex md:hidden flex-col gap-4 relative z-10">
-              {processSteps.map((step, idx) => {
+              {processSteps.map((step) => {
                 const isHigh = step.isHigh;
                 return (
-                  <div key={`mob-proc-${step.step}`} className="relative flex flex-col items-center">
-                    <div
-                      className={`w-full rounded-2xl p-5 flex flex-col justify-between text-white shadow-lg ${
-                        isHigh ? "bg-blue-600" : "bg-[#183980]"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between w-full mb-3">
-                        <span className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-white">
-                          {step.step}
-                        </span>
-                        <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white">
-                          {step.icon}
-                        </div>
+                  <div
+                    key={`mob-proc-${step.step}`}
+                    className={`w-full rounded-2xl p-5 flex flex-col justify-between text-white shadow-lg ${
+                      isHigh ? "bg-blue-600" : "bg-[#183980]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between w-full mb-3">
+                      <span className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-white">
+                        {step.step}
+                      </span>
+                      <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white">
+                        {step.icon}
                       </div>
-
-                      <h3 className="font-[family-name:var(--font-bricolage)] text-base font-bold mb-1.5 text-white">
-                        {step.name}
-                      </h3>
-                      <p className="text-white/85 text-xs leading-relaxed">
-                        {step.description}
-                      </p>
                     </div>
 
-                    {/* Vertical Connecting Chevron Arrow */}
-                    {idx < processSteps.length - 1 && (
-                      <div className="my-1.5 w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shadow-xs">
-                        ↓
-                      </div>
-                    )}
+                    <h3 className="font-[family-name:var(--font-bricolage)] text-base font-bold mb-1.5 text-white">
+                      {step.name}
+                    </h3>
+                    <p className="text-white/85 text-xs leading-relaxed">
+                      {step.description}
+                    </p>
                   </div>
                 );
               })}
