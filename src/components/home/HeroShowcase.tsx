@@ -176,8 +176,8 @@ export function HeroShowcase() {
             }
 
             const leftPercent = t * 100;
-            const yVal = 115 - 300 * t * (1 - t);
-            const topPercent = (yVal / 140) * 100;
+            const yVal = 135 - 260 * t * (1 - t);
+            const topPercent = (yVal / 160) * 100;
             const distanceFromApex = Math.abs(t - 0.5);
             const isActive = distanceFromApex < 0.07;
 
@@ -193,7 +193,7 @@ export function HeroShowcase() {
             if (innerBadge) {
               if (isActive) {
                 innerBadge.className =
-                  "relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand text-surface flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-brand/40 ring-4 sm:ring-6 ring-brand/15 scale-105 transition-all duration-200";
+                  "relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand text-surface flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-brand/40 ring-4 sm:ring-6 ring-brand/20 scale-105 transition-all duration-200";
               } else {
                 innerBadge.className =
                   "w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-surface/95 backdrop-blur-xs border-2 border-hairline text-muted flex items-center justify-center font-semibold text-xs sm:text-sm shadow-xs transition-all duration-200";
@@ -266,16 +266,16 @@ export function HeroShowcase() {
         </div>
 
         {/* ========================================================================= */}
-        {/* THE GRAND ARC DIAL (Elevates smoothly, apex sits well below header) */}
+        {/* THE GRAND ARC DIAL (Elevates smoothly, apex sits well below header, overflow visible) */}
         {/* ========================================================================= */}
         <div
           ref={arcDialRef}
-          className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none mt-1 sm:mt-3 mb-0"
+          className="w-screen relative left-1/2 -translate-x-1/2 overflow-visible select-none px-0 z-20 pointer-events-none mt-1 sm:mt-2 mb-0"
           style={{ transform: "translateY(65vh)" }}
         >
-          <div className="relative w-full h-20 sm:h-24 md:h-28">
+          <div className="relative w-full h-24 sm:h-28 md:h-32 overflow-visible">
             <svg
-              viewBox="0 0 1920 140"
+              viewBox="0 0 1920 160"
               preserveAspectRatio="none"
               className="w-full h-full fill-none overflow-visible"
               aria-hidden="true"
@@ -290,14 +290,14 @@ export function HeroShowcase() {
                 </linearGradient>
               </defs>
               <path
-                d="M 0 115 Q 960 -35 1920 115"
+                d="M 0 135 Q 960 5 1920 135"
                 stroke="url(#arcGlowGradient)"
                 strokeWidth="3"
                 opacity="0.25"
                 vectorEffect="non-scaling-stroke"
               />
               <path
-                d="M 0 115 Q 960 -35 1920 115"
+                d="M 0 135 Q 960 5 1920 135"
                 stroke="url(#arcGlowGradient)"
                 strokeWidth="2"
                 vectorEffect="non-scaling-stroke"
