@@ -142,7 +142,7 @@ export default function Home() {
         {/* Sticky 100vh Viewport Stage */}
         <div
           ref={stageRef}
-          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-gradient-to-b from-white via-slate-50/40 to-blue-50/20"
+          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-white"
         >
           {/* Header Navigation */}
           <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-40">
@@ -256,7 +256,7 @@ export default function Home() {
               pointerEvents: heroOpacity > 0.4 ? "auto" : "none",
             }}
           >
-            <div className="max-w-5xl mx-auto flex flex-col items-center pt-8">
+            <div className="max-w-5xl mx-auto flex flex-col items-center pt-2">
               <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
                 <span>We Engineer Ideas Into </span>
                 <span className="text-blue-600">
@@ -296,21 +296,16 @@ export default function Home() {
           </div>
 
           {/* ========================================================================= */}
-          {/* THE GRAND ARC DIAL (Always present at bottom of Hero, rotates on scroll) */}
+          {/* THE GRAND ARC DIAL (Positioned at bottom of Hero, elevates smoothly on scroll) */}
           {/* ========================================================================= */}
           <div
-            className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 transition-transform duration-500"
+            className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none transition-transform duration-300 ease-out"
             style={{
-              marginTop: heroOpacity > 0.5 ? "auto" : "1.5rem",
-              marginBottom: heroOpacity > 0.5 ? "2rem" : "0.5rem",
+              transform: `translateY(${heroOpacity * 54}vh)`,
+              marginTop: "1rem",
+              marginBottom: "0.5rem",
             }}
           >
-            {/* Ambient Blue Radial Glow focused on active hub */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 top-2 w-[600px] sm:w-[900px] h-48 bg-gradient-to-b from-blue-400/20 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none"
-              aria-hidden="true"
-            />
-
             <div className="relative w-full h-24 sm:h-28 md:h-32">
               {/* SVG Glowing Arc Curve stretching across the entire screen */}
               <svg
@@ -320,14 +315,14 @@ export default function Home() {
               >
                 <defs>
                   <linearGradient id="arcGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.2" />
-                    <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.5" />
+                    <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.25" />
+                    <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.55" />
                     <stop offset="50%" stopColor="#2563eb" stopOpacity="0.95" />
-                    <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.2" />
+                    <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.55" />
+                    <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.25" />
                   </linearGradient>
                   <filter id="arcGlowFilter" x="-10%" y="-10%" width="120%" height="120%">
-                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
                       <feMergeNode in="SourceGraphic" />
@@ -339,8 +334,8 @@ export default function Home() {
                 <path
                   d="M 0 115 Q 960 -35 1920 115"
                   stroke="url(#arcGlowGradient)"
-                  strokeWidth="5"
-                  opacity="0.25"
+                  strokeWidth="4"
+                  opacity="0.2"
                   filter="url(#arcGlowFilter)"
                   vectorEffect="non-scaling-stroke"
                 />
