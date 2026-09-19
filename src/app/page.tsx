@@ -1153,8 +1153,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 3D Folded Ribbon Rows with Elegant Gap Rhythm */}
-          <div className="max-w-[880px] mx-auto flex flex-col gap-6 sm:gap-8 relative">
+          {/* 3D Folded Ribbon Rows with Refined Subtle Gap Rhythm */}
+          <div className="max-w-[880px] mx-auto flex flex-col gap-2.5 sm:gap-3 relative">
             {[
               {
                 left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
@@ -1193,13 +1193,13 @@ export default function Home() {
             ].map((row, rIdx) => (
               <div
                 key={`process-row-${rIdx}`}
-                className="relative filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.06)] group transition-transform duration-300 hover:-translate-y-0.5"
+                className="relative filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)] group transition-transform duration-300 hover:-translate-y-0.5"
               >
                 {/* Desktop / Tablet View: Continuous 3D Isometric Folded Row Pair */}
                 <div className="hidden md:flex relative w-full items-start">
-                  {/* Left Step Card */}
+                  {/* Left Step Card (Rounded ONLY on Outer Left Edge) */}
                   <div
-                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-2xl overflow-hidden shrink-0 transition-colors duration-200 ${
+                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 transition-colors duration-200 ${
                       row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
@@ -1229,8 +1229,8 @@ export default function Home() {
                         </p>
                       </div>
                     </div>
-                    {/* Photo Container */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    {/* Photo Container (Completely Flush & Square on Right) */}
+                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
                       <Image
                         src={row.left.img}
                         alt={row.left.name}
@@ -1262,14 +1262,14 @@ export default function Home() {
                     </svg>
                   </div>
 
-                  {/* Right Step Card - Shifted down by 26px */}
+                  {/* Right Step Card (Rounded ONLY on Outer Right Edge) - Shifted down by 26px */}
                   <div
-                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-2xl overflow-hidden shrink-0 mt-[26px] transition-colors duration-200 ${
+                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[26px] transition-colors duration-200 ${
                       row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
                     }`}
                   >
-                    {/* Photo Container */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    {/* Photo Container (Completely Flush & Square on Left) */}
+                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
                       <Image
                         src={row.right.img}
                         alt={row.right.name}
