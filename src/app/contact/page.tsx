@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { ContactForm } from "@/components/contact/ContactForm";
+import { MultiStepContactWizard } from "@/components/contact/MultiStepContactWizard";
 import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -62,9 +62,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Right Column: Interactive Form */}
+            {/* Right Column: Interactive Multi-Step Form */}
             <div className="lg:col-span-7">
-              <ContactForm />
+              <MultiStepContactWizard theme="light" />
             </div>
           </div>
         </div>
@@ -73,3 +73,4 @@ export default function ContactPage() {
     </div>
   );
 }
+
