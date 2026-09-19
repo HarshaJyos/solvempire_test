@@ -1122,7 +1122,7 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: OUR PROCESS (Unified Seamless 3D Folded Ribbon Monolith) */}
+      {/* SECTION 4: OUR PROCESS (3D Folded Ribbon Pipeline) */}
       {/* ========================================================================= */}
       <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1137,24 +1137,8 @@ export default function Home() {
             </p>
           </div>
 
-          {/* ========================================================================= */}
-          {/* SECTION 4: OUR PROCESS (3D Folded Ribbon Pipeline with Row Rhythm) */}
-          {/* ========================================================================= */}
-          <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Section Heading */}
-              <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20">
-                <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
-                  <span>OUR </span>
-                  <span className="text-blue-600">PROCESS</span>
-                </h2>
-                <p className="mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
-                  A structured, end-to-end engineering lifecycle from initial discovery to real-world deployment and long-term lifecycle support.
-                </p>
-              </div>
-
-              {/* 3D Folded Ribbon Rows with Precise 5px Gap Rhythm */}
-              <div className="max-w-[880px] mx-auto flex flex-col gap-[1px] relative">
+          {/* 3D Folded Ribbon Rows with Precise 5px Gap Rhythm */}
+          <div className="max-w-[880px] mx-auto flex flex-col gap-[5px] relative">
                 {[
                   {
                     left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
@@ -1367,10 +1351,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
+            ))}
+          </div>
         </div>
       </section>
 
