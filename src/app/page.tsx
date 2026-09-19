@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -13,426 +18,622 @@ const projects = [
       "An automated helmet hygiene system that uses advanced sanitization & sterilization technology to keep helmets clean, safe and germ-free.",
     image: "/freshpod.jpg",
     link: "#freshpod",
+    tags: ["IoT Hardware", "Microcontrollers", "Cloud Telemetry", "Industrial Design"],
   },
   {
     id: "02",
     category: "FINTECH & CLOUD SYSTEMS",
     title: "ApexFlow Real-Time Financial Engine",
     description:
-      "High-throughput, ultra-low latency financial data platform built for real-time asset settlement and institutional execution.",
+      "High-throughput, ultra-low latency financial data platform built for real-time asset settlement, multi-currency routing, and institutional execution.",
     image: "/freshpod.jpg",
     link: "#apexflow",
+    tags: ["Distributed Systems", "Sub-millisecond Latency", "Event Sourcing", "Rust & Go"],
   },
   {
     id: "03",
     category: "AI & IOT PLATFORMS",
     title: "OmniTrack Smart Fleet Telemetry",
     description:
-      "Intelligent IoT fleet tracking system powering next-gen route optimization, predictive maintenance, and driver safety intelligence.",
+      "Intelligent IoT fleet tracking system powering next-gen route optimization, predictive maintenance scheduling, and driver safety intelligence.",
     image: "/freshpod.jpg",
     link: "#omnitrack",
+    tags: ["Edge AI", "Geofencing", "Predictive Analytics", "Real-time Telematics"],
   },
   {
     id: "04",
     category: "HEALTHCARE INNOVATION",
     title: "MedVantage Diagnostic AI Suite",
     description:
-      "Clinical decision support software harnessing advanced machine learning to deliver fast, highly accurate medical image analysis.",
+      "Clinical decision support software harnessing advanced computer vision to deliver fast, highly accurate medical image triage and diagnostics.",
     image: "/freshpod.jpg",
     link: "#medvantage",
+    tags: ["Computer Vision", "HIPAA Compliant", "Federated Learning", "DICOM Pipeline"],
   },
 ];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [rotationProgress, setRotationProgress] = useState<number>(-0.6); // -0.6 = hidden/start, 0 = 01, 1 = 02, 2 = 03, 3 = 04
+  const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
+  const [heroOpacity, setHeroOpacity] = useState<number>(1);
+  const [cardOpacity, setCardOpacity] = useState<number>(0);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // 1. Initialize Lenis Smooth Scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+    });
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    const updateTicker = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateTicker);
+    gsap.ticker.lagSmoothing(0);
+
+    // 2. Initialize Pinned ScrollTrigger for Hero & Arc Rotation
+    const container = containerRef.current;
+    if (!container) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.8,
+        onUpdate: (self) => {
+          const p = self.progress;
+
+          // Phase A: Hero fade out (p: 0 -> 0.18)
+          const hOp = Math.max(0, 1 - p / 0.16);
+          setHeroOpacity(hOp);
+
+          // Phase B: Card fade in (p: 0.08 -> 0.22)
+          const cOp = Math.min(1, Math.max(0, (p - 0.06) / 0.14));
+          setCardOpacity(cOp);
+
+          // Phase C: Continuous Dial Rotation along Arc
+          // At p = 0: u = -0.6 (clean arc, no numbers)
+          // At p = 0.20: u = 0.0 (project 01 at apex)
+          // At p = 0.45: u = 1.0 (project 02 at apex)
+          // At p = 0.70: u = 2.0 (project 03 at apex)
+          // At p = 0.95 -> 1.0: u = 3.0 (project 04 at apex)
+          let u = -0.6;
+          if (p <= 0.2) {
+            u = -0.6 + (p / 0.2) * 0.6; // -0.6 to 0.0
+          } else {
+            const normalizedP = (p - 0.2) / 0.8; // 0 to 1
+            u = Math.min(3.0, normalizedP * 3.0); // 0.0 to 3.0
+          }
+
+          setRotationProgress(u);
+
+          // Determine active project index
+          const activeIdx = Math.max(0, Math.min(projects.length - 1, Math.round(Math.max(0, u))));
+          setActiveProjectIndex(activeIdx);
+        },
+      });
+    }, containerRef);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      lenis.destroy();
+      gsap.ticker.remove(updateTicker);
+    };
+  }, []);
 
   return (
-    <div className="w-full bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-700 scroll-smooth">
+    <div className="w-full bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-700">
       {/* ========================================================================= */}
-      {/* SECTION 1: HERO VIEWPORT (Uncrowded, spacious landing screen) */}
+      {/* PINNED HERO & SHOWCASE STAGE (400vh scroll distance for smooth scrubbing) */}
       {/* ========================================================================= */}
-      <section className="min-h-screen flex flex-col justify-between relative overflow-hidden">
-        {/* Navigation Bar */}
-        <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-30">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+      <div ref={containerRef} className="relative h-[380vh] w-full">
+        {/* Sticky 100vh Viewport Stage */}
+        <div
+          ref={stageRef}
+          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-gradient-to-b from-white via-slate-50/40 to-blue-50/20"
+        >
+          {/* Header Navigation */}
+          <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-40">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image
+                src="/logo.png"
+                alt="Solvempire Logo"
+                width={190}
+                height={44}
+                priority
+                className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              />
+            </Link>
+
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center gap-8 lg:gap-10">
+              <Link
+                href="#about"
+                className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
+              >
+                About Us
+              </Link>
+              <Link
+                href="#services"
+                className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
+              >
+                Capabilities
+              </Link>
+              <Link
+                href="#process"
+                className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
+              >
+                Process
+              </Link>
+            </nav>
+
+            {/* Desktop Contact CTA */}
+            <div className="hidden md:block">
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-[15px] px-6 py-2.5 rounded-full shadow-sm hover:shadow-md hover:shadow-blue-500/20 transition-all duration-200 active:scale-95"
+              >
+                Contact Us
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Menu Button */}
+            <div className="md:hidden flex items-center">
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                aria-label="Toggle Navigation Menu"
+              >
+                {mobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </header>
+
+          {/* Mobile Drawer */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 py-4 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-2 duration-200 relative z-50">
+              <Link
+                href="#about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-slate-700 hover:text-blue-600 font-medium py-1"
+              >
+                About Us
+              </Link>
+              <Link
+                href="#services"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-slate-700 hover:text-blue-600 font-medium py-1"
+              >
+                Capabilities
+              </Link>
+              <Link
+                href="#process"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-slate-700 hover:text-blue-600 font-medium py-1"
+              >
+                Process
+              </Link>
+              <Link
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-full text-center mt-2 shadow-sm"
+              >
+                Contact Us
+              </Link>
+            </div>
+          )}
+
+          {/* ========================================================================= */}
+          {/* HERO CONTENT OVERLAY (Fades smoothly as scroll begins) */}
+          {/* ========================================================================= */}
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none transition-opacity duration-300 z-30"
+            style={{
+              opacity: heroOpacity,
+              transform: `translateY(${(1 - heroOpacity) * -50}px)`,
+              pointerEvents: heroOpacity > 0.4 ? "auto" : "none",
+            }}
+          >
+            <div className="max-w-5xl mx-auto flex flex-col items-center pt-8">
+              <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
+                <span>We Engineer Ideas Into </span>
+                <span className="text-blue-600">
+                  Working Products<span className="text-slate-950">.</span>
+                </span>
+              </h1>
+
+              <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
+                Custom software. Scalable platforms. Real-world impact.
+              </p>
+
+              <div className="mt-8 sm:mt-10">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = containerRef.current;
+                    if (el) {
+                      const targetY = el.offsetTop + el.offsetHeight * 0.25;
+                      window.scrollTo({ top: targetY, behavior: "smooth" });
+                    }
+                  }}
+                  className="group inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                >
+                  <span>Explore Our Work</span>
+                  <svg
+                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================================= */}
+          {/* THE GRAND ARC DIAL (Always present at bottom of Hero, rotates on scroll) */}
+          {/* ========================================================================= */}
+          <div
+            className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 transition-transform duration-500"
+            style={{
+              marginTop: heroOpacity > 0.5 ? "auto" : "1.5rem",
+              marginBottom: heroOpacity > 0.5 ? "2rem" : "0.5rem",
+            }}
+          >
+            {/* Ambient Blue Radial Glow focused on active hub */}
+            <div
+              className="absolute left-1/2 -translate-x-1/2 top-2 w-[600px] sm:w-[900px] h-48 bg-gradient-to-b from-blue-400/20 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none"
+              aria-hidden="true"
+            />
+
+            <div className="relative w-full h-24 sm:h-28 md:h-32">
+              {/* SVG Glowing Arc Curve stretching across the entire screen */}
+              <svg
+                viewBox="0 0 1920 140"
+                preserveAspectRatio="none"
+                className="w-full h-full fill-none overflow-visible"
+              >
+                <defs>
+                  <linearGradient id="arcGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.2" />
+                    <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.5" />
+                    <stop offset="50%" stopColor="#2563eb" stopOpacity="0.95" />
+                    <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.5" />
+                    <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.2" />
+                  </linearGradient>
+                  <filter id="arcGlowFilter" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {/* Ambient glow line */}
+                <path
+                  d="M 0 115 Q 960 -35 1920 115"
+                  stroke="url(#arcGlowGradient)"
+                  strokeWidth="5"
+                  opacity="0.25"
+                  filter="url(#arcGlowFilter)"
+                  vectorEffect="non-scaling-stroke"
+                />
+
+                {/* Primary track line */}
+                <path
+                  d="M 0 115 Q 960 -35 1920 115"
+                  stroke="url(#arcGlowGradient)"
+                  strokeWidth="2"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+
+              {/* Dynamically Rotating Project Numbers along the Arc Curve */}
+              {rotationProgress > -0.5 &&
+                projects.map((project, index) => {
+                  // Continuous curve parameter t
+                  const t = 0.5 + (index - rotationProgress) * 0.18;
+
+                  // Hide if outside visible arc bounds
+                  if (t < 0.04 || t > 0.96) return null;
+
+                  // Exact quadratic Bézier coordinates: y(t) = 115 - 300*t*(1-t) in viewBox height 140
+                  const leftPercent = t * 100;
+                  const yVal = 115 - 300 * t * (1 - t);
+                  const topPercent = (yVal / 140) * 100;
+
+                  // Active focal state when near apex (t ~ 0.5)
+                  const distanceFromApex = Math.abs(t - 0.5);
+                  const isActive = distanceFromApex < 0.08;
+
+                  // Smooth fade-in as numbers enter
+                  const entryOpacity = Math.min(1, Math.max(0, (rotationProgress + 0.5) / 0.5));
+                  // Edge fade out
+                  const edgeFade = t < 0.12 ? t / 0.12 : t > 0.88 ? (0.96 - t) / 0.08 : 1;
+                  const finalOpacity = Math.min(1, Math.max(0, entryOpacity * edgeFade));
+
+                  return (
+                    <div
+                      key={project.id}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none transition-transform duration-200"
+                      style={{
+                        left: `${leftPercent}%`,
+                        top: `${topPercent}%`,
+                        opacity: finalOpacity,
+                      }}
+                    >
+                      {isActive ? (
+                        <div className="relative flex flex-col items-center">
+                          {/* Luminous Pulsing Halo */}
+                          <span className="absolute -inset-2 rounded-full bg-blue-400/30 animate-pulse blur-xs" />
+                          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-blue-500/40 ring-4 sm:ring-6 ring-blue-100 scale-105 transition-all duration-300">
+                            <span>{project.id}</span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-sm border-2 border-slate-200 text-slate-500 flex items-center justify-center font-semibold text-xs sm:text-sm shadow-sm transition-all duration-300">
+                          <span>{project.id}</span>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+
+          {/* ========================================================================= */}
+          {/* FEATURED SHOWCASE CARD (Reveals & morphs smoothly in sync with scroll) */}
+          {/* ========================================================================= */}
+          <div
+            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center pb-8 sm:pb-12 transition-all duration-500 z-20"
+            style={{
+              opacity: cardOpacity,
+              transform: `translateY(${(1 - cardOpacity) * 40}px)`,
+              pointerEvents: cardOpacity > 0.4 ? "auto" : "none",
+            }}
+          >
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column: Layered Showcase Visual */}
+              <div className="lg:col-span-7 relative w-full">
+                {/* Background Offset Card Layer 1 */}
+                <div
+                  className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/80 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
+                  aria-hidden="true"
+                />
+
+                {/* Background Offset Card Layer 2 */}
+                <div
+                  className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/50 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  aria-hidden="true"
+                />
+
+                {/* Main Image Container */}
+                <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[280px] sm:max-h-[320px] md:max-h-[360px] w-full">
+                  <Image
+                    key={projects[activeProjectIndex].id}
+                    src={projects[activeProjectIndex].image}
+                    alt={projects[activeProjectIndex].title}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    priority
+                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Right Column: Project Details & Action */}
+              <div
+                key={projects[activeProjectIndex].id}
+                className="lg:col-span-5 flex flex-col items-start justify-center text-left animate-in fade-in slide-in-from-bottom-3 duration-500"
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 mb-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  <span className="text-blue-600 font-semibold tracking-[0.16em] text-xs uppercase">
+                    {projects[activeProjectIndex].category}
+                  </span>
+                </div>
+
+                <h3 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-slate-950 mt-1 mb-3 leading-[1.15] tracking-tight">
+                  {projects[activeProjectIndex].title}
+                </h3>
+
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-5">
+                  {projects[activeProjectIndex].description}
+                </p>
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {projects[activeProjectIndex].tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-md bg-slate-100/90 border border-slate-200/80 text-slate-600 text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={projects[activeProjectIndex].link}
+                  className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 sm:py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                >
+                  <span>View Case Study</span>
+                  <svg
+                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* SECTION 3: CAPABILITIES & SERVICES */}
+      {/* ========================================================================= */}
+      <section id="services" className="py-24 sm:py-32 bg-slate-50/50 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="max-w-3xl mb-16">
+            <span className="text-blue-600 font-semibold tracking-wider text-xs sm:text-sm uppercase">
+              Our Capabilities
+            </span>
+            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-5xl font-bold text-slate-950 mt-2 mb-4 tracking-tight">
+              End-to-End Engineering for Visionary Teams.
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg">
+              We design, build, and deploy mission-critical software systems and connected hardware platforms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Custom Web & Cloud Platforms",
+                desc: "Scalable microservices, distributed architectures, and modern web applications built for reliability under high load.",
+                icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+              },
+              {
+                title: "IoT & Hardware Integration",
+                desc: "Firmware, embedded telemetry, and cloud orchestration bridging the physical world with real-time digital systems.",
+                icon: "M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z",
+              },
+              {
+                title: "AI & Machine Learning",
+                desc: "Applied computer vision, predictive intelligence, and specialized LLM pipelines embedded natively into workflows.",
+                icon: "M13 10V3L4 14h7v7l9-11h-7z",
+              },
+            ].map((service, i) => (
+              <div
+                key={i}
+                className="p-8 rounded-2xl bg-white border border-slate-200/80 hover:border-blue-300 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                  </svg>
+                </div>
+                <h3 className="font-[family-name:var(--font-bricolage)] text-xl font-bold text-slate-950 mb-2.5">
+                  {service.title}
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION 4: PROCESS */}
+      {/* ========================================================================= */}
+      <section id="process" className="py-24 sm:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="max-w-3xl mb-16">
+            <span className="text-blue-600 font-semibold tracking-wider text-xs sm:text-sm uppercase">
+              How We Work
+            </span>
+            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-5xl font-bold text-slate-950 mt-2 mb-4 tracking-tight">
+              Predictable Velocity. Rigorous Craft.
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg">
+              A disciplined, transparent delivery framework honed across dozens of successful product launches.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { num: "01", name: "Discover & Scope", text: "Deep technical audit, architecture roadmapping, and requirement validation." },
+              { num: "02", name: "System Design", text: "Component blueprints, data modeling, API contracts, and UX prototypes." },
+              { num: "03", name: "Rapid Build", text: "Iterative milestone-driven sprints with automated CI/CD and automated test suites." },
+              { num: "04", name: "Deploy & Scale", text: "Zero-downtime rollouts, telemetry dashboards, and 24/7 SLA infrastructure support." },
+            ].map((step) => (
+              <div key={step.num} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col">
+                <span className="font-[family-name:var(--font-bricolage)] text-3xl font-bold text-blue-600 mb-3">
+                  {step.num}
+                </span>
+                <h4 className="font-bold text-slate-950 text-base mb-2">{step.name}</h4>
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{step.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* FOOTER */}
+      {/* ========================================================================= */}
+      <footer id="contact" className="py-16 bg-slate-950 text-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8 border-b border-slate-800 pb-12">
+          <div className="flex flex-col items-center md:items-start gap-3">
             <Image
               src="/logo.png"
               alt="Solvempire Logo"
-              width={190}
-              height={44}
-              priority
-              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              width={180}
+              height={40}
+              className="h-8 w-auto brightness-0 invert"
             />
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-            <Link
-              href="#about"
-              className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
-            >
-              About Us
-            </Link>
-            <Link
-              href="#journal"
-              className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
-            >
-              Journal
-            </Link>
-            <Link
-              href="#showcase"
-              className="text-slate-600 hover:text-blue-600 text-[15px] font-medium transition-colors duration-200"
-            >
-              Case Studies
-            </Link>
-          </nav>
-
-          {/* Desktop Contact CTA */}
-          <div className="hidden md:block">
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-[15px] px-6 py-2.5 rounded-full shadow-sm hover:shadow-md hover:shadow-blue-500/20 transition-all duration-200 active:scale-95"
-            >
-              Contact Us
-            </Link>
+            <p className="text-slate-400 text-sm max-w-sm text-center md:text-left">
+              Engineering ideas into high-performance digital products and scalable systems.
+            </p>
           </div>
 
-          {/* Mobile Hamburger Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </header>
-
-        {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 py-4 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-2 duration-200 relative z-20">
-            <Link
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-blue-600 font-medium py-1"
-            >
-              About Us
+          <div className="flex items-center gap-8">
+            <Link href="#about" className="text-slate-400 hover:text-white text-sm transition-colors">
+              About
+            </Link>
+            <Link href="#services" className="text-slate-400 hover:text-white text-sm transition-colors">
+              Capabilities
+            </Link>
+            <Link href="#process" className="text-slate-400 hover:text-white text-sm transition-colors">
+              Process
             </Link>
             <Link
-              href="#journal"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-blue-600 font-medium py-1"
+              href="mailto:contact@solvempire.com"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors"
             >
-              Journal
-            </Link>
-            <Link
-              href="#showcase"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-700 hover:text-blue-600 font-medium py-1"
-            >
-              Case Studies
-            </Link>
-            <Link
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2.5 rounded-full text-center mt-2 shadow-sm"
-            >
-              Contact Us
-            </Link>
-          </div>
-        )}
-
-        {/* Hero Center Content with open breathing space */}
-        <div className="w-full max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto py-12">
-          <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
-            <span>We Engineer Ideas Into </span>
-            <span className="text-blue-600">
-              Working Products<span className="text-slate-950">.</span>
-            </span>
-          </h1>
-
-          <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
-            Custom software. Scalable platforms. Real-world impact.
-          </p>
-
-          <div className="mt-8 sm:mt-10">
-            <Link
-              href="#showcase"
-              className="group inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-            >
-              <span>Explore Our Work</span>
-              <svg
-                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2.2}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              Get in Touch
             </Link>
           </div>
         </div>
 
-        {/* Hero Bottom Floating Explorer Badge */}
-        <div className="w-full flex flex-col items-center select-none relative z-20 pb-8">
-          <Link
-            href="#showcase"
-            aria-label="Scroll to featured showcase"
-            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 hover:bg-blue-50/90 border border-slate-200/90 hover:border-blue-300 text-slate-600 hover:text-blue-600 text-xs sm:text-sm font-medium tracking-wide shadow-sm hover:shadow-md transition-all duration-300 group backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            <span>Explore Featured Work</span>
-            <svg
-              className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-transform duration-300 group-hover:translate-y-0.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </Link>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+          <p>&copy; {new Date().getFullYear()} Solvempire Inc. All rights reserved.</p>
+          <p>Built with Next.js, Tailwind CSS &amp; GSAP.</p>
         </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* SECTION 2: SHOWCASE VIEWPORT (Unique Glowing Arc Dial & Featured Card) */}
-      {/* ========================================================================= */}
-      <section
-        id="showcase"
-        className="min-h-screen flex flex-col justify-between items-center relative pt-4 pb-8 sm:pb-12 overflow-hidden scroll-mt-6"
-      >
-        {/* Ambient Blue Radial Spotlight focused on active hub */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 top-4 w-[600px] sm:w-[800px] h-72 bg-gradient-to-b from-blue-400/15 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-
-        {/* Live Project Beacon Header Badge */}
-        <div className="flex flex-col items-center pt-2 pb-1 select-none z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 border border-blue-100 text-blue-700 text-xs font-semibold tracking-wider uppercase shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" />
-            <span>Featured Case Studies &bull; {projects[activeProjectIndex].id} of 04</span>
-          </div>
-        </div>
-
-        {/* Full-Width Edge-to-Edge Glowing Arc Dial */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0">
-          <div className="relative w-full h-28 sm:h-32 md:h-36">
-            {/* SVG Glowing Arc Curve stretching across the entire screen */}
-            <svg
-              viewBox="0 0 1920 140"
-              preserveAspectRatio="none"
-              className="w-full h-full fill-none overflow-visible"
-            >
-              <defs>
-                <linearGradient id="arcGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.2" />
-                  <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.5" />
-                  <stop offset="50%" stopColor="#2563eb" stopOpacity="0.95" />
-                  <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.2" />
-                </linearGradient>
-                <filter id="arcGlowFilter" x="-10%" y="-10%" width="120%" height="120%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Soft ambient glow line */}
-              <path
-                d="M 0 115 Q 960 -35 1920 115"
-                stroke="url(#arcGlowGradient)"
-                strokeWidth="5"
-                opacity="0.25"
-                filter="url(#arcGlowFilter)"
-                vectorEffect="non-scaling-stroke"
-              />
-
-              {/* Sharp primary track line */}
-              <path
-                d="M 0 115 Q 960 -35 1920 115"
-                stroke="url(#arcGlowGradient)"
-                strokeWidth="2"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-
-            {/* Dial Nodes along the Arc - Mathematically aligned 100% on the curve */}
-            {projects.map((project, index) => {
-              let diff = index - activeProjectIndex;
-              if (diff > projects.length / 2) diff -= projects.length;
-              if (diff < -projects.length / 2) diff += projects.length;
-
-              // Map diff to parameter t on curve: t=0.5 is center apex
-              let t = 0.5 + diff * 0.16;
-              t = Math.max(0.06, Math.min(0.94, t));
-
-              // Exact X & Y coordinate percentage matching SVG path y(t) = 115 - 300*t*(1-t) in height 140
-              const leftPercent = t * 100;
-              const yVal = 115 - 300 * t * (1 - t);
-              const topPercent = (yVal / 140) * 100;
-
-              const isActive = activeProjectIndex === index;
-
-              return (
-                <button
-                  key={project.id}
-                  onClick={() => setActiveProjectIndex(index)}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20 transition-all duration-500 ease-out focus:outline-none"
-                  style={{
-                    left: `${leftPercent}%`,
-                    top: `${topPercent}%`,
-                  }}
-                  aria-label={`Switch to project ${project.id}: ${project.title}`}
-                >
-                  {isActive ? (
-                    <div className="relative flex flex-col items-center">
-                      {/* Luminous Pulsing Halo */}
-                      <span className="absolute -inset-2 rounded-full bg-blue-400/30 animate-pulse blur-xs" />
-                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-blue-500/40 ring-4 sm:ring-6 ring-blue-100 transition-transform duration-300 scale-105">
-                        <span>{project.id}</span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-sm border-2 border-slate-200 group-hover:border-blue-500 text-slate-500 group-hover:text-blue-600 flex items-center justify-center font-semibold text-xs sm:text-sm shadow-sm transition-all duration-300 group-hover:scale-115">
-                      <span>{project.id}</span>
-                    </div>
-                  )}
-                </button>
-              );
-            })}
-
-            {/* Left / Right Quick Prev / Next Controls centered on the Arc curve */}
-            {(() => {
-              // Position Left Arrow at t=0.07
-              const tLeft = 0.07;
-              const yLeft = 115 - 300 * tLeft * (1 - tLeft);
-              const topPercentLeft = (yLeft / 140) * 100;
-
-              // Position Right Arrow at t=0.93
-              const tRight = 0.93;
-              const yRight = 115 - 300 * tRight * (1 - tRight);
-              const topPercentRight = (yRight / 140) * 100;
-
-              return (
-                <>
-                  <button
-                    onClick={() =>
-                      setActiveProjectIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
-                    }
-                    aria-label="Previous Project"
-                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200/90 text-slate-500 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-115 z-20 group"
-                    style={{
-                      left: "7%",
-                      top: `${topPercentLeft}%`,
-                    }}
-                  >
-                    <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() =>
-                      setActiveProjectIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
-                    }
-                    aria-label="Next Project"
-                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200/90 text-slate-500 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-115 z-20 group"
-                    style={{
-                      left: "93%",
-                      top: `${topPercentRight}%`,
-                    }}
-                  >
-                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </>
-              );
-            })()}
-          </div>
-        </div>
-
-        {/* Middle / Bottom: The Featured Showcase Card (fits comfortably in this 100vh) */}
-        <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center my-auto pt-4 pb-2">
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Layered Showcase Visual */}
-            <div className="lg:col-span-7 relative w-full">
-              {/* Background Offset Card Layer 1 */}
-              <div
-                className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/80 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
-                aria-hidden="true"
-              />
-
-              {/* Background Offset Card Layer 2 */}
-              <div
-                className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/50 rounded-2xl sm:rounded-3xl pointer-events-none"
-                aria-hidden="true"
-              />
-
-              {/* Main Image Container */}
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[300px] sm:max-h-[340px] md:max-h-[380px] w-full">
-                <Image
-                  src={projects[activeProjectIndex].image}
-                  alt={projects[activeProjectIndex].title}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 1024px) 100vw, 55vw"
-                  priority
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            </div>
-
-            {/* Right Column: Project Details & Action */}
-            <div className="lg:col-span-5 flex flex-col items-start justify-center text-left">
-              <span className="text-blue-600 font-semibold tracking-[0.18em] text-xs sm:text-sm uppercase">
-                {projects[activeProjectIndex].category}
-              </span>
-
-              <h3 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.5rem] font-bold text-slate-950 mt-2 mb-3 leading-[1.14] tracking-tight">
-                {projects[activeProjectIndex].title}
-              </h3>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                {projects[activeProjectIndex].description}
-              </p>
-
-              <Link
-                href={projects[activeProjectIndex].link}
-                className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 sm:py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-              >
-                <span>View Case Study</span>
-                <svg
-                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.2}
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      </footer>
     </div>
   );
 }
