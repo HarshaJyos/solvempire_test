@@ -50,13 +50,11 @@ export default function Home() {
   return (
     <div className="w-full bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-700 scroll-smooth">
       {/* ========================================================================= */}
-      {/* CONTINUOUS 1.5-VH EXPERIENCE: HERO & FEATURED WORK IN SEAMLESS HARMONY */}
+      {/* SECTION 1: HERO VIEWPORT (Uncrowded, spacious landing screen) */}
       {/* ========================================================================= */}
-
-      {/* UPPER FLOW: NAVBAR, HERO HEADLINE, CTA & GRAND EDGE-TO-EDGE ARC DIAL */}
-      <div className="w-full flex flex-col justify-between relative overflow-hidden pt-2 sm:pt-4">
+      <section className="min-h-screen flex flex-col justify-between relative overflow-hidden">
         {/* Navigation Bar */}
-        <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-4 sm:pt-6 flex items-center justify-between relative z-30">
+        <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-30">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <Image
@@ -156,20 +154,20 @@ export default function Home() {
           </div>
         )}
 
-        {/* Hero Center Headline & CTA */}
-        <div className="w-full max-w-5xl mx-auto px-6 text-center flex flex-col items-center pt-8 pb-4 sm:pt-12 sm:pb-6">
-          <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
+        {/* Hero Center Content with open breathing space */}
+        <div className="w-full max-w-5xl mx-auto px-6 text-center flex flex-col items-center my-auto py-12">
+          <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
             <span>We Engineer Ideas Into </span>
             <span className="text-blue-600">
               Working Products<span className="text-slate-950">.</span>
             </span>
           </h1>
 
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
             Custom software. Scalable platforms. Real-world impact.
           </p>
 
-          <div className="mt-6 sm:mt-8">
+          <div className="mt-8 sm:mt-10">
             <Link
               href="#showcase"
               className="group inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 py-3.5 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
@@ -188,24 +186,44 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Grand Edge-to-Edge Wide Arc Dial */}
-        <div className="w-full relative mt-6 sm:mt-8 pb-0 flex flex-col items-center select-none overflow-hidden">
-          {/* Ambient Blue Glow */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[95vw] max-w-6xl h-60 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"
-            aria-hidden="true"
-          />
+        {/* Hero Bottom Anchor Indicator */}
+        <div className="w-full pb-8 flex flex-col items-center select-none">
+          <Link
+            href="#showcase"
+            aria-label="Scroll down to featured showcase"
+            className="w-9 h-9 rounded-full bg-blue-50 border border-blue-200 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center shadow-sm transition-all duration-300 hover:scale-110 active:scale-95"
+          >
+            <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </Link>
+        </div>
+      </section>
 
-          {/* Large Arc Container - Stretches edge-to-edge across full width with massive radius */}
-          <div className="relative w-full max-w-[100vw] h-28 sm:h-36 px-2 sm:px-6">
-            {/* SVG Arc Curve with wide radius */}
+      {/* ========================================================================= */}
+      {/* SECTION 2: SHOWCASE VIEWPORT (Arc Dial & Featured Card in a SINGLE 100vh) */}
+      {/* ========================================================================= */}
+      <section
+        id="showcase"
+        className="min-h-screen flex flex-col justify-between items-center relative px-4 sm:px-8 lg:px-12 pt-6 pb-12 sm:pb-16 overflow-hidden scroll-mt-0"
+      >
+        {/* Ambient Glow Background */}
+        <div
+          className="absolute left-1/2 -translate-x-1/2 top-1/4 -translate-y-1/2 w-[95vw] max-w-6xl h-72 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+
+        {/* Top: Grand Edge-to-Edge Arc Dial */}
+        <div className="w-full relative select-none">
+          <div className="relative w-full max-w-6xl mx-auto h-24 sm:h-28">
+            {/* SVG Arc Curve */}
             <svg
-              viewBox="0 0 1920 110"
+              viewBox="0 0 1440 100"
               preserveAspectRatio="none"
               className="w-full h-full stroke-blue-200 fill-none overflow-visible"
               style={{ strokeWidth: "2" }}
             >
-              <path d="M 0 100 Q 960 -40 1920 100" />
+              <path d="M 0 95 Q 720 -30 1440 95" />
             </svg>
 
             {/* Dial Nodes along the Arc (Clock-style rotation) */}
@@ -214,13 +232,13 @@ export default function Home() {
               if (diff > projects.length / 2) diff -= projects.length;
               if (diff < -projects.length / 2) diff += projects.length;
 
-              // Center at t=0.5
-              let t = 0.5 + diff * 0.18;
+              // Center is at t=0.5
+              let t = 0.5 + diff * 0.2;
               t = Math.max(0.08, Math.min(0.92, t));
 
               const leftPercent = t * 100;
-              // Parabolic curve y(t) = 100 - 380*t*(1-t) in viewBox height 110
-              const topPercent = ((100 - 380 * t * (1 - t)) / 110) * 100;
+              // Parabolic curve formula: y(t) = 95 - 380*t*(1-t)
+              const topPercent = ((95 - 380 * t * (1 - t)) / 100) * 100;
 
               const isActive = activeProjectIndex === index;
 
@@ -250,7 +268,7 @@ export default function Home() {
               );
             })}
 
-            {/* Vertical Connector Line directly leading down into Showcase Card */}
+            {/* Vertical Connector Line from Center Apex into Showcase Card */}
             <div className="absolute left-1/2 -translate-x-1/2 top-[10%] bottom-0 w-[1.5px] bg-gradient-to-b from-blue-400 via-blue-300 to-blue-200 pointer-events-none" />
 
             {/* Left / Right Quick Prev / Next Controls */}
@@ -259,7 +277,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
               }
               aria-label="Previous Project"
-              className="absolute left-4 sm:left-8 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute left-2 sm:left-6 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -270,7 +288,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
               }
               aria-label="Next Project"
-              className="absolute right-4 sm:right-8 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute right-2 sm:right-6 top-[55%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -278,18 +296,9 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* LOWER FLOW: CONTINUOUS FEATURED PROJECT SHOWCASE CARD (TIGHTLY CONNECTED) */}
-      <div
-        id="showcase"
-        className="w-full flex flex-col justify-start items-center relative px-6 sm:px-8 lg:px-12 pt-2 pb-16 sm:pb-24 scroll-mt-6"
-      >
-        {/* Continuous Lead Line from Arc directly entering the card */}
-        <div className="w-[1.5px] h-10 sm:h-12 bg-gradient-to-b from-blue-200 via-blue-300 to-transparent pointer-events-none mb-4" />
-
-        <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
-          {/* Main Showcase Grid */}
+        {/* Middle / Bottom: The Featured Showcase Card (fits comfortably in this 100vh) */}
+        <div className="w-full max-w-6xl mx-auto flex flex-col items-center my-auto pt-2">
           <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Layered Showcase Visual */}
             <div className="lg:col-span-7 relative w-full">
@@ -306,7 +315,7 @@ export default function Home() {
               />
 
               {/* Main Image Container */}
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[320px] sm:max-h-[380px] w-full">
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/10] max-h-[300px] sm:max-h-[340px] md:max-h-[380px] w-full">
                 <Image
                   src={projects[activeProjectIndex].image}
                   alt={projects[activeProjectIndex].title}
@@ -351,7 +360,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
