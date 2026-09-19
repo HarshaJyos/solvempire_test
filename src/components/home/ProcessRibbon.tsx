@@ -157,11 +157,13 @@ export function ProcessRibbon() {
         </div>
 
         {/* 3D Folded Ribbon Rows */}
-        <div className="max-w-5xl mx-auto flex flex-col gap-1.5 relative">
+        <div className="max-w-5xl mx-auto flex flex-col gap-3 md:gap-0 relative">
           {processRows.map((row, rIdx) => (
             <div
               key={`process-row-${rIdx}`}
-              className="gsap-process-row relative filter drop-shadow-sm group transition-transform duration-300 hover:-translate-y-0.5"
+              className={`gsap-process-row relative filter drop-shadow-sm group transition-transform duration-300 hover:-translate-y-0.5 ${
+                rIdx > 0 ? "md:-mt-[24px]" : ""
+              }`}
             >
               {/* Desktop / Tablet View */}
               <div className="hidden md:flex relative w-full items-start">
