@@ -37,8 +37,10 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-[#f3f6fc] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-700`}
+        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-[#f3f6fc] text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-700 relative`}
       >
+        {/* Option D: Micro Film Grain Overlay */}
+        <div className="bg-noise-grain" aria-hidden="true" />
         {children}
       </body>
     </html>
