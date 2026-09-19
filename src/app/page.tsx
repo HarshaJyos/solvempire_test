@@ -1077,14 +1077,17 @@ export default function Home() {
             }}
           >
             <div className="max-w-5xl mx-auto flex flex-col items-center pt-0 -mt-8 sm:-mt-12">
-              <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
+              <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-3">
+                PRODUCT ENGINEERING STUDIO
+              </span>
+              <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
                 <span>We Engineer Ideas Into </span>
                 <span className="text-blue-600">
                   Working Products<span className="text-slate-950">.</span>
                 </span>
               </h1>
 
-              <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
+              <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-xl mx-auto leading-relaxed">
                 Custom software. Scalable platforms. Real-world impact.
               </p>
 
@@ -1295,20 +1298,23 @@ export default function Home() {
               {/* Right Column: Scaled Project Details & Kinetic Typography Animations */}
               <div className="lg:col-span-5 flex flex-col items-start justify-center text-left">
                 {/* Title Container with Kinetic Masked Reveal */}
-                <div className="overflow-hidden w-full mb-4 sm:mb-5">
+                <div className="overflow-hidden w-full mb-3 sm:mb-4">
+                  <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-2">
+                    {projects[activeProjectIndex].category}
+                  </span>
                   <h3
                     key={`title-${projects[activeProjectIndex].id}`}
-                    className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-slate-950 leading-[1.10] tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl md:text-4xl lg:text-[2.618rem] font-bold text-slate-950 leading-[1.12] tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   >
                     {projects[activeProjectIndex].title}
                   </h3>
                 </div>
 
                 {/* Description Container with Staggered Kinetic Reveal */}
-                <div className="overflow-hidden w-full mb-7 sm:mb-8">
+                <div className="overflow-hidden w-full mb-6 sm:mb-7">
                   <p
                     key={`desc-${projects[activeProjectIndex].id}`}
-                    className="text-slate-600 text-base sm:text-lg lg:text-[1.125rem] leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-3 duration-600 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="text-slate-600 text-base sm:text-lg lg:text-[1.125rem] leading-[1.618] max-w-xl animate-in fade-in slide-in-from-bottom-3 duration-600 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   >
                     {projects[activeProjectIndex].description}
                   </p>
@@ -1360,6 +1366,9 @@ export default function Home() {
           <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
             {/* Section Heading */}
             <div className="w-full text-center max-w-4xl mx-auto mb-8 shrink-0">
+              <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-2">
+                WHY CHOOSE US
+              </span>
               <h2 className="font-[family-name:var(--font-bricolage)] text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
                 <span>WHY PARTNER WITH </span>
                 <span className="text-blue-600">SOLVEMPIRE?</span>
@@ -1411,17 +1420,17 @@ export default function Home() {
                   <div className="overflow-hidden mb-2.5">
                     <span
                       key={`pillar-tag-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-sm tracking-[0.14em] uppercase"
+                      className="gsap-pillar-tag inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase"
                     >
                       {partnerPillars[activePillarIndex].tag}
                     </span>
                   </div>
 
                   {/* Title with GSAP minimal kinetic typography */}
-                  <div className="overflow-hidden w-full mb-3">
+                  <div className="overflow-hidden w-full mb-3.5">
                     <h3
                       key={`pillar-title-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-2xl lg:text-[2.25rem] font-bold text-slate-950 leading-[1.16] tracking-tight"
+                      className="gsap-pillar-title font-[family-name:var(--font-bricolage)] text-2xl lg:text-[2.125rem] font-bold text-slate-950 leading-[1.16] tracking-tight"
                     >
                       {partnerPillars[activePillarIndex].title}
                     </h3>
@@ -1431,7 +1440,7 @@ export default function Home() {
                   <div className="overflow-hidden w-full mb-6">
                     <p
                       key={`pillar-desc-${partnerPillars[activePillarIndex].id}`}
-                      className="gsap-pillar-desc text-slate-600 text-base lg:text-[1.05rem] leading-relaxed max-w-lg"
+                      className="gsap-pillar-desc text-slate-600 text-base lg:text-[1.05rem] leading-[1.618] max-w-lg"
                     >
                       {partnerPillars[activePillarIndex].description}
                     </p>
@@ -1440,7 +1449,7 @@ export default function Home() {
                   {/* Tool Badges / Chips */}
                   <div
                     key={`pillar-tools-${partnerPillars[activePillarIndex].id}`}
-                    className="flex flex-wrap items-center gap-2.5 mb-7 w-full"
+                    className="flex flex-wrap items-center gap-2.5 mb-2 w-full"
                   >
                     {partnerPillars[activePillarIndex].tools.map((tool) => (
                       <div
@@ -1585,7 +1594,7 @@ export default function Home() {
                           </div>
 
                           {/* Description */}
-                          <p className="text-slate-600 text-[11px] sm:text-xs leading-snug mb-2 mt-1">
+                          <p className="text-slate-600 text-[11px] sm:text-xs leading-[1.618] mb-2 mt-1">
                             {pillar.description}
                           </p>
 
@@ -1633,11 +1642,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Heading with GSAP Rack Focus & Unmask */}
           <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20 overflow-hidden">
-            <h2 className="gsap-process-heading font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
+            <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-2">
+              OUR LIFECYCLE
+            </span>
+            <h2 className="gsap-process-heading font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
               <span>OUR </span>
               <span className="text-blue-600">PROCESS</span>
             </h2>
-            <p className="gsap-process-subheading mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+            <p className="gsap-process-subheading mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-[1.618]">
               A structured, end-to-end engineering lifecycle from initial discovery to real-world deployment and long-term lifecycle support.
             </p>
           </div>
@@ -1695,7 +1707,7 @@ export default function Home() {
                     {/* Text Panel */}
                     <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between shrink-0">
                       <span
-                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
+                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${
                           row.left.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1703,14 +1715,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.3rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
                             row.left.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-xs lg:text-[13px] leading-relaxed line-clamp-2 ${
+                          className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1771,7 +1783,7 @@ export default function Home() {
                     {/* Text Panel */}
                     <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between items-end text-right shrink-0">
                       <span
-                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.75rem] font-bold tracking-tight leading-none ${
+                        className={`gsap-process-num font-[family-name:var(--font-bricolage)] text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${
                           row.right.theme === "ice" ? "text-blue-600" : "text-white"
                         }`}
                       >
@@ -1779,14 +1791,14 @@ export default function Home() {
                       </span>
                       <div className="gsap-process-text">
                         <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.3rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
+                          className={`font-[family-name:var(--font-bricolage)] text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 whitespace-nowrap ${
                             row.right.theme === "ice" ? "text-blue-600" : "text-white"
                           }`}
                         >
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-xs lg:text-[13px] leading-relaxed line-clamp-2 ${
+                          className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1822,7 +1834,7 @@ export default function Home() {
                           {row.left.name}
                         </h3>
                         <p
-                          className={`text-xs sm:text-[13px] leading-snug mt-1 line-clamp-2 ${
+                          className={`text-xs sm:text-[13px] leading-[1.618] mt-1 line-clamp-2 ${
                             row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1861,7 +1873,7 @@ export default function Home() {
                           {row.right.name}
                         </h3>
                         <p
-                          className={`text-xs sm:text-[13px] leading-snug mt-1 line-clamp-2 ${
+                          className={`text-xs sm:text-[13px] leading-[1.618] mt-1 line-clamp-2 ${
                             row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
                           }`}
                         >
@@ -1894,10 +1906,14 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
-            <h2 className="gsap-team-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-              MEET OUR <span className="text-blue-600">TEAM</span>
+            <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-2">
+              OUR EXPERTS
+            </span>
+            <h2 className="gsap-team-heading font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase leading-tight">
+              <span>MEET OUR </span>
+              <span className="text-blue-600">TEAM</span>
             </h2>
-            <p className="gsap-team-subheading text-slate-500 text-sm sm:text-base md:text-lg mt-3 leading-relaxed">
+            <p className="gsap-team-subheading text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-[1.618] mt-3 sm:mt-4">
               A multidisciplinary team turning complex ideas into real-world solutions.
             </p>
           </div>
@@ -1944,10 +1960,10 @@ export default function Home() {
 
                     {/* Name and Role */}
                     <div className="flex flex-col justify-center min-w-0 flex-1">
-                      <h3 className="font-bold text-sm sm:text-[15px] text-white tracking-wide uppercase leading-tight truncate">
+                      <h3 className="font-[family-name:var(--font-bricolage)] font-bold text-sm sm:text-base text-white tracking-wide uppercase leading-tight truncate">
                         {member.name}
                       </h3>
-                      <p className="text-xs sm:text-[13px] text-white/90 font-medium leading-tight mt-0.5 truncate">
+                      <p className="text-xs sm:text-sm text-white/90 font-medium leading-tight mt-0.5 truncate">
                         {member.role}
                       </p>
                     </div>
@@ -2034,9 +2050,12 @@ export default function Home() {
         {/* Hero CTA Content */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 mb-20 sm:mb-28">
           <div className="max-w-2xl">
-            <h2 className="gsap-contact-title font-[family-name:var(--font-bricolage)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.12]">
+            <span className="inline-block text-blue-400 font-bold text-xs sm:text-sm tracking-widest uppercase mb-3">
+              GET IN TOUCH
+            </span>
+            <h2 className="gsap-contact-title font-[family-name:var(--font-bricolage)] text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-bold tracking-tight text-white leading-[1.10]">
               Have an idea? <br />
-              <span className="text-white">Let&apos;s build it together.</span>
+              <span className="text-blue-400">Let&apos;s build it together.</span>
             </h2>
 
             <div className="gsap-contact-btn mt-8 sm:mt-10">
@@ -2071,7 +2090,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 py-10 sm:py-12 border-b border-slate-100">
               {/* Column 1: Company (3 cols on lg) */}
               <div className="lg:col-span-3 flex flex-col gap-3">
-                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Company</h4>
+                <h4 className="font-bold text-slate-900 text-xs sm:text-sm tracking-wider uppercase mb-1">Company</h4>
                 <Link href="#about" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   About Us
                 </Link>
@@ -2088,7 +2107,7 @@ export default function Home() {
 
               {/* Column 2: Services (3 cols on lg) */}
               <div className="lg:col-span-3 flex flex-col gap-3">
-                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Services</h4>
+                <h4 className="font-bold text-slate-900 text-xs sm:text-sm tracking-wider uppercase mb-1">Services</h4>
                 <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   Web &amp; Mobile Development
                 </Link>
@@ -2105,7 +2124,7 @@ export default function Home() {
 
               {/* Column 3: Resources (2 cols on lg) */}
               <div className="lg:col-span-2 flex flex-col gap-3">
-                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Resources</h4>
+                <h4 className="font-bold text-slate-900 text-xs sm:text-sm tracking-wider uppercase mb-1">Resources</h4>
                 <Link href="#blog" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
                   Engineering Blog
                 </Link>
@@ -2122,7 +2141,7 @@ export default function Home() {
 
               {/* Column 4: Contact & Location (4 cols on lg) */}
               <div className="lg:col-span-4 flex flex-col gap-4">
-                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-0.5">Contact</h4>
+                <h4 className="font-bold text-slate-900 text-xs sm:text-sm tracking-wider uppercase mb-0.5">Contact</h4>
                 
                 {/* Support Email */}
                 <a
