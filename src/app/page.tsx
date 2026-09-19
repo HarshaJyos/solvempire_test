@@ -4,8 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+const projects = [
+  {
+    id: "01",
+    category: "PRODUCT ENGINEERING",
+    title: "Freshpod Helmet Sanitization System",
+    description:
+      "An automated helmet hygiene system that uses advanced sanitization & sterilization technology to keep helmets clean, safe and germ-free.",
+    image: "/freshpod.jpg",
+    link: "#freshpod",
+  },
+  {
+    id: "02",
+    category: "FINTECH & CLOUD SYSTEMS",
+    title: "ApexFlow Real-Time Financial Engine",
+    description:
+      "High-throughput, ultra-low latency financial data platform built for real-time asset settlement and institutional execution.",
+    image: "/freshpod.jpg",
+    link: "#apexflow",
+  },
+  {
+    id: "03",
+    category: "AI & IOT PLATFORMS",
+    title: "OmniTrack Smart Fleet Telemetry",
+    description:
+      "Intelligent IoT fleet tracking system powering next-gen route optimization, predictive maintenance, and driver safety intelligence.",
+    image: "/freshpod.jpg",
+    link: "#omnitrack",
+  },
+  {
+    id: "04",
+    category: "HEALTHCARE INNOVATION",
+    title: "MedVantage Diagnostic AI Suite",
+    description:
+      "Clinical decision support software harnessing advanced machine learning to deliver fast, highly accurate medical image analysis.",
+    image: "/freshpod.jpg",
+    link: "#medvantage",
+  },
+];
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
 
   return (
     <div className="min-h-screen bg-white flex flex-col text-slate-900 selection:bg-blue-100 selection:text-blue-700">
@@ -168,15 +208,15 @@ export default function Home() {
             {/* Circular Down Button positioned exactly at the peak of the arc */}
             <div className="absolute left-1/2 -top-3.5 -translate-x-1/2 flex flex-col items-center">
               <Link
-                href="#explore"
-                aria-label="Scroll down to explore"
+                href="#featured-work"
+                aria-label="Scroll down to featured work"
                 className="w-8 h-8 rounded-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white flex items-center justify-center shadow-md shadow-blue-500/30 transition-all duration-200 hover:scale-110 active:scale-95 z-10"
               >
                 <svg
                   className="w-3.5 h-3.5"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2.5"
+                  strokeWidth={2.5}
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -188,6 +228,154 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      {/* Featured Work Section */}
+      <section
+        id="featured-work"
+        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 lg:py-28 relative scroll-mt-10"
+      >
+        {/* Section Header with Stepper Arc */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+          {/* Left Title Area */}
+          <div className="flex flex-col items-start">
+            <span className="text-blue-600 font-semibold tracking-[0.2em] text-xs sm:text-sm uppercase mb-3">
+              Featured Work
+            </span>
+            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-slate-950 leading-[1.08] tracking-tight">
+              Engineering Impact <br />
+              That <span className="text-blue-600">Speaks<span className="text-slate-950">.</span></span>
+            </h2>
+          </div>
+
+          {/* Right Curved Stepper Navigation */}
+          <div className="relative w-full md:w-80 h-28 hidden sm:block">
+            {/* Curved Path */}
+            <svg
+              viewBox="0 0 320 100"
+              className="w-full h-full stroke-blue-200 fill-none overflow-visible"
+              style={{ strokeWidth: "1.5" }}
+            >
+              <path d="M 24 18 Q 160 20 304 92" />
+            </svg>
+
+            {/* Stepper Nodes along the arc */}
+            {projects.map((project, index) => {
+              const positions = [
+                { left: "8%", top: "8%" },
+                { left: "36%", top: "14%" },
+                { left: "64%", top: "34%" },
+                { left: "92%", top: "68%" },
+              ];
+              const pos = positions[index];
+              const isActive = activeProjectIndex === index;
+
+              return (
+                <button
+                  key={project.id}
+                  onClick={() => setActiveProjectIndex(index)}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer"
+                  style={{ left: pos.left, top: pos.top }}
+                >
+                  {/* Dot */}
+                  <div
+                    className={`rounded-full transition-all duration-300 ${
+                      isActive
+                        ? "w-4 h-4 bg-blue-600 ring-4 ring-blue-100 shadow-sm"
+                        : "w-2.5 h-2.5 bg-blue-300/80 group-hover:bg-blue-500 group-hover:scale-125"
+                    }`}
+                  />
+                  {/* Label */}
+                  <span
+                    className={`mt-2 text-sm sm:text-base font-semibold transition-colors duration-200 ${
+                      isActive ? "text-blue-600 font-bold" : "text-slate-400 group-hover:text-slate-700"
+                    }`}
+                  >
+                    {project.id}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Mobile Simple Stepper */}
+          <div className="flex sm:hidden items-center gap-3">
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                onClick={() => setActiveProjectIndex(index)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                  activeProjectIndex === index
+                    ? "bg-blue-600 text-white shadow-sm"
+                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                }`}
+              >
+                {project.id}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Showcase Grid (Image + Content) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mt-12 sm:mt-16">
+          {/* Left Column: Layered Visual Cards */}
+          <div className="lg:col-span-7 relative w-full">
+            {/* Background Offset Card Layer 1 */}
+            <div
+              className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
+              aria-hidden="true"
+            />
+
+            {/* Background Offset Card Layer 2 */}
+            <div
+              className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
+              aria-hidden="true"
+            />
+
+            {/* Main Showcase Image Container */}
+            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-xl group aspect-[16/10]">
+              <Image
+                src={projects[activeProjectIndex].image}
+                alt={projects[activeProjectIndex].title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                priority
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
+
+          {/* Right Column: Project Info & CTA */}
+          <div className="lg:col-span-5 flex flex-col items-start max-w-xl">
+            <span className="text-blue-600 font-semibold tracking-[0.18em] text-xs sm:text-sm uppercase">
+              {projects[activeProjectIndex].category}
+            </span>
+
+            <h3 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl lg:text-[2.65rem] font-bold text-slate-950 mt-3 mb-4 leading-[1.14] tracking-tight">
+              {projects[activeProjectIndex].title}
+            </h3>
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8">
+              {projects[activeProjectIndex].description}
+            </p>
+
+            <Link
+              href={projects[activeProjectIndex].link}
+              className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 sm:py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            >
+              <span>View Case Study</span>
+              <svg
+                className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
