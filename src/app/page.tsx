@@ -296,12 +296,12 @@ export default function Home() {
             className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none z-30"
             style={{
               opacity: heroOpacity,
-              transform: `translateY(${heroY}px)`,
+              transform: `translateY(${heroY - 16}px)`,
               pointerEvents: heroOpacity > 0.4 ? "auto" : "none",
               transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="max-w-5xl mx-auto flex flex-col items-center pt-2">
+            <div className="max-w-5xl mx-auto flex flex-col items-center pt-0 -mt-8 sm:-mt-12">
               <h1 className="font-[family-name:var(--font-bricolage)] text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-slate-950 leading-[1.08] text-center max-w-5xl mx-auto text-balance">
                 <span>We Engineer Ideas Into </span>
                 <span className="text-blue-600">
@@ -309,11 +309,11 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
+              <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-slate-500 font-normal max-w-xl mx-auto leading-relaxed">
                 Custom software. Scalable platforms. Real-world impact.
               </p>
 
-              <div className="mt-8 sm:mt-10">
+              <div className="mt-7 sm:mt-9">
                 <button
                   type="button"
                   onClick={() => {
@@ -346,13 +346,13 @@ export default function Home() {
           <div
             className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0 z-20 pointer-events-none"
             style={{
-              transform: `translateY(${arcShift * 50}vh)`,
-              marginTop: "0.25rem",
-              marginBottom: "0.25rem",
+              transform: `translateY(${arcShift * 65}vh)`,
+              marginTop: "2rem",
+              marginBottom: "0px",
               transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
           >
-            <div className="relative w-full h-24 sm:h-28 md:h-32">
+            <div className="relative w-full h-24 sm:h-28 md:h-30">
               {/* SVG Glowing Arc Curve stretching across the entire screen */}
               <svg
                 viewBox="0 0 1920 140"
@@ -452,7 +452,7 @@ export default function Home() {
           {/* FEATURED SHOWCASE CARD (Elevated higher, clean minimalist composition) */}
           {/* ========================================================================= */}
           <div
-            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center my-auto pt-0 pb-6 sm:pb-8 z-20"
+            className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center mt-2 sm:mt-3 mb-auto pb-6 sm:pb-8 z-20"
             style={{
               opacity: cardOpacity,
               transform: `translateY(${cardY}px) scale(${cardScale})`,
