@@ -1137,256 +1137,240 @@ export default function Home() {
             </p>
           </div>
 
-      {/* ========================================================================= */}
-      {/* SECTION 4: OUR PROCESS (3D Folded Ribbon Pipeline with Row Rhythm) */}
-      {/* ========================================================================= */}
-      <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Heading */}
-          <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20">
-            <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
-              <span>OUR </span>
-              <span className="text-blue-600">PROCESS</span>
-            </h2>
-            <p className="mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
-              A structured, end-to-end engineering lifecycle from initial discovery to real-world deployment and long-term lifecycle support.
-            </p>
-          </div>
-
-          {/* 3D Folded Ribbon Rows with Refined Subtle Gap Rhythm */}
-          <div className="max-w-[880px] mx-auto flex flex-col gap-2.5 sm:gap-3 relative">
-            {[
-              {
-                left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
-                right: { step: "02", name: "Design", desc: "Conceptualize, engineer & validate the solution", img: "/freshpod.jpg", theme: "blue" },
-                gradId: "foldGrad1",
-                stops: [
-                  { offset: "0%", color: "#1a202c" },
-                  { offset: "25%", color: "#2d3748" },
-                  { offset: "60%", color: "#4a5568" },
-                  { offset: "85%", color: "#6c85c4" },
-                  { offset: "100%", color: "#8ba1d9" },
-                ],
-              },
-              {
-                left: { step: "03", name: "Develop", desc: "Build mechanical, electronic, software & integrations", img: "/freshpod-kiosks.png", theme: "ice" },
-                right: { step: "04", name: "Prototype", desc: "Prototype, test & iterate for performance and reliability", img: "/freshpod.jpg", theme: "ice" },
-                gradId: "foldGrad2",
-                stops: [
-                  { offset: "0%", color: "#233238" },
-                  { offset: "35%", color: "#3b4f59" },
-                  { offset: "70%", color: "#688294" },
-                  { offset: "100%", color: "#c8d7f6" },
-                ],
-              },
-              {
-                left: { step: "05", name: "Manufacture", desc: "Support production, quality & supply chain", img: "/freshpod-kiosks.png", theme: "blue" },
-                right: { step: "06", name: "Deploy & Support", desc: "Deploy in the field and support for long-term success", img: "/freshpod.jpg", theme: "blue" },
-                gradId: "foldGrad3",
-                stops: [
-                  { offset: "0%", color: "#141c2b" },
-                  { offset: "30%", color: "#1e2d48" },
-                  { offset: "70%", color: "#415a8c" },
-                  { offset: "100%", color: "#6c85c4" },
-                ],
-              },
-            ].map((row, rIdx) => (
-              <div
-                key={`process-row-${rIdx}`}
-                className="relative filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)] group transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                {/* Desktop / Tablet View: Continuous 3D Isometric Folded Row Pair */}
-                <div className="hidden md:flex relative w-full items-start">
-                  {/* Left Step Card (Rounded ONLY on Outer Left Edge) */}
-                  <div
-                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 transition-colors duration-200 ${
-                      row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
-                    }`}
-                  >
-                    {/* Text Panel */}
-                    <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
-                      <span
-                        className={`font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${
-                          row.left.theme === "ice" ? "text-blue-600" : "text-white"
-                        }`}
-                      >
-                        {row.left.step}
-                      </span>
-                      <div>
-                        <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${
-                            row.left.theme === "ice" ? "text-blue-600" : "text-white"
-                          }`}
-                        >
-                          {row.left.name}
-                        </h3>
-                        <p
-                          className={`text-[11px] lg:text-[12px] leading-snug ${
-                            row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
-                          }`}
-                        >
-                          {row.left.desc}
-                        </p>
-                      </div>
-                    </div>
-                    {/* Photo Container (Completely Flush & Square on Right) */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
-                      <Image
-                        src={row.left.img}
-                        alt={row.left.name}
-                        fill
-                        unoptimized
-                        sizes="250px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Central 3D Isometric Fold Connector */}
-                  <div className="w-[44px] h-[216px] relative shrink-0 z-0 overflow-visible">
-                    <svg viewBox="0 0 44 216" className="w-full h-full block" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id={row.gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-                          {row.stops.map((stop, sIdx) => (
-                            <stop key={sIdx} offset={stop.offset} stopColor={stop.color} />
-                          ))}
-                        </linearGradient>
-                      </defs>
-
-                      {/* 3D Fold Surface */}
-                      <polygon points="0,0 44,26 44,216 0,190" fill={`url(#${row.gradId})`} />
-
-                      {/* Crease Highlights */}
-                      <line x1="0" y1="0" x2="44" y2="26" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
-                      <line x1="0" y1="190" x2="44" y2="216" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
-                    </svg>
-                  </div>
-
-                  {/* Right Step Card (Rounded ONLY on Outer Right Edge) - Shifted down by 26px */}
-                  <div
-                    className={`w-[calc(50%-22px)] h-[190px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[26px] transition-colors duration-200 ${
-                      row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
-                    }`}
-                  >
-                    {/* Photo Container (Completely Flush & Square on Left) */}
-                    <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
-                      <Image
-                        src={row.right.img}
-                        alt={row.right.name}
-                        fill
-                        unoptimized
-                        sizes="250px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    {/* Text Panel */}
-                    <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
-                      <span
-                        className={`font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${
-                          row.right.theme === "ice" ? "text-blue-600" : "text-white"
-                        }`}
-                      >
-                        {row.right.step}
-                      </span>
-                      <div>
-                        <h3
-                          className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${
-                            row.right.theme === "ice" ? "text-blue-600" : "text-white"
-                          }`}
-                        >
-                          {row.right.name}
-                        </h3>
-                        <p
-                          className={`text-[11px] lg:text-[12px] leading-snug ${
-                            row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
-                          }`}
-                        >
-                          {row.right.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile View (< md): Clean stacked paired cards */}
-                <div className="flex md:hidden flex-col gap-3 rounded-2xl overflow-hidden shadow-lg">
-                  {/* Left Step */}
-                  <div
-                    className={`flex h-40 overflow-hidden ${
-                      row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
-                    }`}
-                  >
-                    <div className="w-1/2 p-4 flex flex-col justify-between">
-                      <span
-                        className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${
-                          row.left.theme === "ice" ? "text-blue-600" : "text-white"
-                        }`}
-                      >
-                        {row.left.step}
-                      </span>
-                      <div>
-                        <h3
-                          className={`font-bold text-base leading-tight ${
-                            row.left.theme === "ice" ? "text-blue-600" : "text-white"
-                          }`}
-                        >
-                          {row.left.name}
-                        </h3>
-                        <p
-                          className={`text-[11px] leading-tight mt-0.5 ${
-                            row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
-                          }`}
-                        >
-                          {row.left.desc}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="w-1/2 relative bg-slate-900">
-                      <Image src={row.left.img} alt={row.left.name} fill unoptimized sizes="200px" className="object-cover" />
-                    </div>
-                  </div>
-
-                  {/* Right Step */}
-                  <div
-                    className={`flex h-40 overflow-hidden ${
-                      row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
-                    }`}
-                  >
-                    <div className="w-1/2 relative bg-slate-900">
-                      <Image src={row.right.img} alt={row.right.name} fill unoptimized sizes="200px" className="object-cover" />
-                    </div>
-                    <div className="w-1/2 p-4 flex flex-col justify-between items-end text-right">
-                      <span
-                        className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${
-                          row.right.theme === "ice" ? "text-blue-600" : "text-white"
-                        }`}
-                      >
-                        {row.right.step}
-                      </span>
-                      <div>
-                        <h3
-                          className={`font-bold text-base leading-tight ${
-                            row.right.theme === "ice" ? "text-blue-600" : "text-white"
-                          }`}
-                        >
-                          {row.right.name}
-                        </h3>
-                        <p
-                          className={`text-[11px] leading-tight mt-0.5 ${
-                            row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
-                          }`}
-                        >
-                          {row.right.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* ========================================================================= */}
+          {/* SECTION 4: OUR PROCESS (3D Folded Ribbon Pipeline with Row Rhythm) */}
+          {/* ========================================================================= */}
+          <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Section Heading */}
+              <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20">
+                <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
+                  <span>OUR </span>
+                  <span className="text-blue-600">PROCESS</span>
+                </h2>
+                <p className="mt-3 sm:mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">
+                  A structured, end-to-end engineering lifecycle from initial discovery to real-world deployment and long-term lifecycle support.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              {/* 3D Folded Ribbon Rows with Precise 5px Gap Rhythm */}
+              <div className="max-w-[880px] mx-auto flex flex-col gap-[1px] relative">
+                {[
+                  {
+                    left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
+                    right: { step: "02", name: "Design", desc: "Conceptualize, engineer & validate the solution", img: "/freshpod.jpg", theme: "blue" },
+                    gradId: "foldGrad1",
+                    stops: [
+                      { offset: "0%", color: "#1a202c" },
+                      { offset: "25%", color: "#2d3748" },
+                      { offset: "60%", color: "#4a5568" },
+                      { offset: "85%", color: "#6c85c4" },
+                      { offset: "100%", color: "#8ba1d9" },
+                    ],
+                  },
+                  {
+                    left: { step: "03", name: "Develop", desc: "Build mechanical, electronic, software & integrations", img: "/freshpod-kiosks.png", theme: "ice" },
+                    right: { step: "04", name: "Prototype", desc: "Prototype, test & iterate for performance and reliability", img: "/freshpod.jpg", theme: "ice" },
+                    gradId: "foldGrad2",
+                    stops: [
+                      { offset: "0%", color: "#233238" },
+                      { offset: "35%", color: "#3b4f59" },
+                      { offset: "70%", color: "#688294" },
+                      { offset: "100%", color: "#c8d7f6" },
+                    ],
+                  },
+                  {
+                    left: { step: "05", name: "Manufacture", desc: "Support production, quality & supply chain", img: "/freshpod-kiosks.png", theme: "blue" },
+                    right: { step: "06", name: "Deploy & Support", desc: "Deploy in the field and support for long-term success", img: "/freshpod.jpg", theme: "blue" },
+                    gradId: "foldGrad3",
+                    stops: [
+                      { offset: "0%", color: "#141c2b" },
+                      { offset: "30%", color: "#1e2d48" },
+                      { offset: "70%", color: "#415a8c" },
+                      { offset: "100%", color: "#6c85c4" },
+                    ],
+                  },
+                ].map((row, rIdx) => (
+                  <div
+                    key={`process-row-${rIdx}`}
+                    className="relative filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)] group transition-transform duration-300 hover:-translate-y-0.5"
+                  >
+                    {/* Desktop / Tablet View: Continuous 3D Isometric Folded Row Pair */}
+                    <div className="hidden md:flex relative w-full items-start">
+                      {/* Left Step Card (Rounded ONLY on Outer Left Edge) */}
+                      <div
+                        className={`w-[calc(50%-22px)] h-[190px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 transition-colors duration-200 ${row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                          }`}
+                      >
+                        {/* Text Panel */}
+                        <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
+                          <span
+                            className={`font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${row.left.theme === "ice" ? "text-blue-600" : "text-white"
+                              }`}
+                          >
+                            {row.left.step}
+                          </span>
+                          <div>
+                            <h3
+                              className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${row.left.theme === "ice" ? "text-blue-600" : "text-white"
+                                }`}
+                            >
+                              {row.left.name}
+                            </h3>
+                            <p
+                              className={`text-[11px] lg:text-[12px] leading-snug ${row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
+                                }`}
+                            >
+                              {row.left.desc}
+                            </p>
+                          </div>
+                        </div>
+                        {/* Photo Container (Completely Flush & Square on Right) */}
+                        <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
+                          <Image
+                            src={row.left.img}
+                            alt={row.left.name}
+                            fill
+                            unoptimized
+                            sizes="250px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Central 3D Isometric Fold Connector */}
+                      <div className="w-[44px] h-[216px] relative shrink-0 z-0 overflow-visible">
+                        <svg viewBox="0 0 44 216" className="w-full h-full block" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id={row.gradId} x1="0%" y1="0%" x2="100%" y2="100%">
+                              {row.stops.map((stop, sIdx) => (
+                                <stop key={sIdx} offset={stop.offset} stopColor={stop.color} />
+                              ))}
+                            </linearGradient>
+                          </defs>
+
+                          {/* 3D Fold Surface */}
+                          <polygon points="0,0 44,26 44,216 0,190" fill={`url(#${row.gradId})`} />
+
+                          {/* Crease Highlights */}
+                          <line x1="0" y1="0" x2="44" y2="26" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+                          <line x1="0" y1="190" x2="44" y2="216" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+                        </svg>
+                      </div>
+
+                      {/* Right Step Card (Rounded ONLY on Outer Right Edge) - Shifted down by 26px */}
+                      <div
+                        className={`w-[calc(50%-22px)] h-[190px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[26px] transition-colors duration-200 ${row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                          }`}
+                      >
+                        {/* Photo Container (Completely Flush & Square on Left) */}
+                        <div className="w-[55%] h-full relative overflow-hidden bg-slate-900 rounded-none">
+                          <Image
+                            src={row.right.img}
+                            alt={row.right.name}
+                            fill
+                            unoptimized
+                            sizes="250px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                        {/* Text Panel */}
+                        <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
+                          <span
+                            className={`font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight leading-none ${row.right.theme === "ice" ? "text-blue-600" : "text-white"
+                              }`}
+                          >
+                            {row.right.step}
+                          </span>
+                          <div>
+                            <h3
+                              className={`font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 ${row.right.theme === "ice" ? "text-blue-600" : "text-white"
+                                }`}
+                            >
+                              {row.right.name}
+                            </h3>
+                            <p
+                              className={`text-[11px] lg:text-[12px] leading-snug ${row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
+                                }`}
+                            >
+                              {row.right.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Mobile View (< md): Clean stacked paired cards */}
+                    <div className="flex md:hidden flex-col gap-3 rounded-2xl overflow-hidden shadow-lg">
+                      {/* Left Step */}
+                      <div
+                        className={`flex h-40 overflow-hidden ${row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                          }`}
+                      >
+                        <div className="w-1/2 p-4 flex flex-col justify-between">
+                          <span
+                            className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${row.left.theme === "ice" ? "text-blue-600" : "text-white"
+                              }`}
+                          >
+                            {row.left.step}
+                          </span>
+                          <div>
+                            <h3
+                              className={`font-bold text-base leading-tight ${row.left.theme === "ice" ? "text-blue-600" : "text-white"
+                                }`}
+                            >
+                              {row.left.name}
+                            </h3>
+                            <p
+                              className={`text-[11px] leading-tight mt-0.5 ${row.left.theme === "ice" ? "text-slate-700" : "text-white/85"
+                                }`}
+                            >
+                              {row.left.desc}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="w-1/2 relative bg-slate-900">
+                          <Image src={row.left.img} alt={row.left.name} fill unoptimized sizes="200px" className="object-cover" />
+                        </div>
+                      </div>
+
+                      {/* Right Step */}
+                      <div
+                        className={`flex h-40 overflow-hidden ${row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                          }`}
+                      >
+                        <div className="w-1/2 relative bg-slate-900">
+                          <Image src={row.right.img} alt={row.right.name} fill unoptimized sizes="200px" className="object-cover" />
+                        </div>
+                        <div className="w-1/2 p-4 flex flex-col justify-between items-end text-right">
+                          <span
+                            className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${row.right.theme === "ice" ? "text-blue-600" : "text-white"
+                              }`}
+                          >
+                            {row.right.step}
+                          </span>
+                          <div>
+                            <h3
+                              className={`font-bold text-base leading-tight ${row.right.theme === "ice" ? "text-blue-600" : "text-white"
+                                }`}
+                            >
+                              {row.right.name}
+                            </h3>
+                            <p
+                              className={`text-[11px] leading-tight mt-0.5 ${row.right.theme === "ice" ? "text-slate-700" : "text-white/85"
+                                }`}
+                            >
+                              {row.right.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
       </section>
 
