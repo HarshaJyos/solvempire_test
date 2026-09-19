@@ -211,6 +211,7 @@ export default function Home() {
   const partnerContentRef = useRef<HTMLDivElement>(null);
   const processSectionRef = useRef<HTMLDivElement>(null);
   const teamSectionRef = useRef<HTMLDivElement>(null);
+  const contactSectionRef = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
   const [partnerProgress, setPartnerProgress] = useState<number>(0);
 
@@ -350,7 +351,7 @@ export default function Home() {
     };
   }, []);
 
-  // GSAP Driven Meet Our Team Section Cinematic Animation
+  // GSAP Driven Meet Our Team Section Cinematic Animation (Middle First, Then Left, Then Right)
   useEffect(() => {
     if (!teamSectionRef.current) return;
 
@@ -396,45 +397,143 @@ export default function Home() {
         }
       );
 
-      // 2. Team Cards 3D Staggered Unfold
-      const cards = gsap.utils.toArray<HTMLElement>(".gsap-team-card");
-      gsap.fromTo(
-        cards,
-        { y: 50, opacity: 0, scale: 0.94, filter: "blur(6px)" },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 0.85,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: teamSectionRef.current,
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-          },
-        }
-      );
+      // 2. Team Cards Orchestrated Scroll In / Out: Middle First (02), then Left (01), then Right (03)
+      const midCard = teamSectionRef.current?.querySelector(".gsap-team-card-mid");
+      const leftCard = teamSectionRef.current?.querySelector(".gsap-team-card-left");
+      const rightCard = teamSectionRef.current?.querySelector(".gsap-team-card-right");
+
+      const teamTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: teamSectionRef.current,
+          start: "top 78%",
+          end: "bottom 18%",
+          toggleActions: "play reverse play reverse",
+        },
+      });
+
+      if (midCard) {
+        teamTL.fromTo(
+          midCard,
+          { y: 75, opacity: 0, scale: 0.9, filter: "blur(10px)" },
+          { y: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.85, ease: "power3.out" }
+        );
+      }
+
+      if (leftCard) {
+        teamTL.fromTo(
+          leftCard,
+          { x: -45, y: 55, opacity: 0, scale: 0.92, filter: "blur(8px)" },
+          { x: 0, y: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.85, ease: "power3.out" },
+          "-=0.6"
+        );
+      }
+
+      if (rightCard) {
+        teamTL.fromTo(
+          rightCard,
+          { x: 45, y: 55, opacity: 0, scale: 0.92, filter: "blur(8px)" },
+          { x: 0, y: 0, opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.85, ease: "power3.out" },
+          "-=0.6"
+        );
+      }
 
       // 3. Bottom CTA Button Pop
-      gsap.fromTo(
+      teamTL.fromTo(
         ".gsap-team-cta",
         { y: 20, opacity: 0, scale: 0.92 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
-          duration: 0.6,
+          duration: 0.55,
           ease: "back.out(1.5)",
+        },
+        "-=0.4"
+      );
+    }, teamSectionRef);
+
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
+  }, []);
+
+  // GSAP Driven Contact & Footer Section Cinematic Animation
+  useEffect(() => {
+    if (!contactSectionRef.current) return;
+
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".gsap-contact-title",
+        { y: 45, opacity: 0, filter: "blur(12px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "power3.out",
           scrollTrigger: {
-            trigger: ".gsap-team-cta",
-            start: "top 95%",
+            trigger: ".gsap-contact-title",
+            start: "top 85%",
             toggleActions: "play reverse play reverse",
           },
         }
       );
-    }, teamSectionRef);
+
+      gsap.fromTo(
+        ".gsap-contact-btn",
+        { y: 30, opacity: 0, scale: 0.9 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          ease: "back.out(1.4)",
+          scrollTrigger: {
+            trigger: ".gsap-contact-btn",
+            start: "top 88%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".gsap-contact-card",
+        { y: 60, opacity: 0, scale: 0.97 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".gsap-contact-card",
+            start: "top 90%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".gsap-contact-arc",
+        { opacity: 0, scale: 0.85 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: contactSectionRef.current,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    }, contactSectionRef);
 
     return () => {
       clearTimeout(timer);
@@ -1641,48 +1740,57 @@ export default function Home() {
 
           {/* Team Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 lg:gap-8 max-w-5xl mx-auto">
-            {teamMembers.map((member) => (
-              <div
-                key={member.id}
-                className="gsap-team-card group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] transition-all duration-500 hover:-translate-y-2 flex flex-col"
-              >
-                {/* Left Subtle Gradient Ribbon Accent */}
-                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-400 via-[#6c85c4] to-blue-600 z-10 opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+            {teamMembers.map((member) => {
+              const positionClass =
+                member.id === "02"
+                  ? "gsap-team-card-mid"
+                  : member.id === "01"
+                  ? "gsap-team-card-left"
+                  : "gsap-team-card-right";
 
-                {/* Portrait Photo Container */}
-                <div className="relative w-full aspect-[4/4.7] sm:aspect-[4/4.5] overflow-hidden bg-slate-900">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    unoptimized
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                </div>
+              return (
+                <div
+                  key={member.id}
+                  className={`gsap-team-card ${positionClass} group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-[0_10px_35px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] transition-all duration-500 hover:-translate-y-2 flex flex-col`}
+                >
+                  {/* Left Subtle Gradient Ribbon Accent */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-blue-400 via-[#6c85c4] to-blue-600 z-10 opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Bottom Information Bar */}
-                <div className="bg-[#6c85c4] text-white px-5 py-4 sm:px-6 sm:py-4.5 flex items-center gap-3.5 sm:gap-4 relative z-10">
-                  {/* Large Index Number */}
-                  <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold text-white/95 leading-none shrink-0">
-                    {member.id}
-                  </span>
+                  {/* Portrait Photo Container */}
+                  <div className="relative w-full aspect-[4/4.7] sm:aspect-[4/4.5] overflow-hidden bg-slate-900">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </div>
 
-                  {/* Vertical Divider */}
-                  <div className="w-[1.5px] h-8 sm:h-9 bg-white/35 shrink-0" />
+                  {/* Bottom Information Bar */}
+                  <div className="bg-[#6c85c4] text-white px-5 py-4 sm:px-6 sm:py-4.5 flex items-center gap-3.5 sm:gap-4 relative z-10">
+                    {/* Large Index Number */}
+                    <span className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold text-white/95 leading-none shrink-0">
+                      {member.id}
+                    </span>
 
-                  {/* Name and Role */}
-                  <div className="flex flex-col justify-center min-w-0 flex-1">
-                    <h3 className="font-bold text-sm sm:text-[15px] text-white tracking-wide uppercase leading-tight truncate">
-                      {member.name}
-                    </h3>
-                    <p className="text-xs sm:text-[13px] text-white/90 font-medium leading-tight mt-0.5 truncate">
-                      {member.role}
-                    </p>
+                    {/* Vertical Divider */}
+                    <div className="w-[1.5px] h-8 sm:h-9 bg-white/35 shrink-0" />
+
+                    {/* Name and Role */}
+                    <div className="flex flex-col justify-center min-w-0 flex-1">
+                      <h3 className="font-bold text-sm sm:text-[15px] text-white tracking-wide uppercase leading-tight truncate">
+                        {member.name}
+                      </h3>
+                      <p className="text-xs sm:text-[13px] text-white/90 font-medium leading-tight mt-0.5 truncate">
+                        {member.role}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Bottom Interactive CTA Button */}
@@ -1711,50 +1819,216 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* FOOTER */}
+      {/* SECTION 6: CONTACT & FOOTER */}
       {/* ========================================================================= */}
-      <footer id="contact" className="py-16 bg-slate-950 text-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8 border-b border-slate-800 pb-12">
-          <div className="flex flex-col items-center md:items-start gap-3">
-            <Image
-              src="/logo.png"
-              alt="Solvempire Logo"
-              width={180}
-              height={40}
-              className="h-8 w-auto brightness-0 invert"
+      <section
+        id="contact"
+        ref={contactSectionRef}
+        className="w-full bg-black text-white relative overflow-hidden pt-24 sm:pt-32 lg:pt-36"
+      >
+        {/* Ambient Orbital Trajectory Arc with Glowing Node */}
+        <div className="gsap-contact-arc absolute right-0 top-0 w-full sm:w-2/3 lg:w-1/2 h-[450px] sm:h-[550px] pointer-events-none overflow-hidden select-none z-0">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 600 500"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMaxYMin meet"
+          >
+            {/* Ambient Radial Glow */}
+            <circle cx="480" cy="160" r="180" fill="#2563eb" opacity="0.15" filter="blur(70px)" />
+
+            {/* Orbital Curved Arc Line */}
+            <path
+              d="M 50 500 C 180 340, 340 220, 580 80"
+              stroke="url(#blue-contact-arc)"
+              strokeWidth="2"
+              strokeDasharray="6 4"
+              opacity="0.35"
             />
-            <p className="text-slate-400 text-sm max-w-sm text-center md:text-left">
-              Engineering ideas into high-performance digital products and scalable systems.
-            </p>
-          </div>
+            <path
+              d="M 50 500 C 180 340, 340 220, 580 80"
+              stroke="url(#blue-contact-arc)"
+              strokeWidth="1.5"
+            />
 
-          <div className="flex items-center gap-8">
-            <Link href="#about" className="text-slate-400 hover:text-white text-sm transition-colors">
-              About
-            </Link>
-            <Link href="#services" className="text-slate-400 hover:text-white text-sm transition-colors">
-              Capabilities
-            </Link>
-            <Link href="#process" className="text-slate-400 hover:text-white text-sm transition-colors">
-              Process
-            </Link>
-            <Link href="#team" className="text-slate-400 hover:text-white text-sm transition-colors">
-              Team
-            </Link>
-            <Link
-              href="mailto:contact@solvempire.com"
-              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2.5 rounded-full transition-colors"
-            >
-              Get in Touch
-            </Link>
+            {/* Glowing Blue Satellite Node on Arc */}
+            <circle cx="450" cy="155" r="5" fill="#3b82f6" />
+            <circle cx="450" cy="155" r="11" fill="#3b82f6" opacity="0.45" className="animate-ping" />
+            <circle cx="450" cy="155" r="18" fill="#3b82f6" opacity="0.2" />
+
+            <defs>
+              <linearGradient id="blue-contact-arc" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0.1" />
+                <stop offset="60%" stopColor="#3b82f6" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#60a5fa" stopOpacity="1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Hero CTA Content */}
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 mb-20 sm:mb-28">
+          <div className="max-w-2xl">
+            <h2 className="gsap-contact-title font-[family-name:var(--font-bricolage)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.12]">
+              Have an idea? <br />
+              <span className="text-white">Let&apos;s build it together.</span>
+            </h2>
+
+            <div className="gsap-contact-btn mt-8 sm:mt-10">
+              <Link
+                href="mailto:hello@solvempire.com"
+                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 active:bg-blue-700 text-white font-semibold text-base sm:text-lg px-8 py-4 rounded-full shadow-xl shadow-blue-600/30 hover:shadow-blue-600/50 hover:scale-105 active:scale-95 transition-all duration-300 group"
+              >
+                <span>Start Your Project</span>
+                <span className="text-xl transition-transform duration-300 group-hover:translate-x-1.5">&rarr;</span>
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-          <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Solvempire Inc. All rights reserved.</p>
-          <p>Built with Next.js, Tailwind CSS &amp; GSAP.</p>
+        {/* Nested White Footer Card */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 relative z-10">
+          <div className="gsap-contact-card bg-white text-slate-900 rounded-[2rem] sm:rounded-[2.75rem] p-8 sm:p-12 lg:p-16 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] border border-slate-100">
+            {/* Logo Row */}
+            <div className="flex items-center justify-between pb-10 sm:pb-12 border-b border-slate-100">
+              <Link href="/" className="inline-block group">
+                <Image
+                  src="/logo.png"
+                  alt="Solvempire Logo"
+                  width={190}
+                  height={44}
+                  className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+                />
+              </Link>
+              <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-3.5 py-1.5 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Available for Q3/Q4 Projects</span>
+              </div>
+            </div>
+
+            {/* 4-Column Navigation Links */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 py-10 sm:py-12 border-b border-slate-100">
+              {/* Column 1: Company */}
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Company</h4>
+                <Link href="#about" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  About Us
+                </Link>
+                <Link href="#process" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Journal &amp; Process
+                </Link>
+                <Link href="#team" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Meet Our Team
+                </Link>
+                <Link href="#careers" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Careers
+                </Link>
+              </div>
+
+              {/* Column 2: Services */}
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Services</h4>
+                <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Web &amp; Mobile Development
+                </Link>
+                <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Cloud &amp; DevOps Architecture
+                </Link>
+                <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  IoT &amp; Embedded Systems
+                </Link>
+                <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Hardware &amp; CAD Design
+                </Link>
+              </div>
+
+              {/* Column 3: Resources */}
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Resources</h4>
+                <Link href="#blog" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Engineering Blog
+                </Link>
+                <Link href="#services" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Case Studies
+                </Link>
+                <Link href="#docs" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Documentation
+                </Link>
+                <Link href="#security" className="text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150">
+                  Security Standards
+                </Link>
+              </div>
+
+              {/* Column 4: Contact */}
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-slate-900 text-sm tracking-wider uppercase mb-1">Contact</h4>
+                <a
+                  href="mailto:hello@solvempire.com"
+                  className="flex items-center gap-2.5 text-slate-600 hover:text-blue-600 text-sm transition-colors duration-150 group"
+                >
+                  <svg
+                    className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>hello@solvempire.com</span>
+                </a>
+                <div className="flex items-center gap-2.5 text-slate-600 text-sm">
+                  <svg
+                    className="w-4 h-4 text-slate-400 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                  <span>Chennai, India</span>
+                </div>
+                <div className="sm:hidden mt-2 flex items-center gap-2 text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-3 py-1 rounded-full w-fit">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Available for new projects</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Copyright & Legal Links */}
+            <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+              <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Solvempire Inc. All rights reserved.</p>
+              <div className="flex items-center gap-6">
+                <Link href="#privacy" className="hover:text-slate-800 transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="#terms" className="hover:text-slate-800 transition-colors">
+                  Terms of Service
+                </Link>
+                <Link href="#security" className="hover:text-slate-800 transition-colors">
+                  Security
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }
