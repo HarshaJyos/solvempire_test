@@ -245,82 +245,15 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
           {/* ========================================================================= */}
           <div className="w-full max-w-[860px] flex-1 min-w-0">
             <article className="w-full bg-white border border-slate-300 rounded-none shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] p-5 sm:p-10 md:p-14 lg:p-16 transition-all relative overflow-hidden break-words">
-              {/* Subtle Top Paper Header Stamp */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-slate-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-muted">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-none bg-brand" />
-                  <span className="text-brand font-bold tracking-widest">
-                    SOLVEMPIRE WHITE PAPER
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-slate-700">{meta.category}</span>
-                  <span className="text-slate-300">|</span>
-                  <span className="text-slate-500">{meta.type}</span>
-                </div>
-              </div>
-
-              {/* Article Header Section */}
-              <header className="pt-8 pb-8 border-b border-slate-200 space-y-5">
-                <div className="space-y-3">
-                  <h1 className="font-display font-bold text-2xl sm:text-4xl md:text-[2.65rem] text-heading tracking-tight leading-[1.18]">
-                    {meta.title}
-                  </h1>
-                  {meta.subtitle && (
-                    <p className="font-body text-base sm:text-lg text-body leading-relaxed font-normal">
-                      {meta.subtitle}
-                    </p>
-                  )}
-                </div>
-
-                {/* Author Byline Bar - Clean & Uncluttered */}
-                <div className="pt-4 flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center gap-3.5">
-                    <Link
-                      href={`/team/${authorSlug}`}
-                      className="relative w-11 h-11 rounded-none overflow-hidden border border-slate-300 shrink-0 bg-ice-light group hover:border-brand transition-colors block"
-                    >
-                      {meta.author.avatar ? (
-                        <Image
-                          src={meta.author.avatar}
-                          alt={meta.author.name}
-                          fill
-                          className="object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-brand text-sm font-bold uppercase">
-                          {meta.author.name.charAt(0)}
-                        </div>
-                      )}
-                    </Link>
-
-                    <div>
-                      <Link
-                        href={`/team/${authorSlug}`}
-                        className="font-display font-bold text-sm text-heading hover:text-brand transition-colors block"
-                      >
-                        {meta.author.name}
-                      </Link>
-                      <span className="text-xs text-muted block">{meta.author.role}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 text-xs text-muted">
-                    <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                      <Calendar className="w-3.5 h-3.5 opacity-70" />
-                      <span>{meta.publishedAt}</span>
-                    </span>
-                    <span className="opacity-40">•</span>
-                    <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{meta.readTime}</span>
-                    </span>
-                  </div>
-                </div>
+              {/* Article Title */}
+              <header className="pb-6 mb-6 border-b border-slate-200">
+                <h1 className="font-display font-bold text-2xl sm:text-4xl md:text-[2.65rem] text-heading tracking-tight leading-[1.18]">
+                  {meta.title}
+                </h1>
               </header>
 
               {/* Document Body - Clean Linear Flow */}
-              <div className="py-4 space-y-6 font-body text-body text-[15px] sm:text-[1.0625rem] leading-[1.8] text-slate-800">
+              <div className="py-2 space-y-6 font-body text-body text-[15px] sm:text-[1.0625rem] leading-[1.8] text-slate-800">
                 {sections.map((section, idx) => (
                   <RenderSection key={idx} section={section} />
                 ))}
@@ -420,8 +353,8 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </div>
               )}
 
-              {/* Author Bio Box */}
-              <div className="mt-10 p-6 sm:p-8 rounded-none bg-slate-50/80 border border-slate-300 space-y-4">
+              {/* Author Bio & Merged Publication Details Box */}
+              <div className="mt-12 p-6 sm:p-8 rounded-none bg-slate-50 border border-slate-300 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <Link
                     href={`/team/${authorSlug}`}
@@ -465,6 +398,30 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 <p className="text-sm text-body leading-relaxed">
                   {meta.author.bio || `${meta.author.role} at SolveMpire.`}
                 </p>
+
+                {/* Merged Publication Date, Reading Time & Categories */}
+                <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                      <Calendar className="w-3.5 h-3.5 opacity-70" />
+                      <span>Published {meta.publishedAt}</span>
+                    </span>
+                    <span className="opacity-40">•</span>
+                    <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
+                      <Clock className="w-3.5 h-3.5" />
+                      <span>{meta.readTime}</span>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-none bg-white border border-slate-200 text-slate-700 font-medium text-[11px]">
+                      {meta.category}
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-none bg-white border border-slate-200 text-slate-500 font-medium text-[11px]">
+                      {meta.type}
+                    </span>
+                  </div>
+                </div>
               </div>
             </article>
 
