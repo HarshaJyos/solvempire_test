@@ -26,7 +26,7 @@ const projects = [
     title: "ApexFlow Real-Time Financial Engine",
     description:
       "High-throughput, ultra-low latency financial data platform built for real-time asset settlement, multi-currency routing, and institutional execution.",
-    image: "/freshpod.jpg",
+    image: "/freshpod-kiosks.png",
     link: "#apexflow",
     tags: ["Distributed Systems", "Sub-millisecond Latency", "Event Sourcing", "Rust & Go"],
   },
@@ -46,7 +46,7 @@ const projects = [
     title: "MedVantage Diagnostic AI Suite",
     description:
       "Clinical decision support software harnessing advanced computer vision to deliver fast, highly accurate medical image triage and diagnostics.",
-    image: "/freshpod.jpg",
+    image: "/freshpod-kiosks.png",
     link: "#medvantage",
     tags: ["Computer Vision", "HIPAA Compliant", "Federated Learning", "DICOM Pipeline"],
   },
@@ -461,53 +461,85 @@ export default function Home() {
             }}
           >
             <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-              {/* Left Column: Scaled-up Showcase Visual */}
+              {/* Left Column: Scaled-up Showcase Visual with Cinema-Grade Cross-Dissolve */}
               <div className="lg:col-span-7 relative w-full">
                 {/* Subtle Background Offset Card 1 */}
                 <div
-                  className="absolute -top-3.5 -left-3.5 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-500"
+                  className="absolute -top-3.5 -left-3.5 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-700 ease-out"
+                  style={{
+                    transform: `scale(${1 + (activeProjectIndex % 2) * 0.005})`,
+                  }}
                   aria-hidden="true"
                 />
 
                 {/* Subtle Background Offset Card 2 */}
                 <div
-                  className="absolute -bottom-3.5 -right-3.5 w-[92%] h-[92%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  className="absolute -bottom-3.5 -right-3.5 w-[92%] h-[92%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-700 ease-out"
+                  style={{
+                    transform: `scale(${1 - (activeProjectIndex % 2) * 0.005})`,
+                  }}
                   aria-hidden="true"
                 />
 
-                {/* Main Image Container (Scaled to fill gracefully) */}
-                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/80 shadow-2xl group aspect-[16/11] max-h-[380px] sm:max-h-[440px] md:max-h-[480px] lg:max-h-[500px] w-full">
-                  <Image
-                    key={projects[activeProjectIndex].id}
-                    src={projects[activeProjectIndex].image}
-                    alt={projects[activeProjectIndex].title}
-                    fill
-                    unoptimized
-                    sizes="(max-width: 1024px) 100vw, 58vw"
-                    priority
-                    className="object-cover transition-all duration-700 ease-out group-hover:scale-105 animate-in fade-in duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent pointer-events-none" />
+                {/* Main Image Container (Cinema-Grade Rack Focus & Seamless Cross-Dissolve) */}
+                <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-950 border border-slate-200/80 shadow-2xl group aspect-[16/11] max-h-[380px] sm:max-h-[440px] md:max-h-[480px] lg:max-h-[500px] w-full">
+                  {projects.map((proj, idx) => {
+                    const isCurrent = activeProjectIndex === idx;
+                    return (
+                      <div
+                        key={proj.id}
+                        className="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                        style={{
+                          opacity: isCurrent ? 1 : 0,
+                          transform: isCurrent ? "scale(1.0)" : "scale(1.05)",
+                          filter: isCurrent ? "blur(0px)" : "blur(6px)",
+                          pointerEvents: isCurrent ? "auto" : "none",
+                          zIndex: isCurrent ? 10 : 0,
+                        }}
+                      >
+                        <Image
+                          src={proj.image}
+                          alt={proj.title}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 1024px) 100vw, 58vw"
+                          priority={idx === 0}
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* Right Column: Scaled Project Details & Action */}
-              <div
-                key={projects[activeProjectIndex].id}
-                className="lg:col-span-5 flex flex-col items-start justify-center text-left"
-              >
-                {/* Title */}
-                <h3 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-slate-950 leading-[1.10] tracking-tight mb-4 sm:mb-5 animate-in fade-in slide-in-from-bottom-2 duration-400 ease-out">
-                  {projects[activeProjectIndex].title}
-                </h3>
+              {/* Right Column: Scaled Project Details & Kinetic Typography Animations */}
+              <div className="lg:col-span-5 flex flex-col items-start justify-center text-left">
+                {/* Title Container with Kinetic Masked Reveal */}
+                <div className="overflow-hidden w-full mb-4 sm:mb-5">
+                  <h3
+                    key={`title-${projects[activeProjectIndex].id}`}
+                    className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl lg:text-[2.85rem] font-bold text-slate-950 leading-[1.10] tracking-tight animate-in fade-in slide-in-from-bottom-4 duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  >
+                    {projects[activeProjectIndex].title}
+                  </h3>
+                </div>
 
-                {/* Description */}
-                <p className="text-slate-600 text-base sm:text-lg lg:text-[1.125rem] leading-relaxed mb-7 sm:mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-2 duration-500 delay-75 ease-out">
-                  {projects[activeProjectIndex].description}
-                </p>
+                {/* Description Container with Staggered Kinetic Reveal */}
+                <div className="overflow-hidden w-full mb-7 sm:mb-8">
+                  <p
+                    key={`desc-${projects[activeProjectIndex].id}`}
+                    className="text-slate-600 text-base sm:text-lg lg:text-[1.125rem] leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-3 duration-600 delay-100 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  >
+                    {projects[activeProjectIndex].description}
+                  </p>
+                </div>
 
                 {/* CTA Action Button */}
-                <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-150 ease-out">
+                <div
+                  key={`cta-${projects[activeProjectIndex].id}`}
+                  className="animate-in fade-in slide-in-from-bottom-2 duration-500 delay-150 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                >
                   <Link
                     href={projects[activeProjectIndex].link}
                     className="inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 sm:px-9 py-3.5 sm:py-4 rounded-full shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
