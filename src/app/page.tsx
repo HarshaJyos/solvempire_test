@@ -1486,35 +1486,26 @@ export default function Home() {
         className="block lg:hidden relative h-[360vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
         {/* Sticky Mobile Viewport Stage with Dynamic 100dvh */}
-        <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center items-center px-4 sm:px-6 overflow-hidden relative">
+        <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center items-center px-3.5 sm:px-6 overflow-hidden relative">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
 
-          {/* Dynamically Translated Content Stack (calculates dynamic Y offset based on open item number so 06 is never cut off) */}
-          <div
-            className="w-full max-w-xl mx-auto relative z-10 flex flex-col items-center justify-center py-2 sm:py-4 transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateY(${
-                openMobilePillar !== null
-                  ? `${[0, -18, -42, -68, -95, -125][openMobilePillar] ?? 0}px`
-                  : "0px"
-              })`,
-            }}
-          >
-            {/* Section Heading */}
-            <div className="text-center mb-4 sm:mb-5 shrink-0">
-              <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-1">
+          {/* Fully Centered Content Stack */}
+          <div className="w-full max-w-xl mx-auto relative z-10 flex flex-col items-center justify-center py-2 sm:py-3">
+            {/* Section Heading - Always 100% visible */}
+            <div className="text-center mb-2.5 sm:mb-4 shrink-0">
+              <span className="inline-block text-blue-600 font-bold text-[10px] sm:text-xs tracking-widest uppercase mb-0.5">
                 WHY CHOOSE US
               </span>
-              <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
+              <h2 className="font-[family-name:var(--font-bricolage)] text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
                 <span>WHY PARTNER WITH </span>
                 <span className="text-blue-600">SOLVEMPIRE?</span>
               </h2>
             </div>
 
             {/* Border-Divided Accordion Stream (Full-width, Crisp borders, No shadows) */}
-            <div className="w-full flex flex-col divide-y divide-slate-200/90 border border-slate-200/90 bg-white/85 backdrop-blur-xs rounded-2xl overflow-hidden shadow-none">
+            <div className="w-full flex flex-col divide-y divide-slate-200/90 border border-slate-200/90 bg-white/90 backdrop-blur-xs rounded-2xl overflow-hidden shadow-none">
               {partnerPillars.map((pillar, idx) => {
                 const isOpen = openMobilePillar === idx;
                 return (
@@ -1527,15 +1518,15 @@ export default function Home() {
                     {/* Header Bar / Trigger */}
                     <button
                       onClick={() => scrollToMobilePillar(idx)}
-                      className="w-full flex items-center justify-between py-2.5 px-3.5 sm:py-3.5 sm:px-5 text-left focus:outline-none cursor-pointer gap-3"
+                      className="w-full flex items-center justify-between py-2 px-3 sm:py-2.5 sm:px-4 text-left focus:outline-none cursor-pointer gap-2.5"
                       aria-expanded={isOpen}
                     >
-                      <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex items-center gap-2.5 min-w-0">
                         {/* Number Badge */}
                         <div
-                          className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-bold text-xs shrink-0 transition-colors duration-200 ${
+                          className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center font-bold text-[11px] sm:text-xs shrink-0 transition-colors duration-200 ${
                             isOpen
-                              ? "bg-blue-600 text-white shadow-xs"
+                              ? "bg-blue-600 text-white"
                               : "bg-slate-100 text-slate-600 border border-slate-200/80"
                           }`}
                         >
@@ -1544,10 +1535,10 @@ export default function Home() {
 
                         {/* Title & Tag */}
                         <div className="min-w-0">
-                          <span className="block text-[10px] sm:text-[11px] font-bold text-blue-600 tracking-wider uppercase">
+                          <span className="block text-[9px] sm:text-[10px] font-bold text-blue-600 tracking-wider uppercase">
                             {pillar.tag}
                           </span>
-                          <h3 className="font-[family-name:var(--font-bricolage)] text-xs sm:text-sm md:text-base font-bold text-slate-900 leading-snug">
+                          <h3 className="font-[family-name:var(--font-bricolage)] text-xs sm:text-sm font-bold text-slate-900 leading-snug">
                             {pillar.title}
                           </h3>
                         </div>
@@ -1555,14 +1546,14 @@ export default function Home() {
 
                       {/* Plus / Minus (+) Icon Action */}
                       <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
                           isOpen
-                            ? "bg-blue-600 text-white rotate-45 shadow-xs"
+                            ? "bg-blue-600 text-white rotate-45"
                             : "bg-slate-100 text-slate-500 border border-slate-200"
                         }`}
                       >
                         <svg
-                          className="w-3.5 h-3.5"
+                          className="w-3 h-3"
                           fill="none"
                           stroke="currentColor"
                           strokeWidth={2.5}
@@ -1580,36 +1571,36 @@ export default function Home() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-3.5 pb-3.5 sm:px-5 sm:pb-5 pt-0.5">
+                        <div className="px-3 pb-3 sm:px-4 sm:pb-3.5 pt-0.5">
                           {/* Visual Graphic Banner */}
-                          <div className="relative w-full h-28 sm:h-34 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2.5 my-1.5 overflow-hidden flex items-center justify-center border border-blue-500/30 shadow-inner">
+                          <div className="relative w-full h-20 sm:h-28 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2 my-1 overflow-hidden flex items-center justify-center border border-blue-500/30">
                             <div
                               className="absolute inset-0 opacity-15 pointer-events-none"
                               style={{
                                 backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-                                backgroundSize: "14px 14px",
+                                backgroundSize: "12px 12px",
                               }}
                             />
                             {renderBlueprintGraphic(idx)}
                           </div>
 
                           {/* Description */}
-                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-2.5 mt-1">
+                          <p className="text-slate-600 text-[11px] sm:text-xs leading-snug mb-2 mt-1">
                             {pillar.description}
                           </p>
 
                           {/* Tool Badges */}
-                          <div className="flex flex-wrap items-center gap-1.5">
+                          <div className="flex flex-wrap items-center gap-1">
                             {pillar.tools.map((tool) => (
                               <div
                                 key={tool.name}
-                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80"
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200/80"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-                                <span className="font-semibold text-slate-800 text-[11px] sm:text-xs whitespace-nowrap">
+                                <span className="w-1 h-1 rounded-full bg-blue-600 shrink-0" />
+                                <span className="font-semibold text-slate-800 text-[10px] whitespace-nowrap">
                                   {tool.name}
                                 </span>
-                                <span className="text-[10px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1.5">
+                                <span className="text-[9px] text-slate-400 font-normal whitespace-nowrap border-l border-slate-200 pl-1">
                                   {tool.category}
                                 </span>
                               </div>
