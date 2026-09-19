@@ -186,27 +186,27 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Interactive Rotating Arc Dial - Bridges Hero and Featured Work */}
-        <div className="w-full relative mt-12 sm:mt-16 pt-6 pb-2 flex flex-col items-center select-none">
-          {/* Ambient Blue Glow */}
+        {/* Interactive Rotating Arc Dial - Seamless Bridge Between Hero and Featured Work */}
+        <div className="w-full relative mt-20 sm:mt-24 pt-8 pb-4 flex flex-col items-center select-none">
+          {/* Seamless Ambient Glow without any hard edges */}
           <div
-            className="absolute inset-0 -top-16 bg-[radial-gradient(ellipse_75%_80%_at_50%_70%,rgba(59,130,246,0.12),transparent_75%)] pointer-events-none"
+            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[90vw] max-w-5xl h-72 sm:h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"
             aria-hidden="true"
           />
 
           {/* Large Arc Dial Container */}
-          <div className="relative w-full max-w-6xl mx-auto px-4 h-40 sm:h-48">
+          <div className="relative w-full max-w-6xl mx-auto px-4 h-36 sm:h-44">
             {/* SVG Arc Curve */}
             <svg
-              viewBox="0 0 1200 180"
+              viewBox="0 0 1200 140"
               preserveAspectRatio="none"
               className="w-full h-full stroke-blue-200 fill-none overflow-visible"
               style={{ strokeWidth: "2" }}
             >
-              <path d="M 0 160 Q 600 -60 1200 160" />
+              <path d="M 0 130 Q 600 -110 1200 130" />
             </svg>
 
-            {/* Dial Nodes along the Arc */}
+            {/* Dial Nodes along the Arc (Precisely centered on the curve) */}
             {projects.map((project, index) => {
               // Calculate circular offset relative to activeProjectIndex
               let diff = index - activeProjectIndex;
@@ -214,13 +214,13 @@ export default function Home() {
               if (diff < -projects.length / 2) diff += projects.length;
 
               // Map diff to parameter t on curve: diff=0 is center (t=0.5)
-              let t = 0.5 + diff * 0.22;
-              t = Math.max(0.08, Math.min(0.92, t));
+              let t = 0.5 + diff * 0.2;
+              t = Math.max(0.1, Math.min(0.9, t));
 
               // Compute (x, y) coordinates in percentage
               const leftPercent = t * 100;
-              // Quadratic curve formula matching SVG: y(t) = 160 - 440*t*(1-t) in viewBox height 180
-              const topPercent = ((160 - 440 * t * (1 - t)) / 180) * 100;
+              // Quadratic curve formula matching SVG: y(t) = 130 - 480*t*(1-t) in viewBox height 140
+              const topPercent = ((130 - 480 * t * (1 - t)) / 140) * 100;
 
               const isActive = activeProjectIndex === index;
 
@@ -236,26 +236,14 @@ export default function Home() {
                   aria-label={`Switch to project ${project.id}: ${project.title}`}
                 >
                   {isActive ? (
-                    /* Active Center Node */
+                    /* Active Center Node - Centered directly on the arc apex */
                     <div className="relative flex flex-col items-center">
-                      <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-xl shadow-blue-500/40 ring-4 sm:ring-8 ring-blue-100 transition-transform duration-300 scale-110">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-base sm:text-lg shadow-xl shadow-blue-500/35 ring-4 sm:ring-8 ring-blue-100/90 transition-transform duration-300 scale-105">
                         <span>{project.id}</span>
-                      </div>
-                      {/* Downward indicator arrow pill */}
-                      <div className="mt-1 w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-sm">
-                        <svg
-                          className="w-3 h-3 animate-bounce"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2.5}
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                        </svg>
                       </div>
                     </div>
                   ) : (
-                    /* Inactive Side Node */
+                    /* Inactive Side Node - Centered on the arc curve */
                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-blue-200 group-hover:border-blue-600 text-slate-500 group-hover:text-blue-600 flex items-center justify-center font-semibold text-xs sm:text-sm shadow-md transition-all duration-300 group-hover:scale-115">
                       <span>{project.id}</span>
                     </div>
@@ -265,7 +253,7 @@ export default function Home() {
             })}
 
             {/* Vertical Connector Line from Center Apex into Featured Work Section */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[30%] bottom-0 w-[2px] bg-gradient-to-b from-blue-400 via-blue-300 to-transparent pointer-events-none" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-[12%] bottom-0 w-[1.5px] bg-gradient-to-b from-blue-400 via-blue-300 to-transparent pointer-events-none" />
 
             {/* Left / Right Quick Prev / Next Arrow Controls */}
             <button
@@ -273,7 +261,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
               }
               aria-label="Previous Project"
-              className="absolute left-2 sm:left-6 top-[65%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute left-2 sm:left-6 top-[60%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -284,7 +272,7 @@ export default function Home() {
                 setActiveProjectIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
               }
               aria-label="Next Project"
-              className="absolute right-2 sm:right-6 top-[65%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
+              className="absolute right-2 sm:right-6 top-[60%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-sm transition-all hover:scale-110 z-20"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -297,7 +285,7 @@ export default function Home() {
       {/* Featured Work Section */}
       <section
         id="featured-work"
-        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-10 pb-20 lg:pb-28 relative scroll-mt-10"
+        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 pb-20 lg:pb-28 relative scroll-mt-10"
       >
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
