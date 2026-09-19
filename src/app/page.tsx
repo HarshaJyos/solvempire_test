@@ -1122,12 +1122,12 @@ export default function Home() {
       </div>
 
       {/* ========================================================================= */}
-      {/* SECTION 4: OUR PROCESS (3-Tier Continuous Isometric Ribbon Pipeline) */}
+      {/* SECTION 4: OUR PROCESS (Unified Seamless 3D Folded Ribbon Monolith) */}
       {/* ========================================================================= */}
       <section id="process" className="py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Heading */}
-          <div className="w-full text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+          <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20">
             <h2 className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
               <span>OUR </span>
               <span className="text-blue-600">PROCESS</span>
@@ -1137,90 +1137,318 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 3-Row Process Ribbon Pipeline Showcase */}
-          <div className="max-w-6xl mx-auto flex flex-col gap-6 sm:gap-8 relative">
-            {[
-              { left: processSteps[0], right: processSteps[1], rowIdx: 0 },
-              { left: processSteps[2], right: processSteps[3], rowIdx: 1 },
-              { left: processSteps[4], right: processSteps[5], rowIdx: 2 },
-            ].map((pair, rIdx) => (
-              <div
-                key={`row-${rIdx}`}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-0 items-center relative group"
-              >
-                {/* Left Card: Text on Left (45%), Image on Right (55%) */}
-                <div className="lg:col-span-6 relative z-10 rounded-2xl sm:rounded-3xl bg-[#5274cc] hover:bg-[#4768be] text-white flex flex-col sm:flex-row h-auto sm:h-[260px] overflow-hidden shadow-xl shadow-blue-900/10 transition-all duration-300 group-hover:-translate-y-1">
-                  {/* Left Text Panel */}
-                  <div className="w-full sm:w-[46%] p-6 sm:p-7 flex flex-col justify-between">
-                    <span className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6 sm:mb-0">
-                      {pair.left.step}
+          {/* Unified 3D Folded Ribbon Monolith */}
+          <div className="max-w-[880px] mx-auto relative filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.09)]">
+            {/* Desktop / Tablet View: Continuous Isometric Monolith */}
+            <div className="hidden md:flex relative w-full items-start">
+              {/* Left Column (Steps 01, 03, 05) - Width: calc(50% - 24px) */}
+              <div className="w-[calc(50%-24px)] flex flex-col z-10 shrink-0">
+                {/* Step 01 (Discover) - Periwinkle Blue */}
+                <div className="h-[200px] flex rounded-tl-2xl overflow-hidden bg-[#6c85c4] text-white">
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+                      01
                     </span>
                     <div>
-                      <h3 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-2xl font-bold leading-tight mb-2 text-white">
-                        {pair.left.name}
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-white">
+                        Discover
                       </h3>
-                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-normal">
-                        {pair.left.description}
+                      <p className="text-white/85 text-[11px] lg:text-[12px] leading-snug">
+                        Understand goals, requirements &amp; user needs
                       </p>
                     </div>
                   </div>
-
-                  {/* Right Image Container */}
-                  <div className="w-full sm:w-[54%] h-48 sm:h-full relative overflow-hidden bg-slate-900">
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
                     <Image
-                      src={pair.left.image}
-                      alt={pair.left.name}
+                      src="/process-discover.jpg"
+                      alt="Discover"
                       fill
                       unoptimized
-                      sizes="(max-width: 768px) 100vw, 30vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="250px"
+                      className="object-cover"
                     />
-                    <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#5274cc]/70 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
-                {/* Central Isometric 3D Ribbon Fold Connector */}
-                <div
-                  className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-[72px] h-[100%] z-0 pointer-events-none"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(82, 116, 204, 0.95) 0%, rgba(30, 48, 92, 0.95) 50%, rgba(115, 143, 215, 0.95) 100%)",
-                    clipPath: "polygon(0 0, 100% 20%, 100% 100%, 0 80%)",
-                  }}
-                  aria-hidden="true"
-                />
-
-                {/* Right Card: Image on Left (55%), Text on Right (45%) */}
-                <div className="lg:col-span-6 relative z-10 rounded-2xl sm:rounded-3xl bg-[#738fd7] hover:bg-[#6683cc] text-white flex flex-col-reverse sm:flex-row h-auto sm:h-[260px] overflow-hidden shadow-xl shadow-blue-900/10 transition-all duration-300 group-hover:-translate-y-1 lg:ml-2">
-                  {/* Left Image Container */}
-                  <div className="w-full sm:w-[54%] h-48 sm:h-full relative overflow-hidden bg-slate-900">
-                    <Image
-                      src={pair.right.image}
-                      alt={pair.right.name}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 768px) 100vw, 30vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="hidden sm:block absolute inset-0 bg-gradient-to-l from-[#738fd7]/70 via-transparent to-transparent pointer-events-none" />
-                  </div>
-
-                  {/* Right Text Panel */}
-                  <div className="w-full sm:w-[46%] p-6 sm:p-7 flex flex-col justify-between items-start sm:items-end text-left sm:text-right">
-                    <span className="font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6 sm:mb-0">
-                      {pair.right.step}
+                {/* Step 03 (Develop) - Light Ice Blue */}
+                <div className="h-[200px] flex overflow-hidden bg-[#c8d7f6] text-blue-900">
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-blue-600 leading-none">
+                      03
                     </span>
                     <div>
-                      <h3 className="font-[family-name:var(--font-bricolage)] text-xl sm:text-2xl font-bold leading-tight mb-2 text-white">
-                        {pair.right.name}
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-blue-600">
+                        Develop
                       </h3>
-                      <p className="text-white/85 text-xs sm:text-sm leading-relaxed font-normal">
-                        {pair.right.description}
+                      <p className="text-slate-700 text-[11px] lg:text-[12px] leading-snug">
+                        Build mechanical, electronic, software &amp; integrations
+                      </p>
+                    </div>
+                  </div>
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src="/freshpod-kiosks.png"
+                      alt="Develop"
+                      fill
+                      unoptimized
+                      sizes="250px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Step 05 (Manufacture) - Periwinkle Blue */}
+                <div className="h-[200px] flex rounded-bl-2xl overflow-hidden bg-[#6c85c4] text-white">
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+                      05
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-white">
+                        Manufacture
+                      </h3>
+                      <p className="text-white/85 text-[11px] lg:text-[12px] leading-snug">
+                        Support production, quality &amp; supply chain
+                      </p>
+                    </div>
+                  </div>
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src="/freshpod-kiosks.png"
+                      alt="Manufacture"
+                      fill
+                      unoptimized
+                      sizes="250px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Center 3D Isometric Fold Ribbon Facet (48px wide, connecting Left & Right) */}
+              <div className="w-[48px] h-[676px] relative shrink-0 z-0 overflow-visible">
+                <svg
+                  viewBox="0 0 48 676"
+                  className="w-full h-full block"
+                  preserveAspectRatio="none"
+                >
+                  <defs>
+                    {/* Top Fold Lighting Gradient */}
+                    <linearGradient id="foldTopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#1a202c" />
+                      <stop offset="25%" stopColor="#2d3748" />
+                      <stop offset="60%" stopColor="#4a5568" />
+                      <stop offset="85%" stopColor="#6c85c4" />
+                      <stop offset="100%" stopColor="#8ba1d9" />
+                    </linearGradient>
+
+                    {/* Middle Fold Lighting Gradient */}
+                    <linearGradient id="foldMidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#233238" />
+                      <stop offset="35%" stopColor="#3b4f59" />
+                      <stop offset="70%" stopColor="#688294" />
+                      <stop offset="100%" stopColor="#c8d7f6" />
+                    </linearGradient>
+
+                    {/* Bottom Fold Lighting Gradient */}
+                    <linearGradient id="foldBtmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#141c2b" />
+                      <stop offset="30%" stopColor="#1e2d48" />
+                      <stop offset="70%" stopColor="#415a8c" />
+                      <stop offset="100%" stopColor="#6c85c4" />
+                    </linearGradient>
+                  </defs>
+
+                  {/* Top Fold Facet (Connecting 01 to 02) */}
+                  <polygon
+                    points="0,0 48,76 48,276 0,200"
+                    fill="url(#foldTopGrad)"
+                  />
+
+                  {/* Middle Fold Facet (Connecting 03 to 04) */}
+                  <polygon
+                    points="0,200 48,276 48,476 0,400"
+                    fill="url(#foldMidGrad)"
+                  />
+
+                  {/* Bottom Fold Facet (Connecting 05 to 06) */}
+                  <polygon
+                    points="0,400 48,476 48,676 0,600"
+                    fill="url(#foldBtmGrad)"
+                  />
+
+                  {/* Highlights and Crease Lines for Physical 3D Crispness */}
+                  <line x1="0" y1="0" x2="48" y2="76" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
+                  <line x1="0" y1="200" x2="48" y2="276" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+                  <line x1="0" y1="400" x2="48" y2="476" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
+                  <line x1="0" y1="600" x2="48" y2="676" stroke="rgba(255,255,255,0.3)" strokeWidth="1" />
+                </svg>
+              </div>
+
+              {/* Right Column (Steps 02, 04, 06) - Width: calc(50% - 24px), Shifted down by 76px */}
+              <div className="w-[calc(50%-24px)] flex flex-col z-10 shrink-0 mt-[76px]">
+                {/* Step 02 (Design) - Periwinkle Blue */}
+                <div className="h-[200px] flex rounded-tr-2xl overflow-hidden bg-[#6c85c4] text-white">
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src="/freshpod.jpg"
+                      alt="Design"
+                      fill
+                      unoptimized
+                      sizes="250px"
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+                      02
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-white">
+                        Design
+                      </h3>
+                      <p className="text-white/85 text-[11px] lg:text-[12px] leading-snug">
+                        Conceptualize, engineer &amp; validate the solution
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 04 (Prototype) - Light Ice Blue */}
+                <div className="h-[200px] flex overflow-hidden bg-[#c8d7f6] text-blue-900">
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src="/freshpod.jpg"
+                      alt="Prototype"
+                      fill
+                      unoptimized
+                      sizes="250px"
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-blue-600 leading-none">
+                      04
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-blue-600">
+                        Prototype
+                      </h3>
+                      <p className="text-slate-700 text-[11px] lg:text-[12px] leading-snug">
+                        Prototype, test &amp; iterate for performance and reliability
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 06 (Deploy & Support) - Periwinkle Blue */}
+                <div className="h-[200px] flex rounded-br-2xl overflow-hidden bg-[#6c85c4] text-white">
+                  {/* Photo Container */}
+                  <div className="w-[55%] h-full relative overflow-hidden bg-slate-900">
+                    <Image
+                      src="/freshpod.jpg"
+                      alt="Deploy & Support"
+                      fill
+                      unoptimized
+                      sizes="250px"
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Text Panel */}
+                  <div className="w-[45%] p-5 lg:p-6 flex flex-col justify-between items-end text-right shrink-0">
+                    <span className="font-[family-name:var(--font-bricolage)] text-3xl lg:text-4xl font-bold tracking-tight text-white leading-none">
+                      06
+                    </span>
+                    <div>
+                      <h3 className="font-[family-name:var(--font-bricolage)] text-lg lg:text-xl font-bold leading-tight mb-1 text-white">
+                        Deploy &amp; Support
+                      </h3>
+                      <p className="text-white/85 text-[11px] lg:text-[12px] leading-snug">
+                        Deploy in the field and support for long-term success
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Mobile View (< md): Stacked paired ribbon cards retaining the 3D aesthetic */}
+            <div className="flex md:hidden flex-col gap-5">
+              {[
+                {
+                  left: { step: "01", name: "Discover", desc: "Understand goals, requirements & user needs", img: "/process-discover.jpg", theme: "blue" },
+                  right: { step: "02", name: "Design", desc: "Conceptualize, engineer & validate the solution", img: "/freshpod.jpg", theme: "blue" },
+                },
+                {
+                  left: { step: "03", name: "Develop", desc: "Build mechanical, electronic, software & integrations", img: "/freshpod-kiosks.png", theme: "ice" },
+                  right: { step: "04", name: "Prototype", desc: "Prototype, test & iterate for performance and reliability", img: "/freshpod.jpg", theme: "ice" },
+                },
+                {
+                  left: { step: "05", name: "Manufacture", desc: "Support production, quality & supply chain", img: "/freshpod-kiosks.png", theme: "blue" },
+                  right: { step: "06", name: "Deploy & Support", desc: "Deploy in the field and support for long-term success", img: "/freshpod.jpg", theme: "blue" },
+                },
+              ].map((row, idx) => (
+                <div key={`mob-row-${idx}`} className="flex flex-col gap-3 rounded-2xl overflow-hidden shadow-lg">
+                  {/* Left Step */}
+                  <div
+                    className={`flex h-40 overflow-hidden ${
+                      row.left.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                    }`}
+                  >
+                    <div className="w-1/2 p-4 flex flex-col justify-between">
+                      <span className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${row.left.theme === "ice" ? "text-blue-600" : "text-white"}`}>
+                        {row.left.step}
+                      </span>
+                      <div>
+                        <h3 className={`font-bold text-base leading-tight ${row.left.theme === "ice" ? "text-blue-600" : "text-white"}`}>
+                          {row.left.name}
+                        </h3>
+                        <p className={`text-[11px] leading-tight mt-0.5 ${row.left.theme === "ice" ? "text-slate-700" : "text-white/85"}`}>
+                          {row.left.desc}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="w-1/2 relative bg-slate-900">
+                      <Image src={row.left.img} alt={row.left.name} fill unoptimized sizes="200px" className="object-cover" />
+                    </div>
+                  </div>
+
+                  {/* Right Step */}
+                  <div
+                    className={`flex h-40 overflow-hidden ${
+                      row.right.theme === "ice" ? "bg-[#c8d7f6] text-blue-900" : "bg-[#6c85c4] text-white"
+                    }`}
+                  >
+                    <div className="w-1/2 relative bg-slate-900">
+                      <Image src={row.right.img} alt={row.right.name} fill unoptimized sizes="200px" className="object-cover" />
+                    </div>
+                    <div className="w-1/2 p-4 flex flex-col justify-between items-end text-right">
+                      <span className={`font-[family-name:var(--font-bricolage)] text-2xl font-bold ${row.right.theme === "ice" ? "text-blue-600" : "text-white"}`}>
+                        {row.right.step}
+                      </span>
+                      <div>
+                        <h3 className={`font-bold text-base leading-tight ${row.right.theme === "ice" ? "text-blue-600" : "text-white"}`}>
+                          {row.right.name}
+                        </h3>
+                        <p className={`text-[11px] leading-tight mt-0.5 ${row.right.theme === "ice" ? "text-slate-700" : "text-white/85"}`}>
+                          {row.right.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
