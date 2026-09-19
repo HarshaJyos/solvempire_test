@@ -9,7 +9,12 @@ import { COMPANY } from "@/lib/company";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `Privacy policy and data protection practices of ${COMPANY.legalName}.`,
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
+
 
 export default function PrivacyPage() {
   return (

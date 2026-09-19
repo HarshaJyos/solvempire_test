@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/case-studies";
+import { COMPANY } from "@/lib/company";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://solvempire.com";
+  const baseUrl = COMPANY.websiteUrl;
+
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -35,19 +37,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
   ];
+
 
   const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((study) => ({
     url: `${baseUrl}/work/${study.slug}`,

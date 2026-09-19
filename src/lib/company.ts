@@ -8,6 +8,8 @@ export const COMPANY = {
   brandName: "SolveMpire",
   legalName: "SolveMpire Private Limited",
   cin: "U62013AP2025PTC122808",
+  domain: "www.solvempire.com",
+  websiteUrl: "https://www.solvempire.com",
   email: "hello@solvempire.com",
   supportEmail: "support@solvempire.com",
   city: "Kakinada, Andhra Pradesh, India",
@@ -23,5 +25,6 @@ export const COMPANY = {
       "Mechanical design, custom PCBs, embedded firmware, and the cloud platforms that run them. One team, from CAD to field support.",
   },
 } as const;
+
 
 export type Company = typeof COMPANY;

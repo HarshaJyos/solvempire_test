@@ -9,7 +9,12 @@ import { COMPANY } from "@/lib/company";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: `Terms and conditions governing the engineering services and website of ${COMPANY.legalName}.`,
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
+
 
 export default function TermsPage() {
   return (
