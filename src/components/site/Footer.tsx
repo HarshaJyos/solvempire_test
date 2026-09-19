@@ -31,11 +31,11 @@ export function Footer() {
               <Link href="/about" className="text-body hover:text-brand text-sm transition-colors duration-150">
                 About Us
               </Link>
+              <Link href="/team" className="text-body hover:text-brand text-sm transition-colors duration-150">
+                Engineering Team
+              </Link>
               <Link href="/#process" className="text-body hover:text-brand text-sm transition-colors duration-150">
                 Our Process
-              </Link>
-              <Link href="/about#team" className="text-body hover:text-brand text-sm transition-colors duration-150">
-                Meet Our Team
               </Link>
               <Link href="/journal" className="text-body hover:text-brand text-sm transition-colors duration-150">
                 Journal &amp; Insights

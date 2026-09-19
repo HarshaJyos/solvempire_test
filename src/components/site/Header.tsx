@@ -77,6 +77,12 @@ export function Header() {
             Process
           </Link>
           <Link
+            href="/team"
+            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+          >
+            Team
+          </Link>
+          <Link
             href="/journal"
             className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
           >
@@ -150,6 +156,13 @@ export function Header() {
             className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
           >
             Our Process
+          </Link>
+          <Link
+            href="/team"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+          >
+            Team
           </Link>
           <Link
             href="/journal"
