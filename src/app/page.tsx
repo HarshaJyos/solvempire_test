@@ -1483,18 +1483,28 @@ export default function Home() {
       <div
         ref={mobilePartnerContainerRef}
         id="why-partner-mobile"
-        className="block lg:hidden relative h-[320vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
+        className="block lg:hidden relative h-[360vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
-        {/* Sticky Mobile Viewport Stage */}
-        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 overflow-hidden relative">
+        {/* Sticky Mobile Viewport Stage with Dynamic 100dvh */}
+        <div className="sticky top-0 h-[100dvh] w-full flex flex-col justify-center items-center px-4 sm:px-6 overflow-hidden relative">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
 
-          <div className="w-full max-w-xl mx-auto relative z-10 flex flex-col items-center justify-center py-4">
+          {/* Dynamically Translated Content Stack (calculates dynamic Y offset based on open item number so 06 is never cut off) */}
+          <div
+            className="w-full max-w-xl mx-auto relative z-10 flex flex-col items-center justify-center py-2 sm:py-4 transition-transform duration-500 ease-out"
+            style={{
+              transform: `translateY(${
+                openMobilePillar !== null
+                  ? `${[0, -18, -42, -68, -95, -125][openMobilePillar] ?? 0}px`
+                  : "0px"
+              })`,
+            }}
+          >
             {/* Section Heading */}
-            <div className="text-center mb-5 shrink-0">
-              <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-1.5">
+            <div className="text-center mb-4 sm:mb-5 shrink-0">
+              <span className="inline-block text-blue-600 font-bold text-xs sm:text-sm tracking-widest uppercase mb-1">
                 WHY CHOOSE US
               </span>
               <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl font-bold tracking-tight text-slate-950 uppercase leading-tight">
@@ -1517,7 +1527,7 @@ export default function Home() {
                     {/* Header Bar / Trigger */}
                     <button
                       onClick={() => scrollToMobilePillar(idx)}
-                      className="w-full flex items-center justify-between py-3 px-4 sm:py-3.5 sm:px-5 text-left focus:outline-none cursor-pointer gap-3"
+                      className="w-full flex items-center justify-between py-2.5 px-3.5 sm:py-3.5 sm:px-5 text-left focus:outline-none cursor-pointer gap-3"
                       aria-expanded={isOpen}
                     >
                       <div className="flex items-center gap-3 min-w-0">
@@ -1570,9 +1580,9 @@ export default function Home() {
                       }`}
                     >
                       <div className="overflow-hidden">
-                        <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-1">
+                        <div className="px-3.5 pb-3.5 sm:px-5 sm:pb-5 pt-0.5">
                           {/* Visual Graphic Banner */}
-                          <div className="relative w-full h-32 sm:h-36 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-3 my-2 overflow-hidden flex items-center justify-center border border-blue-500/30 shadow-inner">
+                          <div className="relative w-full h-28 sm:h-34 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 p-2.5 my-1.5 overflow-hidden flex items-center justify-center border border-blue-500/30 shadow-inner">
                             <div
                               className="absolute inset-0 opacity-15 pointer-events-none"
                               style={{
@@ -1584,7 +1594,7 @@ export default function Home() {
                           </div>
 
                           {/* Description */}
-                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3 mt-1.5">
+                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-2.5 mt-1">
                             {pillar.description}
                           </p>
 
