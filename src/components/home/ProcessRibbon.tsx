@@ -162,7 +162,7 @@ export function ProcessRibbon() {
             <div
               key={`process-row-${rIdx}`}
               className={`gsap-process-row relative filter drop-shadow-sm group transition-transform duration-300 hover:-translate-y-0.5 ${
-                rIdx > 0 ? "md:-mt-[24px]" : ""
+                rIdx > 0 ? "md:-mt-[26px]" : ""
               }`}
             >
               {/* Desktop / Tablet View */}
