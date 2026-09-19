@@ -186,52 +186,92 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Hero Bottom Anchor Indicator & Seamless Connection Line */}
-        <div className="w-full flex flex-col items-center select-none relative z-20 pb-0">
+        {/* Hero Bottom Floating Explorer Badge */}
+        <div className="w-full flex flex-col items-center select-none relative z-20 pb-8">
           <Link
             href="#showcase"
-            aria-label="Scroll down to featured showcase"
-            className="w-10 h-10 rounded-full bg-blue-50 border border-blue-200 hover:bg-blue-600 text-blue-600 hover:text-white flex items-center justify-center shadow-md transition-all duration-300 hover:scale-110 active:scale-95 mb-0"
+            aria-label="Scroll to featured showcase"
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/95 hover:bg-blue-50/90 border border-slate-200/90 hover:border-blue-300 text-slate-600 hover:text-blue-600 text-xs sm:text-sm font-medium tracking-wide shadow-sm hover:shadow-md transition-all duration-300 group backdrop-blur-sm"
           >
-            <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <span>Explore Featured Work</span>
+            <svg
+              className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-transform duration-300 group-hover:translate-y-0.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </Link>
-          {/* Continuous vertical line seamlessly extending into Section 2 */}
-          <div className="w-[2px] h-12 bg-gradient-to-b from-blue-400 to-blue-500" />
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 2: SHOWCASE VIEWPORT (Arc Dial & Featured Card in a SINGLE 100vh) */}
+      {/* SECTION 2: SHOWCASE VIEWPORT (Unique Glowing Arc Dial & Featured Card) */}
       {/* ========================================================================= */}
       <section
         id="showcase"
-        className="min-h-screen flex flex-col justify-between items-center relative pt-0 pb-10 sm:pb-14 overflow-hidden scroll-mt-0"
+        className="min-h-screen flex flex-col justify-between items-center relative pt-4 pb-8 sm:pb-12 overflow-hidden scroll-mt-6"
       >
-        {/* Continuous Lead Line directly entering into the apex node */}
-        <div className="w-[2px] h-10 bg-gradient-to-b from-blue-500 to-blue-600 pointer-events-none" />
-
-        {/* Ambient Glow Background */}
+        {/* Ambient Blue Radial Spotlight focused on active hub */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 top-1/4 -translate-y-1/2 w-[95vw] max-w-6xl h-72 bg-blue-400/10 rounded-full blur-3xl pointer-events-none"
+          className="absolute left-1/2 -translate-x-1/2 top-4 w-[600px] sm:w-[800px] h-72 bg-gradient-to-b from-blue-400/15 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
-        {/* Full-Width Edge-to-Edge Arc Dial (From left screen end to right screen end) */}
+        {/* Live Project Beacon Header Badge */}
+        <div className="flex flex-col items-center pt-2 pb-1 select-none z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 border border-blue-100 text-blue-700 text-xs font-semibold tracking-wider uppercase shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" />
+            <span>Featured Case Studies &bull; {projects[activeProjectIndex].id} of 04</span>
+          </div>
+        </div>
+
+        {/* Full-Width Edge-to-Edge Glowing Arc Dial */}
         <div className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden select-none px-0">
           <div className="relative w-full h-28 sm:h-32 md:h-36">
-            {/* Seamless vertical entry line directly into the apex node */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[28.6%] w-[2px] bg-gradient-to-b from-blue-500 to-blue-600 pointer-events-none z-10" />
-
-            {/* SVG Arc Curve stretching across the entire screen from left to right */}
+            {/* SVG Glowing Arc Curve stretching across the entire screen */}
             <svg
               viewBox="0 0 1920 140"
               preserveAspectRatio="none"
-              className="w-full h-full stroke-blue-200 fill-none overflow-visible"
-              style={{ strokeWidth: "2" }}
+              className="w-full h-full fill-none overflow-visible"
             >
-              <path d="M -20 115 Q 960 -35 1940 115" vectorEffect="non-scaling-stroke" />
+              <defs>
+                <linearGradient id="arcGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.2" />
+                  <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.5" />
+                  <stop offset="50%" stopColor="#2563eb" stopOpacity="0.95" />
+                  <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.2" />
+                </linearGradient>
+                <filter id="arcGlowFilter" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Soft ambient glow line */}
+              <path
+                d="M 0 115 Q 960 -35 1920 115"
+                stroke="url(#arcGlowGradient)"
+                strokeWidth="5"
+                opacity="0.25"
+                filter="url(#arcGlowFilter)"
+                vectorEffect="non-scaling-stroke"
+              />
+
+              {/* Sharp primary track line */}
+              <path
+                d="M 0 115 Q 960 -35 1920 115"
+                stroke="url(#arcGlowGradient)"
+                strokeWidth="2"
+                vectorEffect="non-scaling-stroke"
+              />
             </svg>
 
             {/* Dial Nodes along the Arc - Mathematically aligned 100% on the curve */}
@@ -264,12 +304,14 @@ export default function Home() {
                 >
                   {isActive ? (
                     <div className="relative flex flex-col items-center">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-blue-500/35 ring-4 sm:ring-8 ring-blue-100 transition-transform duration-300 scale-105">
+                      {/* Luminous Pulsing Halo */}
+                      <span className="absolute -inset-2 rounded-full bg-blue-400/30 animate-pulse blur-xs" />
+                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-blue-500/40 ring-4 sm:ring-6 ring-blue-100 transition-transform duration-300 scale-105">
                         <span>{project.id}</span>
                       </div>
                     </div>
                   ) : (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 border-blue-200 group-hover:border-blue-600 text-slate-500 group-hover:text-blue-600 flex items-center justify-center font-semibold text-xs sm:text-sm shadow-md transition-all duration-300 group-hover:scale-115">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-sm border-2 border-slate-200 group-hover:border-blue-500 text-slate-500 group-hover:text-blue-600 flex items-center justify-center font-semibold text-xs sm:text-sm shadow-sm transition-all duration-300 group-hover:scale-115">
                       <span>{project.id}</span>
                     </div>
                   )}
@@ -279,13 +321,13 @@ export default function Home() {
 
             {/* Left / Right Quick Prev / Next Controls centered on the Arc curve */}
             {(() => {
-              // Position Left Arrow at t=0.08
-              const tLeft = 0.08;
+              // Position Left Arrow at t=0.07
+              const tLeft = 0.07;
               const yLeft = 115 - 300 * tLeft * (1 - tLeft);
               const topPercentLeft = (yLeft / 140) * 100;
 
-              // Position Right Arrow at t=0.92
-              const tRight = 0.92;
+              // Position Right Arrow at t=0.93
+              const tRight = 0.93;
               const yRight = 115 - 300 * tRight * (1 - tRight);
               const topPercentRight = (yRight / 140) * 100;
 
@@ -296,13 +338,13 @@ export default function Home() {
                       setActiveProjectIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
                     }
                     aria-label="Previous Project"
-                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-110 z-20"
+                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200/90 text-slate-500 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-115 z-20 group"
                     style={{
-                      left: "8%",
+                      left: "7%",
                       top: `${topPercentLeft}%`,
                     }}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
@@ -311,13 +353,13 @@ export default function Home() {
                       setActiveProjectIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
                     }
                     aria-label="Next Project"
-                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-110 z-20"
+                    className="absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200/90 text-slate-500 hover:text-blue-600 hover:border-blue-400 flex items-center justify-center shadow-md transition-all hover:scale-115 z-20 group"
                     style={{
-                      left: "92%",
+                      left: "93%",
                       top: `${topPercentRight}%`,
                     }}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
