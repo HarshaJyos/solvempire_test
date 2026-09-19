@@ -247,54 +247,84 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Right Curved Stepper Navigation */}
-          <div className="relative w-full md:w-80 h-28 hidden sm:block">
-            {/* Curved Path */}
+          {/* Right Curved Stepper Navigation (Dots mathematically aligned on the arc line) */}
+          <div className="relative w-72 md:w-80 h-28 hidden sm:block select-none">
             <svg
-              viewBox="0 0 320 100"
-              className="w-full h-full stroke-blue-200 fill-none overflow-visible"
-              style={{ strokeWidth: "1.5" }}
+              viewBox="0 0 340 130"
+              className="w-full h-full overflow-visible"
             >
-              <path d="M 24 18 Q 160 20 304 92" />
-            </svg>
+              {/* The Curved Arc */}
+              <path
+                d="M 25 20 Q 180 20 305 90"
+                fill="none"
+                stroke="#bfdbfe"
+                strokeWidth="1.5"
+              />
 
-            {/* Stepper Nodes along the arc */}
-            {projects.map((project, index) => {
-              const positions = [
-                { left: "8%", top: "8%" },
-                { left: "36%", top: "14%" },
-                { left: "64%", top: "34%" },
-                { left: "92%", top: "68%" },
-              ];
-              const pos = positions[index];
-              const isActive = activeProjectIndex === index;
+              {/* Stepper Nodes positioned directly on the curve */}
+              {projects.map((project, index) => {
+                const nodePositions = [
+                  { cx: 25, cy: 20, tx: 25, ty: 48 },
+                  { cx: 130, cy: 29, tx: 130, ty: 57 },
+                  { cx: 227, cy: 54, tx: 227, ty: 82 },
+                  { cx: 305, cy: 90, tx: 305, ty: 118 },
+                ];
+                const node = nodePositions[index];
+                const isActive = activeProjectIndex === index;
 
-              return (
-                <button
-                  key={project.id}
-                  onClick={() => setActiveProjectIndex(index)}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group cursor-pointer"
-                  style={{ left: pos.left, top: pos.top }}
-                >
-                  {/* Dot */}
-                  <div
-                    className={`rounded-full transition-all duration-300 ${
-                      isActive
-                        ? "w-4 h-4 bg-blue-600 ring-4 ring-blue-100 shadow-sm"
-                        : "w-2.5 h-2.5 bg-blue-300/80 group-hover:bg-blue-500 group-hover:scale-125"
-                    }`}
-                  />
-                  {/* Label */}
-                  <span
-                    className={`mt-2 text-sm sm:text-base font-semibold transition-colors duration-200 ${
-                      isActive ? "text-blue-600 font-bold" : "text-slate-400 group-hover:text-slate-700"
-                    }`}
+                return (
+                  <g
+                    key={project.id}
+                    onClick={() => setActiveProjectIndex(index)}
+                    className="cursor-pointer group"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Select ${project.title}`}
                   >
-                    {project.id}
-                  </span>
-                </button>
-              );
-            })}
+                    {/* Active Halo Ring */}
+                    {isActive && (
+                      <circle
+                        cx={node.cx}
+                        cy={node.cy}
+                        r="12"
+                        className="fill-blue-500/20 stroke-blue-400/40 animate-pulse"
+                        strokeWidth="1"
+                      />
+                    )}
+
+                    {/* Center Dot - exactly on the line */}
+                    <circle
+                      cx={node.cx}
+                      cy={node.cy}
+                      r={isActive ? 5.5 : 4}
+                      className={
+                        isActive
+                          ? "fill-blue-600 transition-all duration-200"
+                          : "fill-blue-300 group-hover:fill-blue-500 transition-colors"
+                      }
+                    />
+
+                    {/* Number Label below the dot */}
+                    <text
+                      x={node.tx}
+                      y={node.ty}
+                      textAnchor="middle"
+                      className={`text-sm sm:text-[15px] select-none transition-colors duration-200 ${
+                        isActive
+                          ? "fill-blue-600 font-bold"
+                          : "fill-slate-400 group-hover:fill-slate-700 font-medium"
+                      }`}
+                      style={{
+                        fontFamily: "'Google Sans', sans-serif",
+                        fontWeight: isActive ? "700" : "500",
+                      }}
+                    >
+                      {project.id}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
           </div>
 
           {/* Mobile Simple Stepper */}
@@ -321,22 +351,23 @@ export default function Home() {
           <div className="lg:col-span-7 relative w-full">
             {/* Background Offset Card Layer 1 */}
             <div
-              className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/70 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
+              className="absolute -top-3 -left-3 sm:-top-5 sm:-left-5 w-[96%] h-[96%] bg-blue-100/80 rounded-2xl sm:rounded-3xl pointer-events-none transition-transform duration-300"
               aria-hidden="true"
             />
 
             {/* Background Offset Card Layer 2 */}
             <div
-              className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/40 rounded-2xl sm:rounded-3xl pointer-events-none"
+              className="absolute -bottom-3 -right-3 w-[90%] h-[90%] bg-blue-200/50 rounded-2xl sm:rounded-3xl pointer-events-none"
               aria-hidden="true"
             />
 
             {/* Main Showcase Image Container */}
-            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/70 shadow-xl group aspect-[16/10]">
+            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/70 shadow-2xl group aspect-[16/10] w-full">
               <Image
                 src={projects[activeProjectIndex].image}
                 alt={projects[activeProjectIndex].title}
                 fill
+                unoptimized
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 priority
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
