@@ -15,7 +15,7 @@ export const THEME_COLORS = {
   iceBlueLight: "#eff4fe",    // Very light blue tint for badge containers and icon backgrounds
 
   // Background Surfaces (Premium Off-White Theme)
-  canvas: "#f8fafd",           // Main page background: warm alabaster / porcelain soft white
+  canvas: "#f3f6fc",           // Main page background: Studio Ice Pearl
   canvasCard: "#ffffff",       // Pure crisp white for elevated cards and modals
   canvasSubtle: "#f1f5f9",     // Soft slate tint for internal card sections
   canvasDark: "#07080b",       // Pitch black background for Hero Contact & Dark sections

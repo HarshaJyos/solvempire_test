@@ -5,7 +5,7 @@
 /* ========================================================================= */
 :root {
   /* Premium Off-White Canvas & Card Surfaces */
-  --bg-canvas: #f8fafd;
+  --bg-canvas: #f3f6fc;
   --bg-card: #ffffff;
   --bg-card-subtle: #f1f5f9;
   
@@ -28,6 +28,17 @@ body {
   font-family: 'Google Sans', var(--font-sans), sans-serif;
   background-color: var(--bg-canvas);
   color: var(--color-heading);
+}
+
+/* Micro Dot Matrix Grid Pattern (Engineering Blueprint feel) */
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(37, 99, 235, 0.10) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+.bg-dot-matrix-subtle {
+  background-image: radial-gradient(rgba(100, 116, 139, 0.11) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 html.lenis, html.lenis body {

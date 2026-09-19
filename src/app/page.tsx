@@ -727,7 +727,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full bg-[#f8fafd] text-slate-900 selection:bg-blue-100 selection:text-blue-700">
+    <div className="w-full bg-[#f3f6fc] text-slate-900 selection:bg-blue-100 selection:text-blue-700 relative">
       {/* ========================================================================= */}
       {/* PINNED HERO & SHOWCASE STAGE (400vh scroll distance for smooth scrubbing) */}
       {/* ========================================================================= */}
@@ -735,10 +735,13 @@ export default function Home() {
         {/* Sticky 100vh Viewport Stage */}
         <div
           ref={stageRef}
-          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#f8fafd] relative"
+          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between bg-[#f3f6fc] relative"
         >
-          {/* Subtle Ambient Studio Lighting behind Hero */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[520px] bg-gradient-to-b from-blue-100/40 via-blue-50/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+          {/* Subtle Ambient Studio Lighting Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[580px] bg-gradient-to-b from-blue-200/40 via-blue-100/20 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
+
+          {/* Micro Dot Matrix Grid Layer */}
+          <div className="absolute inset-0 bg-dot-matrix opacity-40 pointer-events-none [mask-image:radial-gradient(ellipse_at_50%_45%,black_45%,transparent_90%)] -z-10" />
 
           {/* Header Navigation */}
           <header className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-6 sm:pt-8 flex items-center justify-between relative z-40">
@@ -1137,11 +1140,17 @@ export default function Home() {
       <div
         ref={partnerContainerRef}
         id="why-partner"
-        className="relative h-[380vh] w-full bg-[#f8fafd] border-t border-slate-200/60"
+        className="relative h-[380vh] w-full bg-[#f3f6fc] border-t border-slate-200/70"
       >
         {/* Sticky 100vh Viewport Stage */}
-        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f8fafd] px-4 sm:px-8 lg:px-12 py-4 sm:py-6">
-          <div className="max-w-7xl w-full mx-auto flex flex-col items-center">
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-[#f3f6fc] px-4 sm:px-8 lg:px-12 py-4 sm:py-6 relative">
+          {/* Ambient Lighting Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[950px] h-[550px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+
+          {/* Micro Dot Matrix Grid Layer */}
+          <div className="absolute inset-0 bg-dot-matrix-subtle opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
+
+          <div className="max-w-7xl w-full mx-auto flex flex-col items-center relative z-10">
             {/* Section Heading */}
             <div className="w-full text-center max-w-4xl mx-auto mb-6 sm:mb-8">
               <h2 className="font-[family-name:var(--font-bricolage)] text-2xl sm:text-3xl md:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-slate-950 uppercase">
@@ -1151,7 +1160,7 @@ export default function Home() {
             </div>
 
             {/* Main Interactive Partner Showcase Card */}
-            <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.06)] p-6 sm:p-8 lg:p-10 relative w-full">
+            <div className="bg-white rounded-3xl sm:rounded-[2.5rem] border border-slate-200/90 shadow-[0_20px_60px_-15px_rgba(37,99,235,0.08)] p-6 sm:p-8 lg:p-10 relative w-full">
               {/* Mobile/Tablet Horizontal Stepper Row */}
               <div className="flex lg:hidden items-center justify-between w-full mb-6 pb-2 border-b border-slate-100 gap-2 overflow-x-auto">
                 {partnerPillars.map((pillar, idx) => {
@@ -1474,9 +1483,15 @@ export default function Home() {
       <section
         ref={processSectionRef}
         id="process"
-        className="py-24 sm:py-32 bg-[#f8fafd] relative overflow-hidden border-t border-slate-200/60"
+        className="py-24 sm:py-32 bg-[#f3f6fc] relative overflow-hidden border-t border-slate-200/70"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Ambient Lighting Glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/35 rounded-full blur-3xl pointer-events-none -z-10" />
+
+        {/* Micro Dot Matrix Grid Layer */}
+        <div className="absolute inset-0 bg-dot-matrix opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Heading with GSAP Rack Focus & Unmask */}
           <div className="w-full text-center max-w-4xl mx-auto mb-14 sm:mb-20 overflow-hidden">
             <h2 className="gsap-process-heading font-[family-name:var(--font-bricolage)] text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-slate-950 uppercase">
@@ -1729,9 +1744,15 @@ export default function Home() {
       <section
         id="team"
         ref={teamSectionRef}
-        className="w-full bg-[#f8fafd] py-24 sm:py-32 border-t border-slate-200/60 overflow-hidden relative"
+        className="w-full bg-[#f3f6fc] py-24 sm:py-32 border-t border-slate-200/70 overflow-hidden relative"
       >
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Ambient Lighting Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[520px] bg-blue-200/25 rounded-full blur-3xl pointer-events-none -z-10" />
+
+        {/* Micro Dot Matrix Grid Layer */}
+        <div className="absolute inset-0 bg-dot-matrix opacity-35 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_95%)] -z-10" />
+
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
           {/* Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-14 sm:mb-16">
             <h2 className="gsap-team-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
