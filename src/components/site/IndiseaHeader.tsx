@@ -5,15 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
-const NAV_LINKS = [
-  { label: "Work", href: "/work" },
-  { label: "Capabilities", href: "/services" },
-  { label: "Process", href: "/#process" },
-  { label: "Team", href: "/team" },
-  { label: "About", href: "/about" },
-  { label: "Journal", href: "/journal" },
-];
-
 const MENU_MODAL_ITEMS = [
   { num: "01", label: "Home", href: "/", color: "blue", desc: "Product engineering studio overview" },
   { num: "02", label: "Work", href: "/work", color: "green", desc: "Real-world production machines & systems" },
@@ -87,19 +78,6 @@ export function IndiseaHeader() {
               />
             </div>
           </Link>
-
-          {/* Center Navigation Links (Visible on Desktop) */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 px-3 py-1.5 rounded-full bg-[var(--surface-card)]/80 backdrop-blur-md border border-[var(--border-hairline)] shadow-2xs relative z-50">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="px-3.5 py-1.5 rounded-full font-display font-bold text-xs text-[var(--text-heading)] hover:text-[#2563EB] hover:bg-[var(--surface-canvas)] transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
 
           {/* Right Header Controls: Talk to Us CTA + Circular Menu Toggle */}
           <div className="flex items-center gap-3 sm:gap-4 relative z-50">
