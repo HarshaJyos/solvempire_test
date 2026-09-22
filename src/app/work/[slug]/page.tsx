@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudyBySlug } from "@/content/case-studies";
-import { A4CaseStudyArticle } from "@/components/work/A4CaseStudyArticle";
+import { IndiseaDossierArticle } from "@/components/work/IndiseaDossierArticle";
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -45,7 +45,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
-  // Calculate adjacent case studies for pagination
   const currentIndex = caseStudies.findIndex((s) => s.slug === study.slug);
   const prevStudy =
     currentIndex > 0
@@ -63,7 +62,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
       : undefined;
 
   return (
-    <A4CaseStudyArticle
+    <IndiseaDossierArticle
       study={study}
       prevStudy={prevStudy}
       nextStudy={nextStudy}

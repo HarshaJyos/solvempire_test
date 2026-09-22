@@ -3,8 +3,8 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Header } from "@/components/site/Header";
-import { Footer } from "@/components/site/Footer";
+import { IndiseaHeader } from "@/components/site/IndiseaHeader";
+import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { JournalCard } from "@/components/journal/JournalCard";
 import { JournalPagination } from "@/components/journal/JournalPagination";
 
@@ -188,8 +188,8 @@ export default function JournalPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#fafcff] bg-editorial-grid text-[#0f172a] selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans">
-      <Header />
+    <div className="min-h-screen w-full flex flex-col bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <IndiseaHeader />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
         {/* Top Back Link */}
@@ -519,7 +519,7 @@ export default function JournalPage() {
         </div>
       </main>
 
-      <Footer />
+      <IndiseaFooter />
     </div>
   );
 }

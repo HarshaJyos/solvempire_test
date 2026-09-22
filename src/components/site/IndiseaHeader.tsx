@@ -3,16 +3,26 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Moon, Sun, Mail, Phone, MapPin, X } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const NAV_ITEMS = [
+const NAV_LINKS = [
+  { label: "Work", href: "/work" },
+  { label: "Capabilities", href: "/services" },
+  { label: "Process", href: "/#process" },
+  { label: "Team", href: "/team" },
+  { label: "About", href: "/about" },
+  { label: "Journal", href: "/journal" },
+];
+
+const MENU_MODAL_ITEMS = [
   { num: "01", label: "Home", href: "/", color: "blue", desc: "Product engineering studio overview" },
-  { num: "02", label: "Capabilities", href: "/services", color: "yellow", desc: "CAD, PCB, RTOS & Cloud specifications" },
-  { num: "03", label: "Case Studies", href: "/work", color: "green", desc: "Real-world production machines & systems" },
-  { num: "04", label: "FreshPod Machine", href: "/work/freshpod-machine", color: "red", desc: "Featured automated sanitation system" },
-  { num: "05", label: "Process", href: "/#process", color: "blue", desc: "Discovery to volume manufacturing" },
-  { num: "06", label: "Studio & Team", href: "/about", color: "yellow", desc: "Engineers, labs, and operating tenets" },
-  { num: "07", label: "Contact", href: "/contact", color: "green", desc: "Scope your project directly with engineering leads" },
+  { num: "02", label: "Work", href: "/work", color: "green", desc: "Real-world production machines & systems" },
+  { num: "03", label: "Capabilities", href: "/services", color: "yellow", desc: "Mechanical CAD, Multi-Layer PCB, RTOS & Cloud" },
+  { num: "04", label: "Process", href: "/#process", color: "blue", desc: "Discovery to volume manufacturing pipeline" },
+  { num: "05", label: "Team", href: "/team", color: "green", desc: "Core engineers, architects, and builders" },
+  { num: "06", label: "About", href: "/about", color: "yellow", desc: "Studio mission, tenets, and manufacturing lab" },
+  { num: "07", label: "Journal", href: "/journal", color: "blue", desc: "Engineering research papers & whitepapers" },
+  { num: "08", label: "Contact", href: "/contact", color: "red", desc: "Scope your project directly with engineering leads" },
 ];
 
 export function IndiseaHeader() {
@@ -22,7 +32,7 @@ export function IndiseaHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -48,15 +58,15 @@ export function IndiseaHeader() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
-  const activeItem = hoveredIndex !== null ? NAV_ITEMS[hoveredIndex] : NAV_ITEMS[0];
+  const activeItem = hoveredIndex !== null ? MENU_MODAL_ITEMS[hoveredIndex] : MENU_MODAL_ITEMS[0];
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled && !menuOpen
-            ? "bg-[#F0EDEA]/90 backdrop-blur-md border-b border-[var(--border-hairline)] py-3.5 shadow-xs"
-            : "bg-transparent py-5 sm:py-6"
+            ? "bg-[#F0EDEA]/90 backdrop-blur-md border-b border-[var(--border-hairline)] py-3 shadow-xs"
+            : "bg-transparent py-4 sm:py-5"
         }`}
       >
         <div className="indisea-wrap flex items-center justify-between">
@@ -65,9 +75,9 @@ export function IndiseaHeader() {
             href="/"
             onClick={() => setMenuOpen(false)}
             aria-label="SolveMpire home"
-            className="flex items-center gap-3 group relative z-50"
+            className="flex items-center gap-3 group relative z-50 shrink-0"
           >
-            <div className="relative h-8 sm:h-9 w-36 sm:w-44">
+            <div className="relative h-7 sm:h-8 w-32 sm:w-40">
               <Image
                 src="/logo.png"
                 alt="SolveMpire"
@@ -78,23 +88,36 @@ export function IndiseaHeader() {
             </div>
           </Link>
 
+          {/* Center Navigation Links (Visible on Desktop) */}
+          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 px-3 py-1.5 rounded-full bg-[var(--surface-card)]/80 backdrop-blur-md border border-[var(--border-hairline)] shadow-2xs relative z-50">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="px-3.5 py-1.5 rounded-full font-display font-bold text-xs text-[var(--text-heading)] hover:text-[#2563EB] hover:bg-[var(--surface-canvas)] transition-all"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
           {/* Right Header Controls: Talk to Us CTA + Circular Menu Toggle */}
           <div className="flex items-center gap-3 sm:gap-4 relative z-50">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--text-heading)] text-[var(--surface-canvas)] font-display font-bold text-xs tracking-wide uppercase hover:opacity-90 transition-all"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--text-heading)] text-[var(--surface-canvas)] font-display font-bold text-xs tracking-wide uppercase hover:opacity-90 transition-all shadow-2xs"
             >
               <span>Talk to us</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
-            {/* Indisea-style 48px Circular Toggle */}
+            {/* Circular Menu Toggle */}
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="w-12 h-12 rounded-full border-2 border-[var(--text-heading)] bg-[var(--surface-canvas)] text-[var(--text-heading)] flex items-center justify-center transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-[var(--text-heading)] bg-[var(--surface-canvas)] text-[var(--text-heading)] flex items-center justify-center transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <div className="relative w-5 h-5 flex flex-col justify-center items-center">
                 <span
@@ -127,9 +150,8 @@ export function IndiseaHeader() {
         {/* Main Menu Grid */}
         <div className="flex-1 indisea-wrap pt-28 pb-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-0 overflow-y-auto">
           {/* Left Column: Numbered Navigation Links */}
-          <nav className="lg:col-span-7 flex flex-col justify-center space-y-2 sm:space-y-3">
-            {NAV_ITEMS.map((item, idx) => {
-              const isHovered = hoveredIndex === idx;
+          <nav className="lg:col-span-7 flex flex-col justify-center space-y-1.5 sm:space-y-2">
+            {MENU_MODAL_ITEMS.map((item, idx) => {
               return (
                 <Link
                   key={item.num}
@@ -151,7 +173,7 @@ export function IndiseaHeader() {
                   >
                     {item.num}
                   </span>
-                  <span className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-none text-[var(--text-heading)] group-hover:text-[#2563EB] group-hover:translate-x-2 transition-all">
+                  <span className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-none text-[var(--text-heading)] group-hover:text-[#2563EB] group-hover:translate-x-2 transition-all">
                     {item.label}
                   </span>
                 </Link>
@@ -183,7 +205,7 @@ export function IndiseaHeader() {
         </div>
 
         {/* Bottom Contact & Studio Details Bar */}
-        <div className="border-t border-[var(--border-hairline)] bg-[var(--surface-card)]/50 py-6">
+        <div className="border-t border-[var(--border-hairline)] bg-[var(--surface-card)]/50 py-5">
           <div className="indisea-wrap grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
             <div>
               <span className="indisea-eyebrow block mb-1">Direct Engineering Email</span>

@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/site/Header";
-import { Footer } from "@/components/site/Footer";
+import { IndiseaHeader } from "@/components/site/IndiseaHeader";
+import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { TeamSocialLinks } from "@/components/team/TeamSocialLinks";
 import { AuthorArticlesList } from "@/components/team/AuthorArticlesList";
 import { getTeamMember, getAllTeamMembers } from "@/lib/team-data";
 import { getAllJournalPosts } from "@/lib/journal-data";
-import { ArrowLeft, MapPin, ArrowRight } from "lucide-react";
+import { ArrowLeft, MapPin, ArrowUpRight } from "lucide-react";
 
 export function generateStaticParams() {
   const members = getAllTeamMembers();
@@ -50,7 +50,6 @@ export default async function TeamMemberPage({
     notFound();
   }
 
-  // Get articles written by this team member
   const allPosts = getAllJournalPosts();
   const authorPosts = allPosts.filter(
     (post) =>
@@ -58,54 +57,27 @@ export default async function TeamMemberPage({
       post.author.avatar.includes(member.slug.split("-")[0])
   );
 
-  const socialUrls = member.socials
-    ? Object.values(member.socials).filter((url): url is string => typeof url === "string" && !url.startsWith("mailto:"))
-    : [];
-
-  const personJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    mainEntity: {
-      "@type": "Person",
-      name: member.name,
-      jobTitle: member.role,
-      description: member.shortBio,
-      image: `https://www.solvempire.com${member.avatar}`,
-      worksFor: {
-        "@type": "Organization",
-        name: "SolveMpire",
-        url: "https://www.solvempire.com",
-      },
-      sameAs: socialUrls,
-    },
-  };
-
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#fafcff] bg-editorial-grid text-[#0f172a] selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-      />
-      <Header />
+    <div className="min-h-screen w-full flex flex-col bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans relative">
+      <IndiseaHeader />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
-        {/* Navigation Bar */}
-        <div className="flex items-center justify-between gap-4 mb-8">
-          <Link
-            href="/team"
-            className="inline-flex items-center gap-2 font-display text-xs text-slate-500 hover:text-blue-600 font-bold uppercase transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>&larr; Return to Team Directory</span>
-          </Link>
-        </div>
+      <main className="flex-1 w-full pt-36 pb-28">
+        <div className="indisea-wrap space-y-12 sm:space-y-16">
+          {/* Breadcrumb Back Link */}
+          <div className="border-b border-[var(--border-hairline)] pb-4">
+            <Link
+              href="/team"
+              className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--text-muted)] hover:text-[#2563EB] uppercase tracking-wider transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Back to Team Directory</span>
+            </Link>
+          </div>
 
-        {/* Profile Card */}
-        <section className="rounded-3xl bg-white border border-slate-200/90 shadow-editorial-sm p-6 sm:p-10 mb-10 overflow-hidden">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
-            {/* Avatar */}
-            <div className="relative shrink-0">
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl border border-slate-200/80 overflow-hidden relative bg-slate-100 shadow-xs">
+          {/* Profile Card Dossier */}
+          <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-8">
+            <div className="flex flex-col sm:flex-row gap-8 items-start">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-2xs">
                 <Image
                   src={member.avatar}
                   alt={member.name}
@@ -114,104 +86,67 @@ export default async function TeamMemberPage({
                   className="object-cover"
                 />
               </div>
-            </div>
 
-            {/* Header Details */}
-            <div className="space-y-3 text-center sm:text-left flex-1 min-w-0">
-              <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-mono text-xs font-semibold border border-blue-200/60">
-                {member.role}
-              </span>
+              <div className="space-y-3 flex-1">
+                <span className="indisea-eyebrow text-[#2563EB] block">
+                  {member.role}
+                </span>
+                <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-[var(--text-heading)] tracking-tight">
+                  {member.name}
+                </h1>
+                <p className="font-sans text-base sm:text-lg text-[var(--text-muted)] leading-relaxed font-normal max-w-3xl">
+                  {member.shortBio}
+                </p>
 
-              <h1 className="font-display font-extrabold text-3xl sm:text-4xl text-slate-950 tracking-tight">
-                {member.name}
-              </h1>
-
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                {member.shortBio}
-              </p>
-
-              {member.location && (
-                <div className="flex items-center justify-center sm:justify-start gap-1.5 font-sans text-xs text-slate-500">
-                  <MapPin className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                  <span>{member.location}</span>
-                </div>
-              )}
-
-              {/* Social Media Links */}
-              {member.socials && (
-                <div className="pt-2 flex justify-center sm:justify-start">
-                  <TeamSocialLinks
-                    socials={member.socials}
-                    memberName={member.name}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* Story / About Section */}
-        <section className="space-y-6 mb-12">
-          <div className="space-y-2 border-b border-slate-200 pb-4">
-            <h2 className="font-display font-bold text-2xl sm:text-3xl text-slate-950">
-              Engineering Perspective &amp; Background
-            </h2>
-          </div>
-
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-editorial-sm space-y-4 text-base text-slate-700 leading-relaxed font-normal">
-            {member.story.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
-          </div>
-
-          {/* Focus Areas */}
-          {member.focusAreas && member.focusAreas.length > 0 && (
-            <div className="space-y-3 pt-4">
-              <h3 className="font-display font-bold text-xs uppercase tracking-wider text-slate-500">
-                Focus Areas &amp; Specializations
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {member.focusAreas.map((area, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs"
-                  >
-                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 text-blue-700 font-mono font-bold text-xs shrink-0 border border-blue-200/60">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-sm sm:text-base text-slate-900 font-semibold font-display">
-                      {area}
-                    </span>
+                {/* Socials & Location */}
+                <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-[var(--text-muted)]">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{member.location || "Andhra Pradesh, India"}</span>
                   </div>
-                ))}
+                  {member.socials && (
+                    <TeamSocialLinks
+                      socials={member.socials}
+                      memberName={member.name}
+                    />
+                  )}
+                </div>
               </div>
             </div>
-          )}
-        </section>
 
-        {/* Written Journals by Member */}
-        <AuthorArticlesList posts={authorPosts} authorName={member.name} />
-
-        {/* Scoping CTA Card */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-tr from-slate-950 to-blue-950 text-center space-y-4 text-white shadow-editorial-md">
-          <h3 className="font-display font-bold text-2xl sm:text-4xl text-white">
-            Build Your Product With SolveMpire
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-            Connect with our engineering team to bring your hardware, embedded firmware, or connected platform from spec to deployment.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/contact"
-              className="btn-editorial btn-editorial-blue px-8 py-3.5 text-xs tracking-wide shadow-editorial-sm"
-            >
-              <span>Start a Project &rarr;</span>
-            </Link>
+            {/* Focus Areas Matrix */}
+            {member.focusAreas && (
+              <div className="pt-6 border-t border-[var(--border-hairline)] space-y-2.5">
+                <span className="indisea-eyebrow block">
+                  Technical Focus &amp; Core Domains
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {member.focusAreas.map((area) => (
+                    <span
+                      key={area}
+                      className="px-3 py-1.5 rounded-xl bg-[var(--surface-canvas)] font-mono text-xs font-semibold text-[var(--text-heading)] border border-[var(--border-hairline)]"
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
+
+          {/* Author Publications if any */}
+          {authorPosts.length > 0 && (
+            <section className="space-y-6">
+              <span className="indisea-eyebrow block">
+                Research Publications by {member.name}
+              </span>
+              <AuthorArticlesList posts={authorPosts} authorName={member.name} />
+            </section>
+          )}
         </div>
       </main>
 
-      <Footer />
+      <IndiseaFooter />
     </div>
   );
 }
