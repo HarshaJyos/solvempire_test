@@ -11,16 +11,15 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  Copy,
   Share2,
   Sparkles,
-  Layers,
-  Cpu,
-  ShieldCheck,
-  Wrench,
-  Activity,
   CheckCircle2,
+  Cpu,
+  Layers,
+  ShieldCheck,
+  Activity,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface IndiseaDossierArticleProps {
   study: CaseStudy;
@@ -39,10 +38,10 @@ export function IndiseaDossierArticle({
   const tocItems = [
     { id: "overview", title: "Executive Overview" },
     ...(study.metrics && study.metrics.length > 0
-      ? [{ id: "metrics", title: "Key Production Metrics" }]
+      ? [{ id: "metrics", title: "Production Metrics" }]
       : []),
     ...(study.highlights && study.highlights.length > 0
-      ? [{ id: "highlights", title: "Core Engineering Highlights" }]
+      ? [{ id: "highlights", title: "System Highlights" }]
       : []),
     ...study.sections.map((s, idx) => ({
       id: `section-${idx + 1}`,
@@ -122,29 +121,29 @@ export function IndiseaDossierArticle({
             </div>
           </div>
 
-          {/* Hero Section: Giant Headline + Highlight Badges */}
+          {/* Hero Section: Monographic Headline & Visual */}
           <header className="space-y-8" id="overview">
             <div className="space-y-4 max-w-5xl">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="indisea-eyebrow">
                   06 / CASE STUDY ARCHIVE // {study.client.toUpperCase()}
                 </span>
-                <span className="marker-pill marker-pill-yellow text-[11px] uppercase tracking-wide">
+                <span className="marker-pill marker-pill-yellow text-[11px] uppercase tracking-wide font-mono">
                   {study.category}
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-[var(--text-heading)] tracking-tight leading-[1.02]">
+              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.04]">
                 {study.title}
               </h1>
 
-              <p className="font-sans text-lg sm:text-2xl text-[var(--text-muted)] leading-relaxed font-normal pt-2">
+              <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] leading-relaxed font-normal pt-1 max-w-4xl">
                 {study.summary}
               </p>
             </div>
 
-            {/* Immersive Hero Machine Visual */}
-            <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full rounded-3xl bg-slate-950 overflow-hidden border border-[var(--border-hairline)] shadow-sm">
+            {/* Hero Machine Visual */}
+            <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full rounded-2xl sm:rounded-3xl bg-slate-950 overflow-hidden border border-[var(--border-hairline)] shadow-xs">
               <Image
                 src={study.hero.src}
                 alt={study.hero.alt}
@@ -165,100 +164,76 @@ export function IndiseaDossierArticle({
               </div>
             </div>
 
-            {/* Spec Quick Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs text-xs font-mono">
-              <div>
-                <span className="indisea-eyebrow block mb-1">Client Entity</span>
-                <span className="font-bold text-sm text-[var(--text-heading)] block truncate font-display">
+            {/* Architectural Technical Spec Ledger (No text truncation!) */}
+            <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 font-mono text-xs">
+              <div className="p-5 sm:p-6 space-y-1.5">
+                <span className="indisea-eyebrow block">Client Entity</span>
+                <span className="font-display font-bold text-sm sm:text-base text-[var(--text-heading)] block leading-snug">
                   {study.client}
                 </span>
               </div>
-              <div>
-                <span className="indisea-eyebrow block mb-1">Production Status</span>
-                <span className="font-bold text-emerald-600 block truncate uppercase">
+
+              <div className="p-5 sm:p-6 space-y-1.5">
+                <span className="indisea-eyebrow block">Production Status</span>
+                <span className="font-mono font-bold text-xs sm:text-sm text-emerald-600 block uppercase leading-snug">
                   {study.status}
                 </span>
               </div>
-              <div>
-                <span className="indisea-eyebrow block mb-1">Primary Discipline</span>
-                <span className="font-bold text-[var(--text-heading)] block truncate uppercase">
+
+              <div className="p-5 sm:p-6 space-y-1.5">
+                <span className="indisea-eyebrow block">Primary Discipline</span>
+                <span className="font-mono font-bold text-xs sm:text-sm text-[var(--text-heading)] block uppercase leading-snug">
                   {study.category}
                 </span>
               </div>
-              <div>
-                <span className="indisea-eyebrow block mb-1">Engineering Scope</span>
-                <span className="font-medium text-[var(--text-muted)] block truncate">
-                  {study.disciplines.join(" • ")}
-                </span>
+
+              <div className="p-5 sm:p-6 space-y-1.5">
+                <span className="indisea-eyebrow block">Engineering Scope</span>
+                <div className="flex flex-wrap gap-1.5 pt-0.5">
+                  {study.disciplines.map((d) => (
+                    <span
+                      key={d}
+                      className="px-2 py-0.5 rounded bg-[var(--surface-canvas)] text-[var(--text-heading)] text-[11px] font-medium"
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </header>
 
-          {/* Key Production Metrics Wall (Giant Numbers First!) */}
+          {/* Key Production Metrics Ledger (Unified Grid with clean typography) */}
           {study.metrics && study.metrics.length > 0 && (
-            <section id="metrics" className="space-y-6 pt-4">
-              <div className="flex items-center gap-2">
-                <span className="indisea-eyebrow">
-                  01 / verified production metrics &amp; volume
-                </span>
-              </div>
+            <section id="metrics" className="space-y-4 pt-2">
+              <span className="indisea-eyebrow block">
+                01 / verified production metrics &amp; volume
+              </span>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {study.metrics.map((m, idx) => (
-                  <div
-                    key={m.label}
-                    className="p-6 sm:p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-2 relative overflow-hidden group hover:border-slate-400 transition-colors"
-                  >
-                    <span className="font-mono text-[11px] text-[var(--text-muted)] uppercase font-semibold block tracking-wider truncate">
-                      {m.label}
-                    </span>
-                    <span className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#2563EB] block tracking-tight">
-                      {m.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Upfront Engineering Highlights (The Core Feats) */}
-          {study.highlights && study.highlights.length > 0 && (
-            <section id="highlights" className="space-y-6 pt-6 border-t border-[var(--border-hairline)]">
-              <div className="space-y-2">
-                <span className="indisea-eyebrow">
-                  02 / tangible engineering highlights
-                </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[var(--text-heading)] tracking-tight">
-                  What Makes This System Unique
-                </h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {study.highlights.map((highlight, idx) => {
-                  const badgeColor =
-                    idx % 3 === 0
-                      ? "marker-pill-yellow"
-                      : idx % 3 === 1
-                      ? "marker-pill-blue"
-                      : "marker-pill-green";
+              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
+                {study.metrics.map((m) => {
+                  // Cleanly handle qualifiers like "200,000+ (reported)" to avoid wrapping large fonts
+                  const match = m.value.match(/^([^(]+)(.*)$/);
+                  const primaryVal = match ? match[1].trim() : m.value;
+                  const secondaryVal = match && match[2] ? match[2].trim() : "";
 
                   return (
                     <div
-                      key={idx}
-                      className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3 flex flex-col justify-between hover:border-slate-400 transition-colors"
+                      key={m.label}
+                      className="p-5 sm:p-6 lg:p-7 flex flex-col justify-between space-y-2 hover:bg-[var(--surface-canvas)]/50 transition-colors"
                     >
-                      <div className="space-y-3">
-                        <span className={`marker-pill ${badgeColor} text-[10px] uppercase font-mono`}>
-                          FEAT 0{idx + 1}
+                      <span className="font-mono text-[10px] sm:text-[11px] text-[var(--text-muted)] uppercase font-semibold block tracking-wider">
+                        {m.label}
+                      </span>
+                      <div className="space-y-0.5">
+                        <span className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#2563EB] block tracking-tight leading-none">
+                          {primaryVal}
                         </span>
-                        <p className="font-sans text-sm sm:text-base font-semibold text-[var(--text-heading)] leading-snug">
-                          {highlight}
-                        </p>
-                      </div>
-
-                      <div className="pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
-                        <span>SOLVEMPIRE LAB</span>
-                        <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
+                        {secondaryVal && (
+                          <span className="font-mono text-[11px] text-[var(--text-muted)] font-medium block">
+                            {secondaryVal}
+                          </span>
+                        )}
                       </div>
                     </div>
                   );
@@ -267,79 +242,115 @@ export function IndiseaDossierArticle({
             </section>
           )}
 
-          {/* 12-Column Deep-Dive System Architecture Breakdown */}
-          <div className="indisea-grid items-start gap-10 lg:gap-14 pt-8 border-t border-[var(--border-hairline)]">
-            {/* Left Sticky Table of Contents & Scoping Drawer (Span 4) */}
-            <aside className="hidden lg:block col-span-4 sticky top-28 space-y-6">
-              <div className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-4">
+          {/* Core Engineering Highlights (Integrated Architectural Matrix) */}
+          {study.highlights && study.highlights.length > 0 && (
+            <section id="highlights" className="space-y-5 pt-4">
+              <div className="space-y-1">
+                <span className="indisea-eyebrow block">
+                  02 / tangible engineering highlights
+                </span>
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
+                  What Makes This System Unique
+                </h2>
+              </div>
+
+              {/* Integrated Specification Grid */}
+              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y divide-[var(--border-hairline)] overflow-hidden">
+                {study.highlights.map((highlight, idx) => (
+                  <div
+                    key={idx}
+                    className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--surface-canvas)]/40 transition-colors group"
+                  >
+                    <div className="flex items-start gap-3.5 sm:gap-5">
+                      <span className="font-mono text-xs font-bold text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded-md shrink-0 mt-0.5">
+                        SPEC // 0{idx + 1}
+                      </span>
+                      <p className="font-sans text-sm sm:text-base font-medium text-[var(--text-heading)] leading-snug">
+                        {highlight}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] shrink-0 self-end sm:self-center pl-10 sm:pl-0">
+                      <span className="text-[11px] uppercase tracking-wider font-semibold">Verified Spec</span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 12-Column Detailed Engineering Breakdown */}
+          <div className="indisea-grid items-start gap-8 lg:gap-12 pt-6 border-t border-[var(--border-hairline)]">
+            {/* Left Sticky Sidebar (No fixed height or inner scrollbar!) */}
+            <aside className="hidden lg:block col-span-4 sticky top-28 space-y-5">
+              {/* Document Outline */}
+              <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
                 <span className="indisea-eyebrow block">System Sections</span>
                 <nav className="space-y-1 text-xs font-display">
-                  {tocItems.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className={`block py-2 px-3 rounded-xl transition-colors ${
-                        activeSectionId === item.id
-                          ? "bg-[#2563EB] text-white font-bold"
-                          : "text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:bg-[var(--surface-canvas)]"
-                      }`}
-                    >
-                      {item.title}
-                    </a>
-                  ))}
+                  {tocItems.map((item, idx) => {
+                    const isActive = activeSectionId === item.id;
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        className={cn(
+                          "flex items-center gap-2.5 py-2 px-3 rounded-xl transition-all leading-snug",
+                          isActive
+                            ? "bg-[#2563EB] text-white font-bold shadow-2xs"
+                            : "text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:bg-[var(--surface-canvas)]"
+                        )}
+                      >
+                        <span
+                          className={cn(
+                            "font-mono text-[10px] shrink-0",
+                            isActive ? "text-white font-bold" : "text-[var(--text-muted)]"
+                          )}
+                        >
+                          {String(idx + 1).padStart(2, "0")}.
+                        </span>
+                        <span>{item.title}</span>
+                      </a>
+                    );
+                  })}
                 </nav>
               </div>
 
               {/* Lead Engineering Scoping Box */}
-              <div className="p-6 rounded-3xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-3">
+              <div className="p-5 rounded-2xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-2.5">
                 <span className="indisea-eyebrow text-[#0284C7] block">
                   Building a Similar System?
                 </span>
-                <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed">
+                <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed font-normal">
                   Connect directly with our lead engineers to evaluate mechanical CAD packaging, custom PCB layouts, and volume manufacturing feasibility.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8]"
+                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8] pt-1"
                 >
                   <span>Scope With Lead Engineers &rarr;</span>
                 </Link>
               </div>
-
-              {/* Disciplines Chips */}
-              <div className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
-                <span className="indisea-eyebrow block">Disciplines Covered</span>
-                <div className="flex flex-wrap gap-1.5">
-                  {study.disciplines.map((d) => (
-                    <span
-                      key={d}
-                      className="px-2.5 py-1 rounded-lg font-mono text-[11px] font-medium bg-[var(--surface-canvas)] text-[var(--text-muted)]"
-                    >
-                      {d}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </aside>
 
             {/* Right Detailed Engineering Chapters (Span 8) */}
-            <div className="col-span-12 lg:col-span-8 space-y-12 sm:space-y-16">
+            <div className="col-span-12 lg:col-span-8 space-y-10 sm:space-y-14">
               {study.sections.map((sec, idx) => (
                 <section
                   key={idx}
                   id={`section-${idx + 1}`}
                   className="space-y-4 pt-6 first:pt-0 border-t first:border-0 border-[var(--border-hairline)]"
                 >
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <span className="indisea-eyebrow text-[#2563EB]">
                       0{idx + 3} // ARCHITECTURE CHAPTER
                     </span>
-                    <h2 className="font-display font-extrabold text-2xl sm:text-4xl text-[var(--text-heading)] tracking-tight">
+                    <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
                       {sec.heading}
                     </h2>
                   </div>
 
-                  <p className="font-sans text-base sm:text-lg text-[var(--text-body)] leading-relaxed font-normal whitespace-pre-line">
+                  <p className="font-sans text-base sm:text-lg text-[var(--text-body)] leading-[1.8] font-normal whitespace-pre-line">
                     {sec.body}
                   </p>
                 </section>
@@ -349,7 +360,7 @@ export function IndiseaDossierArticle({
               {study.outcomes && study.outcomes.length > 0 && (
                 <section
                   id="outcomes"
-                  className="p-8 sm:p-10 rounded-3xl bg-emerald-500/10 border border-emerald-500/30 space-y-5"
+                  className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-emerald-500/10 border border-emerald-500/25 space-y-4 shadow-2xs"
                 >
                   <div className="flex items-center gap-2 text-emerald-800">
                     <Sparkles className="w-5 h-5 text-emerald-600" />
@@ -358,11 +369,11 @@ export function IndiseaDossierArticle({
                     </span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-emerald-950 tracking-tight">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-emerald-950 tracking-tight">
                     Validated Performance In The Real World
                   </h3>
 
-                  <ul className="space-y-3 font-sans text-sm sm:text-base text-emerald-950 font-medium">
+                  <ul className="space-y-2.5 font-sans text-sm sm:text-base text-emerald-950 font-medium">
                     {study.outcomes.map((out, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
@@ -376,14 +387,14 @@ export function IndiseaDossierArticle({
           </div>
 
           {/* Bottom Adjacent Case Studies Switcher */}
-          <div className="pt-12 border-t border-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="pt-10 border-t border-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 gap-4">
             {prevStudy ? (
               <Link
                 href={`/work/${prevStudy.slug}`}
-                className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between group"
+                className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between group shadow-2xs"
               >
                 <span className="indisea-eyebrow block mb-2">&larr; Previous Case Study</span>
-                <span className="font-display font-bold text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
                   {prevStudy.title}
                 </span>
               </Link>
@@ -394,10 +405,10 @@ export function IndiseaDossierArticle({
             {nextStudy && (
               <Link
                 href={`/work/${nextStudy.slug}`}
-                className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between sm:text-right group"
+                className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between sm:text-right group shadow-2xs"
               >
                 <span className="indisea-eyebrow block mb-2">Next Case Study &rarr;</span>
-                <span className="font-display font-bold text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
                   {nextStudy.title}
                 </span>
               </Link>
@@ -410,3 +421,4 @@ export function IndiseaDossierArticle({
     </div>
   );
 }
+

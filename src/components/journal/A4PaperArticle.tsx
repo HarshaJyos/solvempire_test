@@ -141,7 +141,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
             </div>
           </div>
 
-          {/* Hero Section: Giant Headline + Highlight Badges */}
+          {/* Hero Section: Monographic Headline + Metadata Bar */}
           <header className="space-y-8 max-w-5xl">
             <div className="space-y-4">
               <div className="flex flex-wrap items-center gap-2">
@@ -153,17 +153,17 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-[var(--text-heading)] tracking-tight leading-[1.02]">
+              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.04]">
                 {meta.title}
               </h1>
 
-              <p className="font-sans text-lg sm:text-2xl text-[var(--text-muted)] leading-relaxed font-normal pt-2">
+              <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] leading-relaxed font-normal pt-1 max-w-4xl">
                 {meta.excerpt}
               </p>
             </div>
 
-            {/* Author and Metadata Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs text-xs font-mono">
+            {/* Author and Publication Metadata Bar */}
+            <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs text-xs font-mono">
               <Link
                 href={`/team/${authorSlug}`}
                 className="flex items-center gap-3 group focus:outline-none"
@@ -184,7 +184,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </div>
 
                 <div>
-                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors block">
+                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors block leading-snug">
                     {meta.author.name}
                   </span>
                   <span className="text-[11px] text-[var(--text-muted)] block">
@@ -193,7 +193,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </div>
               </Link>
 
-              <div className="flex items-center gap-4 text-[var(--text-muted)]">
+              <div className="flex items-center gap-3 sm:gap-4 text-[var(--text-muted)]">
                 <span>Published {meta.publishedAt}</span>
                 <span>•</span>
                 <span className="text-[#2563EB] font-bold">{meta.readTime}</span>
@@ -201,28 +201,29 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
             </div>
           </header>
 
-          {/* Upfront Key Takeaways (Project What Matters First!) */}
+          {/* Upfront Key Insights / Executive Summary (Unified Architectural Matrix) */}
           {takeaways && takeaways.length > 0 && (
-            <section className="p-8 sm:p-10 rounded-3xl bg-[#2563EB]/10 border border-[#2563EB]/25 space-y-6">
-              <div className="flex items-center gap-2 text-[#1E40AF]">
-                <Sparkles className="w-5 h-5 text-[#2563EB]" />
-                <span className="indisea-eyebrow text-[#1E40AF]">
+            <section className="space-y-4 pt-2">
+              <div className="space-y-1">
+                <span className="indisea-eyebrow block">
                   01 / executive summary &amp; core thesis
                 </span>
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
+                  Key Insights At A Glance
+                </h2>
               </div>
 
-              <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
-                Key Insights At A Glance
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+              {/* Seamless Grid Container without box-in-box nesting */}
+              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y divide-[var(--border-hairline)] overflow-hidden">
                 {takeaways.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs flex items-start gap-3.5"
+                    className="p-5 sm:p-6 flex items-start gap-4 sm:gap-5 hover:bg-[var(--surface-canvas)]/40 transition-colors"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-[#2563EB] mt-0.5 shrink-0" />
-                    <p className="font-sans text-sm sm:text-base text-[var(--text-heading)] font-medium leading-snug">
+                    <span className="font-mono text-xs font-bold text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded-md shrink-0 mt-0.5">
+                      KEY // 0{idx + 1}
+                    </span>
+                    <p className="font-sans text-sm sm:text-base text-[var(--text-heading)] font-medium leading-relaxed">
                       {item}
                     </p>
                   </div>
@@ -232,64 +233,61 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
           )}
 
           {/* 12-Column Swiss Grid Layout */}
-          <div className="indisea-grid items-start gap-10 lg:gap-14 pt-8 border-t border-[var(--border-hairline)]">
-            {/* Left Sticky Table of Contents (Span 4) */}
-            <aside className="hidden lg:block col-span-4 sticky top-28 space-y-6">
+          <div className="indisea-grid items-start gap-8 lg:gap-12 pt-6 border-t border-[var(--border-hairline)]">
+            {/* Left Sticky Table of Contents (Span 4) - Zero inner scrollbars, full natural display */}
+            <aside className="hidden lg:block col-span-4 sticky top-28 space-y-5">
               {tableOfContents && tableOfContents.length > 0 && (
-                <div className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-4">
+                <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
                   <span className="indisea-eyebrow block">Document Outline</span>
-                  <nav>
-                    <ul className="space-y-1 text-xs font-display leading-normal max-h-[calc(100vh-260px)] overflow-y-auto no-scrollbar">
-                      {tableOfContents.map((item, idx) => {
-                        const isActive = activeSectionId === item.id;
-                        return (
-                          <li key={item.id || idx}>
-                            <a
-                              href={`#${item.id}`}
-                              className={cn(
-                                "flex items-start gap-2 py-2 px-3 rounded-xl transition-colors group text-left",
-                                isActive
-                                  ? "bg-[#2563EB] text-white font-bold"
-                                  : "text-[var(--text-muted)] hover:bg-[var(--surface-canvas)] hover:text-[var(--text-heading)]"
-                              )}
-                            >
-                              <span
-                                className={cn(
-                                  "text-[10px] shrink-0 mt-0.5 font-mono",
-                                  isActive ? "text-white font-bold" : "text-[var(--text-muted)]"
-                                )}
-                              >
-                                {String(idx + 1).padStart(2, "0")}.
-                              </span>
-                              <span className="line-clamp-2">{item.title}</span>
-                            </a>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                  <nav className="space-y-1 text-xs font-display">
+                    {tableOfContents.map((item, idx) => {
+                      const isActive = activeSectionId === item.id;
+                      return (
+                        <a
+                          key={item.id || idx}
+                          href={`#${item.id}`}
+                          className={cn(
+                            "flex items-start gap-2.5 py-2 px-3 rounded-xl transition-all leading-snug text-left",
+                            isActive
+                              ? "bg-[#2563EB] text-white font-bold shadow-2xs"
+                              : "text-[var(--text-muted)] hover:bg-[var(--surface-canvas)] hover:text-[var(--text-heading)]"
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "text-[10px] shrink-0 mt-0.5 font-mono",
+                              isActive ? "text-white font-bold" : "text-[var(--text-muted)]"
+                            )}
+                          >
+                            {String(idx + 1).padStart(2, "0")}.
+                          </span>
+                          <span>{item.title}</span>
+                        </a>
+                      );
+                    })}
                   </nav>
                 </div>
               )}
 
               {/* Lead Engineering Scope Callout */}
-              <div className="p-6 rounded-3xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-3">
+              <div className="p-5 rounded-2xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-2.5">
                 <span className="indisea-eyebrow text-[#0284C7] block">
                   Have a Technical Challenge?
                 </span>
-                <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed">
+                <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed font-normal">
                   Discuss physical system architecture, embedded electronics, and continuous engineering workflows directly with our leads.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8]"
+                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8] pt-1"
                 >
                   <span>Scope With Lead Engineers &rarr;</span>
                 </Link>
               </div>
 
-              {/* Tags */}
+              {/* Topics Filed */}
               {meta.tags && meta.tags.length > 0 && (
-                <div className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
+                <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-2.5">
                   <span className="indisea-eyebrow block">Topics Filed</span>
                   <div className="flex flex-wrap gap-1.5">
                     {meta.tags.map((tag) => (
@@ -355,7 +353,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                             </div>
                           </button>
                           {isOpen && (
-                            <div className="px-5 pb-6 pt-1 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed border-t border-[var(--border-hairline)]">
+                            <div className="px-5 pb-6 pt-1 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed border-t border-[var(--border-hairline)] font-normal">
                               {faq.answer}
                             </div>
                           )}
@@ -367,14 +365,14 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               )}
 
               {/* Bottom Adjacent Articles Switcher */}
-              <div className="pt-12 border-t border-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="pt-10 border-t border-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {prevPost ? (
                   <Link
                     href={`/journal/${prevPost.slug}`}
-                    className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-left group"
+                    className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-left group shadow-2xs"
                   >
                     <span className="indisea-eyebrow block mb-2">&larr; Previous Deep Dive</span>
-                    <span className="font-display font-bold text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
+                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
                       {prevPost.title}
                     </span>
                   </Link>
@@ -385,10 +383,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 {nextPost && (
                   <Link
                     href={`/journal/${nextPost.slug}`}
-                    className="p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-right group ml-auto w-full"
+                    className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-right group ml-auto w-full shadow-2xs"
                   >
                     <span className="indisea-eyebrow block mb-2">Next Deep Dive &rarr;</span>
-                    <span className="font-display font-bold text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
+                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
                       {nextPost.title}
                     </span>
                   </Link>
@@ -408,7 +406,7 @@ function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
     case "lead":
       return (
-        <p className="text-xl sm:text-2xl font-medium leading-[1.6] text-[var(--text-heading)] mb-8 p-6 sm:p-8 rounded-3xl bg-[#2563EB]/10 border border-[#2563EB]/25">
+        <p className="text-xl sm:text-2xl font-medium leading-[1.6] text-[var(--text-heading)] mb-8 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs">
           {section.text}
         </p>
       );
@@ -496,7 +494,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "quote":
       return (
-        <blockquote className="my-10 pl-6 sm:pl-8 border-l-4 border-[#2563EB] italic text-lg sm:text-2xl text-[var(--text-heading)] leading-[1.5] bg-[var(--surface-card)] py-6 pr-6 rounded-r-3xl border-y border-r border-[var(--border-hairline)] shadow-2xs font-display">
+        <blockquote className="my-10 pl-6 sm:pl-8 border-l-4 border-[#2563EB] italic text-lg sm:text-2xl text-[var(--text-heading)] leading-[1.5] bg-[var(--surface-card)] py-6 pr-6 rounded-r-2xl sm:rounded-r-3xl border-y border-r border-[var(--border-hairline)] shadow-2xs font-display">
           <p className="mb-2">“{section.text}”</p>
           {(section.author || section.source) && (
             <footer className="text-xs font-mono font-normal not-italic text-[var(--text-muted)] pt-2">
@@ -538,7 +536,7 @@ function RenderSection({ section }: { section: BlogSection }) {
       const cfg = configs[section.variant || "insight"];
 
       return (
-        <div className={cn("my-8 p-6 sm:p-8 rounded-3xl border space-y-3 shadow-2xs", cfg.bg)}>
+        <div className={cn("my-8 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border space-y-3 shadow-2xs", cfg.bg)}>
           <div className="flex items-center gap-2.5">
             <div className="shrink-0">{cfg.icon}</div>
             <h4 className={cn("font-display font-extrabold text-base sm:text-lg", cfg.title)}>
@@ -606,7 +604,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "cta":
       return (
-        <div className="my-12 p-8 sm:p-10 rounded-3xl bg-[#2563EB]/10 border border-[#2563EB]/25 text-center space-y-4 shadow-xs">
+        <div className="my-12 p-8 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#2563EB]/10 border border-[#2563EB]/25 text-center space-y-4 shadow-xs">
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#2563EB] text-white mx-auto shadow-2xs">
             <Sparkles className="w-6 h-6" />
           </div>
@@ -633,3 +631,4 @@ function RenderSection({ section }: { section: BlogSection }) {
       return null;
   }
 }
+
