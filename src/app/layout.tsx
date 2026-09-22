@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { COMPANY } from "@/lib/company";
 import "./globals.css";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-bricolage",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -83,7 +90,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} min-h-screen bg-canvas text-heading antialiased selection:bg-brand/10 selection:text-brand relative`}
+        className={`${bricolageGrotesque.variable} ${ibmPlexMono.variable} ${plusJakartaSans.variable} min-h-screen bg-canvas text-heading antialiased selection:bg-[#3b82f6]/20 selection:text-[#1d4ed8] relative`}
       >
         <script
           type="application/ld+json"

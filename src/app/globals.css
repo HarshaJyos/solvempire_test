@@ -1,28 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #f3f6fc;
+  --color-canvas: #f0f7ff;
+  --color-canvas-alt: #f7f6f2;
+  --color-canvas-card: #fafaf8;
   --color-surface: #ffffff;
-  --color-surface-subtle: #f1f5f9;
-  --color-ink: #07080b;
+  --color-surface-subtle: #eff6ff;
+  --color-ink: #0f0f10;
 
-  --color-brand: #2563eb;
-  --color-brand-hover: #1d4ed8;
-  --color-brand-light: #3b82f6;
-  --color-periwinkle: #6c85c4;
-  --color-ice: #c8d7f6;
-  --color-ice-light: #eff4fe;
+  --color-brand: #3b82f6;
+  --color-brand-deep: #1d4ed8;
+  --color-brand-light: #60a5fa;
+  --color-brand-muted: #dbeafe;
+  
+  --color-accent-gold: #f5c518;
+  --color-alert-red: #dc2626;
 
-  --color-heading: #0a0f1d;
-  --color-body: #475569;
-  --color-muted: #64748b;
-  --color-hairline: #e2e8f0;
+  --color-heading: #0f0f10;
+  --color-body: #27272a;
+  --color-muted: #52525b;
+  --color-hairline: #0f0f10;
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  --text-display: clamp(2.25rem, 1.2rem + 4.5vw, 5rem);
-  --text-display-h2: clamp(1.75rem, 1.1rem + 2.6vw, 2.85rem);
+  --text-display: clamp(2.5rem, 1.2rem + 5vw, 6rem);
+  --text-display-h2: clamp(2rem, 1.2rem + 3.5vw, 3.75rem);
 }
 
 body {
@@ -31,22 +35,136 @@ body {
   color: var(--color-heading);
 }
 
-/* Micro Dot Matrix Grid Pattern (Engineering Blueprint feel) */
-.bg-dot-matrix {
-  background-image: radial-gradient(rgba(37, 99, 235, 0.10) 1.2px, transparent 1.2px);
-  background-size: 28px 28px;
+/* Neo-Brutalist Hard Shadows */
+.shadow-brutal-xs {
+  box-shadow: 2px 2px 0px 0px #0f0f10;
 }
 
-.bg-dot-matrix-subtle {
-  background-image: radial-gradient(rgba(100, 116, 139, 0.11) 1px, transparent 1px);
+.shadow-brutal-sm {
+  box-shadow: 3px 3px 0px 0px #0f0f10;
+}
+
+.shadow-brutal {
+  box-shadow: 4px 4px 0px 0px #0f0f10;
+}
+
+.shadow-brutal-md {
+  box-shadow: 6px 6px 0px 0px #0f0f10;
+}
+
+.shadow-brutal-lg {
+  box-shadow: 8px 8px 0px 0px #0f0f10;
+}
+
+.shadow-brutal-xl {
+  box-shadow: 10px 10px 0px 0px #0f0f10;
+}
+
+/* Interactive Neo-Brutalist Button Click States */
+.btn-brutal {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-brutal:hover {
+  transform: translate(-1px, -1px);
+}
+.btn-brutal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px #0f0f10 !important;
+}
+
+/* Blueprint Line Grid & Coordinate Matrix Pattern */
+.bg-blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 15, 16, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 15, 16, 0.06) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+.bg-blueprint-subtle {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Continuous Infinite Marquee Ticker */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 24s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Vector Radar & Gyroscope Keyframes */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spin-reverse 28s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-dash-flow {
+  stroke-dasharray: 6 6;
+  animation: dash-flow 1.2s linear infinite;
 }
 
 /* Micro Film Grain / Tactile Noise Texture */
 .bg-noise-grain {
   position: fixed;
   inset: 0;
-  opacity: 0.022;
+  opacity: 0.025;
   pointer-events: none;
   z-index: 9999;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");

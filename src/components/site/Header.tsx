@@ -35,74 +35,75 @@ export function Header() {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-canvas/85 backdrop-blur-md border-b border-hairline/70">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-[#f0f7ff]/95 backdrop-blur-md border-b-2 border-[#0f0f10]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-6">
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg p-1 -m-1"
+          className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
           aria-label={`${COMPANY.brandName} Home`}
         >
           <Image
             src="/logo.png"
             alt={COMPANY.brandName}
             width={160}
-            height={36}
+            height={38}
             priority
-            className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            className="h-8 sm:h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
           />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Primary Navigation */}
         <nav
           aria-label="Primary"
-          className="hidden md:flex items-center gap-8 text-sm font-medium text-body"
+          className="hidden md:flex items-center gap-1 lg:gap-3 font-mono text-xs uppercase"
         >
           <Link
             href="/work"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
           >
             Work
           </Link>
           <Link
             href="/services"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
           >
             Services
           </Link>
-          <Link
-            href="/#process"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+          <a
+            href="#methodology"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
           >
             Process
-          </Link>
+          </a>
           <Link
             href="/team"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
           >
             Team
           </Link>
           <Link
-            href="/journal"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
-          >
-            Journal
-          </Link>
-          <Link
             href="/about"
-            className="hover:text-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md px-1.5 py-0.5"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
           >
             About
           </Link>
+          <Link
+            href="/journal"
+            className="px-3 py-1.5 text-[#0f0f10] hover:bg-[#3b82f6]/10 border border-transparent hover:border-[#0f0f10] transition-colors rounded-sm font-semibold"
+          >
+            Journal
+          </Link>
         </nav>
 
-        {/* Desktop CTA Action */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Action CTA Button */}
+        <div className="hidden sm:flex items-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-sm px-5 py-2.5 rounded-full shadow-sm hover:shadow-brand/20 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+            className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm flex items-center gap-2 px-5 py-2.5 font-mono text-xs font-bold tracking-wider uppercase whitespace-nowrap"
           >
-            Start a Project
+            <span className="text-[#f5c518] font-bold">&gt;</span>
+            START A PROJECT
           </Link>
         </div>
 
@@ -114,13 +115,13 @@ export function Header() {
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav-dialog"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          className="md:hidden p-2 text-heading hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-lg"
+          className="md:hidden p-2 text-[#0f0f10] bg-white border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -134,62 +135,70 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile Navigation"
-          className="md:hidden bg-surface/95 backdrop-blur-md border-b border-hairline px-6 py-6 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2 duration-200"
+          className="md:hidden bg-[#f0f7ff] border-b-2 border-[#0f0f10] px-6 py-6 flex flex-col gap-3 shadow-brutal-lg animate-in slide-in-from-top-2 duration-200"
         >
+          <div className="flex items-center justify-between pb-3 border-b border-[#0f0f10]/20">
+            <span className="font-mono text-xs text-[#0f0f10]/70 font-semibold">[NAVIGATION]</span>
+          </div>
           <Link
             href="/work"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
           >
-            Work (Case Studies)
+            <span>Work (Case Studies)</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
           </Link>
           <Link
             href="/services"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
           >
-            Services & Capabilities
+            <span>Services &amp; Capabilities</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
           </Link>
-          <Link
-            href="/#process"
+          <a
+            href="#methodology"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
           >
-            Our Process
-          </Link>
+            <span>Our Process</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
+          </a>
           <Link
             href="/team"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
           >
-            Team
-          </Link>
-          <Link
-            href="/journal"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
-          >
-            Journal (Blog)
+            <span>Engineering Team</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
           </Link>
           <Link
             href="/about"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-heading hover:text-brand font-medium text-base py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand rounded-md"
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
           >
-            About Us & Team
+            <span>About SolveMpire</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
           </Link>
-          <div className="pt-2 border-t border-hairline flex flex-col gap-3">
+          <Link
+            href="/journal"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-mono text-sm font-semibold text-[#0f0f10] py-2 border-b border-[#0f0f10]/10 flex items-center justify-between"
+          >
+            <span>Journal</span>
+            <span className="text-xs text-[#1d4ed8]">&rarr;</span>
+          </Link>
+          <div className="pt-2 flex flex-col gap-3">
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="inline-flex items-center justify-center bg-brand hover:bg-brand-hover text-white font-medium px-5 py-3 rounded-full text-center text-sm shadow-sm"
+              className="btn-brutal bg-[#0f0f10] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal text-center font-mono font-bold text-xs py-3 tracking-wider uppercase flex items-center justify-center gap-2"
             >
-              Start a Project
+              <span className="text-[#f5c518]">&gt;</span> START A PROJECT
             </Link>
           </div>
         </div>
       )}
-
     </header>
   );
 }

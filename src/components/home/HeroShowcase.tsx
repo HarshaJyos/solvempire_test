@@ -1,411 +1,234 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { caseStudies } from "@/content/case-studies";
+import { useEffect, useState } from "react";
 import { COMPANY } from "@/lib/company";
 
-gsap.registerPlugin(ScrollTrigger);
-
-// Four featured projects on the homepage dial
-const showcaseProjects = caseStudies.slice(0, 4);
-
 export function HeroShowcase() {
-  const [activeProjectIndex, setActiveProjectIndex] = useState<number>(0);
+  const [latency, setLatency] = useState(8);
+  const [coords, setCoords] = useState({ x: 512, y: 380 });
+  const [isHovered, setIsHovered] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroOverlayRef = useRef<HTMLDivElement>(null);
-  const arcDialRef = useRef<HTMLDivElement>(null);
-  const showcaseCardRef = useRef<HTMLDivElement>(null);
-  const numberNodesRef = useRef<(HTMLDivElement | null)[]>([]);
-
+  // Subtle telemetry jitter for live technical dashboard feel
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReducedMotion) {
-      if (heroOverlayRef.current) {
-        heroOverlayRef.current.style.opacity = "1";
-        heroOverlayRef.current.style.transform = "none";
-      }
-      if (showcaseCardRef.current) {
-        showcaseCardRef.current.style.opacity = "1";
-        showcaseCardRef.current.style.transform = "none";
-        showcaseCardRef.current.removeAttribute("inert");
-      }
-      return;
-    }
-
-    const heroOverlay = heroOverlayRef.current;
-    const arcDial = arcDialRef.current;
-    const showcaseCard = showcaseCardRef.current;
-
-    // Direct GSAP quickSetters for smooth 60fps compositor-driven updates
-    const setHeroOpacity = heroOverlay ? gsap.quickSetter(heroOverlay, "opacity") : null;
-    const setHeroY = heroOverlay ? gsap.quickSetter(heroOverlay, "y", "px") : null;
-    const setArcY = arcDial ? gsap.quickSetter(arcDial, "y", "vh") : null;
-    const setShowcaseOpacity = showcaseCard ? gsap.quickSetter(showcaseCard, "opacity") : null;
-    const setShowcaseY = showcaseCard ? gsap.quickSetter(showcaseCard, "y", "px") : null;
-    const setShowcaseScale = showcaseCard ? gsap.quickSetter(showcaseCard, "scale") : null;
-
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: container,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.6,
-        onUpdate: (self) => {
-          const p = self.progress;
-
-          // 1. Hero Content Exit Phase: 0.0 -> 0.16
-          if (p < 0.16) {
-            const phaseP = p / 0.16;
-            const heroOp = Math.max(0, 1 - phaseP * 1.3);
-            setHeroOpacity?.(heroOp);
-            setHeroY?.(-phaseP * 40);
-            if (heroOverlay) {
-              heroOverlay.style.pointerEvents = heroOp > 0.4 ? "auto" : "none";
-              if (heroOp <= 0.05) heroOverlay.setAttribute("inert", "");
-              else heroOverlay.removeAttribute("inert");
-            }
-          } else {
-            setHeroOpacity?.(0);
-            if (heroOverlay) {
-              heroOverlay.style.pointerEvents = "none";
-              heroOverlay.setAttribute("inert", "");
-            }
-          }
-
-          // 2. Arc Dial Elevation Phase: 0.04 -> 0.20
-          if (p < 0.04) {
-            setArcY?.(65);
-          } else if (p <= 0.20) {
-            const phaseP = (p - 0.04) / 0.16;
-            const eased = 1 - Math.cos((phaseP * Math.PI) / 2);
-            setArcY?.((1 - eased) * 65);
-          } else {
-            setArcY?.(0);
-          }
-
-          // 3. Showcase Card Materialization: 0.12 -> 0.24
-          if (p < 0.12) {
-            setShowcaseOpacity?.(0);
-            setShowcaseY?.(35);
-            setShowcaseScale?.(0.96);
-            if (showcaseCard) {
-              showcaseCard.style.pointerEvents = "none";
-              showcaseCard.setAttribute("inert", "");
-            }
-          } else if (p <= 0.24) {
-            const phaseP = (p - 0.12) / 0.12;
-            setShowcaseOpacity?.(phaseP);
-            setShowcaseY?.((1 - phaseP) * 35);
-            setShowcaseScale?.(0.96 + phaseP * 0.04);
-            if (showcaseCard) {
-              showcaseCard.style.pointerEvents = phaseP > 0.4 ? "auto" : "none";
-              if (phaseP <= 0.05) showcaseCard.setAttribute("inert", "");
-              else showcaseCard.removeAttribute("inert");
-            }
-          } else {
-            setShowcaseOpacity?.(1);
-            setShowcaseY?.(0);
-            setShowcaseScale?.(1);
-            if (showcaseCard) {
-              showcaseCard.style.pointerEvents = "auto";
-              showcaseCard.removeAttribute("inert");
-            }
-          }
-
-          // 4. Dial Continuous Rotation & Project Dwell Mapping across 340vh
-          let rotProgress = 0.0;
-          let nextIndex = 0;
-
-          if (p <= 0.36) {
-            // Solid, unhurried dwell on Project 01 (Freshpod) right as card materializes!
-            rotProgress = 0.0;
-            nextIndex = 0;
-          } else if (p <= 0.56) {
-            // Smooth transition from Project 01 -> Project 02 (p: 0.36 to 0.48), then dwell on 02 (p: 0.48 to 0.56)
-            const progress01 = Math.min(1, (p - 0.36) / 0.12);
-            const eased =
-              progress01 < 0.5
-                ? 2 * progress01 * progress01
-                : 1 - Math.pow(-2 * progress01 + 2, 2) / 2;
-            rotProgress = 0.0 + eased * 1.0;
-            nextIndex = rotProgress >= 0.5 ? 1 : 0;
-          } else if (p <= 0.76) {
-            // Smooth transition from Project 02 -> Project 03 (p: 0.56 to 0.68), then dwell on 03 (p: 0.68 to 0.76)
-            const progress02 = Math.min(1, (p - 0.56) / 0.12);
-            const eased =
-              progress02 < 0.5
-                ? 2 * progress02 * progress02
-                : 1 - Math.pow(-2 * progress02 + 2, 2) / 2;
-            rotProgress = 1.0 + eased * 1.0;
-            nextIndex = rotProgress >= 1.5 ? 2 : 1;
-          } else {
-            // Smooth transition from Project 03 -> Project 04 (p: 0.76 to 0.88), then dwell on 04 (p: 0.88 to 1.0)
-            const progress03 = Math.min(1, (p - 0.76) / 0.12);
-            const eased =
-              progress03 < 0.5
-                ? 2 * progress03 * progress03
-                : 1 - Math.pow(-2 * progress03 + 2, 2) / 2;
-            rotProgress = Math.min(3.0, 2.0 + eased * 1.0);
-            nextIndex = rotProgress >= 2.5 ? 3 : 2;
-          }
-
-          // Guarded discrete React state update
-          setActiveProjectIndex((prev) => (prev === nextIndex ? prev : nextIndex));
-
-          // Calculate Arc numbers visibility & position
-          const arcGlobalOpacity = Math.min(1, Math.max(0, (p - 0.04) / 0.12));
-
-          showcaseProjects.forEach((_, idx) => {
-            const node = numberNodesRef.current[idx];
-            if (!node) return;
-
-            const t = 0.5 + (idx - rotProgress) * 0.20;
-
-            if (t < 0.05 || t > 0.95 || arcGlobalOpacity <= 0.01) {
-              node.style.opacity = "0";
-              return;
-            }
-
-            const leftPercent = t * 100;
-            const yVal = 135 - 260 * t * (1 - t);
-            const topPercent = (yVal / 160) * 100;
-            const distanceFromApex = Math.abs(t - 0.5);
-            const isActive = distanceFromApex < 0.07;
-
-            const edgeFade = t < 0.16 ? (t - 0.05) / 0.11 : t > 0.84 ? (0.95 - t) / 0.11 : 1;
-            const finalOpacity = Math.min(1, Math.max(0, arcGlobalOpacity * edgeFade));
-
-            node.style.left = `${leftPercent}%`;
-            node.style.top = `${topPercent}%`;
-            node.style.opacity = `${finalOpacity}`;
-
-            // Toggle active apex halo classes
-            const innerBadge = node.firstElementChild as HTMLElement;
-            if (innerBadge) {
-              if (isActive) {
-                innerBadge.className =
-                  "relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand text-surface flex items-center justify-center font-bold text-sm sm:text-base shadow-xl shadow-brand/40 ring-4 sm:ring-6 ring-brand/20 scale-105 transition-all duration-200";
-              } else {
-                innerBadge.className =
-                  "w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-surface/95 backdrop-blur-xs border-2 border-hairline text-muted flex items-center justify-center font-semibold text-xs sm:text-sm shadow-xs transition-all duration-200";
-              }
-            }
-          });
-        },
-      });
-    }, container);
-
-    return () => ctx.revert();
+    const interval = setInterval(() => {
+      setLatency(Math.floor(7 + Math.random() * 3));
+    }, 2500);
+    return () => clearInterval(interval);
   }, []);
 
-  const activeProject = showcaseProjects[activeProjectIndex] || showcaseProjects[0];
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = Math.round(e.clientX - rect.left);
+    const y = Math.round(e.clientY - rect.top);
+    setCoords({ x, y });
+  };
 
   return (
-    <section
-      ref={containerRef}
-      aria-label="Featured Engineering Projects"
-      className="relative h-[340vh] w-full bg-canvas"
-    >
-      {/* Pinned Viewport Stage with ample top padding below the fixed header */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center overflow-hidden bg-canvas pt-24 sm:pt-28 pb-4">
-        {/* Ambient Lighting Glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-brand/5 rounded-full blur-3xl pointer-events-none -z-10" />
-
-        {/* Micro Dot Matrix Grid Layer */}
-        <div className="absolute inset-0 bg-dot-matrix opacity-40 pointer-events-none [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_90%)] -z-10" />
-
-        {/* ========================================================================= */}
-        {/* HERO CONTENT OVERLAY (Fades smoothly as scroll begins) */}
-        {/* ========================================================================= */}
-        <div
-          ref={heroOverlayRef}
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-30 pointer-events-auto pt-16 sm:pt-20"
-        >
-          <div className="max-w-5xl mx-auto flex flex-col items-center -mt-6 sm:-mt-10">
-            <span className="inline-block text-brand font-bold text-xs sm:text-sm tracking-widest uppercase mb-3">
-              {COMPANY.positioning.eyebrow}
+    <section className="relative w-full bg-[#f0f7ff] bg-blueprint-subtle border-b-2 border-[#0f0f10] overflow-hidden pt-8 pb-16 sm:pb-24">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+        {/* Top Hero Telemetry Ribbon */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 sm:pb-12">
+          {/* Engineering Discipline Tag */}
+          <div className="bg-white border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] px-3.5 py-1.5 flex items-center gap-2">
+            <span className="font-mono font-bold text-xs uppercase text-[#0f0f10] tracking-wider">
+              [SYSTEM: STUDIO]
             </span>
-            <h1 className="font-display text-display font-bold tracking-tight text-heading leading-[1.08] text-center max-w-5xl mx-auto text-balance">
-              <span>We Engineer Ideas Into </span>
-              <span className="text-brand">
-                Working Products<span className="text-heading">.</span>
+            <span className="font-mono text-xs text-[#0f0f10]/50">//</span>
+            <span className="font-mono text-xs text-[#0f0f10] font-medium tracking-wide">
+              END-TO-END PRODUCT ENGINEERING
+            </span>
+          </div>
+
+          {/* Live Engineering Telemetry */}
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-xs">
+            <div className="flex items-center gap-1.5 text-[#0f0f10]/80">
+              <span className="text-[#0f0f10]/60">LATENCY:</span>
+              <span className="font-bold text-[#0f0f10]">{latency}ms</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-[#0f0f10]/80">
+              <span className="text-[#0f0f10]/60">UPTIME:</span>
+              <span className="font-bold text-[#0f0f10]">99.98%</span>
+            </div>
+            <div className="bg-[#dbeafe]/70 border border-[#1d4ed8]/40 px-2.5 py-1 rounded-sm flex items-center gap-2">
+              <span className="size-2 rounded-full bg-[#1d4ed8] animate-ping" />
+              <span className="font-mono text-[11px] font-semibold text-[#1d4ed8] tracking-wider uppercase">
+                CAD TO COMMERCIAL DEPLOYMENT
               </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Main Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Column: Hero Typography & Actions */}
+          <div className="lg:col-span-7 xl:col-span-8 flex flex-col items-start">
+            {/* Tagline Badge */}
+            <div className="bg-[#3b82f6] border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] px-3.5 py-1.5 mb-6">
+              <span className="font-mono font-bold text-xs uppercase text-[#0f0f10] tracking-widest">
+                Full-Stack Hardware &amp; Digital Engineering
+              </span>
+            </div>
+
+            {/* Main Punchy Display Heading */}
+            <h1 className="font-display font-black text-5xl sm:text-7xl lg:text-[84px] xl:text-[94px] text-[#0f0f10] uppercase tracking-[-0.035em] leading-[0.92] mb-8">
+              WE FORGE
+              <br />
+              <span className="relative inline-block my-1 text-[#0f0f10]">
+                PHYSICAL &amp; DIGITAL
+                <svg
+                  className="absolute -bottom-2.5 left-0 w-full h-4 sm:h-5 text-[#3b82f6] overflow-visible"
+                  viewBox="0 0 240 16"
+                  fill="none"
+                >
+                  <path
+                    d="M3 12C65 4 175 3 237 11"
+                    stroke="currentColor"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              <br />
+              EMPIRES.
             </h1>
 
-            <p className="mt-5 sm:mt-7 text-base sm:text-lg md:text-xl text-body font-normal max-w-2xl mx-auto leading-relaxed">
-              {COMPANY.positioning.subhead}
+            {/* Mission Proposition Copy */}
+            <p className="font-display text-lg sm:text-2xl text-[#0f0f10]/80 leading-relaxed max-w-2xl mb-10 font-normal">
+              Mechanical enclosures, custom PCB architectures, embedded firmware, and the cloud platforms that power them. One unified engineering team from prototype to institutional scale.
             </p>
 
-            <div className="mt-7 sm:mt-9 flex items-center gap-4">
-              <Link
-                href="/work"
-                className="group inline-flex items-center gap-2.5 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-base sm:text-[17px] px-8 py-3.5 rounded-full shadow-lg shadow-brand/25 hover:shadow-brand/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+            {/* Call to Action Suite */}
+            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+              <a
+                href="#capabilities"
+                className="btn-brutal bg-[#3b82f6] hover:bg-[#2563eb] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-md px-7 py-4 font-mono font-bold text-sm tracking-wider uppercase flex items-center gap-3"
               >
-                <span>Explore Our Work</span>
-                <svg
-                  className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2.2}
-                  viewBox="0 0 24 24"
-                >
+                <svg viewBox="0 0 24 24" className="size-5" fill="currentColor">
+                  <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 3.3L19 9v6.7L12 19.7 5 15.7V9l7-3.7zM12 8a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+                Explore Capabilities
+              </a>
+              <a
+                href="#archives"
+                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-md px-7 py-4 font-mono font-bold text-sm tracking-wider uppercase flex items-center gap-2"
+              >
+                <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </Link>
+                Case Studies (08)
+              </a>
             </div>
           </div>
-        </div>
 
-        {/* ========================================================================= */}
-        {/* THE GRAND ARC DIAL (Elevates smoothly, apex sits well below header, overflow visible) */}
-        {/* ========================================================================= */}
-        <div
-          ref={arcDialRef}
-          className="w-screen relative left-1/2 -translate-x-1/2 overflow-visible select-none px-0 z-20 pointer-events-none mt-1 sm:mt-2 mb-0"
-          style={{ transform: "translateY(65vh)" }}
-        >
-          <div className="relative w-full h-24 sm:h-28 md:h-32 overflow-visible">
-            <svg
-              viewBox="0 0 1920 160"
-              preserveAspectRatio="none"
-              className="w-full h-full fill-none overflow-visible"
-              aria-hidden="true"
-            >
-              <defs>
-                <linearGradient id="arcGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.25" />
-                  <stop offset="25%" stopColor="#60a5fa" stopOpacity="0.55" />
-                  <stop offset="50%" stopColor="#2563eb" stopOpacity="0.95" />
-                  <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.55" />
-                  <stop offset="100%" stopColor="#93c5fd" stopOpacity="0.25" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 0 135 Q 960 5 1920 135"
-                stroke="url(#arcGlowGradient)"
-                strokeWidth="3"
-                opacity="0.25"
-                vectorEffect="non-scaling-stroke"
-              />
-              <path
-                d="M 0 135 Q 960 5 1920 135"
-                stroke="url(#arcGlowGradient)"
-                strokeWidth="2"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-
-            {/* Dial Numbers */}
-            {showcaseProjects.map((project, index) => (
-              <div
-                key={project.slug}
-                ref={(el) => {
-                  numberNodesRef.current[index] = el;
-                }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none"
-                style={{ opacity: 0 }}
-              >
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-surface border-2 border-hairline text-muted flex items-center justify-center font-semibold text-xs sm:text-sm">
-                  <span>0{index + 1}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ========================================================================= */}
-        {/* FEATURED SHOWCASE CARD */}
-        {/* ========================================================================= */}
-        <div
-          ref={showcaseCardRef}
-          className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center mt-1 sm:mt-2 mb-auto pb-4 sm:pb-6 z-20"
-          style={{ opacity: 0 }}
-        >
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
-            {/* Left Column: Visual */}
-            <div className="lg:col-span-7 relative w-full">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-ink border border-hairline shadow-2xl group aspect-[16/11] max-h-[340px] sm:max-h-[400px] md:max-h-[440px] lg:max-h-[460px] w-full">
-                {showcaseProjects.map((proj, idx) => {
-                  const isCurrent = activeProjectIndex === idx;
-                  return (
-                    <div
-                      key={proj.slug}
-                      className="absolute inset-0 transition-opacity duration-500 ease-out"
-                      style={{
-                        opacity: isCurrent ? 1 : 0,
-                        pointerEvents: isCurrent ? "auto" : "none",
-                        zIndex: isCurrent ? 10 : 0,
-                      }}
-                    >
-                      <Image
-                        src={proj.hero.src}
-                        alt={proj.hero.alt}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 58vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  );
-                })}
-              </div>
+          {/* Right Column: Hero Engineering Monolith Card */}
+          <div
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="lg:col-span-5 xl:col-span-4 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-lg p-6 flex flex-col justify-between relative select-none transition-transform duration-300"
+          >
+            {/* Spec Card Header */}
+            <div className="border-b-2 border-[#0f0f10] pb-4 flex items-center justify-between">
+              <span className="font-mono font-bold text-xs uppercase text-[#0f0f10] tracking-wider">
+                CORE // ARCHITECTURE_NODE
+              </span>
+              <span className="bg-[#1d4ed8] text-[#dbeafe] font-mono font-bold text-[11px] px-2.5 py-0.5 tracking-wider uppercase shadow-[1px_1px_0px_#0f0f10]">
+                ACTIVE
+              </span>
             </div>
 
-            {/* Right Column: Project Details */}
-            <div className="lg:col-span-5 flex flex-col items-start justify-center text-left">
-              <div className="w-full mb-2.5 sm:mb-3">
-                <span className="inline-block text-brand font-bold text-xs sm:text-sm tracking-widest uppercase mb-1.5">
-                  {activeProject.category}
-                </span>
-                <h3 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.618rem] font-bold text-heading leading-[1.12] tracking-tight">
-                  {activeProject.title}
-                </h3>
+            {/* Interactive Vector Graphic Area */}
+            <div className="relative my-8 flex items-center justify-center min-h-[280px]">
+              {/* Background Coordinate Lines */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-25 pointer-events-none">
+                <div className="w-full h-[1px] bg-[#0f0f10]" />
+                <div className="absolute h-full w-[1px] bg-[#0f0f10]" />
               </div>
 
-              <div className="w-full mb-5 sm:mb-6">
-                <p className="text-body text-sm sm:text-base lg:text-[1.05rem] leading-[1.618] max-w-xl">
-                  {activeProject.summary}
-                </p>
-              </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {activeProject.disciplines.slice(0, 3).map((discipline) => (
-                  <span
-                    key={discipline}
-                    className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-ice-light text-brand border border-brand/15"
-                  >
-                    {discipline}
-                  </span>
-                ))}
-              </div>
-
-              {/* CTA Action Button */}
-              <div>
-                <Link
-                  href={`/work/${activeProject.slug}`}
-                  className="inline-flex items-center gap-2.5 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-brand/25 hover:shadow-brand/35 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+              {/* Multi-layered Animated SVG Engine Structure */}
+              <div className="relative size-64 flex items-center justify-center">
+                {/* Outer Calibrated Reticle Ring */}
+                <svg
+                  className={`absolute inset-0 size-full ${isHovered ? "animate-spin" : "animate-spin-slow"}`}
+                  style={{ animationDuration: isHovered ? "8s" : "24s" }}
+                  viewBox="0 0 260 260"
+                  fill="none"
                 >
-                  <span>View Case Study</span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.2}
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
+                  <circle
+                    cx="130"
+                    cy="130"
+                    r="120"
+                    stroke="#0f0f10"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 8"
+                  />
+                  <circle cx="130" cy="10" r="4" fill="#3b82f6" stroke="#0f0f10" strokeWidth="1.5" />
+                  <circle cx="250" cy="130" r="4" fill="#3b82f6" stroke="#0f0f10" strokeWidth="1.5" />
+                  <circle cx="130" cy="250" r="4" fill="#3b82f6" stroke="#0f0f10" strokeWidth="1.5" />
+                  <circle cx="10" cy="130" r="4" fill="#3b82f6" stroke="#0f0f10" strokeWidth="1.5" />
+                </svg>
+
+                {/* Inner Counter-Rotating Orbit Ring */}
+                <svg
+                  className="absolute inset-4 size-[228px] animate-spin-reverse"
+                  viewBox="0 0 230 230"
+                  fill="none"
+                >
+                  <circle
+                    cx="115"
+                    cy="115"
+                    r="100"
+                    stroke="#0f0f10"
+                    strokeWidth="1"
+                    strokeOpacity="0.4"
+                  />
+                  <line x1="15" y1="115" x2="215" y2="115" stroke="#0f0f10" strokeWidth="0.75" strokeDasharray="3 3" />
+                  <line x1="115" y1="15" x2="115" y2="215" stroke="#0f0f10" strokeWidth="0.75" strokeDasharray="3 3" />
+                </svg>
+
+                {/* Geometric Prism Triangle with Amber Core */}
+                <svg className="relative size-44" viewBox="0 0 160 160" fill="none">
+                  <polygon
+                    points="80,18 144,130 16,130"
+                    fill="#f5c518"
+                    stroke="#0f0f10"
+                    strokeWidth="3.5"
+                    strokeLinejoin="round"
+                  />
+                  <polygon
+                    points="80,48 124,124 36,124"
+                    fill="#ffffff"
+                    stroke="#0f0f10"
+                    strokeWidth="2.5"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="80" cy="94" r="18" fill="#0f0f10" />
+                  <circle cx="80" cy="94" r="9" fill="#3b82f6" className="animate-pulse" />
+                  <circle cx="80" cy="94" r="3.5" fill="#ffffff" />
+                </svg>
+              </div>
+
+              {/* Dynamic Coordinate Readout on Card Corner */}
+              <div className="absolute top-0 right-0 font-mono text-[10px] text-[#0f0f10]/60 bg-white/80 border border-[#0f0f10]/40 px-1.5 py-0.5">
+                X:{coords.x} Y:{coords.y}
+              </div>
+            </div>
+
+            {/* Metrics Manifest */}
+            <div className="border-t-2 border-[#0f0f10] pt-4 flex flex-col gap-2.5 font-mono text-xs">
+              <div className="flex items-center justify-between">
+                <span className="text-[#0f0f10]/70">Delivery Pipeline</span>
+                <span className="font-bold text-[#0f0f10]">100% In-House</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#0f0f10]/70">Vendor Handoff Gaps</span>
+                <span className="font-bold text-[#dc2626] line-through">Zero Gaps</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[#0f0f10]/70">Standard</span>
+                <span className="bg-[#f5c518] text-[#0f0f10] font-bold px-2 py-0.5 border border-[#0f0f10] shadow-[1px_1px_0px_#0f0f10]">
+                  Production Ready
+                </span>
               </div>
             </div>
           </div>
