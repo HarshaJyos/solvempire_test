@@ -49,7 +49,6 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
         setScrollProgress((totalScroll / windowHeight) * 100);
       }
 
-      // Track active heading for sidebar outline
       if (tableOfContents && tableOfContents.length > 0) {
         const headingElements = tableOfContents
           .map((item) => document.getElementById(item.id))
@@ -91,7 +90,6 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       .replace(/[^\w\s-]/g, "")
       .replace(/\s+/g, "-");
 
-  // Schema.org TechArticle + FAQPage Structured Data
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
@@ -118,89 +116,62 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
     },
   };
 
-  const faqSchema =
-    faqs && faqs.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((item) => ({
-            "@type": "Question",
-            name: item.question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer,
-            },
-          })),
-        }
-      : null;
-
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6] selection:text-white relative">
+    <div className="min-h-screen w-full flex flex-col bg-[#fafcff] bg-editorial-grid text-[#0f172a] selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
 
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 h-1.5 bg-[#0f0f10]/10 z-50 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-100 z-50 pointer-events-none">
         <div
-          className="h-full bg-[#3b82f6] transition-all duration-75"
+          className="h-full bg-blue-600 transition-all duration-75"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
       <Header />
 
-      {/* Main Container */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 max-w-[880px] mx-auto xl:max-w-none font-mono">
+        <div className="flex items-center justify-between gap-4 mb-8 font-display">
           <Link
             href="/journal"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0f0f10] hover:text-[#3b82f6] transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>&larr; BACK TO JOURNAL INDEX</span>
+            <span>&larr; Return to Journal Index</span>
           </Link>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] text-xs font-bold uppercase text-[#0f0f10] transition-all cursor-pointer"
-              aria-label="Share article"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-[#3b82f6]" />
-                  <span className="text-[#3b82f6]">LINK COPIED!</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-3.5 h-3.5" />
-                  <span>SHARE SPEC</span>
-                </>
-              )}
-            </button>
-          </div>
+          <button
+            onClick={handleCopy}
+            className="btn-editorial btn-editorial-secondary px-3.5 py-1.5 text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer shadow-xs"
+            aria-label="Share article"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-blue-600 font-bold">Link Copied</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-3.5 h-3.5 text-slate-500" />
+                <span>Share Article</span>
+              </>
+            )}
+          </button>
         </div>
 
-        {/* 2-Column Layout: Sticky Left Document Outline + Central A4 Document Sheet */}
-        <div className="flex justify-center items-start gap-8 relative">
-          {/* ========================================================================= */}
-          {/* STICKY DOCUMENT OUTLINE SIDEBAR (Desktop Left Side) */}
-          {/* ========================================================================= */}
+        {/* 2-Column Layout */}
+        <div className="flex justify-center items-start gap-8 lg:gap-10 relative">
+          {/* Sticky Document Outline Sidebar */}
           {tableOfContents && tableOfContents.length > 0 && (
-            <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none font-mono">
-              <div className="bg-white border-2 border-[#0f0f10] p-5 shadow-brutal-md">
-                <div className="flex items-center gap-2 pb-3 mb-3 border-b-2 border-[#0f0f10] text-xs font-black text-[#0f0f10] uppercase tracking-wider">
-                  <ListOrdered className="w-4 h-4 text-[#3b82f6]" />
-                  <span>DOCUMENT OUTLINE</span>
+            <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none">
+              <div className="bg-white rounded-2xl border border-slate-200/90 shadow-editorial-sm p-5">
+                <div className="flex items-center gap-2 pb-3 mb-3 border-b border-slate-100 text-xs font-bold text-slate-900 uppercase tracking-wider">
+                  <ListOrdered className="w-4 h-4 text-blue-600" />
+                  <span>Document Outline</span>
                 </div>
                 <nav>
                   <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-220px)] overflow-y-auto no-scrollbar">
@@ -211,23 +182,21 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                           <a
                             href={`#${item.id}`}
                             className={cn(
-                              "flex items-start gap-2 py-1.5 px-2 transition-colors group text-left border",
+                              "flex items-start gap-2 py-1.5 px-2.5 rounded-lg transition-colors group text-left",
                               isActive
-                                ? "bg-[#3b82f6] text-white font-bold border-[#0f0f10]"
-                                : "text-[#3f3f46] hover:bg-[#f0f7ff] hover:text-[#0f0f10] border-transparent"
+                                ? "bg-blue-50 text-blue-700 font-bold"
+                                : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                             )}
                           >
                             <span
                               className={cn(
-                                "text-[10px] shrink-0 mt-0.5 font-bold",
-                                isActive ? "text-white" : "text-[#71717a]"
+                                "text-[10px] shrink-0 mt-0.5 font-mono",
+                                isActive ? "text-blue-600 font-bold" : "text-slate-400"
                               )}
                             >
                               {String(idx + 1).padStart(2, "0")}.
                             </span>
-                            <span className="line-clamp-2 uppercase font-bold text-[11px]">
-                              {item.title}
-                            </span>
+                            <span className="line-clamp-2">{item.title}</span>
                           </a>
                         </li>
                       );
@@ -238,46 +207,44 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
             </aside>
           )}
 
-          {/* ========================================================================= */}
-          {/* THE TECHNICAL DOSSIER WHITE PAPER */}
-          {/* ========================================================================= */}
+          {/* Central Editorial White Paper Article */}
           <div className="w-full max-w-[880px] flex-1 min-w-0">
-            <article className="w-full bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-6 sm:p-12 md:p-14 transition-all relative overflow-hidden break-words">
-              {/* Top Dossier Terminal Strip */}
-              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b-2 border-[#0f0f10] font-mono text-xs">
+            <article className="w-full rounded-3xl bg-white border border-slate-200/90 shadow-editorial-md p-6 sm:p-12 md:p-14 relative overflow-hidden break-words">
+              {/* Header Meta Strip */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 text-xs font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
-                  <span className="font-bold uppercase tracking-wider text-[#0f0f10]">
-                    SPEC: WHITE_PAPER // SOLVEMPIRE R&D
+                  <span className="w-2 h-2 rounded-full bg-blue-600" />
+                  <span className="font-semibold uppercase tracking-wide text-slate-500">
+                    R&amp;D WHITE PAPER // SOLVEMPIRE
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 bg-[#3b82f6] text-white font-bold uppercase border border-[#0f0f10]">
+                  <span className="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold text-[10px] uppercase">
                     {meta.category}
                   </span>
-                  <span className="px-2 py-0.5 bg-[#f7f6f2] text-[#0f0f10] font-bold uppercase border border-[#0f0f10]">
+                  <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 font-bold text-[10px] uppercase">
                     {meta.type}
                   </span>
                 </div>
               </div>
 
-              {/* Article Title */}
-              <header className="pb-6 mb-8 border-b-2 border-[#0f0f10]">
-                <h1 className="font-display font-black text-3xl sm:text-4xl md:text-5xl text-[#0f0f10] tracking-tight uppercase leading-[1.05]">
+              {/* Title Header */}
+              <header className="pt-6 pb-6 border-b border-slate-100 space-y-4">
+                <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-950 tracking-tight leading-[1.08]">
                   {meta.title}
                 </h1>
                 
-                <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-mono font-bold text-[#71717a] uppercase">
-                  <span>BY {meta.author.name}</span>
+                <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-slate-500">
+                  <span className="font-semibold text-slate-900">By {meta.author.name}</span>
                   <span>•</span>
-                  <span>PUBLISHED: {meta.publishedAt}</span>
+                  <span>Published {meta.publishedAt}</span>
                   <span>•</span>
-                  <span className="text-[#3b82f6]">{meta.readTime}</span>
+                  <span className="text-blue-600 font-semibold">{meta.readTime}</span>
                 </div>
               </header>
 
               {/* Document Body */}
-              <div className="py-2 space-y-6 font-body text-[15px] sm:text-base leading-[1.8] text-[#27272a]">
+              <div className="py-2 space-y-6 text-[15px] sm:text-base leading-[1.8] text-slate-700 font-normal font-sans">
                 {sections.map((section, idx) => (
                   <RenderSection key={idx} section={section} />
                 ))}
@@ -285,15 +252,15 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Summary Takeaways Box */}
               {takeaways && takeaways.length > 0 && (
-                <div className="my-10 p-6 sm:p-8 bg-[#f7f6f2] border-2 border-[#0f0f10] shadow-brutal-sm space-y-4 font-mono">
-                  <div className="flex items-center gap-2 text-[#0f0f10] font-display font-black text-lg uppercase tracking-tight pb-2 border-b-2 border-[#0f0f10]">
-                    <Sparkles className="w-5 h-5 text-[#3b82f6] fill-[#3b82f6]" />
-                    <span>KEY TECHNICAL TAKEAWAYS &amp; FINDINGS</span>
+                <div className="my-10 p-6 sm:p-8 rounded-2xl bg-blue-50/70 border border-blue-200/70 space-y-4 font-sans">
+                  <div className="flex items-center gap-2 text-blue-900 font-display font-bold text-base sm:text-lg">
+                    <Sparkles className="w-5 h-5 text-blue-600 shrink-0" />
+                    <span>Key Takeaways &amp; Executive Summary</span>
                   </div>
-                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-[#0f0f10]">
+                  <ul className="space-y-2.5 pt-1 text-sm sm:text-base text-slate-800">
                     {takeaways.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-[#3b82f6] mt-0.5 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 mt-1 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -301,16 +268,16 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </div>
               )}
 
-              {/* Frequently Asked Questions */}
+              {/* FAQ Section */}
               {faqs && faqs.length > 0 && (
-                <section className="my-12 pt-8 border-t-2 border-[#0f0f10] space-y-5 scroll-mt-24 font-mono" id="faq">
+                <section className="my-12 pt-8 border-t border-slate-100 space-y-5 scroll-mt-24 font-sans" id="faq">
                   <div className="space-y-1">
-                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#3b82f6] text-white border border-[#0f0f10] text-xs font-bold uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold">
                       <HelpCircle className="w-3.5 h-3.5" />
-                      <span>FAQ SPECIFICATION</span>
+                      <span>FAQ Breakdown</span>
                     </div>
-                    <h3 className="font-display font-black text-2xl sm:text-3xl text-[#0f0f10] uppercase tracking-tight">
-                      FREQUENTLY ASKED QUESTIONS
+                    <h3 className="font-display font-bold text-2xl sm:text-3xl text-slate-950">
+                      Frequently Asked Questions
                     </h3>
                   </div>
 
@@ -320,7 +287,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                       return (
                         <div
                           key={idx}
-                          className="border-2 border-[#0f0f10] bg-white shadow-brutal-xs"
+                          className={cn(
+                            "rounded-2xl border transition-all duration-200 overflow-hidden",
+                            isOpen ? "bg-slate-50/70 border-blue-300" : "bg-white border-slate-200"
+                          )}
                         >
                           <button
                             type="button"
@@ -328,18 +298,18 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                             className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                             aria-expanded={isOpen}
                           >
-                            <span className="font-display font-black text-sm sm:text-base text-[#0f0f10] uppercase">
+                            <span className="font-display font-semibold text-sm sm:text-base text-slate-900">
                               {faq.question}
                             </span>
                             <div className={cn(
-                              "w-7 h-7 border-2 border-[#0f0f10] flex items-center justify-center shrink-0 transition-transform",
-                              isOpen ? "bg-[#3b82f6] text-white rotate-180" : "bg-[#f7f6f2] text-[#0f0f10]"
+                              "w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200",
+                              isOpen ? "bg-blue-100 text-blue-700 rotate-180" : "bg-slate-100 text-slate-500"
                             )}>
                               <ChevronDown className="w-4 h-4" />
                             </div>
                           </button>
                           {isOpen && (
-                            <div className="px-4 sm:px-5 pb-5 pt-2 text-xs sm:text-sm text-[#3f3f46] leading-relaxed border-t-2 border-[#0f0f10] bg-[#f0f7ff] font-normal font-sans">
+                            <div className="px-4 sm:px-5 pb-5 pt-1 text-sm text-slate-600 leading-relaxed border-t border-slate-100">
                               {faq.answer}
                             </div>
                           )}
@@ -352,12 +322,12 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Tags */}
               {meta.tags && meta.tags.length > 0 && (
-                <div className="mt-10 pt-6 border-t-2 border-[#0f0f10] flex flex-wrap items-center gap-2 font-mono text-xs">
-                  <span className="text-[#71717a] font-bold uppercase mr-1">TOPIC INDEX:</span>
+                <div className="mt-10 pt-6 border-t border-slate-100 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="text-slate-400 font-semibold mr-1">Filed under:</span>
                   {meta.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 bg-[#f7f6f2] border border-[#0f0f10] text-[#0f0f10] font-bold uppercase"
+                      className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium"
                     >
                       #{tag}
                     </span>
@@ -366,32 +336,32 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               )}
 
               {/* Author Bio Box */}
-              <div className="mt-12 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-md space-y-4 font-mono">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0f0f10]">
+              <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <Link
                     href={`/team/${authorSlug}`}
                     className="flex items-center gap-3.5 group focus:outline-none"
                   >
-                    <div className="relative w-14 h-14 overflow-hidden border-2 border-[#0f0f10] shrink-0 bg-white">
+                    <div className="relative w-14 h-14 rounded-2xl overflow-hidden border border-slate-200 shrink-0 bg-blue-50">
                       {meta.author.avatar ? (
                         <Image
                           src={meta.author.avatar}
                           alt={meta.author.name}
                           fill
-                          className="object-cover grayscale group-hover:grayscale-0 transition-all"
+                          className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[#0f0f10] text-lg font-black uppercase">
+                        <div className="w-full h-full flex items-center justify-center text-blue-700 text-lg font-bold uppercase">
                           {meta.author.name.charAt(0)}
                         </div>
                       )}
                     </div>
 
                     <div className="space-y-0.5">
-                      <h4 className="font-display font-black text-lg text-[#0f0f10] group-hover:text-[#3b82f6] uppercase tracking-tight">
+                      <h4 className="font-display font-bold text-lg text-slate-900 group-hover:text-blue-600 transition-colors">
                         {meta.author.name}
                       </h4>
-                      <span className="inline-block text-xs font-bold text-[#3b82f6] uppercase">
+                      <span className="inline-block text-xs font-semibold text-blue-600">
                         {meta.author.role}
                       </span>
                     </div>
@@ -399,29 +369,29 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
                   <Link
                     href={`/team/${authorSlug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-[#3b82f6] text-[#0f0f10] hover:text-white border-2 border-[#0f0f10] text-xs font-bold uppercase transition-all shadow-brutal-xs self-start sm:self-auto group"
+                    className="btn-editorial btn-editorial-secondary px-4 py-2 text-xs font-semibold text-slate-800 shadow-xs"
                   >
-                    <User className="w-3.5 h-3.5" />
-                    <span>AUTHOR DOSSIER</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <span>View Profile &rarr;</span>
                   </Link>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#3f3f46] leading-relaxed font-sans">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   {meta.author.bio || `${meta.author.role} at SolveMpire.`}
                 </p>
               </div>
             </article>
 
-            {/* Document Navigation - Next/Prev */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
+            {/* Document Navigation */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-display">
               {prevPost ? (
                 <Link
                   href={`/journal/${prevPost.slug}`}
-                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-left group"
+                  className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-editorial-xs hover:shadow-editorial-sm transition-all text-left group"
                 >
-                  <span className="text-xs font-bold text-[#71717a] uppercase block mb-1">&larr; PREVIOUS SPECIFICATION</span>
-                  <span className="font-display font-black text-sm text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1 uppercase">
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    &larr; Previous Article
+                  </span>
+                  <span className="font-bold text-sm text-slate-900 group-hover:text-blue-600 line-clamp-1">
                     {prevPost.title}
                   </span>
                 </Link>
@@ -432,10 +402,12 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               {nextPost && (
                 <Link
                   href={`/journal/${nextPost.slug}`}
-                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-right group ml-auto w-full"
+                  className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-editorial-xs hover:shadow-editorial-sm transition-all text-right group ml-auto w-full"
                 >
-                  <span className="text-xs font-bold text-[#71717a] uppercase block mb-1">NEXT SPECIFICATION &rarr;</span>
-                  <span className="font-display font-black text-sm text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1 uppercase">
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    Next Article &rarr;
+                  </span>
+                  <span className="font-bold text-sm text-slate-900 group-hover:text-blue-600 line-clamp-1">
                     {nextPost.title}
                   </span>
                 </Link>
@@ -450,39 +422,36 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
   );
 }
 
-// =============================================================================
-// SECTION RENDERER ENGINE (Neo-Brutalist Technical Spec Layout)
-// =============================================================================
 function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
     case "lead":
       return (
-        <p className="text-base sm:text-lg font-medium leading-[1.7] text-[#0f0f10] mb-6 p-4 bg-[#f0f7ff] border-l-4 border-[#3b82f6] border-y border-r border-[#0f0f10]/10">
+        <p className="text-lg sm:text-xl font-medium leading-[1.7] text-slate-900 mb-6 p-5 rounded-2xl bg-blue-50/50 border border-blue-100">
           {section.text}
         </p>
       );
 
     case "paragraph":
       return (
-        <p className="text-[15px] sm:text-base leading-[1.78] text-[#27272a] mb-5">
+        <p className="text-[15px] sm:text-base leading-[1.78] text-slate-700 mb-5">
           {section.text}
         </p>
       );
 
     case "heading": {
       const h2Styles =
-        "font-display font-black text-2xl sm:text-3xl text-[#0f0f10] tracking-tight uppercase leading-[1.2] mb-4 mt-10 pt-6 border-t-2 border-[#0f0f10] group relative scroll-mt-24";
+        "font-display font-bold text-2xl sm:text-3xl text-slate-950 tracking-tight leading-[1.25] mb-4 mt-10 pt-6 border-t border-slate-100 group relative scroll-mt-24";
       const h3Styles =
-        "font-display font-black text-xl sm:text-2xl text-[#0f0f10] tracking-tight uppercase leading-[1.25] mb-3 mt-7 group relative scroll-mt-24";
+        "font-display font-bold text-xl sm:text-2xl text-slate-950 tracking-tight leading-[1.3] mb-3 mt-7 group relative scroll-mt-24";
       const h4Styles =
-        "font-display font-black text-lg sm:text-xl text-[#0f0f10] uppercase mb-2 mt-5 group relative scroll-mt-24";
+        "font-display font-semibold text-lg sm:text-xl text-slate-950 mb-2 mt-5 group relative scroll-mt-24";
 
       if (section.level === 3) {
         return (
           <h3 id={section.id} className={h3Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-blue-600 p-1"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -497,7 +466,7 @@ function RenderSection({ section }: { section: BlogSection }) {
           <h4 id={section.id} className={h4Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-blue-600 p-1"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -511,7 +480,7 @@ function RenderSection({ section }: { section: BlogSection }) {
         <h2 id={section.id} className={h2Styles}>
           <a
             href={`#${section.id}`}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
+            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-blue-600 p-1"
             aria-label={`Link to ${section.id}`}
           >
             <Hash className="w-4 h-4" />
@@ -523,7 +492,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "bullets":
       return (
-        <ul className="list-disc list-outside pl-6 space-y-2.5 my-5 text-[#27272a] marker:text-[#3b82f6] text-[15px] sm:text-base leading-[1.75]">
+        <ul className="list-disc list-outside pl-6 space-y-2.5 my-5 text-slate-700 marker:text-blue-600 text-[15px] sm:text-base leading-[1.75]">
           {section.items.map((item, i) => (
             <li key={i} className="pl-1">
               {item}
@@ -534,9 +503,9 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "numbered":
       return (
-        <ol className="list-decimal list-outside pl-6 space-y-3 my-5 text-[#27272a] marker:text-[#3b82f6] marker:font-bold font-mono text-[15px] sm:text-base leading-[1.75]">
+        <ol className="list-decimal list-outside pl-6 space-y-3 my-5 text-slate-700 marker:text-blue-600 marker:font-semibold text-[15px] sm:text-base leading-[1.75]">
           {section.items.map((item, i) => (
-            <li key={i} className="pl-1 font-sans">
+            <li key={i} className="pl-1">
               {item}
             </li>
           ))}
@@ -545,16 +514,16 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "quote":
       return (
-        <blockquote className="my-8 pl-6 border-l-4 border-[#3b82f6] bg-[#f0f7ff] border-y-2 border-r-2 border-[#0f0f10] shadow-brutal-xs py-5 pr-6 font-mono text-sm sm:text-base text-[#0f0f10] leading-[1.65]">
-          <p className="mb-2 italic">“{section.text}”</p>
+        <blockquote className="my-8 pl-6 border-l-4 border-blue-600 italic text-base sm:text-lg text-slate-900 leading-[1.65] bg-slate-50/80 py-4 pr-6 rounded-r-2xl border-y border-r border-slate-200">
+          <p className="mb-1">“{section.text}”</p>
           {(section.author || section.source) && (
-            <footer className="text-xs uppercase font-bold text-[#71717a] pt-1">
+            <footer className="text-xs font-normal not-italic text-slate-500 pt-1 font-mono">
               {section.author && (
-                <strong className="text-[#0f0f10]">
+                <strong className="text-slate-900 font-semibold">
                   {section.author}
                 </strong>
               )}
-              {section.author && section.source && " // "}
+              {section.author && section.source && " — "}
               {section.source && <span>{section.source}</span>}
             </footer>
           )}
@@ -564,37 +533,37 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "callout": {
       const configs = {
         insight: {
-          icon: <Sparkles className="w-5 h-5 text-[#3b82f6]" />,
-          bg: "bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-xs",
-          title: "text-[#3b82f6]",
+          icon: <Sparkles className="w-5 h-5 text-blue-600" />,
+          bg: "bg-blue-50/60 border border-blue-200/80 text-slate-800",
+          title: "text-blue-800",
         },
         science: {
-          icon: <Lightbulb className="w-5 h-5 text-[#1d4ed8]" />,
-          bg: "bg-[#e0e7ff] border-2 border-[#0f0f10] shadow-brutal-xs",
-          title: "text-[#1d4ed8]",
+          icon: <Lightbulb className="w-5 h-5 text-indigo-600" />,
+          bg: "bg-indigo-50/50 border border-indigo-200/80 text-slate-800",
+          title: "text-indigo-800",
         },
         warning: {
-          icon: <AlertCircle className="w-5 h-5 text-[#b45309]" />,
-          bg: "bg-[#fef3c7] border-2 border-[#0f0f10] shadow-brutal-xs text-[#78350f]",
-          title: "text-[#92400e]",
+          icon: <AlertCircle className="w-5 h-5 text-amber-600" />,
+          bg: "bg-amber-50/50 border border-amber-200 text-amber-950",
+          title: "text-amber-800",
         },
         tip: {
-          icon: <Info className="w-5 h-5 text-[#0369a1]" />,
-          bg: "bg-[#e0f2fe] border-2 border-[#0f0f10] shadow-brutal-xs text-[#0c4a6e]",
-          title: "text-[#0369a1]",
+          icon: <Info className="w-5 h-5 text-cyan-600" />,
+          bg: "bg-cyan-50/50 border border-cyan-200 text-cyan-950",
+          title: "text-cyan-800",
         },
       };
       const cfg = configs[section.variant || "insight"];
 
       return (
-        <div className={cn("my-7 p-5 sm:p-6 space-y-2 font-mono", cfg.bg)}>
-          <div className="flex items-center gap-2.5 pb-2 border-b border-[#0f0f10]/10">
+        <div className={cn("my-7 p-5 sm:p-6 rounded-2xl border space-y-2", cfg.bg)}>
+          <div className="flex items-center gap-2.5">
             <div className="shrink-0">{cfg.icon}</div>
-            <h4 className={cn("font-display font-black text-sm uppercase", cfg.title)}>
+            <h4 className={cn("font-display font-bold text-sm sm:text-base", cfg.title)}>
               {section.title}
             </h4>
           </div>
-          <div className="text-xs sm:text-sm leading-[1.7] font-sans text-[#0f0f10]">
+          <div className="text-sm sm:text-base leading-[1.7] pl-7">
             {section.text}
           </div>
         </div>
@@ -603,34 +572,34 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "table":
       return (
-        <div className="my-8 space-y-2 font-mono">
+        <div className="my-8 space-y-2">
           {section.data.caption && (
-            <p className="text-xs text-[#71717a] font-bold uppercase text-center">
-              // {section.data.caption}
+            <p className="text-xs text-slate-400 font-medium text-center">
+              {section.data.caption}
             </p>
           )}
-          <div className="overflow-x-auto border-2 border-[#0f0f10] bg-white shadow-brutal-xs">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead className="bg-[#f0f7ff] border-b-2 border-[#0f0f10] text-[#0f0f10] uppercase font-black">
+          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-xs">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+              <thead className="bg-slate-50 border-b border-slate-200 text-slate-700 uppercase font-semibold">
                 <tr>
                   {section.data.headers.map((h, i) => (
-                    <th key={i} className="p-3.5 whitespace-nowrap border-r border-[#0f0f10]/20 last:border-r-0">
+                    <th key={i} className="p-3.5 sm:p-4 whitespace-nowrap">
                       {h}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#0f0f10]/10 text-[#27272a]">
+              <tbody className="divide-y divide-slate-100 text-slate-700">
                 {section.data.rows.map((row, rIdx) => (
-                  <tr key={rIdx} className="hover:bg-[#f0f7ff]/50 transition-colors">
+                  <tr key={rIdx} className="hover:bg-slate-50/60 transition-colors">
                     {row.map((cell, cIdx) => (
                       <td
                         key={cIdx}
                         className={cn(
-                          "p-3.5 border-r border-[#0f0f10]/10 last:border-r-0",
-                          cIdx === 0 && "font-bold text-[#0f0f10]",
+                          "p-3.5 sm:p-4",
+                          cIdx === 0 && "font-semibold text-slate-950",
                           cIdx === (section.data.highlightColumnIndex ?? -1) &&
-                            "text-[#3b82f6] font-bold bg-[#f0f7ff]"
+                            "text-blue-600 font-medium bg-blue-50/30"
                         )}
                       >
                         {cell}
@@ -647,33 +616,32 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "divider":
       return (
         <div className="my-10 flex items-center justify-center gap-3">
-          <div className="h-0.5 bg-[#0f0f10] flex-1" />
-          <div className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
-          <div className="h-0.5 bg-[#0f0f10] flex-1" />
+          <div className="h-px bg-slate-200 flex-1" />
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+          <div className="h-px bg-slate-200 flex-1" />
         </div>
       );
 
     case "cta":
       return (
-        <div className="my-10 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-md text-center space-y-4 font-mono">
-          <div className="inline-flex items-center justify-center w-10 h-10 bg-white text-[#3b82f6] mx-auto border-2 border-[#0f0f10] shadow-brutal-xs">
-            <Sparkles className="w-5 h-5 fill-[#3b82f6]" />
+        <div className="my-10 p-6 sm:p-8 rounded-3xl bg-blue-50/80 border border-blue-200/80 text-center space-y-4">
+          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-blue-600 text-white mx-auto shadow-editorial-xs">
+            <Sparkles className="w-5 h-5" />
           </div>
           <div className="space-y-1">
-            <h4 className="font-display font-black text-xl text-[#0f0f10] uppercase">
+            <h4 className="font-display font-bold text-xl text-slate-950">
               {section.title}
             </h4>
-            <p className="text-xs sm:text-sm text-[#3f3f46] max-w-md mx-auto leading-relaxed font-sans">
+            <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
               {section.text}
             </p>
           </div>
           <div className="pt-2">
             <Link
               href={section.buttonHref}
-              className="inline-flex items-center gap-2 bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-mono font-bold text-xs uppercase px-6 py-3 border-2 border-[#0f0f10] shadow-brutal-xs active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
+              className="btn-editorial btn-editorial-blue px-6 py-3 text-xs tracking-wide shadow-editorial-sm"
             >
-              <span>{section.buttonText}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>{section.buttonText} &rarr;</span>
             </Link>
           </div>
         </div>

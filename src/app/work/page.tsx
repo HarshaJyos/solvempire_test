@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { caseStudies } from "@/content/case-studies";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Box } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Engineering Portfolio & Case Studies | SolveMpire",
@@ -14,99 +14,105 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6]/20 selection:text-[#1d4ed8]">
+    <div className="flex flex-col min-h-screen bg-[#fafcff] bg-editorial-grid text-[#0f172a] selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans">
       <Header />
-      <main id="main-content" className="flex-1 w-full pt-12 pb-24">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+      <main id="main-content" className="flex-1 w-full pt-28 sm:pt-36 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Navigation */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs text-[#0f0f10]/70 hover:text-[#1d4ed8] font-bold uppercase mb-8 group"
+            className="inline-flex items-center gap-2 font-display text-xs text-slate-500 hover:text-blue-600 font-bold uppercase mb-8 group transition-colors"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>&larr; Return to Studio</span>
+            <span>&larr; Return to Overview</span>
           </Link>
 
           {/* Header Banner */}
-          <div className="max-w-3xl mb-16 border-b-2 border-[#0f0f10] pb-10">
-            <div className="bg-[#3b82f6] border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] px-3.5 py-1 inline-flex items-center gap-2 mb-4">
-              <span className="font-mono font-bold text-xs uppercase text-[#0f0f10] tracking-widest">
-                [PORTFOLIO // FIELD CASE STUDIES]
-              </span>
+          <div className="max-w-3xl mb-16 border-b border-slate-200 pb-10 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 font-display text-xs font-semibold tracking-wide">
+              <Box className="w-3.5 h-3.5" />
+              <span>PRODUCTION PORTFOLIO &amp; ARCHIVES</span>
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0f0f10] uppercase leading-[0.95]">
-              ENGINEERED FOR THE REAL WORLD.
+            <h1 className="font-display text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-950 leading-[1.08]">
+              Engineered for the Real World. <br />
+              <span className="text-blue-600">Case Studies &amp; Shipped Systems.</span>
             </h1>
-            <p className="mt-5 text-[#0f0f10]/80 font-display text-lg sm:text-xl leading-relaxed">
-              From high-density mechanical enclosures to custom electronics, firmware pipelines, and cloud telemetry — explore our shipped products and field-proven case archives.
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+              From high-density mechanical enclosures to custom multi-layer electronics, firmware pipelines, and cloud telemetry — explore our field-proven case archives.
             </p>
           </div>
 
           {/* Case Studies Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-            {caseStudies.map((study, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {caseStudies.map((study) => (
               <article
                 key={study.slug}
-                className="group bg-white border-2 border-[#0f0f10] shadow-brutal-lg hover:shadow-brutal-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col overflow-hidden justify-between"
+                className="group relative rounded-3xl bg-white border border-slate-200/90 overflow-hidden shadow-editorial-sm hover:shadow-editorial-md transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
-                {/* System Window Header */}
-                <div className="bg-[#f7f6f2] border-b-2 border-[#0f0f10] px-5 py-3.5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="size-3 rounded-full bg-[#0f0f10]" />
-                    <span className="size-3 rounded-full bg-[#f5c518] border border-[#0f0f10]" />
-                    <span className="size-3 rounded-full bg-[#ecebe4] border border-[#0f0f10]" />
-                    <span className="font-mono font-bold text-xs text-[#0f0f10] ml-2 tracking-wide uppercase">
-                      CASE // 0{idx + 1}
-                    </span>
-                  </div>
-                  <span className="bg-[#0f0f10] text-[#f5c518] font-mono font-bold text-[11px] px-2.5 py-0.5 tracking-wider uppercase">
-                    {study.status}
-                  </span>
-                </div>
-
-                {/* Visual Thumbnail */}
-                <div className="relative w-full aspect-[16/9] bg-[#0f0f10] overflow-hidden border-b-2 border-[#0f0f10]">
+                {/* Visual Thumbnail with Blueprint Overlay */}
+                <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden border-b border-slate-200/80">
                   <Image
                     src={study.hero.src}
                     alt={study.hero.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-95 group-hover:opacity-100"
                   />
-                  <div className="absolute bottom-3 left-3 bg-white border border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#0f0f10] uppercase tracking-wider">
-                    CLIENT: {study.client}
+
+                  {/* Blueprint Overlay on Hover */}
+                  <div className="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5 pointer-events-none font-mono text-white text-xs">
+                    <div className="flex justify-between items-center text-[10px] text-blue-300">
+                      <span>SPEC://{study.slug.toUpperCase()}</span>
+                      <span>TOL &plusmn;0.05mm</span>
+                    </div>
+                    <div className="text-center">
+                      <span className="inline-block px-3 py-1 rounded-lg bg-blue-900/60 border border-blue-400/40 text-white font-bold text-xs">
+                        STATUS: {study.status.toUpperCase()}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-[10px] text-blue-300">
+                      <span>CLIENT: {study.client.toUpperCase()}</span>
+                      <span>DFM VERIFIED</span>
+                    </div>
+                  </div>
+
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/60 font-mono text-[11px] font-bold text-slate-800 uppercase shadow-xs">
+                      {study.category}
+                    </span>
                   </div>
                 </div>
 
                 {/* Content Details */}
                 <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between gap-6">
                   <div className="space-y-3">
-                    <span className="font-mono font-bold text-xs text-[#1d4ed8] tracking-widest uppercase block">
-                      {study.category}
+                    <span className="font-mono text-xs font-semibold text-blue-700 uppercase tracking-wider block">
+                      Client: {study.client}
                     </span>
 
-                    <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0f0f10] leading-tight group-hover:text-[#1d4ed8] transition-colors">
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 leading-tight group-hover:text-blue-600 transition-colors">
                       <Link href={`/work/${study.slug}`} className="focus:outline-none">
+                        <span className="absolute inset-0" />
                         {study.title}
                       </Link>
                     </h2>
 
-                    <p className="font-display text-sm sm:text-base text-[#0f0f10]/80 leading-relaxed line-clamp-3">
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed line-clamp-3 font-normal">
                       {study.summary}
                     </p>
 
-                    {/* Key Metrics Grid */}
+                    {/* Key Metrics */}
                     {study.metrics && study.metrics.length > 0 && (
-                      <div className="grid grid-cols-2 gap-3 pt-3">
+                      <div className="grid grid-cols-2 gap-3 pt-3 font-mono text-xs border-t border-slate-100">
                         {study.metrics.slice(0, 2).map((m) => (
                           <div
                             key={m.label}
-                            className="p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10]"
+                            className="p-3 bg-slate-50 rounded-xl border border-slate-200/60"
                           >
-                            <span className="block font-mono text-[10px] text-[#0f0f10]/70 font-semibold uppercase tracking-wider truncate">
+                            <span className="block text-[10px] text-slate-400 font-semibold uppercase tracking-wide truncate">
                               {m.label}
                             </span>
-                            <span className="font-display text-lg sm:text-xl font-bold text-[#0f0f10]">
+                            <span className="font-display text-base font-bold text-slate-900">
                               {m.value}
                             </span>
                           </div>
@@ -116,26 +122,22 @@ export default function WorkPage() {
                   </div>
 
                   {/* Footer Tags & Action Link */}
-                  <div className="pt-4 border-t-2 border-[#0f0f10]/15 flex flex-wrap items-center justify-between gap-3 text-xs">
-                    <div className="flex flex-wrap gap-1.5 max-w-[65%]">
+                  <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                    <div className="flex flex-wrap gap-1.5">
                       {study.disciplines.slice(0, 3).map((d) => (
                         <span
                           key={d}
-                          className="px-2 py-0.5 font-mono text-[10px] font-semibold bg-[#ecebe4] text-[#0f0f10] border border-[#0f0f10]"
+                          className="px-2.5 py-1 rounded-lg font-mono text-[11px] font-medium bg-slate-100 text-slate-700"
                         >
                           {d}
                         </span>
                       ))}
                     </div>
 
-                    <Link
-                      href={`/work/${study.slug}`}
-                      className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border border-[#0f0f10] shadow-brutal-xs px-3.5 py-1.5 font-mono font-bold text-xs uppercase tracking-wider inline-flex items-center gap-1.5"
-                      aria-label={`Read case study for ${study.title}`}
-                    >
-                      <span>READ DOSSIER</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#f5c518]" />
-                    </Link>
+                    <span className="inline-flex items-center gap-1 font-display font-bold text-xs text-blue-600 group-hover:text-blue-700">
+                      <span>Read Dossier</span>
+                      <ArrowRight className="w-3.5 h-3.5 arrow-slide" />
+                    </span>
                   </div>
                 </div>
               </article>

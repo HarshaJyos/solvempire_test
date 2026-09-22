@@ -18,6 +18,7 @@ import {
   Building2,
   Hash,
   Sparkles,
+  ListOrdered,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -108,16 +109,16 @@ export function A4CaseStudyArticle({
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6] selection:text-white relative">
+    <div className="min-h-screen w-full flex flex-col bg-[#fafcff] bg-editorial-grid text-[#0f172a] selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 h-1.5 bg-[#0f0f10]/10 z-50 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-slate-100 z-50 pointer-events-none">
         <div
-          className="h-full bg-[#3b82f6] transition-all duration-75"
+          className="h-full bg-blue-600 transition-all duration-75"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -125,44 +126,44 @@ export function A4CaseStudyArticle({
       <Header />
 
       {/* Main Container */}
-      <main className="flex-1 w-full max-w-[1280px] mx-auto px-4 sm:px-6 pt-12 pb-24">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between gap-4 mb-8 font-mono">
+        <div className="flex items-center justify-between gap-4 mb-8 font-display">
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0f0f10] hover:text-[#3b82f6] transition-colors group"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>&larr; RETURN TO CASE ARCHIVES</span>
+            <span>&larr; Return to Case Archives</span>
           </Link>
 
           <button
             onClick={handleCopy}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] text-xs font-bold uppercase text-[#0f0f10] transition-all cursor-pointer"
+            className="btn-editorial btn-editorial-secondary px-3.5 py-1.5 text-xs font-semibold text-slate-700 flex items-center gap-2 cursor-pointer shadow-xs"
             aria-label="Share case study"
           >
             {copied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-[#3b82f6]" />
-                <span className="text-[#3b82f6]">LINK COPIED!</span>
+                <Check className="w-3.5 h-3.5 text-blue-600" />
+                <span className="text-blue-600 font-bold">Link Copied</span>
               </>
             ) : (
               <>
-                <Share2 className="w-3.5 h-3.5" />
-                <span>SHARE DOSSIER</span>
+                <Share2 className="w-3.5 h-3.5 text-slate-500" />
+                <span>Share Case Study</span>
               </>
             )}
           </button>
         </div>
 
-        {/* 2-Column Layout */}
+        {/* 2-Column Layout: Sticky Left Outline + Central Editorial Article */}
         <div className="flex justify-center items-start gap-8 lg:gap-10 relative">
-          {/* STICKY DOCUMENT OUTLINE SIDEBAR */}
-          <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none font-mono">
-            <div className="bg-white border-2 border-[#0f0f10] shadow-brutal-md p-5">
-              <div className="flex items-center gap-2 pb-3 mb-3 border-b-2 border-[#0f0f10] text-xs font-black text-[#0f0f10] uppercase tracking-wider">
-                <Cpu className="w-4 h-4 text-[#3b82f6]" />
-                <span>DOSSIER OUTLINE</span>
+          {/* Sticky Document Outline Sidebar */}
+          <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-editorial-sm p-5">
+              <div className="flex items-center gap-2 pb-3 mb-3 border-b border-slate-100 text-xs font-bold text-slate-900 uppercase tracking-wider">
+                <ListOrdered className="w-4 h-4 text-blue-600" />
+                <span>Document Outline</span>
               </div>
               <nav>
                 <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-220px)] overflow-y-auto no-scrollbar">
@@ -173,19 +174,21 @@ export function A4CaseStudyArticle({
                         <a
                           href={`#${item.id}`}
                           className={cn(
-                            "flex items-start gap-2 py-1.5 px-2 transition-colors group text-left border",
+                            "flex items-start gap-2 py-1.5 px-2.5 rounded-lg transition-colors group text-left",
                             isActive
-                              ? "bg-[#3b82f6] text-white font-bold border-[#0f0f10]"
-                              : "text-[#3f3f46] hover:bg-[#f0f7ff] hover:text-[#0f0f10] border-transparent"
+                              ? "bg-blue-50 text-blue-700 font-bold"
+                              : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                           )}
                         >
-                          <span className={cn(
-                            "text-[10px] shrink-0 mt-0.5 font-bold",
-                            isActive ? "text-white" : "text-[#71717a]"
-                          )}>
+                          <span
+                            className={cn(
+                              "text-[10px] shrink-0 mt-0.5 font-mono",
+                              isActive ? "text-blue-600 font-bold" : "text-slate-400"
+                            )}
+                          >
                             {String(idx + 1).padStart(2, "0")}.
                           </span>
-                          <span className="line-clamp-2 uppercase font-bold text-[11px]">{item.title}</span>
+                          <span className="line-clamp-2">{item.title}</span>
                         </a>
                       </li>
                     );
@@ -195,51 +198,46 @@ export function A4CaseStudyArticle({
             </div>
           </aside>
 
-          {/* THE CASE STUDY SHEET */}
+          {/* Central Editorial Case Study Document */}
           <div className="w-full max-w-[880px] flex-1 min-w-0">
-            <article className="w-full bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-6 sm:p-12 md:p-14 relative overflow-hidden break-words">
-              {/* System Window Header Stamp */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b-2 border-[#0f0f10] font-mono text-xs">
+            <article className="w-full rounded-3xl bg-white border border-slate-200/90 shadow-editorial-md p-6 sm:p-12 md:p-14 relative overflow-hidden break-words">
+              {/* Header Meta Strip */}
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 text-xs font-mono">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
-                  <span className="font-bold uppercase tracking-wider text-[#0f0f10]">
-                    DOSSIER: CASE_STUDY // SOLVEMPIRE
+                  <span className="w-2 h-2 rounded-full bg-blue-600" />
+                  <span className="font-semibold uppercase tracking-wide text-slate-500">
+                    ENGINEERING CASE DOSSIER // {study.slug.toUpperCase()}
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="bg-[#3b82f6] text-white border border-[#0f0f10] px-2.5 py-0.5 font-bold uppercase text-[11px]">
-                    {study.status}
-                  </span>
-                </div>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px] uppercase border border-emerald-200/60">
+                  {study.status}
+                </span>
               </div>
 
               {/* Title Header */}
-              <header className="pt-6 pb-6 border-b-2 border-[#0f0f10] space-y-4">
-                <div className="inline-block px-2.5 py-0.5 bg-[#f7f6f2] border border-[#0f0f10] font-mono font-bold text-xs text-[#0f0f10] tracking-widest uppercase">
+              <header className="pt-6 pb-6 border-b border-slate-100 space-y-4">
+                <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-display font-bold text-xs tracking-wide">
                   {study.category}
                 </div>
-                <h1 className="font-display font-black text-3xl sm:text-5xl text-[#0f0f10] uppercase tracking-tight leading-[1.05]">
+                <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-slate-950 tracking-tight leading-[1.08]">
                   {study.title}
                 </h1>
 
                 {/* Technical Metadata Strip */}
-                <div className="pt-2 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
-                  <div className="flex flex-wrap items-center gap-4">
-                    <div className="flex items-center gap-1.5">
-                      <Building2 className="w-3.5 h-3.5 text-[#3b82f6]" />
-                      <span className="text-[#71717a] uppercase">CLIENT:</span>
-                      <strong className="text-[#0f0f10] font-bold uppercase">
-                        {study.client}
-                      </strong>
-                    </div>
+                <div className="pt-2 flex flex-wrap items-center justify-between gap-4 text-xs font-sans">
+                  <div className="flex items-center gap-1.5 text-slate-600">
+                    <Building2 className="w-4 h-4 text-blue-600" />
+                    <span>Client:</span>
+                    <strong className="text-slate-900 font-bold">
+                      {study.client}
+                    </strong>
                   </div>
 
-                  {/* Disciplines */}
                   <div className="flex flex-wrap gap-1.5">
                     {study.disciplines.map((d) => (
                       <span
                         key={d}
-                        className="px-2 py-0.5 bg-[#f0f7ff] border border-[#0f0f10] text-[#0f0f10] text-[10px] font-bold uppercase"
+                        className="px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 font-mono text-[10px] font-medium"
                       >
                         {d}
                       </span>
@@ -248,9 +246,9 @@ export function A4CaseStudyArticle({
                 </div>
               </header>
 
-              {/* Hero Image Block */}
+              {/* Hero Image Showcase */}
               <div className="my-8 space-y-2">
-                <div className="relative w-full aspect-[16/9] bg-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-md overflow-hidden">
+                <div className="relative w-full aspect-[16/9] bg-slate-900 rounded-2xl overflow-hidden shadow-editorial-sm">
                   <Image
                     src={study.hero.src}
                     alt={study.hero.alt}
@@ -260,21 +258,21 @@ export function A4CaseStudyArticle({
                     className="object-cover"
                   />
                 </div>
-                <p className="font-mono text-[11px] text-[#71717a] text-center uppercase tracking-wider font-bold">
-                  // FIG 1.0 — {study.hero.alt}
+                <p className="font-mono text-[11px] text-slate-400 text-center uppercase tracking-wider">
+                  Figure 1.0 &mdash; {study.hero.alt}
                 </p>
               </div>
 
               {/* Executive Summary Callout */}
               <div
                 id="executive-summary"
-                className="my-8 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm space-y-3 scroll-mt-24 font-mono"
+                className="my-8 p-6 sm:p-8 rounded-2xl bg-blue-50/70 border border-blue-200/70 space-y-3 scroll-mt-24"
               >
-                <div className="font-bold text-xs uppercase tracking-wider text-[#3b82f6] flex items-center gap-2 pb-2 border-b border-[#0f0f10]/10">
-                  <span className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
-                  <span>EXECUTIVE SUMMARY</span>
+                <div className="font-display font-bold text-xs uppercase tracking-wider text-blue-700 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-blue-600" />
+                  <span>Executive Summary</span>
                 </div>
-                <p className="font-sans text-base sm:text-lg text-[#0f0f10] leading-relaxed font-normal">
+                <p className="font-sans text-base sm:text-lg text-slate-900 leading-relaxed font-normal">
                   {study.summary}
                 </p>
               </div>
@@ -283,22 +281,22 @@ export function A4CaseStudyArticle({
               {study.metrics && study.metrics.length > 0 && (
                 <section
                   id="technical-metrics"
-                  className="my-10 space-y-4 scroll-mt-24 font-mono"
+                  className="my-10 space-y-4 scroll-mt-24 font-sans"
                 >
-                  <div className="flex items-center gap-2 font-black text-xs uppercase tracking-wider text-[#0f0f10]">
-                    <Cpu className="w-4 h-4 text-[#3b82f6]" />
-                    <span>TECHNICAL KPIS &amp; VERIFIED METRICS</span>
+                  <div className="flex items-center gap-2 font-display font-bold text-xs uppercase tracking-wider text-slate-500">
+                    <Cpu className="w-4 h-4 text-blue-600" />
+                    <span>Technical KPIs &amp; Verified Metrics</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                     {study.metrics.map((m, idx) => (
                       <div
                         key={idx}
-                        className="p-4 bg-white border-2 border-[#0f0f10] shadow-brutal-xs"
+                        className="p-4 rounded-xl bg-slate-50 border border-slate-200/70 space-y-1"
                       >
-                        <span className="block font-mono text-[10px] text-[#71717a] font-bold uppercase tracking-wide truncate mb-1">
+                        <span className="block font-mono text-[10px] text-slate-400 font-semibold uppercase tracking-wide truncate">
                           {m.label}
                         </span>
-                        <span className="font-display text-2xl sm:text-3xl font-black text-[#0f0f10] block">
+                        <span className="font-display font-bold text-xl sm:text-2xl text-slate-900 block">
                           {m.value}
                         </span>
                       </div>
@@ -307,19 +305,19 @@ export function A4CaseStudyArticle({
                 </section>
               )}
 
-              {/* Key Engineering Highlights */}
+              {/* Engineering Highlights */}
               {study.highlights && study.highlights.length > 0 && (
                 <section
                   id="engineering-highlights"
-                  className="my-10 space-y-4 scroll-mt-24 font-mono"
+                  className="my-10 space-y-4 scroll-mt-24"
                 >
-                  <h2 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] pb-3 border-b-2 border-[#0f0f10]">
-                    ENGINEERING HIGHLIGHTS
+                  <h2 className="font-display font-bold text-2xl text-slate-950 pb-3 border-b border-slate-100">
+                    Engineering Highlights
                   </h2>
-                  <ul className="space-y-3 pt-2 font-sans text-sm sm:text-base text-[#27272a] leading-relaxed">
+                  <ul className="space-y-3 pt-2 text-sm sm:text-base text-slate-700 leading-relaxed">
                     {study.highlights.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-[#3b82f6] mt-0.5 shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -327,20 +325,20 @@ export function A4CaseStudyArticle({
                 </section>
               )}
 
-              {/* Full Engineering Sections Breakdown */}
-              <div className="py-2 space-y-8 text-[15px] sm:text-base text-[#27272a] leading-relaxed font-sans">
+              {/* Engineering Sections Breakdown */}
+              <div className="py-2 space-y-8 text-[15px] sm:text-base text-slate-700 leading-relaxed font-sans">
                 {study.sections.map((s, idx) => {
                   const sectionId = `section-${idx + 1}-${s.heading.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")}`;
                   return (
                     <section
                       key={idx}
                       id={sectionId}
-                      className="space-y-3 pt-6 border-t-2 border-[#0f0f10] scroll-mt-24 group relative"
+                      className="space-y-3 pt-6 border-t border-slate-100 scroll-mt-24 group relative"
                     >
-                      <h2 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] flex items-center gap-2">
+                      <h2 className="font-display font-bold text-2xl text-slate-950 flex items-center gap-2">
                         <a
                           href={`#${sectionId}`}
-                          className="text-[#71717a] hover:text-[#3b82f6] opacity-0 group-hover:opacity-100 transition-opacity font-mono"
+                          className="text-slate-400 hover:text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"
                           aria-label={`Link to ${s.heading}`}
                         >
                           <Hash className="w-4 h-4 inline" />
@@ -353,20 +351,20 @@ export function A4CaseStudyArticle({
                 })}
               </div>
 
-              {/* Verified Outcomes Checklist */}
+              {/* Verified Outcomes */}
               {study.outcomes && study.outcomes.length > 0 && (
                 <section
                   id="verified-outcomes"
-                  className="my-10 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm space-y-4 scroll-mt-24 font-mono"
+                  className="my-10 p-6 sm:p-8 rounded-2xl bg-emerald-50/60 border border-emerald-200/60 space-y-4 scroll-mt-24"
                 >
-                  <div className="flex items-center gap-2 text-[#0f0f10] font-bold text-xs uppercase tracking-wider pb-2 border-b border-[#0f0f10]/10">
-                    <ShieldCheck className="w-4 h-4 text-[#3b82f6]" />
-                    <span>VERIFIED OUTCOMES &amp; DELIVERABLES</span>
+                  <div className="flex items-center gap-2 text-emerald-800 font-display font-bold text-xs uppercase tracking-wider">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <span>Verified Outcomes &amp; Deliverables</span>
                   </div>
-                  <ul className="space-y-3 pt-1 font-sans text-sm sm:text-base text-[#0f0f10]">
+                  <ul className="space-y-2.5 pt-1 text-sm sm:text-base text-slate-800">
                     {study.outcomes.map((outcome, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-[#3b82f6] mt-0.5 shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
                         <span>{outcome}</span>
                       </li>
                     ))}
@@ -375,40 +373,35 @@ export function A4CaseStudyArticle({
               )}
 
               {/* Engineering Scoping CTA Card */}
-              <div className="mt-12 p-8 sm:p-10 bg-[#3b82f6] border-2 border-[#0f0f10] shadow-brutal-lg text-center space-y-4 font-mono text-white">
-                <div className="inline-flex items-center justify-center px-3 py-1 bg-white text-[#0f0f10] border-2 border-[#0f0f10] text-xs font-black uppercase shadow-brutal-xs mx-auto">
-                  <Sparkles className="w-3.5 h-3.5 mr-1 fill-[#0f0f10]" />
-                  <span>SOLVEMPIRE PROJECT SCOPING</span>
-                </div>
-                <h3 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-white">
-                  ENGINEER YOUR NEXT PRODUCT
+              <div className="mt-12 p-8 sm:p-10 rounded-3xl bg-gradient-to-tr from-slate-950 to-blue-950 text-center space-y-4 text-white shadow-editorial-md">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  Engineer Your Next Product With SolveMpire
                 </h3>
-                <p className="text-xs sm:text-sm text-white/90 max-w-lg mx-auto leading-relaxed font-sans">
-                  Have an upcoming mechanical enclosure, custom multi-layer PCB, embedded firmware, or automated machine requirement? Connect directly with our engineering architects.
+                <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed">
+                  Have an upcoming mechanical enclosure, custom multi-layer PCB, embedded firmware, or automated machine requirement? Let&apos;s build it together.
                 </p>
                 <div className="pt-2">
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 bg-[#0f0f10] hover:bg-[#1d4ed8] text-white font-mono font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 border-2 border-white shadow-brutal-sm active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
+                    className="btn-editorial btn-editorial-blue px-6 py-3 text-xs tracking-wide shadow-editorial-sm"
                   >
-                    <span>&gt; SCOPE YOUR PROJECT IN 60S</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>Scope Your Project in 60s &rarr;</span>
                   </Link>
                 </div>
               </div>
             </article>
 
             {/* Document Navigation - Next/Prev Project */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-display">
               {prevStudy ? (
                 <Link
                   href={`/work/${prevStudy.slug}`}
-                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-left group"
+                  className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-editorial-xs hover:shadow-editorial-sm transition-all text-left group"
                 >
-                  <span className="text-[10px] font-bold text-[#71717a] uppercase tracking-wider block mb-1">
-                    &larr; PREVIOUS CASE STUDY
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    &larr; Previous Case Study
                   </span>
-                  <span className="font-display font-black text-sm uppercase text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1">
+                  <span className="font-bold text-sm text-slate-900 group-hover:text-blue-600 line-clamp-1">
                     {prevStudy.title}
                   </span>
                 </Link>
@@ -419,12 +412,12 @@ export function A4CaseStudyArticle({
               {nextStudy && (
                 <Link
                   href={`/work/${nextStudy.slug}`}
-                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-right group ml-auto w-full"
+                  className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-editorial-xs hover:shadow-editorial-sm transition-all text-right group ml-auto w-full"
                 >
-                  <span className="text-[10px] font-bold text-[#71717a] uppercase tracking-wider block mb-1">
-                    NEXT CASE STUDY &rarr;
+                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">
+                    Next Case Study &rarr;
                   </span>
-                  <span className="font-display font-black text-sm uppercase text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1">
+                  <span className="font-bold text-sm text-slate-900 group-hover:text-blue-600 line-clamp-1">
                     {nextStudy.title}
                   </span>
                 </Link>

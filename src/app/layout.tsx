@@ -1,24 +1,23 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, IBM_Plex_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { COMPANY } from "@/lib/company";
 import "./globals.css";
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-bricolage",
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-manrope",
   display: "swap",
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -88,15 +87,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${bricolageGrotesque.variable} ${ibmPlexMono.variable} ${plusJakartaSans.variable} min-h-screen bg-canvas text-heading antialiased selection:bg-[#3b82f6]/20 selection:text-[#1d4ed8] relative`}
+        className={`${manrope.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} min-h-screen bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative`}
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Micro Film Grain Overlay */}
+        {/* Very subtle technical film grain overlay */}
         <div className="bg-noise-grain" aria-hidden="true" />
         {children}
       </body>

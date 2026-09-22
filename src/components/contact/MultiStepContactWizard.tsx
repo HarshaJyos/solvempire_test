@@ -22,12 +22,14 @@ import {
   Loader2,
   Send,
   Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import {
   projectTypes,
   projectStages,
   projectTimelines,
 } from "@/lib/validations/contact";
+import { cn } from "@/lib/utils";
 
 interface MultiStepContactWizardProps {
   theme?: "light" | "dark";
@@ -217,7 +219,7 @@ export function MultiStepContactWizard({
       }
     } catch (err) {
       console.error(err);
-      setServerMessage("A network error occurred. Please try again or email support@solvempire.com.");
+      setServerMessage("A network error occurred. Please try again or email contact@solvempire.com.");
     } finally {
       setIsSubmitting(false);
     }
@@ -225,20 +227,22 @@ export function MultiStepContactWizard({
 
   if (isSubmitted) {
     return (
-      <div className="bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-8 sm:p-12 text-center">
-        <div className="size-16 bg-[#3b82f6] border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] text-[#0f0f10] flex items-center justify-center mx-auto mb-6">
-          <Check className="size-8 stroke-[3]" />
+      <div className="rounded-3xl bg-white border border-slate-200/90 shadow-editorial-lg p-8 sm:p-12 text-center space-y-6">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
+          <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-[#0f0f10] mb-3">
-          Project Inquiry Dispatched!
-        </h3>
-        <p className="font-display text-sm sm:text-base text-[#0f0f10]/80 max-w-md mx-auto leading-relaxed mb-6">
-          {serverMessage || "Thank you! Our engineering team will review your requirements and reply with a scoping call link within 1 business day."}
-        </p>
-        <div className="p-4 bg-[#f0f7ff] border-2 border-[#0f0f10] max-w-md mx-auto font-mono text-xs text-[#0f0f10] text-left leading-relaxed mb-8">
-          <strong>Selected Focus:</strong> {formData.projectType} <br />
-          <strong>Current Stage:</strong> {formData.stage} <br />
-          <strong>Target Timeline:</strong> {formData.timeline}
+        <div className="space-y-2">
+          <h3 className="font-display font-bold text-2xl sm:text-3xl text-slate-950">
+            Project Brief Received
+          </h3>
+          <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed">
+            {serverMessage || "Thank you! Our engineering team will review your requirements and reply with a scoping call link within 1 business day."}
+          </p>
+        </div>
+        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60 max-w-md mx-auto text-xs font-mono text-slate-700 text-left space-y-1">
+          <p><strong>Selected Discipline:</strong> {formData.projectType}</p>
+          <p><strong>Current Stage:</strong> {formData.stage}</p>
+          <p><strong>Target Timeline:</strong> {formData.timeline}</p>
         </div>
         <button
           type="button"
@@ -257,45 +261,42 @@ export function MultiStepContactWizard({
             });
             setFormRenderTime(Date.now());
           }}
-          className="btn-brutal bg-[#0f0f10] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal font-mono text-xs font-bold uppercase tracking-wider px-7 py-3 inline-flex items-center gap-2 cursor-pointer"
+          className="btn-editorial btn-editorial-blue px-7 py-3 text-xs tracking-wide cursor-pointer shadow-editorial-sm"
         >
-          <Sparkles className="w-4 h-4 text-[#f5c518]" />
-          <span>SCOPE ANOTHER PROJECT</span>
+          <span>Scope Another Project</span>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="w-full bg-white border-2 border-[#0f0f10] shadow-brutal-xl overflow-hidden">
-      {/* System Window Header */}
-      <div className="bg-[#f7f6f2] border-b-2 border-[#0f0f10] px-5 py-3.5 flex items-center justify-between">
+    <div className="w-full rounded-3xl bg-white border border-slate-200/90 shadow-editorial-lg overflow-hidden font-sans">
+      {/* Header Bar */}
+      <div className="bg-slate-50/80 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="size-3 rounded-full bg-[#0f0f10]" />
-          <span className="size-3 rounded-full bg-[#f5c518] border border-[#0f0f10]" />
-          <span className="size-3 rounded-full bg-[#ecebe4] border border-[#0f0f10]" />
-          <span className="font-mono font-bold text-xs text-[#0f0f10] ml-2 tracking-wide uppercase">
-            SCOPING WIZARD // STEP 0{step}
+          <span className="w-2 h-2 rounded-full bg-blue-600" />
+          <span className="font-mono font-bold text-xs text-slate-700 uppercase tracking-wide">
+            PROJECT SCOPING // STEP 0{step} OF 04
           </span>
         </div>
-        <span className="font-mono font-bold text-xs text-[#1d4ed8] uppercase">
-          {step === 1 && "01 / DISCIPLINE"}
-          {step === 2 && "02 / STAGE"}
-          {step === 3 && "03 / TIMELINE"}
-          {step === 4 && "04 / DETAILS"}
+        <span className="font-mono font-bold text-xs text-blue-600 uppercase">
+          {step === 1 && "DISCIPLINE"}
+          {step === 2 && "STAGE"}
+          {step === 3 && "TIMELINE"}
+          {step === 4 && "DETAILS"}
         </span>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full h-2 bg-[#ecebe4] border-b-2 border-[#0f0f10]">
+      <div className="w-full h-1 bg-slate-100">
         <div
-          className="h-full bg-[#3b82f6] transition-all duration-300 ease-out"
+          className="h-full bg-blue-600 transition-all duration-300 ease-out"
           style={{ width: `${(step / 4) * 100}%` }}
         />
       </div>
 
       <div className="p-6 sm:p-10">
-        {/* Honeypot field (hidden from humans) */}
+        {/* Honeypot */}
         <div className="hidden" aria-hidden="true">
           <input
             type="text"
@@ -311,11 +312,11 @@ export function MultiStepContactWizard({
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
                 What are you engineering?
               </h3>
-              <p className="font-mono text-xs text-[#0f0f10]/70">
-                Select the primary engineering discipline for your project.
+              <p className="text-xs sm:text-sm text-slate-500">
+                Select the primary engineering domain for your project.
               </p>
             </div>
 
@@ -328,24 +329,26 @@ export function MultiStepContactWizard({
                     key={opt.value}
                     type="button"
                     onClick={() => handleSelectOption("projectType", opt.value)}
-                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex items-start gap-4 cursor-pointer ${
+                    className={cn(
+                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer",
                       isSelected
-                        ? "bg-[#3b82f6] text-[#0f0f10]"
-                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
-                    }`}
+                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-x-1"
+                        : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
+                    )}
                   >
                     <div
-                      className={`size-10 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
-                        isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
-                      }`}
+                      className={cn(
+                        "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
+                        isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                      )}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-base uppercase mb-0.5">
+                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5">
                         {opt.title}
                       </h4>
-                      <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                      <p className="text-xs text-slate-500 font-normal leading-relaxed">
                         {opt.desc}
                       </p>
                     </div>
@@ -354,14 +357,14 @@ export function MultiStepContactWizard({
               })}
             </div>
 
-            <div className="flex justify-end pt-4 border-t-2 border-[#0f0f10]/15">
+            <div className="flex justify-end pt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={handleNext}
-                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
               >
-                <span>NEXT STEP</span>
-                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+                <span>Continue</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
               </button>
             </div>
           </div>
@@ -371,11 +374,11 @@ export function MultiStepContactWizard({
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
                 Current Development Stage
               </h3>
-              <p className="font-mono text-xs text-[#0f0f10]/70">
-                Where is your product right now in its lifecycle?
+              <p className="text-xs sm:text-sm text-slate-500">
+                Where is your product right now in its development lifecycle?
               </p>
             </div>
 
@@ -388,24 +391,26 @@ export function MultiStepContactWizard({
                     key={opt.value}
                     type="button"
                     onClick={() => handleSelectOption("stage", opt.value)}
-                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex items-start gap-4 cursor-pointer ${
+                    className={cn(
+                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer",
                       isSelected
-                        ? "bg-[#3b82f6] text-[#0f0f10]"
-                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
-                    }`}
+                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-x-1"
+                        : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
+                    )}
                   >
                     <div
-                      className={`size-10 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
-                        isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
-                      }`}
+                      className={cn(
+                        "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
+                        isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                      )}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-base uppercase mb-0.5">
+                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5">
                         {opt.title}
                       </h4>
-                      <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                      <p className="text-xs text-slate-500 font-normal leading-relaxed">
                         {opt.desc}
                       </p>
                     </div>
@@ -414,22 +419,22 @@ export function MultiStepContactWizard({
               })}
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={handleBack}
-                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer"
+                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer"
               >
-                <ArrowLeft className="w-4 h-4" />
-                <span>BACK</span>
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <span>Back</span>
               </button>
               <button
                 type="button"
                 onClick={handleNext}
-                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
               >
-                <span>NEXT STEP</span>
-                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+                <span>Continue</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
               </button>
             </div>
           </div>
@@ -439,11 +444,11 @@ export function MultiStepContactWizard({
         {step === 3 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
                 Target Launch Timeline
               </h3>
-              <p className="font-mono text-xs text-[#0f0f10]/70">
-                What is your target timeframe for this deliverable?
+              <p className="text-xs sm:text-sm text-slate-500">
+                What is your target milestone delivery timeframe?
               </p>
             </div>
 
@@ -456,25 +461,27 @@ export function MultiStepContactWizard({
                     key={opt.value}
                     type="button"
                     onClick={() => handleSelectOption("timeline", opt.value)}
-                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex flex-col justify-between cursor-pointer ${
+                    className={cn(
+                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex flex-col justify-between cursor-pointer space-y-3",
                       isSelected
-                        ? "bg-[#3b82f6] text-[#0f0f10]"
-                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
-                    }`}
+                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-y-[-2px]"
+                        : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
+                    )}
                   >
-                    <div className="flex items-center gap-3 mb-2">
+                    <div className="flex items-center gap-3">
                       <div
-                        className={`size-8 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
-                          isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
-                        }`}
+                        className={cn(
+                          "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors",
+                          isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                        )}
                       >
                         <Icon className="w-4 h-4" />
                       </div>
-                      <h4 className="font-display font-bold text-sm uppercase">
+                      <h4 className="font-display font-bold text-sm text-slate-900">
                         {opt.title}
                       </h4>
                     </div>
-                    <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                    <p className="text-xs text-slate-500 font-normal leading-relaxed">
                       {opt.desc}
                     </p>
                   </button>
@@ -482,22 +489,22 @@ export function MultiStepContactWizard({
               })}
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={handleBack}
-                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer"
+                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer"
               >
-                <ArrowLeft className="w-4 h-4" />
-                <span>BACK</span>
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <span>Back</span>
               </button>
               <button
                 type="button"
                 onClick={handleNext}
-                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
               >
-                <span>NEXT STEP</span>
-                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+                <span>Continue</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
               </button>
             </div>
           </div>
@@ -507,17 +514,17 @@ export function MultiStepContactWizard({
         {step === 4 && (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
                 Technical Brief &amp; Contact
               </h3>
-              <p className="font-mono text-xs text-[#0f0f10]/70">
-                Provide brief context on your requirements and contact coordinates.
+              <p className="text-xs sm:text-sm text-slate-500">
+                Provide high-level context on your requirements and contact coordinates.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1 font-display">
                   Full Name *
                 </label>
                 <input
@@ -526,13 +533,13 @@ export function MultiStepContactWizard({
                   placeholder="e.g. Alex Mercer"
                   value={formData.name}
                   onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                  className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
+                  className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
                 />
-                {errors.name && <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.name[0]}</p>}
+                {errors.name && <p className="text-xs text-rose-600 mt-1">{errors.name[0]}</p>}
               </div>
 
               <div>
-                <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1 font-display">
                   Work Email *
                 </label>
                 <input
@@ -541,72 +548,72 @@ export function MultiStepContactWizard({
                   placeholder="alex@company.com"
                   value={formData.email}
                   onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                  className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
+                  className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
                 />
-                {errors.email && <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.email[0]}</p>}
+                {errors.email && <p className="text-xs text-rose-600 mt-1">{errors.email[0]}</p>}
               </div>
             </div>
 
             <div>
-              <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
-                Company / Project Entity
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1 font-display">
+                Company / Organization
               </label>
               <input
                 type="text"
                 placeholder="e.g. Mercer Robotics"
                 value={formData.company}
                 onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
-                className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
+                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
               />
             </div>
 
             <div>
-              <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-1 font-display">
                 Project Summary &amp; Technical Constraints *
               </label>
               <textarea
                 required
                 rows={4}
-                placeholder="Briefly describe what you are building, key constraints (dimensions, environment, MCU, volume), or where you are stuck..."
+                placeholder="Briefly describe what you are engineering, key packaging/MCU constraints, target volume, or current development roadblocks..."
                 value={formData.description}
                 onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
-                className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
+                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all leading-relaxed"
               />
               {errors.description && (
-                <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.description[0]}</p>
+                <p className="text-xs text-rose-600 mt-1">{errors.description[0]}</p>
               )}
             </div>
 
             {serverMessage && (
-              <div className="p-3 bg-[#fef2f2] border-2 border-[#dc2626] font-mono text-xs text-[#dc2626]">
+              <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700">
                 {serverMessage}
               </div>
             )}
 
-            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={handleBack}
                 disabled={isSubmitting}
-                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer disabled:opacity-50"
               >
-                <ArrowLeft className="w-4 h-4" />
-                <span>BACK</span>
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <span>Back</span>
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-7 py-3 inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="group btn-editorial btn-editorial-blue px-7 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-[#f5c518]" />
-                    <span>DISPATCHING...</span>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin text-white" />
+                    <span>Dispatching Brief...</span>
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 text-[#f5c518]" />
-                    <span>DISPATCH PROJECT BRIEF</span>
+                    <span>Submit Project Brief</span>
+                    <Send className="w-3.5 h-3.5 ml-2 arrow-slide text-white" />
                   </>
                 )}
               </button>
