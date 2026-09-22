@@ -1,0 +1,50 @@
+# SolveMpire — Product Engineering Company
+
+> SolveMpire Private Limited is an end-to-end product engineering studio based in Andhra Pradesh, India. We engineer physical products, custom electronics, real-time embedded firmware, and connected IoT cloud platforms under one roof — from initial CAD concepts to volume manufacturing and multi-year field support.
+
+## Canonical Company Information
+- Legal Entity: SolveMpire Private Limited
+- Corporate Identity Number (CIN): U62013AP2025PTC122808
+- Headquarters: SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu, Kakinada, Andhra Pradesh, India
+- Website: https://solvempire.com
+- Contact Email: support@solvempire.com
+- Direct Phone: +91 97013 41323
+- Key Leadership:
+  - Hanish Jyosyabhatla: Founder & CEO
+  - Lohith Medisetti: Co-Founder & COO
+  - Teja Mandapalli: Co-Founder & Product Lead
+  - Pavan Kumar Duggirala: Product Strategist & Marketing
+  - Prasad Duggirala: AI/ML Engineer
+
+
+## Core Disciplines
+1. Mechanical Engineering & Enclosure Design: Native 3D CAD modeling (Autodesk Fusion 360), DFM validation, IP65/IP67 waterproof sealing, thermal airflow management, sheet metal CNC bending, and injection moulding tooling.
+2. Custom Electronics & PCB Design: Multi-layer KiCad schematic & Gerber layouts, microcontrollers (STM32, ESP32), power management (isolated rails, MOSFET switching), industrial communication buses (CAN bus, RS-485, UART, I2C, SPI).
+3. Embedded Firmware & HMI: Deterministic C++/RTOS firmware, state machine control, DWIN DGUS touchscreen interfaces over UART, dynamic QR/UPI payment integration, and audio/visual guidance.
+4. IoT Cloud & Remote Telemetry: Next.js/Node.js telemetry backends, real-time machine heartbeats, over-the-air (OTA) remote firmware deployment, error tracking, and role-based fleet management.
+5. Manufacturing & Production Support: Tooling documentation, 2D production drawings, vendor qualification, factory QA test fixtures, and long-term engineering SLAs (up to 10 years).
+
+## 6-Stage Engineering Process
+1. Stage 01 - Discover: Understand operational constraints, user workflows, ERD requirements, unit economics, and BOM budgets.
+2. Stage 02 - Design: Native 3D CAD modeling, multi-layer KiCad schematics, DFM simulation, thermal and ingress clearance validation.
+3. Stage 03 - Develop: Embedded firmware programming, custom touchscreen HMI design, dynamic payment protocols, and telemetry APIs.
+4. Stage 04 - Prototype: High-precision functional 3D printing, PCBA fabrication, IP65 pressure testing, and vibration stress testing.
+5. Stage 05 - Manufacture: Production drawing packages, sheet metal CNC tooling, plastic mold qualification, and end-of-line QA test jigs.
+6. Stage 06 - Deploy & Support: Commercial field rollout, remote OTA firmware updates, cloud fleet monitoring, and multi-year support agreements.
+
+## Key Commercially Deployed Case Studies
+- FreshPod Automated Helmet Sanitization Machine: 200+ machines commercially deployed across India, Nepal, and Sri Lanka processing 200,000+ helmets; 80+ unique mechanical parts, custom ESP32 PCB, DWIN DGUS touchscreen, Razorpay dynamic payments, and 10-year support SLA.
+- USS2 Switcher Automotive Sensor: Ultra-compact 18 mm diameter x 75 mm cylindrical threaded housing with IP65 silicone O-ring sealing and vibration-resistant PCB ribs for automotive client in China; 10,000+ units planned volume.
+- Portable Secure Communications Device: Handheld 25 mm slim enclosure packaging 16650 battery, RF modules, and custom PCB with passive thermal dissipation for international security client.
+- FreshPod Connected Cloud Platform: Live IoT platform managing 190+ machines with real-time heartbeats, dynamic QR generation, OTA updates, and 3-year software framework.
+- EGGORA Modular Egg Vending Machine: High-density tray-agnostic egg vending architecture (~702 egg capacity across 42 doors) with custom KiCad STM32 + Linux SoM PCB and CAN bus expansion.
+
+## Important URLs
+- Homepage: https://solvempire.com/
+- About Studio & Team: https://solvempire.com/about
+- Services & Capabilities: https://solvempire.com/services
+- 6-Stage Process: https://solvempire.com/process
+- Case Studies & Work: https://solvempire.com/work
+- Engineering Journal: https://solvempire.com/journal
+- Team Directory: https://solvempire.com/team
+- Contact Engineering Leads: https://solvempire.com/contact

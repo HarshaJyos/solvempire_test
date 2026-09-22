@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { COMPANY } from "@/lib/company";
+import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -22,27 +24,41 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://solvempire.com"),
+  metadataBase: new URL(COMPANY.websiteUrl),
   title: {
-    default: "SolveMpire — Product Engineering Company",
+    default: "SolveMpire — Product Engineering Company | Mechanical, Electronics, Firmware & IoT",
     template: "%s | SolveMpire",
   },
   description: COMPANY.positioning.subhead,
   keywords: [
-    "Product Engineering",
-    "Mechanical Design",
-    "Custom PCB Design",
-    "Embedded Firmware",
-    "IoT Platforms",
+    "Product Engineering Company",
+    "Hardware Engineering Studio",
+    "Mechanical CAD Design",
+    "Custom PCB Design KiCad",
+    "Embedded Firmware STM32 ESP32",
+    "DWIN DGUS Touchscreen HMI",
+    "IoT Cloud Telemetry & OTA",
+    "Design for Manufacturing DFM",
+    "IP65 Waterproof Enclosure Design",
     "Hardware Engineering India",
-    "CAD to Production",
+    "Automated Machinery Development",
+    "SolveMpire",
   ],
-  authors: [{ name: COMPANY.legalName }],
+  authors: [{ name: COMPANY.legalName, url: COMPANY.websiteUrl }],
   creator: COMPANY.legalName,
+  publisher: COMPANY.legalName,
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
+  alternates: {
+    canonical: COMPANY.websiteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://solvempire.com",
+    url: COMPANY.websiteUrl,
     title: "SolveMpire — We Engineer Ideas Into Working Products",
     description: COMPANY.positioning.subhead,
     siteName: COMPANY.brandName,
@@ -55,29 +71,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: COMPANY.legalName,
-  alternateName: COMPANY.brandName,
-  url: "https://solvempire.com",
-  logo: "https://solvempire.com/logo.png",
-  email: COMPANY.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "SFNO 244/3 D.No: 2-247/2, Near Medha School Employee, Panasapadu",
-    addressLocality: "Kakinada",
-    addressRegion: "Andhra Pradesh",
-    postalCode: "533005",
-    addressCountry: "IN",
-  },
-  identifier: {
-    "@type": "PropertyValue",
-    name: "CIN",
-    value: COMPANY.cin,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -86,15 +86,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = buildOrganizationJsonLd();
+  const websiteSchema = buildWebSiteJsonLd();
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <JsonLd schema={organizationSchema} />
+        <JsonLd schema={websiteSchema} />
+      </head>
       <body
         className={`${manrope.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} min-h-screen bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
         {/* Very subtle technical film grain overlay */}
         <div className="bg-noise-grain" aria-hidden="true" />
         {children}
@@ -102,3 +105,4 @@ export default function RootLayout({
     </html>
   );
 }
+

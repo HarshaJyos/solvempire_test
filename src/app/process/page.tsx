@@ -15,12 +15,41 @@ import {
   Factory,
   Rocket,
 } from "lucide-react";
+import { buildBreadcrumbsJsonLd, buildProcessHowToJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
   title: "Our 6-Stage Engineering Process | SolveMpire",
   description:
-    "Explore SolveMpire's 6-stage engineering lifecycle: Discover, Design, Develop, Prototype, Manufacture, and Deploy & Support.",
+    "Explore SolveMpire's 6-stage engineering lifecycle: Discover, Design, Develop, Prototype, Manufacture, and Deploy & Support. From initial CAD to volume production.",
+  keywords: [
+    "Hardware Development Process",
+    "Product Engineering Lifecycle",
+    "Stage-Gate Hardware Development",
+    "DFM Engineering India",
+    "Electronic Prototyping Stages",
+    "Production Tooling Lifecycle",
+    "SolveMpire Engineering Methodology",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/process`,
+  },
+  openGraph: {
+    title: "Our 6-Stage Engineering Process | SolveMpire",
+    description:
+      "Explore SolveMpire's 6-stage engineering lifecycle: Discover, Design, Develop, Prototype, Manufacture, and Deploy & Support.",
+    url: `${COMPANY.websiteUrl}/process`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our 6-Stage Engineering Process | SolveMpire",
+    description:
+      "Explore SolveMpire's 6-stage engineering lifecycle: Discover, Design, Develop, Prototype, Manufacture, and Deploy & Support.",
+  },
 };
+
 
 interface ProcessCard {
   stepNumber: string;
@@ -186,9 +215,18 @@ const PROCESS_CARDS: ProcessCard[] = [
 ];
 
 export default function ProcessPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Process", url: "/process" },
+  ]);
+  const howToSchema = buildProcessHowToJsonLd();
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={howToSchema} />
       <IndiseaHeader />
+
 
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">

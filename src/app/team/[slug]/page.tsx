@@ -10,6 +10,9 @@ import { AuthorArticlesList } from "@/components/team/AuthorArticlesList";
 import { getTeamMember, getAllTeamMembers } from "@/lib/team-data";
 import { getAllJournalPosts } from "@/lib/journal-data";
 import { ArrowLeft, MapPin, ArrowUpRight } from "lucide-react";
+import { buildBreadcrumbsJsonLd, buildPersonJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 export function generateStaticParams() {
   const members = getAllTeamMembers();
@@ -25,15 +28,44 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const member = getTeamMember(slug);
-  if (!member) return { title: "Team Member Not Found" };
+  if (!member) return { title: "Team Member Not Found | SolveMpire" };
+
+  const avatarUrl = member.avatar.startsWith("http")
+    ? member.avatar
+    : `${COMPANY.websiteUrl}${member.avatar}`;
 
   return {
-    title: `${member.name} — ${member.role} | SolveMpire Team`,
+    title: `${member.name} — ${member.role} | SolveMpire Leadership`,
     description: member.shortBio,
+    keywords: [
+      member.name,
+      member.role,
+      ...(member.focusAreas || []),
+      "SolveMpire Engineering",
+      "Product Development India",
+    ],
+    alternates: {
+      canonical: `${COMPANY.websiteUrl}/team/${member.slug}`,
+    },
     openGraph: {
-      title: `${member.name} — SolveMpire`,
+      title: `${member.name} — ${member.role} | SolveMpire`,
       description: member.shortBio,
-      images: [member.avatar],
+      url: `${COMPANY.websiteUrl}/team/${member.slug}`,
+      type: "profile",
+      images: [
+        {
+          url: avatarUrl,
+          width: 800,
+          height: 800,
+          alt: `${member.name} - ${member.role}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${member.name} — ${member.role}`,
+      description: member.shortBio,
+      images: [avatarUrl],
     },
   };
 }
@@ -57,9 +89,19 @@ export default async function TeamMemberPage({
       post.author.avatar.includes(member.slug.split("-")[0])
   );
 
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Team", url: "/team" },
+    { name: member.name, url: `/team/${member.slug}` },
+  ]);
+  const personSchema = buildPersonJsonLd(member);
+
   return (
     <div className="min-h-screen w-full flex flex-col bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans relative">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={personSchema} />
       <IndiseaHeader />
+
 
       <main className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-12 sm:space-y-16">

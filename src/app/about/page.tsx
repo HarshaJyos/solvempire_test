@@ -6,17 +6,67 @@ import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { teamMembers } from "@/content/team";
 import { COMPANY } from "@/lib/company";
 import { ArrowUpRight } from "lucide-react";
+import { buildBreadcrumbsJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "About Studio & Engineering Leadership | SolveMpire",
+  title: "About Studio & Engineering Mission | SolveMpire",
   description:
-    "Meet the multi-disciplinary team behind SolveMpire — physical product engineering, custom hardware, firmware, and cloud systems.",
+    "Meet the multidisciplinary engineering studio behind SolveMpire — physical product engineering, custom hardware, firmware, and connected systems in Andhra Pradesh, India.",
+  keywords: [
+    "About SolveMpire",
+    "Hardware Engineering Company India",
+    "Product Design Studio Kakinada",
+    "Turnkey Product Engineering",
+    "Mechanical CAD and PCB Studio",
+    "Hanish Jyosyabhatla",
+    "SolveMpire Private Limited",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/about`,
+  },
+  openGraph: {
+    title: "About Studio & Engineering Mission | SolveMpire",
+    description:
+      "Meet the multidisciplinary engineering studio behind SolveMpire — physical product engineering, custom hardware, firmware, and connected systems.",
+    url: `${COMPANY.websiteUrl}/about`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Studio & Engineering Mission | SolveMpire",
+    description:
+      "Meet the multidisciplinary engineering studio behind SolveMpire — physical product engineering, custom hardware, firmware, and connected systems.",
+  },
 };
 
 export default function AboutPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "About", url: "/about" },
+  ]);
+
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${COMPANY.websiteUrl}/about/#about`,
+    name: "About SolveMpire",
+    description:
+      "SolveMpire is an integrated product engineering studio based in Andhra Pradesh, India, partnering with founders and enterprises to engineer turnkey physical products.",
+    url: `${COMPANY.websiteUrl}/about`,
+    mainEntity: {
+      "@type": "Organization",
+      name: COMPANY.legalName,
+      url: COMPANY.websiteUrl,
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={aboutSchema} />
       <IndiseaHeader />
+
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-20">
           {/* Header */}

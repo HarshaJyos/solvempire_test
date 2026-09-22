@@ -5,17 +5,55 @@ import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { serviceDisciplines } from "@/content/services";
 import { getCaseStudyBySlug } from "@/content/case-studies";
 import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { buildBreadcrumbsJsonLd, buildServicesJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
   title: "Engineering Disciplines & Capabilities | SolveMpire",
   description:
-    "End-to-end product engineering: Mechanical design, custom PCB development, real-time embedded firmware, and connected IoT platforms.",
+    "End-to-end product engineering: Mechanical design (Fusion 360), custom PCB development (KiCad), real-time embedded firmware (STM32/ESP32), DWIN DGUS HMI, and connected IoT platforms.",
+  keywords: [
+    "Mechanical Engineering India",
+    "Custom PCB Design KiCad",
+    "Embedded Firmware Development",
+    "IoT Cloud Telemetry",
+    "DWIN DGUS HMI",
+    "Product Engineering Services",
+    "DFM Tooling Support",
+    "Hardware Prototyping",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/services`,
+  },
+  openGraph: {
+    title: "Engineering Disciplines & Capabilities | SolveMpire",
+    description:
+      "End-to-end product engineering: Mechanical design, custom PCB development, real-time embedded firmware, and connected IoT platforms.",
+    url: `${COMPANY.websiteUrl}/services`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engineering Disciplines & Capabilities | SolveMpire",
+    description:
+      "End-to-end product engineering: Mechanical design, custom PCB development, real-time embedded firmware, and connected IoT platforms.",
+  },
 };
 
 export default function ServicesPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Services", url: "/services" },
+  ]);
+  const servicesSchema = buildServicesJsonLd(serviceDisciplines);
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={servicesSchema} />
       <IndiseaHeader />
+
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">
           {/* Header Banner */}

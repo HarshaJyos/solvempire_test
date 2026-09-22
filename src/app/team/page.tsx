@@ -7,19 +7,74 @@ import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { TeamSocialLinks } from "@/components/team/TeamSocialLinks";
 import { getAllTeamMembers } from "@/lib/team-data";
 import { ArrowUpRight } from "lucide-react";
+import { buildBreadcrumbsJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "Engineering Team & Architects | SolveMpire",
+  title: "Engineering Team & Leadership | SolveMpire",
   description:
-    "Meet the engineers, architects, and builders behind SolveMpire's physical products, embedded firmware, and connected systems.",
+    "Meet the founders, engineers, and product strategists behind SolveMpire — physical product engineering, custom hardware, firmware, and scalable connected platforms.",
+  keywords: [
+    "SolveMpire Team",
+    "Hanish Jyosyabhatla",
+    "Lohith Medisetti",
+    "Teja Mandapalli",
+    "Pavan Kumar Duggirala",
+    "Prasad Duggirala",
+    "Product Engineers India",
+    "Hardware Engineering Leadership",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/team`,
+  },
+  openGraph: {
+    title: "Engineering Team & Leadership | SolveMpire",
+    description:
+      "Meet the engineers, architects, and builders behind SolveMpire's physical products, embedded firmware, and connected systems.",
+    url: `${COMPANY.websiteUrl}/team`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engineering Team & Leadership | SolveMpire",
+    description:
+      "Meet the engineers, architects, and builders behind SolveMpire's physical products, embedded firmware, and connected systems.",
+  },
 };
 
 export default function TeamDirectoryPage() {
   const members = getAllTeamMembers();
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Team", url: "/team" },
+  ]);
+
+  const teamListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${COMPANY.websiteUrl}/team/#itemlist`,
+    name: "SolveMpire Leadership & Engineering Team",
+    description: "Founders, engineers, and strategists at SolveMpire.",
+    itemListElement: members.map((member, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      item: {
+        "@type": "Person",
+        name: member.name,
+        jobTitle: member.role,
+        url: `${COMPANY.websiteUrl}/team/${member.slug}`,
+        description: member.shortBio,
+      },
+    })),
+  };
 
   return (
     <div className="min-h-screen w-full flex flex-col bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={teamListSchema} />
       <IndiseaHeader />
+
 
       <main className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">

@@ -5,17 +5,75 @@ import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { MultiStepContactWizard } from "@/components/contact/MultiStepContactWizard";
 import { COMPANY } from "@/lib/company";
 import { ShieldCheck, Mail, Phone, MapPin } from "lucide-react";
+import { buildBreadcrumbsJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Contact Our Engineering Team | SolveMpire",
+  title: "Contact Engineering Leads | Scope Your Product | SolveMpire",
   description:
-    "Scope your mechanical design, custom PCB, firmware, or connected platform project directly with SolveMpire's engineering team.",
+    "Scope your mechanical packaging, custom PCB, firmware, or connected platform project directly with SolveMpire's lead engineers in Andhra Pradesh, India.",
+  keywords: [
+    "Contact SolveMpire",
+    "Hardware Engineering Inquiry",
+    "Scope Custom Machine",
+    "PCB Design Consultation",
+    "Product Engineering India",
+    "SolveMpire Kakinada Contact",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/contact`,
+  },
+  openGraph: {
+    title: "Contact Engineering Leads | Scope Your Product | SolveMpire",
+    description:
+      "Scope your mechanical design, custom PCB, firmware, or connected platform project directly with SolveMpire's engineering team.",
+    url: `${COMPANY.websiteUrl}/contact`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Engineering Leads | Scope Your Product | SolveMpire",
+    description:
+      "Scope your mechanical design, custom PCB, firmware, or connected platform project directly with SolveMpire's engineering team.",
+  },
 };
 
 export default function ContactPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Contact", url: "/contact" },
+  ]);
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": `${COMPANY.websiteUrl}/contact/#contact`,
+    name: "Contact SolveMpire Engineering",
+    description:
+      "Direct technical discovery and project scoping with SolveMpire lead product engineers.",
+    url: `${COMPANY.websiteUrl}/contact`,
+    mainEntity: {
+      "@type": "Organization",
+      name: COMPANY.legalName,
+      telephone: COMPANY.phone,
+      email: COMPANY.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu",
+        addressLocality: "Kakinada",
+        addressRegion: "Andhra Pradesh",
+        postalCode: "533005",
+        addressCountry: "IN",
+      },
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={contactSchema} />
       <IndiseaHeader />
+
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">
           <div className="indisea-grid items-start gap-12 lg:gap-16">

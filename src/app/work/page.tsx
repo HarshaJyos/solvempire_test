@@ -5,17 +5,74 @@ import { IndiseaHeader } from "@/components/site/IndiseaHeader";
 import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { caseStudies } from "@/content/case-studies";
 import { ArrowRight, ArrowLeft, ArrowUpRight } from "lucide-react";
+import { buildBreadcrumbsJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "Case Studies & Production Archives | SolveMpire",
+  title: "Engineering Case Studies & Production Archives | SolveMpire",
   description:
-    "Explore our production-ready mechanical product designs, custom PCBs, embedded systems, automated machines, and connected IoT platforms.",
+    "Explore our production-ready mechanical product designs, custom PCBs in KiCad, embedded firmware, automated machines, and connected IoT platforms.",
+  keywords: [
+    "Hardware Case Studies",
+    "Product Engineering Portfolio",
+    "Custom Machine Development",
+    "PCB Design Case Studies",
+    "Firmware Engineering India",
+    "Automated Helmet Sanitization",
+    "Smart Vending Machine",
+    "SolveMpire Projects",
+  ],
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/work`,
+  },
+  openGraph: {
+    title: "Engineering Case Studies & Production Archives | SolveMpire",
+    description:
+      "Explore our production-ready mechanical product designs, custom PCBs, embedded systems, automated machines, and connected IoT platforms.",
+    url: `${COMPANY.websiteUrl}/work`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engineering Case Studies & Production Archives | SolveMpire",
+    description:
+      "Explore our production-ready mechanical product designs, custom PCBs, embedded systems, automated machines, and connected IoT platforms.",
+  },
 };
 
+
 export default function WorkPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/work" },
+  ]);
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${COMPANY.websiteUrl}/work/#collection`,
+    name: "SolveMpire Engineering Case Studies",
+    description:
+      "Production-ready mechanical product designs, custom PCBs, embedded systems, and connected IoT platforms.",
+    url: `${COMPANY.websiteUrl}/work`,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: caseStudies.map((cs, idx) => ({
+        "@type": "ListItem",
+        position: idx + 1,
+        url: `${COMPANY.websiteUrl}/work/${cs.slug}`,
+        name: cs.title,
+      })),
+    },
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={collectionSchema} />
       <IndiseaHeader />
+
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">
           {/* Header Banner */}

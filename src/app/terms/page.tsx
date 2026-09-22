@@ -4,20 +4,32 @@ import { IndiseaHeader } from "@/components/site/IndiseaHeader";
 import { IndiseaFooter } from "@/components/site/IndiseaFooter";
 import { COMPANY } from "@/lib/company";
 import { ShieldCheck, ArrowLeft, FileText } from "lucide-react";
+import { buildBreadcrumbsJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   title: "Terms of Service | SolveMpire",
   description: `Terms of service and engineering engagement conditions for ${COMPANY.legalName}.`,
+  alternates: {
+    canonical: `${COMPANY.websiteUrl}/terms`,
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 
 export default function TermsPage() {
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Terms of Service", url: "/terms" },
+  ]);
+
   return (
     <div className="flex flex-col min-h-screen bg-[var(--surface-canvas)] text-[var(--text-body)] selection:bg-[#FACC15] selection:text-[#181A1D] font-sans">
+      <JsonLd schema={breadcrumbsSchema} />
       <IndiseaHeader />
+
       
       <main id="main-content" className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-28">
         <div className="p-8 sm:p-12 md:p-14 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-8">

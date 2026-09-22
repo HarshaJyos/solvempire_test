@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudyBySlug } from "@/content/case-studies";
 import { IndiseaDossierArticle } from "@/components/work/IndiseaDossierArticle";
+import { buildBreadcrumbsJsonLd, buildCaseStudyJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { COMPANY } from "@/lib/company";
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
@@ -25,14 +28,43 @@ export async function generateMetadata({
     };
   }
 
+  const imageUrl = study.hero.src.startsWith("http")
+    ? study.hero.src
+    : `${COMPANY.websiteUrl}${study.hero.src}`;
+
   return {
     title: `${study.title} — Engineering Case Study | SolveMpire`,
     description: study.summary,
+    keywords: [
+      ...study.disciplines,
+      study.category,
+      study.client,
+      "Product Engineering Case Study",
+      "Hardware Engineering India",
+      "SolveMpire Work",
+    ],
+    alternates: {
+      canonical: `${COMPANY.websiteUrl}/work/${study.slug}`,
+    },
     openGraph: {
-      title: `${study.title} — SolveMpire Engineering Case Study`,
+      title: `${study.title} — SolveMpire Engineering Dossier`,
       description: study.summary,
-      images: [study.hero.src],
+      url: `${COMPANY.websiteUrl}/work/${study.slug}`,
       type: "article",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: study.hero.alt || study.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${study.title} — SolveMpire Engineering Dossier`,
+      description: study.summary,
+      images: [imageUrl],
     },
   };
 }
@@ -61,11 +93,23 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         }
       : undefined;
 
+  const breadcrumbsSchema = buildBreadcrumbsJsonLd([
+    { name: "Home", url: "/" },
+    { name: "Case Studies", url: "/work" },
+    { name: study.title, url: `/work/${study.slug}` },
+  ]);
+  const caseStudySchema = buildCaseStudyJsonLd(study);
+
   return (
-    <IndiseaDossierArticle
-      study={study}
-      prevStudy={prevStudy}
-      nextStudy={nextStudy}
-    />
+    <>
+      <JsonLd schema={breadcrumbsSchema} />
+      <JsonLd schema={caseStudySchema} />
+      <IndiseaDossierArticle
+        study={study}
+        prevStudy={prevStudy}
+        nextStudy={nextStudy}
+      />
+    </>
   );
 }
+
