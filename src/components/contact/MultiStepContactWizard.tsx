@@ -104,78 +104,82 @@ const timelineOptions = [
   {
     value: projectTimelines[0],
     icon: Zap,
-    title: "ASAP (< 2 weeks)",
-    desc: "Immediate project kickoff and scoping",
+    title: "Urgent (< 1 Month)",
+    desc: "Critical prototype sprint or immediate troubleshooting deadline",
   },
   {
     value: projectTimelines[1],
     icon: Clock,
-    title: "1 – 3 Months",
-    desc: "Standard product development sprint",
+    title: "1–3 Months",
+    desc: "Standard hardware prototype, PCB spin, or firmware milestone",
   },
   {
     value: projectTimelines[2],
     icon: CalendarDays,
-    title: "3 – 6 Months",
-    desc: "Phased commercial development roadmap",
+    title: "3–6 Months",
+    desc: "Comprehensive multi-discipline design cycle through field validation",
   },
   {
     value: projectTimelines[3],
     icon: Compass,
-    title: "Exploring / Scoping",
-    desc: "Early research, planning and feasibility",
+    title: "Flexible / Long-Term",
+    desc: "Strategic phased engagement or multi-stage engineering roadmap",
   },
 ];
 
-
-export function MultiStepContactWizard({ theme = "light", onSuccess }: MultiStepContactWizardProps) {
-  const [step, setStep] = useState<number>(1);
+export function MultiStepContactWizard({
+  theme = "light",
+  onSuccess,
+}: MultiStepContactWizardProps) {
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    projectType: projectTypes[0] as string,
-    stage: projectStages[0] as string,
-    timeline: projectTimelines[1] as string,
+    projectType: projectTypes[0],
+    stage: projectStages[0],
+    timeline: projectTimelines[1],
     description: "",
     name: "",
     email: "",
     company: "",
-    fax_number: "", // honeypot
+    fax_number: "", // Honeypot
   });
 
   const [formRenderTime, setFormRenderTime] = useState<number>(0);
-  const [errors, setErrors] = useState<Record<string, string[]>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [serverMessage, setServerMessage] = useState("");
+  const [serverMessage, setServerMessage] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
     setFormRenderTime(Date.now());
   }, []);
 
-  const handleSelectOption = (field: "projectType" | "stage" | "timeline", value: string) => {
+  const handleSelectOption = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => {
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
   };
 
-  const handleNextStep = () => {
-    setStep((prev) => Math.min(4, prev + 1));
+  const handleNext = () => {
+    setStep((prev) => Math.min(prev + 1, 4));
   };
 
-  const handlePrevStep = () => {
-    setStep((prev) => Math.max(1, prev - 1));
+  const handleBack = () => {
+    setStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setServerMessage(null);
     setErrors({});
-    setServerMessage("");
 
-    // Client-side quick check
     const validationErrors: Record<string, string[]> = {};
-    if (!formData.name.trim() || formData.name.trim().length < 2) {
-      validationErrors.name = ["Please enter your full name."];
-    }
+    if (!formData.name.trim()) validationErrors.name = ["Name is required."];
     if (!formData.email.trim() || !formData.email.includes("@")) {
-      validationErrors.email = ["Please enter a valid work email address."];
+      validationErrors.email = ["Please enter a valid work email."];
     }
     if (!formData.description.trim() || formData.description.trim().length < 10) {
       validationErrors.description = ["Please provide a brief note about your project (at least 10 characters)."];
@@ -219,27 +223,19 @@ export function MultiStepContactWizard({ theme = "light", onSuccess }: MultiStep
     }
   };
 
-  const isDark = theme === "dark";
-
   if (isSubmitted) {
     return (
-      <div
-        className={`p-8 sm:p-12 rounded-3xl text-center border animate-in fade-in zoom-in-95 duration-400 ${
-          isDark
-            ? "bg-slate-900/90 border-slate-700/80 text-white"
-            : "bg-surface border-brand/20 text-heading shadow-xl"
-        }`}
-      >
-        <div className="w-16 h-16 rounded-full bg-brand/20 text-brand flex items-center justify-center mx-auto mb-6">
-          <Check className="w-8 h-8 stroke-[2.5]" />
+      <div className="bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-8 sm:p-12 text-center">
+        <div className="size-16 bg-[#3b82f6] border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] text-[#0f0f10] flex items-center justify-center mx-auto mb-6">
+          <Check className="size-8 stroke-[3]" />
         </div>
-        <h3 className="font-display text-2xl sm:text-3xl font-bold mb-3">
-          Project Scoping Inquiry Received!
+        <h3 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-[#0f0f10] mb-3">
+          Project Inquiry Dispatched!
         </h3>
-        <p className={`text-sm sm:text-base max-w-md mx-auto leading-relaxed mb-6 ${isDark ? "text-slate-300" : "text-body"}`}>
-          {serverMessage || "Thank you! Our engineering team will review your requirements and reply with a 30-minute scoping call link within 1 business day."}
+        <p className="font-display text-sm sm:text-base text-[#0f0f10]/80 max-w-md mx-auto leading-relaxed mb-6">
+          {serverMessage || "Thank you! Our engineering team will review your requirements and reply with a scoping call link within 1 business day."}
         </p>
-        <div className={`p-4 rounded-xl max-w-md mx-auto text-xs leading-relaxed mb-8 ${isDark ? "bg-slate-800 text-slate-300 border border-slate-700" : "bg-ice-light text-slate-700 border border-brand/15"}`}>
+        <div className="p-4 bg-[#f0f7ff] border-2 border-[#0f0f10] max-w-md mx-auto font-mono text-xs text-[#0f0f10] text-left leading-relaxed mb-8">
           <strong>Selected Focus:</strong> {formData.projectType} <br />
           <strong>Current Stage:</strong> {formData.stage} <br />
           <strong>Target Timeline:</strong> {formData.timeline}
@@ -261,462 +257,363 @@ export function MultiStepContactWizard({ theme = "light", onSuccess }: MultiStep
             });
             setFormRenderTime(Date.now());
           }}
-          className="inline-flex items-center gap-2 justify-center bg-brand hover:bg-brand-hover text-white font-medium text-sm px-7 py-3 rounded-full shadow-lg shadow-brand/25 transition-all cursor-pointer"
+          className="btn-brutal bg-[#0f0f10] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal font-mono text-xs font-bold uppercase tracking-wider px-7 py-3 inline-flex items-center gap-2 cursor-pointer"
         >
-          <Sparkles className="w-4 h-4" />
-          <span>Scope Another Project</span>
+          <Sparkles className="w-4 h-4 text-[#f5c518]" />
+          <span>SCOPE ANOTHER PROJECT</span>
         </button>
       </div>
     );
   }
 
   return (
-    <div
-      className={`w-full rounded-2xl sm:rounded-3xl border transition-all duration-300 ${
-        isDark
-          ? "bg-slate-900/90 backdrop-blur-md border-slate-800 text-white p-6 sm:p-10 shadow-2xl"
-          : "bg-surface border-hairline text-heading p-6 sm:p-10 shadow-lg"
-      }`}
-    >
-      {/* Progress Bar & Header */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider mb-2.5">
-          <span className="text-brand">Step {step} of 4</span>
-          <span className={isDark ? "text-slate-400" : "text-muted"}>
-            {step === 1 && "Engineering Discipline"}
-            {step === 2 && "Project Stage"}
-            {step === 3 && "Target Timeline"}
-            {step === 4 && "Contact Details"}
+    <div className="w-full bg-white border-2 border-[#0f0f10] shadow-brutal-xl overflow-hidden">
+      {/* System Window Header */}
+      <div className="bg-[#f7f6f2] border-b-2 border-[#0f0f10] px-5 py-3.5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="size-3 rounded-full bg-[#0f0f10]" />
+          <span className="size-3 rounded-full bg-[#f5c518] border border-[#0f0f10]" />
+          <span className="size-3 rounded-full bg-[#ecebe4] border border-[#0f0f10]" />
+          <span className="font-mono font-bold text-xs text-[#0f0f10] ml-2 tracking-wide uppercase">
+            SCOPING WIZARD // STEP 0{step}
           </span>
         </div>
-        <div className={`w-full h-1.5 rounded-full overflow-hidden ${isDark ? "bg-slate-800" : "bg-canvas"}`}>
-          <div
-            className="h-full bg-brand transition-all duration-300 ease-out"
-            style={{ width: `${(step / 4) * 100}%` }}
-          />
-        </div>
+        <span className="font-mono font-bold text-xs text-[#1d4ed8] uppercase">
+          {step === 1 && "01 / DISCIPLINE"}
+          {step === 2 && "02 / STAGE"}
+          {step === 3 && "03 / TIMELINE"}
+          {step === 4 && "04 / DETAILS"}
+        </span>
       </div>
 
-      {/* Honeypot field (hidden from human users) */}
-      <div className="hidden" aria-hidden="true">
-        <input
-          type="text"
-          name="fax_number"
-          value={formData.fax_number}
-          onChange={(e) => setFormData((prev) => ({ ...prev, fax_number: e.target.value }))}
-          tabIndex={-1}
-          autoComplete="off"
+      {/* Progress Bar */}
+      <div className="w-full h-2 bg-[#ecebe4] border-b-2 border-[#0f0f10]">
+        <div
+          className="h-full bg-[#3b82f6] transition-all duration-300 ease-out"
+          style={{ width: `${(step / 4) * 100}%` }}
         />
       </div>
 
-      {/* ========================================================================= */}
-      {/* STEP 1: ENGINEERING DISCIPLINE / FOCUS */}
-      {/* ========================================================================= */}
-      {step === 1 && (
-        <div className="animate-in fade-in slide-in-from-right-3 duration-300">
-          <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">
-            What are you engineering?
-          </h3>
-          <p className={`text-xs sm:text-sm mb-6 ${isDark ? "text-slate-400" : "text-body"}`}>
-            Select the primary engineering area for your project.
-          </p>
-
-          <div className="grid grid-cols-1 gap-3 mb-8">
-            {typeOptions.map((opt) => {
-              const isSelected = formData.projectType === opt.value;
-              const Icon = opt.icon;
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => {
-                    handleSelectOption("projectType", opt.value);
-                  }}
-                  className={`w-full text-left p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
-                    isSelected
-                      ? "border-brand bg-brand/10 ring-2 ring-brand/30 shadow-sm"
-                      : isDark
-                      ? "border-slate-800 bg-slate-800/50 hover:border-slate-700 hover:bg-slate-800"
-                      : "border-hairline bg-canvas hover:border-brand/40 hover:bg-surface-subtle"
-                  }`}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                      isSelected
-                        ? "bg-brand text-white shadow-md shadow-brand/30"
-                        : isDark
-                        ? "bg-slate-800 text-brand-light"
-                        : "bg-surface text-brand border border-hairline shadow-xs"
-                    }`}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
-                      {opt.title}
-                    </div>
-                    <div className={`text-xs leading-relaxed ${isDark ? "text-slate-400" : "text-muted"}`}>
-                      {opt.desc}
-                    </div>
-                  </div>
-                  <div
-                    className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-1 transition-colors ${
-                      isSelected ? "border-brand bg-brand text-white" : "border-slate-400/50"
-                    }`}
-                  >
-                    {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={handleNextStep}
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 rounded-full shadow-lg shadow-brand/20 transition-all cursor-pointer"
-            >
-              <span>Continue to Stage</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+      <div className="p-6 sm:p-10">
+        {/* Honeypot field (hidden from humans) */}
+        <div className="hidden" aria-hidden="true">
+          <input
+            type="text"
+            name="fax_number"
+            value={formData.fax_number}
+            onChange={(e) => setFormData((prev) => ({ ...prev, fax_number: e.target.value }))}
+            tabIndex={-1}
+            autoComplete="off"
+          />
         </div>
-      )}
 
-      {/* ========================================================================= */}
-      {/* STEP 2: PROJECT STAGE */}
-      {/* ========================================================================= */}
-      {step === 2 && (
-        <div className="animate-in fade-in slide-in-from-right-3 duration-300">
-          <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">
-            What stage is the project currently in?
-          </h3>
-          <p className={`text-xs sm:text-sm mb-6 ${isDark ? "text-slate-400" : "text-body"}`}>
-            Helps our architects prepare relevant case studies and DFM frameworks.
-          </p>
+        {/* STEP 1: ENGINEERING DISCIPLINE */}
+        {step === 1 && (
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+                What are you engineering?
+              </h3>
+              <p className="font-mono text-xs text-[#0f0f10]/70">
+                Select the primary engineering discipline for your project.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 gap-3 mb-8">
-            {stageOptions.map((opt) => {
-              const isSelected = formData.stage === opt.value;
-              const Icon = opt.icon;
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => {
-                    handleSelectOption("stage", opt.value);
-                  }}
-                  className={`w-full text-left p-4 rounded-xl sm:rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
-                    isSelected
-                      ? "border-brand bg-brand/10 ring-2 ring-brand/30 shadow-sm"
-                      : isDark
-                      ? "border-slate-800 bg-slate-800/50 hover:border-slate-700 hover:bg-slate-800"
-                      : "border-hairline bg-canvas hover:border-brand/40 hover:bg-surface-subtle"
-                  }`}
-                >
-                  <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+            <div className="grid grid-cols-1 gap-3">
+              {typeOptions.map((opt) => {
+                const isSelected = formData.projectType === opt.value;
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => handleSelectOption("projectType", opt.value)}
+                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex items-start gap-4 cursor-pointer ${
                       isSelected
-                        ? "bg-brand text-white shadow-md shadow-brand/30"
-                        : isDark
-                        ? "bg-slate-800 text-brand-light"
-                        : "bg-surface text-brand border border-hairline shadow-xs"
+                        ? "bg-[#3b82f6] text-[#0f0f10]"
+                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
-                      {opt.title}
-                    </div>
-                    <div className={`text-xs leading-relaxed ${isDark ? "text-slate-400" : "text-muted"}`}>
-                      {opt.desc}
-                    </div>
-                  </div>
-                  <div
-                    className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 mt-1 transition-colors ${
-                      isSelected ? "border-brand bg-brand text-white" : "border-slate-400/50"
-                    }`}
-                  >
-                    {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={handlePrevStep}
-              className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer ${
-                isDark ? "text-slate-400 hover:text-white" : "text-muted hover:text-heading"
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back</span>
-            </button>
-            <button
-              type="button"
-              onClick={handleNextStep}
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 rounded-full shadow-lg shadow-brand/20 transition-all cursor-pointer"
-            >
-              <span>Continue to Timeline</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* STEP 3: TARGET TIMELINE */}
-      {/* ========================================================================= */}
-      {step === 3 && (
-        <div className="animate-in fade-in slide-in-from-right-3 duration-300">
-          <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">
-            What is your estimated timeline?
-          </h3>
-          <p className={`text-xs sm:text-sm mb-6 ${isDark ? "text-slate-400" : "text-body"}`}>
-            Select when you would like engineering work to commence.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
-            {timelineOptions.map((opt) => {
-              const isSelected = formData.timeline === opt.value;
-              const Icon = opt.icon;
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => {
-                    handleSelectOption("timeline", opt.value);
-                  }}
-                  className={`text-left p-4 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-200 flex flex-col justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand ${
-                    isSelected
-                      ? "border-brand bg-brand/10 ring-2 ring-brand/30 shadow-sm"
-                      : isDark
-                      ? "border-slate-800 bg-slate-800/50 hover:border-slate-700 hover:bg-slate-800"
-                      : "border-hairline bg-canvas hover:border-brand/40 hover:bg-surface-subtle"
-                  }`}
-                >
-                  <div className="flex items-center justify-between w-full">
                     <div
-                      className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected
-                          ? "bg-brand text-white shadow-md shadow-brand/30"
-                          : isDark
-                          ? "bg-slate-800 text-brand-light"
-                          : "bg-surface text-brand border border-hairline shadow-xs"
+                      className={`size-10 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
+                        isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
+                    <div>
+                      <h4 className="font-display font-bold text-base uppercase mb-0.5">
+                        {opt.title}
+                      </h4>
+                      <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                        {opt.desc}
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex justify-end pt-4 border-t-2 border-[#0f0f10]/15">
+              <button
+                type="button"
+                onClick={handleNext}
+                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>NEXT STEP</span>
+                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP 2: PROJECT STAGE */}
+        {step === 2 && (
+          <div className="space-y-6">
+            <div>
+              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+                Current Development Stage
+              </h3>
+              <p className="font-mono text-xs text-[#0f0f10]/70">
+                Where is your product right now in its lifecycle?
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3">
+              {stageOptions.map((opt) => {
+                const isSelected = formData.stage === opt.value;
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => handleSelectOption("stage", opt.value)}
+                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex items-start gap-4 cursor-pointer ${
+                      isSelected
+                        ? "bg-[#3b82f6] text-[#0f0f10]"
+                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
+                    }`}
+                  >
                     <div
-                      className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
-                        isSelected ? "border-brand bg-brand text-white" : "border-slate-400/50"
+                      className={`size-10 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
+                        isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
                       }`}
                     >
-                      {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
+                      <Icon className="w-5 h-5" />
                     </div>
-                  </div>
-                  <div>
-                    <div className="font-display font-bold text-sm sm:text-base leading-tight mb-1">
-                      {opt.title}
+                    <div>
+                      <h4 className="font-display font-bold text-base uppercase mb-0.5">
+                        {opt.title}
+                      </h4>
+                      <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                        {opt.desc}
+                      </p>
                     </div>
-                    <div className={`text-xs leading-relaxed ${isDark ? "text-slate-400" : "text-muted"}`}>
-                      {opt.desc}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={handlePrevStep}
-              className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer ${
-                isDark ? "text-slate-400 hover:text-white" : "text-muted hover:text-heading"
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back</span>
-            </button>
-            <button
-              type="button"
-              onClick={handleNextStep}
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-medium text-sm sm:text-base px-7 py-3 rounded-full shadow-lg shadow-brand/20 transition-all cursor-pointer"
-            >
-              <span>Final Step: Contact Details</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* STEP 4: CONTACT & DETAILS */}
-      {/* ========================================================================= */}
-      {step === 4 && (
-        <form onSubmit={handleSubmit} noValidate className="animate-in fade-in slide-in-from-right-3 duration-300">
-          <h3 className="font-display text-xl sm:text-2xl font-bold mb-2">
-            Where should we send your scoping review?
-          </h3>
-          <p className={`text-xs sm:text-sm mb-6 ${isDark ? "text-slate-400" : "text-body"}`}>
-            We reply within 1 business day with a 30-minute scoping call link. No sales deck.
-          </p>
-
-          {serverMessage && (
-            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs mb-6">
-              {serverMessage}
-            </div>
-          )}
-
-          <div className="space-y-4 mb-6">
-            {/* Selected Summary Badge */}
-            <div className={`p-3.5 rounded-xl text-xs flex flex-wrap items-center gap-2 ${isDark ? "bg-slate-800 text-slate-300 border border-slate-700" : "bg-ice-light text-slate-700 border border-brand/15"}`}>
-              <span className="font-semibold text-brand">Scope:</span>
-              <span>{formData.projectType}</span>
-              <span className="opacity-50">·</span>
-              <span>{formData.stage}</span>
-              <span className="opacity-50">·</span>
-              <span>{formData.timeline}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Project Notes */}
+            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+              <button
+                type="button"
+                onClick={handleBack}
+                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>BACK</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>NEXT STEP</span>
+                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP 3: TIMELINE */}
+        {step === 3 && (
+          <div className="space-y-6">
             <div>
-              <label htmlFor="wizard_desc" className="block text-xs font-bold uppercase tracking-wider mb-1.5">
-                Brief Project Notes / Constraints <span className="text-brand">*</span>
-              </label>
-              <textarea
-                id="wizard_desc"
-                required
-                rows={3}
-                value={formData.description}
-                onChange={(e) => {
-                  setFormData((prev) => ({ ...prev, description: e.target.value }));
-                  if (errors.description) setErrors((prev) => ({ ...prev, description: [] }));
-                }}
-                placeholder="e.g. 90x60mm compact profile, waterproof sealing, 10,000 units target, STM32 or ESP32..."
-                className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm border outline-none transition-all ${
-                  isDark
-                    ? "bg-slate-800 border-slate-700 focus:border-brand text-white"
-                    : "bg-canvas border-hairline focus:border-brand text-heading"
-                }`}
-              />
-              {errors.description && errors.description[0] && (
-                <p className="mt-1 text-xs text-red-500">{errors.description[0]}</p>
-              )}
+              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+                Target Launch Timeline
+              </h3>
+              <p className="font-mono text-xs text-[#0f0f10]/70">
+                What is your target timeframe for this deliverable?
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {timelineOptions.map((opt) => {
+                const isSelected = formData.timeline === opt.value;
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => handleSelectOption("timeline", opt.value)}
+                    className={`w-full text-left p-4 border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] transition-all flex flex-col justify-between cursor-pointer ${
+                      isSelected
+                        ? "bg-[#3b82f6] text-[#0f0f10]"
+                        : "bg-white text-[#0f0f10] hover:bg-[#f0f7ff]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div
+                        className={`size-8 border border-[#0f0f10] flex items-center justify-center shrink-0 ${
+                          isSelected ? "bg-[#0f0f10] text-[#f5c518]" : "bg-[#f0f7ff] text-[#0f0f10]"
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <h4 className="font-display font-bold text-sm uppercase">
+                        {opt.title}
+                      </h4>
+                    </div>
+                    <p className={`font-display text-xs ${isSelected ? "text-[#0f0f10]/90" : "text-[#0f0f10]/70"}`}>
+                      {opt.desc}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+              <button
+                type="button"
+                onClick={handleBack}
+                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>BACK</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-6 py-3 inline-flex items-center gap-2 cursor-pointer"
+              >
+                <span>NEXT STEP</span>
+                <ArrowRight className="w-4 h-4 text-[#f5c518]" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* STEP 4: CONTACT & BRIEF DETAILS */}
+        {step === 4 && (
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <h3 className="font-display font-black text-2xl uppercase tracking-tight text-[#0f0f10] mb-1">
+                Technical Brief &amp; Contact
+              </h3>
+              <p className="font-mono text-xs text-[#0f0f10]/70">
+                Provide brief context on your requirements and contact coordinates.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Name */}
               <div>
-                <label htmlFor="wizard_name" className="block text-xs font-bold uppercase tracking-wider mb-1.5">
-                  Your Name <span className="text-brand">*</span>
+                <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                  Full Name *
                 </label>
                 <input
                   type="text"
-                  id="wizard_name"
                   required
+                  placeholder="e.g. Alex Mercer"
                   value={formData.name}
-                  onChange={(e) => {
-                    setFormData((prev) => ({ ...prev, name: e.target.value }));
-                    if (errors.name) setErrors((prev) => ({ ...prev, name: [] }));
-                  }}
-                  placeholder="Sarah Jenkins"
-                  className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm border outline-none transition-all ${
-                    isDark
-                      ? "bg-slate-800 border-slate-700 focus:border-brand text-white"
-                      : "bg-canvas border-hairline focus:border-brand text-heading"
-                  }`}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                  className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
                 />
-                {errors.name && errors.name[0] && (
-                  <p className="mt-1 text-xs text-red-500">{errors.name[0]}</p>
-                )}
+                {errors.name && <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.name[0]}</p>}
               </div>
 
-              {/* Email */}
               <div>
-                <label htmlFor="wizard_email" className="block text-xs font-bold uppercase tracking-wider mb-1.5">
-                  Work Email <span className="text-brand">*</span>
+                <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                  Work Email *
                 </label>
                 <input
                   type="email"
-                  id="wizard_email"
                   required
+                  placeholder="alex@company.com"
                   value={formData.email}
-                  onChange={(e) => {
-                    setFormData((prev) => ({ ...prev, email: e.target.value }));
-                    if (errors.email) setErrors((prev) => ({ ...prev, email: [] }));
-                  }}
-                  placeholder="sarah@company.com"
-                  className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm border outline-none transition-all ${
-                    isDark
-                      ? "bg-slate-800 border-slate-700 focus:border-brand text-white"
-                      : "bg-canvas border-hairline focus:border-brand text-heading"
-                  }`}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                  className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
                 />
-                {errors.email && errors.email[0] && (
-                  <p className="mt-1 text-xs text-red-500">{errors.email[0]}</p>
-                )}
+                {errors.email && <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.email[0]}</p>}
               </div>
             </div>
 
-            {/* Company */}
             <div>
-              <label htmlFor="wizard_company" className="block text-xs font-bold uppercase tracking-wider mb-1.5">
-                Company / Organization <span className={`text-[11px] font-normal ${isDark ? "text-slate-400" : "text-muted"}`}>(Optional)</span>
+              <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                Company / Project Entity
               </label>
               <input
                 type="text"
-                id="wizard_company"
+                placeholder="e.g. Mercer Robotics"
                 value={formData.company}
                 onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
-                placeholder="Acme Innovations"
-                className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm border outline-none transition-all ${
-                  isDark
-                    ? "bg-slate-800 border-slate-700 focus:border-brand text-white"
-                    : "bg-canvas border-hairline focus:border-brand text-heading"
-                }`}
+                className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
               />
             </div>
-          </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <button
-              type="button"
-              onClick={handlePrevStep}
-              className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer ${
-                isDark ? "text-slate-400 hover:text-white" : "text-muted hover:text-heading"
-              }`}
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back</span>
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="inline-flex items-center gap-2.5 bg-brand hover:bg-brand-hover active:bg-blue-800 disabled:opacity-60 text-white font-medium text-sm sm:text-base px-8 py-3 rounded-full shadow-lg shadow-brand/25 transition-all cursor-pointer"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Submitting...</span>
-                </>
-              ) : (
-                <>
-                  <span>Request 30-Min Scoping Call</span>
-                  <ArrowRight className="w-4 h-4" />
-                </>
+            <div>
+              <label className="block font-mono text-[10px] font-bold uppercase tracking-wider text-[#0f0f10] mb-1">
+                Project Summary &amp; Technical Constraints *
+              </label>
+              <textarea
+                required
+                rows={4}
+                placeholder="Briefly describe what you are building, key constraints (dimensions, environment, MCU, volume), or where you are stuck..."
+                value={formData.description}
+                onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
+                className="w-full p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs text-[#0f0f10] placeholder:text-[#0f0f10]/40 focus:outline-none focus:bg-white focus:shadow-[3px_3px_0px_#0f0f10]"
+              />
+              {errors.description && (
+                <p className="font-mono text-[10px] text-[#dc2626] mt-1">{errors.description[0]}</p>
               )}
-            </button>
-          </div>
-        </form>
-      )}
+            </div>
+
+            {serverMessage && (
+              <div className="p-3 bg-[#fef2f2] border-2 border-[#dc2626] font-mono text-xs text-[#dc2626]">
+                {serverMessage}
+              </div>
+            )}
+
+            <div className="flex items-center justify-between pt-4 border-t-2 border-[#0f0f10]/15">
+              <button
+                type="button"
+                onClick={handleBack}
+                disabled={isSubmitting}
+                className="btn-brutal bg-white hover:bg-[#fafaf8] text-[#0f0f10] border-2 border-[#0f0f10] shadow-brutal-xs font-mono text-xs font-bold uppercase tracking-wider px-5 py-3 inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>BACK</span>
+              </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs font-bold uppercase tracking-wider px-7 py-3 inline-flex items-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-[#f5c518]" />
+                    <span>DISPATCHING...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 text-[#f5c518]" />
+                    <span>DISPATCH PROJECT BRIEF</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
     </div>
   );
 }
-

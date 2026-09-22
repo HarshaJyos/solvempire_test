@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { caseStudies } from "@/content/case-studies";
-import { ArrowRight, ArrowLeft, Layers, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Engineering Portfolio & Case Studies | SolveMpire",
@@ -14,88 +14,99 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-canvas text-heading selection:bg-brand/15 selection:text-brand">
+    <div className="flex flex-col min-h-screen bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6]/20 selection:text-[#1d4ed8]">
       <Header />
-      <main id="main-content" className="flex-1 w-full pt-28 sm:pt-36 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main id="main-content" className="flex-1 w-full pt-12 pb-24">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           {/* Back Navigation */}
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors mb-6 group font-medium"
+            className="inline-flex items-center gap-2 font-mono text-xs text-[#0f0f10]/70 hover:text-[#1d4ed8] font-bold uppercase mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to Home</span>
+            <span>&larr; Return to Studio</span>
           </Link>
 
           {/* Header Banner */}
-          <div className="max-w-3xl mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-ice-light border border-brand/25 text-xs font-semibold text-brand uppercase tracking-wider mb-4">
-              <Layers className="w-3.5 h-3.5" />
-              <span>SolveMpire Engineering Portfolio</span>
+          <div className="max-w-3xl mb-16 border-b-2 border-[#0f0f10] pb-10">
+            <div className="bg-[#3b82f6] border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] px-3.5 py-1 inline-flex items-center gap-2 mb-4">
+              <span className="font-mono font-bold text-xs uppercase text-[#0f0f10] tracking-widest">
+                [PORTFOLIO // FIELD CASE STUDIES]
+              </span>
             </div>
-            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-heading leading-[1.10]">
-              Engineered for the Real World.
+            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0f0f10] uppercase leading-[0.95]">
+              ENGINEERED FOR THE REAL WORLD.
             </h1>
-            <p className="mt-4 sm:mt-5 text-body text-base sm:text-lg leading-relaxed">
-              From high-density mechanical packaging to custom electronics, firmware pipelines, and cloud telemetry — explore our shipped products, deployed machines, and technical case studies.
+            <p className="mt-5 text-[#0f0f10]/80 font-display text-lg sm:text-xl leading-relaxed">
+              From high-density mechanical enclosures to custom electronics, firmware pipelines, and cloud telemetry — explore our shipped products and field-proven case archives.
             </p>
           </div>
 
-          {/* Case Studies Dossier Grid (Crisp A4 Whitepaper Cards) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {caseStudies.map((study) => (
+          {/* Case Studies Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+            {caseStudies.map((study, idx) => (
               <article
                 key={study.slug}
-                className="group bg-white rounded-none border border-slate-300 shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand/50 transition-all duration-300 hover:-translate-y-0.5 flex flex-col overflow-hidden"
+                className="group bg-white border-2 border-[#0f0f10] shadow-brutal-lg hover:shadow-brutal-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col overflow-hidden justify-between"
               >
+                {/* System Window Header */}
+                <div className="bg-[#f7f6f2] border-b-2 border-[#0f0f10] px-5 py-3.5 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="size-3 rounded-full bg-[#0f0f10]" />
+                    <span className="size-3 rounded-full bg-[#f5c518] border border-[#0f0f10]" />
+                    <span className="size-3 rounded-full bg-[#ecebe4] border border-[#0f0f10]" />
+                    <span className="font-mono font-bold text-xs text-[#0f0f10] ml-2 tracking-wide uppercase">
+                      CASE // 0{idx + 1}
+                    </span>
+                  </div>
+                  <span className="bg-[#0f0f10] text-[#f5c518] font-mono font-bold text-[11px] px-2.5 py-0.5 tracking-wider uppercase">
+                    {study.status}
+                  </span>
+                </div>
+
                 {/* Visual Thumbnail */}
-                <div className="relative w-full aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-200">
+                <div className="relative w-full aspect-[16/9] bg-[#0f0f10] overflow-hidden border-b-2 border-[#0f0f10]">
                   <Image
                     src={study.hero.src}
                     alt={study.hero.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-95 group-hover:opacity-100"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                   />
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-xs px-3 py-1 rounded-none text-xs font-semibold text-brand border border-slate-200 shadow-xs uppercase tracking-wider">
-                    {study.status}
+                  <div className="absolute bottom-3 left-3 bg-white border border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10] px-2.5 py-0.5 font-mono text-[10px] font-bold text-[#0f0f10] uppercase tracking-wider">
+                    CLIENT: {study.client}
                   </div>
                 </div>
 
                 {/* Content Details */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between gap-6">
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-bold text-brand tracking-wider uppercase">
-                        {study.category}
-                      </span>
-                      <span className="text-xs text-muted font-medium">
-                        Client: {study.client}
-                      </span>
-                    </div>
+                    <span className="font-mono font-bold text-xs text-[#1d4ed8] tracking-widest uppercase block">
+                      {study.category}
+                    </span>
 
-                    <h2 className="font-display text-xl sm:text-2xl font-bold text-heading leading-tight group-hover:text-brand transition-colors">
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0f0f10] leading-tight group-hover:text-[#1d4ed8] transition-colors">
                       <Link href={`/work/${study.slug}`} className="focus:outline-none">
                         {study.title}
                       </Link>
                     </h2>
 
-                    <p className="text-body text-sm sm:text-base leading-relaxed line-clamp-3">
+                    <p className="font-display text-sm sm:text-base text-[#0f0f10]/80 leading-relaxed line-clamp-3">
                       {study.summary}
                     </p>
 
                     {/* Key Metrics Grid */}
                     {study.metrics && study.metrics.length > 0 && (
-                      <div className="grid grid-cols-2 gap-3 pt-2">
+                      <div className="grid grid-cols-2 gap-3 pt-3">
                         {study.metrics.slice(0, 2).map((m) => (
                           <div
                             key={m.label}
-                            className="p-3 bg-slate-50 border border-slate-200 rounded-none"
+                            className="p-3 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10]"
                           >
-                            <span className="block text-[11px] text-muted font-medium uppercase tracking-wide truncate">
+                            <span className="block font-mono text-[10px] text-[#0f0f10]/70 font-semibold uppercase tracking-wider truncate">
                               {m.label}
                             </span>
-                            <span className="font-display text-lg sm:text-xl font-bold text-brand">
+                            <span className="font-display text-lg sm:text-xl font-bold text-[#0f0f10]">
                               {m.value}
                             </span>
                           </div>
@@ -105,12 +116,12 @@ export default function WorkPage() {
                   </div>
 
                   {/* Footer Tags & Action Link */}
-                  <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
-                    <div className="flex flex-wrap gap-1.5 max-w-[70%]">
+                  <div className="pt-4 border-t-2 border-[#0f0f10]/15 flex flex-wrap items-center justify-between gap-3 text-xs">
+                    <div className="flex flex-wrap gap-1.5 max-w-[65%]">
                       {study.disciplines.slice(0, 3).map((d) => (
                         <span
                           key={d}
-                          className="px-2 py-0.5 rounded-none text-[11px] font-medium bg-slate-100 text-slate-700 border border-slate-200"
+                          className="px-2 py-0.5 font-mono text-[10px] font-semibold bg-[#ecebe4] text-[#0f0f10] border border-[#0f0f10]"
                         >
                           {d}
                         </span>
@@ -119,11 +130,11 @@ export default function WorkPage() {
 
                     <Link
                       href={`/work/${study.slug}`}
-                      className="inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group-hover:translate-x-1 transition-transform"
+                      className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] border border-[#0f0f10] shadow-brutal-xs px-3.5 py-1.5 font-mono font-bold text-xs uppercase tracking-wider inline-flex items-center gap-1.5"
                       aria-label={`Read case study for ${study.title}`}
                     >
-                      <span>Read Dossier</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>READ DOSSIER</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#f5c518]" />
                     </Link>
                   </div>
                 </div>

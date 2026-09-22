@@ -9,13 +9,7 @@ import { TeamSocialLinks } from "@/components/team/TeamSocialLinks";
 import { AuthorArticlesList } from "@/components/team/AuthorArticlesList";
 import { getTeamMember, getAllTeamMembers } from "@/lib/team-data";
 import { getAllJournalPosts } from "@/lib/journal-data";
-import {
-  ArrowLeft,
-  Sparkles,
-  MapPin,
-  User,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowLeft, MapPin } from "lucide-react";
 
 export function generateStaticParams() {
   const members = getAllTeamMembers();
@@ -64,7 +58,6 @@ export default async function TeamMemberPage({
       post.author.avatar.includes(member.slug.split("-")[0])
   );
 
-  // Extract social urls for schema sameAs
   const socialUrls = member.socials
     ? Object.values(member.socials).filter((url): url is string => typeof url === "string" && !url.startsWith("mailto:"))
     : [];
@@ -88,41 +81,31 @@ export default async function TeamMemberPage({
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading relative selection:bg-brand/15 selection:text-brand">
+    <div className="min-h-screen w-full flex flex-col bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6]/20 selection:text-[#1d4ed8] relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
       <Header />
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-5 sm:px-8 pt-28 sm:pt-36 pb-16">
+      <main className="flex-1 max-w-[1280px] mx-auto w-full px-4 sm:px-6 pt-12 pb-24">
         {/* Navigation Bar */}
         <div className="flex items-center justify-between gap-4 mb-8">
           <Link
-            href="/journal"
-            className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors group font-medium"
+            href="/team"
+            className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase text-[#0f0f10]/70 hover:text-[#1d4ed8] transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to Journal</span>
-          </Link>
-
-          <Link
-            href="/team"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-hairline text-xs font-medium text-muted hover:text-heading hover:border-brand/40 transition-all shadow-xs"
-          >
-            <User className="w-3.5 h-3.5 text-brand" />
-            <span>SolveMpire Team</span>
+            <span>&larr; Return to Team Directory</span>
           </Link>
         </div>
 
         {/* Profile Card */}
-        <section className="p-6 sm:p-10 rounded-3xl bg-surface border border-hairline shadow-sm relative overflow-hidden mb-10">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 relative z-10">
-            {/* High-res Avatar */}
+        <section className="bg-white border-2 border-[#0f0f10] shadow-brutal-lg p-6 sm:p-10 mb-10 overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+            {/* Avatar with ink border */}
             <div className="relative shrink-0">
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-brand/20 shadow-xs bg-ice-light relative">
+              <div className="size-28 sm:size-36 border-2 border-[#0f0f10] shadow-[3px_3px_0px_#0f0f10] bg-[#0f0f10] overflow-hidden relative">
                 <Image
                   src={member.avatar}
                   alt={member.name}
@@ -134,23 +117,22 @@ export default async function TeamMemberPage({
             </div>
 
             {/* Header Details */}
-            <div className="space-y-3.5 text-center sm:text-left flex-1 min-w-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20 whitespace-nowrap">
-                <Sparkles className="w-3.5 h-3.5 shrink-0" />
-                <span>{member.role}</span>
-              </div>
+            <div className="space-y-3 text-center sm:text-left flex-1 min-w-0">
+              <span className="inline-block px-3 py-1 bg-[#3b82f6] text-[#0f0f10] font-mono text-xs font-bold border border-[#0f0f10] shadow-[1px_1px_0px_#0f0f10] uppercase tracking-wider">
+                {member.role}
+              </span>
 
-              <h1 className="font-display font-bold text-3xl sm:text-4xl text-heading tracking-tight">
+              <h1 className="font-display font-black text-3xl sm:text-5xl uppercase tracking-tight text-[#0f0f10]">
                 {member.name}
               </h1>
 
-              <p className="font-body text-base sm:text-lg text-body leading-relaxed">
+              <p className="font-display text-base sm:text-lg text-[#0f0f10]/80 leading-relaxed">
                 {member.shortBio}
               </p>
 
               {member.location && (
-                <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-muted">
-                  <MapPin className="w-3.5 h-3.5 text-brand shrink-0" />
+                <div className="flex items-center justify-center sm:justify-start gap-1.5 font-mono text-xs text-[#0f0f10]/70">
+                  <MapPin className="size-3.5 text-[#1d4ed8] shrink-0" />
                   <span>{member.location}</span>
                 </div>
               )}
@@ -170,35 +152,34 @@ export default async function TeamMemberPage({
 
         {/* Story / About Section */}
         <section className="space-y-6 mb-12">
-          <div className="space-y-2">
-            <h2 className="font-display font-bold text-2xl text-heading tracking-tight">
-              About &amp; Perspective
+          <div className="space-y-2 border-b-2 border-[#0f0f10] pb-4">
+            <h2 className="font-display font-black text-2xl sm:text-3xl uppercase tracking-tight text-[#0f0f10]">
+              Engineering Perspective &amp; Background
             </h2>
-            <div className="h-0.5 w-12 bg-brand rounded-full" />
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-hairline space-y-4 font-body text-body text-base leading-[1.75] shadow-xs">
+          <div className="p-6 sm:p-8 bg-white border-2 border-[#0f0f10] shadow-brutal-md space-y-4 font-display text-base text-[#0f0f10]/85 leading-relaxed">
             {member.story.map((paragraph, idx) => (
               <p key={idx}>{paragraph}</p>
             ))}
           </div>
 
-          {/* Focus Areas as an Ordered List */}
+          {/* Focus Areas */}
           {member.focusAreas && member.focusAreas.length > 0 && (
             <div className="space-y-3 pt-4">
-              <h3 className="font-display font-semibold text-xs text-muted uppercase tracking-wider">
-                Focus Areas at SolveMpire
+              <h3 className="font-mono font-bold text-xs text-[#0f0f10] uppercase tracking-wider">
+                [FOCUS AREAS AT SOLVEMPIRE]
               </h3>
-              <ol className="space-y-2.5 font-body list-none p-0 m-0">
+              <ol className="space-y-2.5 font-mono list-none p-0 m-0">
                 {member.focusAreas.map((area, idx) => (
                   <li
                     key={idx}
-                    className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-surface border border-hairline hover:border-brand/30 transition-colors shadow-xs"
+                    className="flex items-center gap-3.5 p-3.5 bg-white border-2 border-[#0f0f10] shadow-[2px_2px_0px_#0f0f10]"
                   >
-                    <span className="flex items-center justify-center w-7 h-7 rounded-lg bg-ice-light text-brand font-mono font-bold text-xs shrink-0 border border-brand/20">
+                    <span className="flex items-center justify-center size-7 bg-[#3b82f6] text-[#0f0f10] font-bold text-xs shrink-0 border border-[#0f0f10]">
                       {String(idx + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-sm sm:text-base text-heading font-medium">
+                    <span className="text-sm sm:text-base text-[#0f0f10] font-bold uppercase">
                       {area}
                     </span>
                   </li>
@@ -212,25 +193,19 @@ export default async function TeamMemberPage({
         <AuthorArticlesList posts={authorPosts} authorName={member.name} />
 
         {/* Scoping CTA Card */}
-        <div className="mt-16 p-8 sm:p-12 rounded-3xl bg-surface border border-hairline text-center space-y-6 shadow-sm">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ice-light text-brand mx-auto border border-brand/20">
-            <Sparkles className="w-6 h-6" />
-          </div>
-          <div className="space-y-2">
-            <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading">
-              Build Your Product with SolveMpire
-            </h3>
-            <p className="font-body text-sm sm:text-base text-body max-w-md mx-auto leading-relaxed">
-              Connect with our team to bring your hardware, embedded firmware, or connected platform from idea to market.
-            </p>
-          </div>
+        <div className="mt-16 p-8 sm:p-12 bg-[#3b82f6] border-2 border-[#0f0f10] shadow-brutal-lg text-center space-y-4">
+          <h3 className="font-display font-black text-2xl sm:text-4xl uppercase tracking-tight text-[#0f0f10]">
+            BUILD YOUR PRODUCT WITH SOLVEMPIRE
+          </h3>
+          <p className="font-mono text-xs sm:text-sm text-[#0f0f10]/80 max-w-md mx-auto leading-relaxed">
+            Connect with our engineering team to bring your hardware, embedded firmware, or connected platform from spec to deployment.
+          </p>
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-brand/25 transition-all"
+              className="btn-brutal bg-[#0f0f10] hover:bg-[#1d4ed8] text-[#f0f7ff] font-mono font-bold text-xs uppercase tracking-wider px-8 py-3.5 border-2 border-[#0f0f10] shadow-brutal inline-flex items-center gap-2"
             >
-              <span>Scope Your Project</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>&gt; START A PROJECT</span>
             </Link>
           </div>
         </div>

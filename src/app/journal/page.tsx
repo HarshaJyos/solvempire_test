@@ -25,8 +25,8 @@ import {
   Check,
   ChevronDown,
   ChevronUp,
-  User,
   ArrowLeft,
+  ArrowUpRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -196,43 +196,40 @@ export default function JournalPage() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading relative selection:bg-brand/15 selection:text-brand">
+    <div className="min-h-screen w-full flex flex-col bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] relative selection:bg-[#3b82f6] selection:text-white">
       <Header />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-16">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20">
         {/* Top Back Link */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors mb-6 group font-medium"
+          className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#0f0f10] hover:text-[#3b82f6] transition-colors mb-6 group"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          <span>Back to Home</span>
+          <span>&larr; BACK TO INDEX</span>
         </Link>
 
         {/* Hero Title Section */}
-        <div className="space-y-3 mb-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ice-light border border-brand/20 text-xs font-semibold text-brand">
+        <div className="space-y-4 mb-10 text-left border-b-2 border-[#0f0f10] pb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#3b82f6] text-white border-2 border-[#0f0f10] font-mono text-xs font-bold uppercase tracking-wider shadow-brutal-xs">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>SolveMpire Engineering Journal</span>
+            <span>SOLVEMPIRE ENGINEERING JOURNAL // DISPATCHES</span>
           </div>
 
-          <h1 className="font-display font-bold text-3xl sm:text-5xl text-heading tracking-tight leading-[1.15]">
-            Engineering in public. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-heading via-slate-700 to-brand">
-              Documenting the science &amp; systems.
-            </span>
+          <h1 className="font-display font-black text-4xl sm:text-6xl text-[#0f0f10] tracking-tight uppercase leading-[0.95]">
+            ENGINEERING IN PUBLIC. <br />
+            <span className="text-[#3b82f6]">DOCUMENTING THE SCIENCE &amp; SYSTEMS.</span>
           </h1>
 
-          <p className="font-body text-body text-sm sm:text-base max-w-2xl leading-relaxed">
-            Hardware teardowns, embedded firmware architecture, DFM principles, and deep dives into connected product engineering.
+          <p className="font-mono text-xs sm:text-sm text-[#3f3f46] max-w-3xl leading-relaxed font-medium">
+            Hardware teardowns, embedded firmware architecture, DFM principles, and deep dives into connected physical products engineered at SolveMpire.
           </p>
         </div>
 
-
-        {/* Breathable Floating Search Bar */}
+        {/* Search Bar */}
         <div className="relative mb-8 group">
-          <div className="relative flex items-center rounded-2xl bg-surface border border-hairline focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/15 transition-all duration-200 shadow-sm">
-            <div className="pl-4 sm:pl-5 text-muted group-focus-within:text-brand transition-colors">
+          <div className="relative flex items-center bg-white border-2 border-[#0f0f10] shadow-brutal-sm focus-within:shadow-brutal-md transition-all">
+            <div className="pl-4 sm:pl-5 text-[#0f0f10]">
               <Search className="w-5 h-5" />
             </div>
 
@@ -244,7 +241,7 @@ export default function JournalPage() {
                 setCurrentPage(1);
               }}
               placeholder="Search journals by keyword, architecture topic, or author..."
-              className="w-full h-14 sm:h-16 pl-3.5 pr-28 rounded-2xl bg-transparent text-heading placeholder-muted text-sm sm:text-base font-body focus:outline-none"
+              className="w-full h-14 sm:h-16 pl-3.5 pr-28 bg-transparent text-[#0f0f10] placeholder-[#71717a] font-mono text-xs sm:text-sm uppercase tracking-wide focus:outline-none"
             />
 
             <div className="absolute right-3.5 flex items-center gap-2">
@@ -254,25 +251,25 @@ export default function JournalPage() {
                     setSearchQuery("");
                     setCurrentPage(1);
                   }}
-                  className="p-1.5 rounded-lg text-muted hover:text-heading hover:bg-canvas transition-colors cursor-pointer"
+                  className="p-1.5 border border-[#0f0f10] bg-[#f7f6f2] text-[#0f0f10] hover:bg-[#0f0f10] hover:text-white transition-colors cursor-pointer"
                   aria-label="Clear search"
                 >
                   <X className="w-4 h-4" />
                 </button>
               )}
 
-              <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-surface-subtle border border-hairline text-[11px] font-mono text-muted">
-                {filteredPosts.length} {filteredPosts.length === 1 ? "result" : "results"}
+              <span className="hidden sm:inline-block px-2.5 py-1 bg-[#f0f7ff] border border-[#0f0f10] text-[11px] font-mono font-bold text-[#0f0f10]">
+                {filteredPosts.length} {filteredPosts.length === 1 ? "RESULT" : "RESULTS"}
               </span>
             </div>
           </div>
 
           {/* Mobile Active Filter Chips Tray */}
           {isFiltering && (
-            <div className="lg:hidden flex flex-wrap items-center gap-1.5 pt-3">
-              <span className="text-[11px] font-semibold text-muted mr-1">Active:</span>
+            <div className="lg:hidden flex flex-wrap items-center gap-1.5 pt-3 font-mono">
+              <span className="text-[11px] font-bold text-[#71717a] uppercase mr-1">ACTIVE:</span>
               {searchQuery.trim() && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#3b82f6] text-white border border-[#0f0f10] text-xs font-bold uppercase">
                   <span>&quot;{searchQuery}&quot;</span>
                   <button onClick={() => setSearchQuery("")} aria-label="Clear query filter">
                     <X className="w-3 h-3" />
@@ -283,9 +280,9 @@ export default function JournalPage() {
               {selectedAuthors.map((author) => (
                 <span
                   key={author}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-white border border-[#0f0f10] text-xs font-bold text-[#0f0f10] uppercase"
                 >
-                  <span>Author: {author}</span>
+                  <span>AUTHOR: {author}</span>
                   <button onClick={() => toggleAuthor(author)} aria-label={`Remove ${author} filter`}>
                     <X className="w-3 h-3" />
                   </button>
@@ -295,7 +292,7 @@ export default function JournalPage() {
               {selectedCategories.map((cat) => (
                 <span
                   key={cat}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#3b82f6] text-white border border-[#0f0f10] text-xs font-bold uppercase"
                 >
                   <span>{cat}</span>
                   <button onClick={() => toggleCategory(cat)} aria-label={`Remove ${cat} filter`}>
@@ -307,7 +304,7 @@ export default function JournalPage() {
               {selectedTypes.map((t) => (
                 <span
                   key={t}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#f7f6f2] text-[#0f0f10] border border-[#0f0f10] text-xs font-bold uppercase"
                 >
                   <span>{t}</span>
                   <button onClick={() => toggleType(t)} aria-label={`Remove ${t} filter`}>
@@ -319,7 +316,7 @@ export default function JournalPage() {
               {selectedTags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#f0f7ff] text-[#0f0f10] border border-[#0f0f10] text-xs font-bold uppercase"
                 >
                   <span>#{tag}</span>
                   <button onClick={() => toggleTag(tag)} aria-label={`Remove ${tag} tag`}>
@@ -331,54 +328,51 @@ export default function JournalPage() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="text-xs text-brand hover:underline font-semibold ml-1 py-1 cursor-pointer"
+                className="text-xs text-[#dc2626] font-bold uppercase hover:underline ml-1 py-1 cursor-pointer"
               >
-                Clear all
+                RESET ALL
               </button>
             </div>
           )}
         </div>
 
-        {/* Main Flipkart-Style 2-Column Grid Layout */}
+        {/* Main 2-Column Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
           {/* ========================================================= */}
-          {/* DESKTOP SIDEBAR FILTERS (Flipkart Style) */}
+          {/* DESKTOP SIDEBAR FILTERS */}
           {/* ========================================================= */}
-          <aside className="hidden lg:block lg:col-span-1 space-y-5 sticky top-6">
-            <div className="rounded-2xl bg-surface border border-hairline p-5 shadow-xs space-y-5">
+          <aside className="hidden lg:block lg:col-span-1 space-y-5 sticky top-28 font-mono">
+            <div className="bg-white border-2 border-[#0f0f10] p-5 shadow-brutal-md space-y-5">
               {/* Filter Panel Header */}
-              <div className="flex items-center justify-between pb-3.5 border-b border-hairline">
+              <div className="flex items-center justify-between pb-3.5 border-b-2 border-[#0f0f10]">
                 <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-brand" />
-                  <h2 className="font-display font-bold text-sm tracking-wider uppercase text-heading">
-                    Filters
+                  <Filter className="w-4 h-4 text-[#3b82f6]" />
+                  <h2 className="font-display font-black text-sm tracking-wider uppercase text-[#0f0f10]">
+                    INDEX FILTERS
                   </h2>
                 </div>
 
                 {isFiltering && (
                   <button
                     onClick={handleResetFilters}
-                    className="text-xs font-semibold text-brand hover:text-brand-hover uppercase tracking-wider transition-colors cursor-pointer"
+                    className="text-xs font-bold text-[#dc2626] hover:underline uppercase tracking-wider transition-colors cursor-pointer"
                   >
-                    Clear All
+                    CLEAR
                   </button>
                 )}
               </div>
 
-              {/* Applied Filter Chips (Tray) */}
+              {/* Applied Filter Chips */}
               {isFiltering && (
-                <div className="space-y-2 pb-3.5 border-b border-hairline">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
-                    Active Filters
+                <div className="space-y-2 pb-3.5 border-b border-[#0f0f10]/20">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#71717a]">
+                    ACTIVE SELECTIONS
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {searchQuery.trim() && (
-                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#3b82f6] text-white border border-[#0f0f10] text-[11px] font-bold uppercase">
                         <span>&quot;{searchQuery}&quot;</span>
-                        <button
-                          onClick={() => setSearchQuery("")}
-                          className="hover:text-brand-hover"
-                        >
+                        <button onClick={() => setSearchQuery("")}>
                           <X className="w-3 h-3" />
                         </button>
                       </span>
@@ -387,13 +381,10 @@ export default function JournalPage() {
                     {selectedAuthors.map((author) => (
                       <span
                         key={author}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#f0f7ff] text-[#0f0f10] border border-[#0f0f10] text-[11px] font-bold uppercase"
                       >
-                        <span>Author: {author}</span>
-                        <button
-                          onClick={() => toggleAuthor(author)}
-                          className="hover:text-brand-hover"
-                        >
+                        <span>{author}</span>
+                        <button onClick={() => toggleAuthor(author)}>
                           <X className="w-3 h-3" />
                         </button>
                       </span>
@@ -402,13 +393,10 @@ export default function JournalPage() {
                     {selectedCategories.map((cat) => (
                       <span
                         key={cat}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#3b82f6] text-white border border-[#0f0f10] text-[11px] font-bold uppercase"
                       >
                         <span>{cat}</span>
-                        <button
-                          onClick={() => toggleCategory(cat)}
-                          className="hover:text-brand-hover"
-                        >
+                        <button onClick={() => toggleCategory(cat)}>
                           <X className="w-3 h-3" />
                         </button>
                       </span>
@@ -417,13 +405,10 @@ export default function JournalPage() {
                     {selectedTypes.map((t) => (
                       <span
                         key={t}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#f7f6f2] text-[#0f0f10] border border-[#0f0f10] text-[11px] font-bold uppercase"
                       >
                         <span>{t}</span>
-                        <button
-                          onClick={() => toggleType(t)}
-                          className="hover:text-brand-hover"
-                        >
+                        <button onClick={() => toggleType(t)}>
                           <X className="w-3 h-3" />
                         </button>
                       </span>
@@ -432,13 +417,10 @@ export default function JournalPage() {
                     {selectedTags.map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-ice-light border border-brand/20 text-xs text-brand font-medium"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 bg-white text-[#0f0f10] border border-[#0f0f10] text-[11px] font-bold uppercase"
                       >
                         <span>#{tag}</span>
-                        <button
-                          onClick={() => toggleTag(tag)}
-                          className="hover:text-brand-hover"
-                        >
+                        <button onClick={() => toggleTag(tag)}>
                           <X className="w-3 h-3" />
                         </button>
                       </span>
@@ -449,24 +431,24 @@ export default function JournalPage() {
 
               {/* Filter Group: Authors */}
               {availableAuthors.length > 0 && (
-                <div className="space-y-3 pb-3.5 border-b border-hairline">
+                <div className="space-y-3 pb-3.5 border-b border-[#0f0f10]/20">
                   <button
                     type="button"
                     onClick={() => setAuthorOpen(!authorOpen)}
                     className="w-full flex items-center justify-between text-left group cursor-pointer"
                   >
-                    <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
-                      Authors
+                    <span className="font-display font-black text-xs uppercase tracking-wider text-[#0f0f10]">
+                      AUTHORS
                     </span>
                     {authorOpen ? (
-                      <ChevronUp className="w-4 h-4 text-muted" />
+                      <ChevronUp className="w-4 h-4 text-[#0f0f10]" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-muted" />
+                      <ChevronDown className="w-4 h-4 text-[#0f0f10]" />
                     )}
                   </button>
 
                   {authorOpen && (
-                    <div className="space-y-2 pt-1">
+                    <div className="space-y-1.5 pt-1">
                       {availableAuthors.map((author) => {
                         const isChecked = selectedAuthors.includes(author.name);
                         const count = getAuthorCount(author.name);
@@ -474,48 +456,22 @@ export default function JournalPage() {
                           <label
                             key={author.name}
                             onClick={() => toggleAuthor(author.name)}
-                            className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
+                            className="flex items-center justify-between p-1.5 hover:bg-[#f0f7ff] border border-transparent hover:border-[#0f0f10] transition-colors cursor-pointer select-none text-xs"
                           >
-                            <div className="flex items-center gap-2.5">
+                            <div className="flex items-center gap-2">
                               <div
                                 className={cn(
-                                  "w-4 h-4 rounded flex items-center justify-center border transition-all",
-                                  isChecked
-                                    ? "bg-brand border-brand text-white"
-                                    : "border-hairline bg-surface-subtle"
+                                  "w-3.5 h-3.5 border border-[#0f0f10] flex items-center justify-center transition-all",
+                                  isChecked ? "bg-[#3b82f6] text-white" : "bg-white"
                                 )}
                               >
-                                {isChecked && (
-                                  <Check className="w-3 h-3 stroke-[3]" />
-                                )}
+                                {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                               </div>
-                              <div className="relative w-5 h-5 rounded-full overflow-hidden bg-ice-light shrink-0 border border-hairline">
-                                {author.avatar ? (
-                                  <Image
-                                    src={author.avatar}
-                                    alt={author.name}
-                                    fill
-                                    className="object-cover"
-                                  />
-                                ) : (
-                                  <div className="w-full h-full flex items-center justify-center text-brand text-[9px] font-bold">
-                                    {author.name.charAt(0)}
-                                  </div>
-                                )}
-                              </div>
-                              <span
-                                className={cn(
-                                  isChecked
-                                    ? "text-heading font-semibold"
-                                    : "text-body"
-                                )}
-                              >
+                              <span className={cn(isChecked ? "text-[#0f0f10] font-bold" : "text-[#3f3f46]")}>
                                 {author.name}
                               </span>
                             </div>
-                            <span className="text-[11px] font-mono text-muted">
-                              ({count})
-                            </span>
+                            <span className="text-[10px] text-[#71717a]">[{count}]</span>
                           </label>
                         );
                       })}
@@ -525,24 +481,24 @@ export default function JournalPage() {
               )}
 
               {/* Filter Group: Categories */}
-              <div className="space-y-3 pb-3.5 border-b border-hairline">
+              <div className="space-y-3 pb-3.5 border-b border-[#0f0f10]/20">
                 <button
                   type="button"
                   onClick={() => setCategoryOpen(!categoryOpen)}
                   className="w-full flex items-center justify-between text-left group cursor-pointer"
                 >
-                  <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
-                    Categories
+                  <span className="font-display font-black text-xs uppercase tracking-wider text-[#0f0f10]">
+                    CATEGORIES
                   </span>
                   {categoryOpen ? (
-                    <ChevronUp className="w-4 h-4 text-muted" />
+                    <ChevronUp className="w-4 h-4 text-[#0f0f10]" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-muted" />
+                    <ChevronDown className="w-4 h-4 text-[#0f0f10]" />
                   )}
                 </button>
 
                 {categoryOpen && (
-                  <div className="space-y-2 pt-1">
+                  <div className="space-y-1.5 pt-1">
                     {availableCategories.map((cat) => {
                       const isChecked = selectedCategories.includes(cat);
                       const count = getCategoryCount(cat);
@@ -550,34 +506,22 @@ export default function JournalPage() {
                         <label
                           key={cat}
                           onClick={() => toggleCategory(cat)}
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
+                          className="flex items-center justify-between p-1.5 hover:bg-[#f0f7ff] border border-transparent hover:border-[#0f0f10] transition-colors cursor-pointer select-none text-xs"
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-2">
                             <div
                               className={cn(
-                                "w-4 h-4 rounded flex items-center justify-center border transition-all",
-                                isChecked
-                                  ? "bg-brand border-brand text-white"
-                                  : "border-hairline bg-surface-subtle"
+                                "w-3.5 h-3.5 border border-[#0f0f10] flex items-center justify-center transition-all",
+                                isChecked ? "bg-[#3b82f6] text-white" : "bg-white"
                               )}
                             >
-                              {isChecked && (
-                                <Check className="w-3 h-3 stroke-[3]" />
-                              )}
+                              {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
-                            <span
-                              className={cn(
-                                isChecked
-                                  ? "text-heading font-semibold"
-                                  : "text-body"
-                              )}
-                            >
+                            <span className={cn(isChecked ? "text-[#0f0f10] font-bold" : "text-[#3f3f46]")}>
                               {cat}
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono text-muted">
-                            ({count})
-                          </span>
+                          <span className="text-[10px] text-[#71717a]">[{count}]</span>
                         </label>
                       );
                     })}
@@ -586,24 +530,24 @@ export default function JournalPage() {
               </div>
 
               {/* Filter Group: Article Type */}
-              <div className="space-y-3 pb-3.5 border-b border-hairline">
+              <div className="space-y-3 pb-3.5 border-b border-[#0f0f10]/20">
                 <button
                   type="button"
                   onClick={() => setTypeOpen(!typeOpen)}
                   className="w-full flex items-center justify-between text-left group cursor-pointer"
                 >
-                  <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
-                    Article Type
+                  <span className="font-display font-black text-xs uppercase tracking-wider text-[#0f0f10]">
+                    SPEC TYPE
                   </span>
                   {typeOpen ? (
-                    <ChevronUp className="w-4 h-4 text-muted" />
+                    <ChevronUp className="w-4 h-4 text-[#0f0f10]" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-muted" />
+                    <ChevronDown className="w-4 h-4 text-[#0f0f10]" />
                   )}
                 </button>
 
                 {typeOpen && (
-                  <div className="space-y-2 pt-1">
+                  <div className="space-y-1.5 pt-1">
                     {availableTypes.map((t) => {
                       const isChecked = selectedTypes.includes(t);
                       const count = getTypeCount(t);
@@ -611,34 +555,22 @@ export default function JournalPage() {
                         <label
                           key={t}
                           onClick={() => toggleType(t)}
-                          className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas transition-colors cursor-pointer select-none text-xs"
+                          className="flex items-center justify-between p-1.5 hover:bg-[#f0f7ff] border border-transparent hover:border-[#0f0f10] transition-colors cursor-pointer select-none text-xs"
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-2">
                             <div
                               className={cn(
-                                "w-4 h-4 rounded flex items-center justify-center border transition-all",
-                                isChecked
-                                  ? "bg-brand border-brand text-white"
-                                  : "border-hairline bg-surface-subtle"
+                                "w-3.5 h-3.5 border border-[#0f0f10] flex items-center justify-center transition-all",
+                                isChecked ? "bg-[#3b82f6] text-white" : "bg-white"
                               )}
                             >
-                              {isChecked && (
-                                <Check className="w-3 h-3 stroke-[3]" />
-                              )}
+                              {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
-                            <span
-                              className={cn(
-                                isChecked
-                                  ? "text-heading font-semibold"
-                                  : "text-body"
-                              )}
-                            >
+                            <span className={cn(isChecked ? "text-[#0f0f10] font-bold" : "text-[#3f3f46]")}>
                               {t}
                             </span>
                           </div>
-                          <span className="text-[11px] font-mono text-muted">
-                            ({count})
-                          </span>
+                          <span className="text-[10px] text-[#71717a]">[{count}]</span>
                         </label>
                       );
                     })}
@@ -654,18 +586,18 @@ export default function JournalPage() {
                     onClick={() => setTagsOpen(!tagsOpen)}
                     className="w-full flex items-center justify-between text-left group cursor-pointer"
                   >
-                    <span className="font-display font-semibold text-xs uppercase tracking-wider text-heading">
-                      Topics &amp; Tags
+                    <span className="font-display font-black text-xs uppercase tracking-wider text-[#0f0f10]">
+                      TAGS &amp; TOPICS
                     </span>
                     {tagsOpen ? (
-                      <ChevronUp className="w-4 h-4 text-muted" />
+                      <ChevronUp className="w-4 h-4 text-[#0f0f10]" />
                     ) : (
-                      <ChevronDown className="w-4 h-4 text-muted" />
+                      <ChevronDown className="w-4 h-4 text-[#0f0f10]" />
                     )}
                   </button>
 
                   {tagsOpen && (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
+                    <div className="flex flex-wrap gap-1 pt-1">
                       {availableTags.map(({ tag, count }) => {
                         const isChecked = selectedTags.includes(tag);
                         return (
@@ -673,16 +605,13 @@ export default function JournalPage() {
                             key={tag}
                             onClick={() => toggleTag(tag)}
                             className={cn(
-                              "px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer",
+                              "px-2 py-1 text-[11px] font-bold uppercase transition-all cursor-pointer border",
                               isChecked
-                                ? "bg-brand text-white font-semibold shadow-xs"
-                                : "bg-surface text-body border border-hairline hover:bg-canvas hover:text-heading"
+                                ? "bg-[#3b82f6] text-white border-[#0f0f10]"
+                                : "bg-white text-[#0f0f10] border-[#0f0f10]/30 hover:border-[#0f0f10]"
                             )}
                           >
-                            #{tag}{" "}
-                            <span className="opacity-60 text-[10px]">
-                              ({count})
-                            </span>
+                            #{tag} <span className="opacity-60 text-[9px]">[{count}]</span>
                           </button>
                         );
                       })}
@@ -697,84 +626,32 @@ export default function JournalPage() {
           {/* MAIN RESULTS COLUMN */}
           {/* ========================================================= */}
           <div className="lg:col-span-3 space-y-6">
-            {/* Responsive Action Toolbar with Clean Hierarchy */}
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-surface border border-hairline shadow-xs space-y-3 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
-              {/* Mobile View: Clean 2-Button Action Row */}
-              <div className="flex items-center gap-2.5 sm:hidden">
-                <button
-                  type="button"
-                  onClick={() => setIsMobileFilterOpen(true)}
-                  className="flex-1 inline-flex items-center justify-center gap-2 h-10 px-3.5 rounded-xl bg-surface border border-hairline text-xs font-semibold text-heading hover:border-brand/50 active:scale-95 transition-all cursor-pointer shadow-xs"
-                >
-                  <Filter className="w-3.5 h-3.5 text-brand" />
-                  <span>Filters</span>
-                  {totalActiveFilterCount > 0 && (
-                    <span className="w-5 h-5 rounded-full bg-brand text-white text-[10px] font-bold flex items-center justify-center">
-                      {totalActiveFilterCount}
-                    </span>
-                  )}
-                </button>
-
-                <div className="relative flex-1">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => {
-                      setSortBy(e.target.value as JournalSortOption);
-                      setCurrentPage(1);
-                    }}
-                    aria-label="Sort journal entries"
-                    className="w-full h-10 pl-3 pr-8 rounded-xl bg-surface-subtle border border-hairline text-xs font-medium text-heading focus:outline-none focus:border-brand appearance-none cursor-pointer"
-                  >
-                    <option value="newest" className="bg-white text-heading">
-                      Newest
-                    </option>
-                    <option value="oldest" className="bg-white text-heading">
-                      Oldest
-                    </option>
-                    <option value="shortest" className="bg-white text-heading">
-                      Quick Read
-                    </option>
-                    <option value="longest" className="bg-white text-heading">
-                      Deep Read
-                    </option>
-                    <option value="alphabetical" className="bg-white text-heading">
-                      Title (A-Z)
-                    </option>
-                  </select>
-                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" />
-                </div>
-              </div>
-
-              {/* Status Counter & Reset Link */}
-              <div className="flex items-center justify-between text-xs text-muted px-1 sm:px-0">
-                <p>
-                  Showing{" "}
-                  <span className="font-semibold text-heading">
-                    {paginatedPosts.length}
-                  </span>{" "}
-                  of{" "}
-                  <span className="font-semibold text-heading">
-                    {filteredPosts.length}
-                  </span>{" "}
-                  {filteredPosts.length === 1 ? "article" : "articles"}
-                </p>
-
-                {isFiltering && (
-                  <button
-                    type="button"
-                    onClick={handleResetFilters}
-                    className="text-xs text-brand hover:underline font-medium cursor-pointer sm:hidden"
-                  >
-                    Reset filters
-                  </button>
+            {/* Action Toolbar */}
+            <div className="p-3.5 sm:p-4 bg-white border-2 border-[#0f0f10] shadow-brutal-sm flex flex-wrap items-center justify-between gap-3 font-mono">
+              {/* Mobile Filter Button */}
+              <button
+                type="button"
+                onClick={() => setIsMobileFilterOpen(true)}
+                className="lg:hidden inline-flex items-center gap-2 px-3 py-2 bg-white border-2 border-[#0f0f10] text-xs font-bold text-[#0f0f10] shadow-brutal-xs"
+              >
+                <Filter className="w-3.5 h-3.5 text-[#3b82f6]" />
+                <span>FILTERS</span>
+                {totalActiveFilterCount > 0 && (
+                  <span className="px-1.5 py-0.2 bg-[#3b82f6] text-white text-[10px]">
+                    {totalActiveFilterCount}
+                  </span>
                 )}
+              </button>
+
+              {/* Status Counter */}
+              <div className="text-xs text-[#71717a] uppercase font-bold">
+                SHOWING <span className="text-[#0f0f10]">{paginatedPosts.length}</span> OF{" "}
+                <span className="text-[#0f0f10]">{filteredPosts.length}</span> SPECIFICATIONS
               </div>
 
               {/* Desktop Sort Control */}
-              <div className="hidden sm:flex items-center gap-2.5">
-                <span className="text-xs font-semibold text-muted uppercase tracking-wider">
-                  Sort By:
-                </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-[#71717a] uppercase">SORT:</span>
                 <div className="relative">
                   <select
                     value={sortBy}
@@ -783,92 +660,77 @@ export default function JournalPage() {
                       setCurrentPage(1);
                     }}
                     aria-label="Sort journal entries"
-                    className="h-9 pl-3.5 pr-8 rounded-xl bg-surface-subtle border border-hairline text-xs font-medium text-heading focus:outline-none focus:border-brand appearance-none cursor-pointer hover:border-slate-300 transition-colors"
+                    className="h-8 pl-2 pr-7 bg-[#f0f7ff] border border-[#0f0f10] text-xs font-bold text-[#0f0f10] uppercase focus:outline-none appearance-none cursor-pointer"
                   >
-                    <option value="newest" className="bg-white text-heading">
-                      Newest First
-                    </option>
-                    <option value="oldest" className="bg-white text-heading">
-                      Oldest First
-                    </option>
-                    <option value="shortest" className="bg-white text-heading">
-                      Reading Time (Shortest)
-                    </option>
-                    <option value="longest" className="bg-white text-heading">
-                      Reading Time (Longest)
-                    </option>
-                    <option value="alphabetical" className="bg-white text-heading">
-                      Title (A-Z)
-                    </option>
+                    <option value="newest">NEWEST FIRST</option>
+                    <option value="oldest">OLDEST FIRST</option>
+                    <option value="shortest">QUICK READ</option>
+                    <option value="longest">DEEP DIVE</option>
+                    <option value="alphabetical">TITLE (A-Z)</option>
                   </select>
-                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted pointer-events-none" />
+                  <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-[#0f0f10] pointer-events-none" />
                 </div>
               </div>
             </div>
 
-            {/* Featured Spotlight Card (Only on Page 1 without Active Search/Filters) */}
+            {/* Featured Spotlight Card */}
             {featuredPost && (
-              <div className="p-7 sm:p-9 rounded-3xl bg-surface border border-hairline hover:border-brand/40 shadow-sm relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-80 h-80 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="relative z-10 space-y-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="px-3 py-1 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20 whitespace-nowrap">
-                      {featuredPost.category}
-                    </span>
-                    <span className="px-3 py-1 rounded-full bg-surface-subtle text-muted text-xs font-medium border border-hairline whitespace-nowrap">
-                      {featuredPost.type}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand bg-brand/10 px-3 py-1 rounded-full border border-brand/20 whitespace-nowrap">
-                      <Sparkles className="w-3.5 h-3.5 shrink-0" />
-                      <span>Featured Spotlight</span>
+              <div className="p-6 sm:p-8 bg-white border-2 border-[#0f0f10] shadow-brutal-lg relative overflow-hidden group">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b-2 border-[#0f0f10]">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="px-2.5 py-0.5 bg-[#3b82f6] text-white text-xs font-mono font-bold uppercase border border-[#0f0f10]">
+                        {featuredPost.category}
+                      </span>
+                      <span className="px-2.5 py-0.5 bg-[#f7f6f2] text-[#0f0f10] text-xs font-mono font-bold uppercase border border-[#0f0f10]">
+                        {featuredPost.type}
+                      </span>
+                    </div>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-mono font-black text-[#0f0f10] bg-[#f5c518] px-2.5 py-0.5 border border-[#0f0f10] uppercase">
+                      <Sparkles className="w-3.5 h-3.5 fill-[#0f0f10]" />
+                      <span>FEATURED SPOTLIGHT</span>
                     </span>
                   </div>
 
-                  <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-heading group-hover:text-brand transition-colors leading-tight">
+                  <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl text-[#0f0f10] group-hover:text-[#3b82f6] transition-colors leading-tight uppercase tracking-tight">
                     <Link href={`/journal/${featuredPost.slug}`}>
                       {featuredPost.title}
                     </Link>
                   </h2>
 
-                  <p className="font-body text-body text-base sm:text-lg leading-relaxed max-w-3xl">
+                  <p className="text-[#3f3f46] text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
                     {featuredPost.excerpt}
                   </p>
 
-                  <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-hairline text-xs sm:text-sm text-muted">
-                    <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-hairline shrink-0 bg-ice-light">
+                  <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t-2 border-[#0f0f10]/10 text-xs font-mono">
+                    <div className="flex items-center gap-2.5">
+                      <div className="relative w-8 h-8 overflow-hidden border border-[#0f0f10] shrink-0 bg-[#f0f7ff]">
                         {featuredPost.author.avatar ? (
                           <Image
                             src={featuredPost.author.avatar}
                             alt={featuredPost.author.name}
                             fill
-                            className="object-cover"
+                            className="object-cover grayscale group-hover:grayscale-0 transition-all"
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center text-brand text-xs font-bold uppercase">
+                          <div className="w-full h-full flex items-center justify-center text-[#0f0f10] text-xs font-black uppercase">
                             {featuredPost.author.name.charAt(0)}
                           </div>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 whitespace-nowrap">
-                        <Link
-                          href="/team/pavan-duggirala"
-                          className="text-heading font-medium hover:text-brand transition-colors whitespace-nowrap"
-                        >
-                          {featuredPost.author.name}
-                        </Link>
-                        <span className="opacity-40">•</span>
-                        <span className="text-brand font-medium whitespace-nowrap">{featuredPost.readTime}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[#0f0f10] font-bold">{featuredPost.author.name}</span>
+                        <span className="text-[#71717a]">•</span>
+                        <span className="text-[#3b82f6] font-bold">{featuredPost.readTime}</span>
                       </div>
                     </div>
 
                     <Link
                       href={`/journal/${featuredPost.slug}`}
-                      className="inline-flex items-center gap-1.5 font-display font-bold text-xs sm:text-sm text-brand group-hover:translate-x-1 transition-transform whitespace-nowrap shrink-0 ml-auto sm:ml-0"
+                      className="inline-flex items-center gap-1.5 font-mono font-bold text-xs uppercase text-[#0f0f10] group-hover:text-[#3b82f6] transition-colors"
                     >
-                      <span>Read Entry</span>
-                      <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span>READ WHITE PAPER</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -877,33 +739,29 @@ export default function JournalPage() {
 
             {/* Articles Grid */}
             {paginatedPosts.length > 0 ? (
-              <div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                id="journal-grid"
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="journal-grid">
                 {paginatedPosts.map((post) => (
                   <JournalCard key={post.id} post={post} />
                 ))}
               </div>
             ) : (
-              <div className="py-16 px-6 text-center rounded-3xl bg-surface border border-hairline space-y-4 shadow-xs">
-                <div className="w-12 h-12 rounded-full bg-surface-subtle border border-hairline flex items-center justify-center text-muted mx-auto">
+              <div className="py-16 px-6 text-center bg-white border-2 border-[#0f0f10] shadow-brutal-md space-y-4 font-mono">
+                <div className="w-12 h-12 border-2 border-[#0f0f10] bg-[#f0f7ff] flex items-center justify-center text-[#0f0f10] mx-auto shadow-brutal-xs">
                   <Search className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <p className="font-display text-lg text-heading font-bold">
-                    No matching journal entries found
+                  <p className="font-display font-black text-xl text-[#0f0f10] uppercase">
+                    NO MATCHING SPECIFICATIONS FOUND
                   </p>
-                  <p className="font-body text-sm text-body max-w-md mx-auto leading-relaxed">
-                    We couldn’t find any entries matching your filters. Try
-                    adjusting your search query or clearing selected filters.
+                  <p className="text-xs text-[#71717a] max-w-md mx-auto">
+                    Try adjusting search query or clearing selected author and topic filters.
                   </p>
                 </div>
                 <button
                   onClick={handleResetFilters}
-                  className="px-5 py-2.5 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover transition-all cursor-pointer shadow-md shadow-brand/20"
+                  className="px-5 py-2.5 bg-[#3b82f6] text-white border-2 border-[#0f0f10] font-mono text-xs font-bold uppercase shadow-brutal-xs hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] cursor-pointer"
                 >
-                  Clear All Filters
+                  RESET ALL FILTERS
                 </button>
               </div>
             )}
@@ -926,193 +784,67 @@ export default function JournalPage() {
           </div>
         </div>
 
-        {/* ========================================================= */}
-        {/* MOBILE SLIDE-OVER FILTER DRAWER */}
-        {/* ========================================================= */}
+        {/* Mobile Slide-Over Filter Drawer */}
         {isMobileFilterOpen && (
-          <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/40 backdrop-blur-sm lg:hidden animate-fade-in-scale">
-            <div
-              className="fixed inset-0"
-              onClick={() => setIsMobileFilterOpen(false)}
-            />
-            <div className="relative z-10 w-full max-h-[85vh] overflow-y-auto rounded-t-3xl bg-surface border-t border-hairline p-6 space-y-6 shadow-2xl">
+          <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/60 font-mono lg:hidden animate-fade-in-scale">
+            <div className="fixed inset-0" onClick={() => setIsMobileFilterOpen(false)} />
+            <div className="relative z-10 w-full max-h-[85vh] overflow-y-auto bg-white border-t-4 border-[#0f0f10] p-6 space-y-6">
               {/* Drawer Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-hairline">
+              <div className="flex items-center justify-between pb-4 border-b-2 border-[#0f0f10]">
                 <div className="flex items-center gap-2">
-                  <Filter className="w-4 h-4 text-brand" />
-                  <h3 className="font-display font-bold text-base text-heading">
-                    Filters
+                  <Filter className="w-4 h-4 text-[#3b82f6]" />
+                  <h3 className="font-display font-black text-base text-[#0f0f10] uppercase">
+                    INDEX FILTERS
                   </h3>
-                  {totalActiveFilterCount > 0 && (
-                    <span className="px-2 py-0.5 rounded-full bg-ice-light text-brand text-xs font-bold border border-brand/20">
-                      {totalActiveFilterCount} Active
-                    </span>
-                  )}
                 </div>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="p-1.5 rounded-lg text-muted hover:text-heading"
+                  className="p-1.5 border border-[#0f0f10] bg-[#f7f6f2] text-[#0f0f10]"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Mobile Drawer: Authors */}
-              {availableAuthors.length > 0 && (
-                <div className="space-y-3">
-                  <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
-                    Authors
-                  </h4>
-                  <div className="space-y-2">
-                    {availableAuthors.map((author) => {
-                      const isChecked = selectedAuthors.includes(author.name);
-                      const count = getAuthorCount(author.name);
-                      return (
-                        <label
-                          key={author.name}
-                          onClick={() => toggleAuthor(author.name)}
-                          className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <div
-                              className={cn(
-                                "w-4 h-4 rounded flex items-center justify-center border",
-                                isChecked
-                                  ? "bg-brand border-brand text-white"
-                                  : "border-hairline bg-surface"
-                              )}
-                            >
-                              {isChecked && (
-                                <Check className="w-3 h-3 stroke-[3]" />
-                              )}
-                            </div>
-                            <span
-                              className={
-                                isChecked
-                                  ? "text-heading font-bold"
-                                  : "text-body"
-                              }
-                            >
-                              {author.name}
-                            </span>
-                          </div>
-                          <span className="text-[11px] font-mono text-muted">
-                            ({count})
-                          </span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-              {/* Mobile Drawer: Categories */}
-              <div className="space-y-3">
-                <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
-                  Categories
+              {/* Drawer: Categories */}
+              <div className="space-y-2">
+                <h4 className="font-display font-black text-xs uppercase text-[#71717a]">
+                  CATEGORIES
                 </h4>
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   {availableCategories.map((cat) => {
                     const isChecked = selectedCategories.includes(cat);
-                    const count = getCategoryCount(cat);
                     return (
-                      <label
+                      <button
                         key={cat}
                         onClick={() => toggleCategory(cat)}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
+                        className={cn(
+                          "w-full flex items-center justify-between p-2.5 border-2 text-xs font-bold uppercase cursor-pointer",
+                          isChecked
+                            ? "bg-[#3b82f6] text-white border-[#0f0f10]"
+                            : "bg-white text-[#0f0f10] border-[#0f0f10]/30"
+                        )}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <div
-                            className={cn(
-                              "w-4 h-4 rounded flex items-center justify-center border",
-                              isChecked
-                                ? "bg-brand border-brand text-white"
-                                : "border-hairline bg-surface"
-                            )}
-                          >
-                            {isChecked && (
-                              <Check className="w-3 h-3 stroke-[3]" />
-                            )}
-                          </div>
-                          <span
-                            className={
-                              isChecked
-                                ? "text-heading font-bold"
-                                : "text-body"
-                            }
-                          >
-                            {cat}
-                          </span>
-                        </div>
-                        <span className="text-[11px] font-mono text-muted">
-                          ({count})
-                        </span>
-                      </label>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Mobile Drawer: Article Types */}
-              <div className="space-y-3">
-                <h4 className="font-display font-semibold text-xs uppercase tracking-wider text-muted">
-                  Article Type
-                </h4>
-                <div className="space-y-2">
-                  {availableTypes.map((t) => {
-                    const isChecked = selectedTypes.includes(t);
-                    const count = getTypeCount(t);
-                    return (
-                      <label
-                        key={t}
-                        onClick={() => toggleType(t)}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-surface-subtle border border-hairline cursor-pointer text-xs"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <div
-                            className={cn(
-                              "w-4 h-4 rounded flex items-center justify-center border",
-                              isChecked
-                                ? "bg-brand border-brand text-white"
-                                : "border-hairline bg-surface"
-                            )}
-                          >
-                            {isChecked && (
-                              <Check className="w-3 h-3 stroke-[3]" />
-                            )}
-                          </div>
-                          <span
-                            className={
-                              isChecked
-                                ? "text-heading font-bold"
-                                : "text-body"
-                            }
-                          >
-                            {t}
-                          </span>
-                        </div>
-                        <span className="text-[11px] font-mono text-muted">
-                          ({count})
-                        </span>
-                      </label>
+                        <span>{cat}</span>
+                        <span>[{getCategoryCount(cat)}]</span>
+                      </button>
                     );
                   })}
                 </div>
               </div>
 
               {/* Drawer Actions */}
-              <div className="pt-4 border-t border-hairline flex items-center gap-3">
+              <div className="pt-4 border-t-2 border-[#0f0f10] flex items-center gap-3">
                 <button
                   onClick={handleResetFilters}
-                  className="flex-1 py-3 rounded-xl bg-surface-subtle border border-hairline text-xs font-semibold text-muted hover:text-heading cursor-pointer"
+                  className="flex-1 py-3 bg-[#f7f6f2] border-2 border-[#0f0f10] text-xs font-bold uppercase text-[#0f0f10] cursor-pointer"
                 >
-                  Clear All
+                  CLEAR
                 </button>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="flex-1 py-3 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover cursor-pointer shadow-md shadow-brand/20"
+                  className="flex-1 py-3 bg-[#3b82f6] border-2 border-[#0f0f10] text-white text-xs font-bold uppercase cursor-pointer shadow-brutal-xs"
                 >
-                  Show ({filteredPosts.length})
+                  APPLY ({filteredPosts.length})
                 </button>
               </div>
             </div>
@@ -1120,24 +852,25 @@ export default function JournalPage() {
         )}
 
         {/* Engineering Scoping CTA Section */}
-        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-surface border border-hairline text-center space-y-6 shadow-sm">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-ice-light text-brand mx-auto border border-brand/20">
-            <Sparkles className="w-6 h-6" />
+        <div className="mt-20 p-8 sm:p-12 bg-white border-2 border-[#0f0f10] shadow-brutal-lg text-center space-y-6">
+          <div className="inline-flex items-center justify-center px-3 py-1 bg-[#3b82f6] text-white border-2 border-[#0f0f10] font-mono text-xs font-bold uppercase tracking-wider shadow-brutal-xs mx-auto">
+            <Sparkles className="w-3.5 h-3.5 mr-1" />
+            <span>SOLVEMPIRE RAPID SCOPING</span>
           </div>
           <div className="space-y-2">
-            <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading">
-              Have an Engineering Project to Build?
+            <h3 className="font-display font-black text-2xl sm:text-4xl text-[#0f0f10] uppercase tracking-tight">
+              HAVE AN ENGINEERING PROJECT TO BUILD?
             </h3>
-            <p className="font-body text-sm sm:text-base text-body max-w-md mx-auto leading-relaxed">
-              Connect directly with our engineering architects to scope your CAD, custom PCB, firmware, or connected platform.
+            <p className="font-mono text-xs sm:text-sm text-[#3f3f46] max-w-xl mx-auto leading-relaxed">
+              Connect directly with our engineering architects to scope your custom enclosure CAD, multi-layer PCB, embedded firmware, or IoT platform.
             </p>
           </div>
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover active:bg-blue-800 text-white font-semibold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-lg shadow-brand/25 transition-all"
+              className="inline-flex items-center gap-2 bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-mono font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 border-2 border-[#0f0f10] shadow-brutal-md active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
             >
-              <span>Scope Your Project in 60s</span>
+              <span>SCOPE YOUR PROJECT IN 60S</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -1148,4 +881,3 @@ export default function JournalPage() {
     </div>
   );
 }
-

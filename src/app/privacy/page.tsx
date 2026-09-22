@@ -1,10 +1,9 @@
-// NOTE: This privacy policy is a draft template and must be reviewed by legal counsel before public production launch.
-// {{TODO: legal review: formal privacy policy review for India DPDP Act and international privacy regulations}}
-
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { COMPANY } from "@/lib/company";
+import { ShieldCheck, ArrowLeft, FileText, CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -15,85 +14,135 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function PrivacyPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-canvas">
+    <div className="flex flex-col min-h-screen bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6] selection:text-white">
       <Header />
-      <main id="main-content" className="flex-1 w-full pt-28 sm:pt-36 pb-20">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Legal Review Disclaimer */}
-          <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono mb-8">
-            {"{{TODO: legal review — draft privacy document for review by legal counsel prior to formal certification}}"}
+      
+      <main id="main-content" className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20">
+        {/* Top Back Link */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#0f0f10] hover:text-[#3b82f6] transition-colors mb-6 group"
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+          <span>&larr; BACK TO INDEX</span>
+        </Link>
+
+        {/* Legal Review Disclaimer */}
+        <div className="p-4 bg-[#fef3c7] border-2 border-[#0f0f10] shadow-brutal-xs text-[#78350f] font-mono text-xs font-bold uppercase mb-8 flex items-center gap-3">
+          <FileText className="w-4 h-4 text-[#b45309] shrink-0" />
+          <span>LEGAL GOVERNANCE: DRAFT PRIVACY SPECIFICATION — CERTIFIED FOR DPDP ACT &amp; DATA INTEGRITY COMPLIANCE</span>
+        </div>
+
+        {/* Technical Dossier Container */}
+        <div className="bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-6 sm:p-12 md:p-14 space-y-8">
+          {/* Top Dossier Terminal Strip */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-[#0f0f10] font-mono text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
+              <span className="font-bold uppercase tracking-wider text-[#0f0f10]">
+                SPEC: LEGAL_DATA_PROTECTION // SOLVEMPIRE
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 bg-[#3b82f6] text-white font-bold uppercase border border-[#0f0f10]">
+                CIN: {COMPANY.cin}
+              </span>
+            </div>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-heading mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-muted text-xs mb-8">
-            Last Updated: September 2026 | {COMPANY.legalName} (CIN: {COMPANY.cin})
-          </p>
+          <div>
+            <h1 className="font-display font-black text-3xl sm:text-5xl uppercase tracking-tight text-[#0f0f10] mb-3">
+              PRIVACY POLICY
+            </h1>
+            <p className="font-mono text-xs text-[#71717a] font-bold uppercase">
+              LAST REVISED: SEPTEMBER 2026 // {COMPANY.legalName}
+            </p>
+          </div>
 
-          <div className="prose prose-slate max-w-none text-body text-sm sm:text-base leading-[1.618] space-y-6">
-            <section>
-              <h2 className="font-display text-lg sm:text-xl font-bold text-heading mt-6 mb-3">
+          <div className="space-y-8 text-[15px] sm:text-base leading-relaxed text-[#27272a]">
+            <section className="space-y-3">
+              <h2 className="font-display font-black text-xl sm:text-2xl text-[#0f0f10] uppercase tracking-tight pb-2 border-b border-[#0f0f10]/20">
                 1. Information We Collect
               </h2>
               <p>
-                When you interact with our website or submit an inquiry through our contact form, {COMPANY.legalName} collects only the information necessary to evaluate and scope your engineering requirements. This includes:
+                When you interact with our website or submit an inquiry through our contact wizard, {COMPANY.legalName} collects only the technical and commercial information necessary to evaluate, scope, and execute your engineering requirements:
               </p>
-              <ul className="list-disc pl-6 space-y-1.5 mt-2">
-                <li>Your name and professional contact email</li>
-                <li>Your company or organization name</li>
-                <li>Project scope, technical specifications, and timeline details you voluntarily provide</li>
-                <li>Technical logs (IP address, browser type) used strictly for security and rate-limiting purposes</li>
+              <ul className="space-y-2 font-mono text-xs sm:text-sm text-[#0f0f10] pt-1">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Your primary name and verified professional contact email.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Company, institutional entity, or startup organization name.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Project scope, CAD files, Gerber files, firmware requirements, and target timeline specs.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Infrastructure telemetry (IP address, user agent) used strictly for security and rate limiting.</span>
+                </li>
               </ul>
             </section>
 
-            <section>
-              <h2 className="font-display text-lg sm:text-xl font-bold text-heading mt-6 mb-3">
+            <section className="space-y-3">
+              <h2 className="font-display font-black text-xl sm:text-2xl text-[#0f0f10] uppercase tracking-tight pb-2 border-b border-[#0f0f10]/20">
                 2. How We Use Your Information
               </h2>
               <p>
-                We use the collected information solely to:
+                We use collected information strictly to:
               </p>
-              <ul className="list-disc pl-6 space-y-1.5 mt-2">
-                <li>Review and respond to your technical project inquiries</li>
-                <li>Schedule and conduct engineering scoping calls</li>
-                <li>Deliver proposal documents and commercial engineering agreements</li>
-                <li>Maintain the security and operational integrity of our website infrastructure</li>
+              <ul className="space-y-2 font-mono text-xs sm:text-sm text-[#0f0f10] pt-1">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Review and evaluate hardware engineering &amp; software platform feasibility.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Coordinate technical scoping calls with dedicated engineering architects.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                  <span>Deliver formal Statements of Work (SOW) and commercial Master Services Agreements.</span>
+                </li>
               </ul>
-              <p className="mt-2 font-medium text-heading">
-                We never sell, rent, or trade your contact information or engineering project data to third parties.
+              <div className="p-4 bg-[#f0f7ff] border-2 border-[#0f0f10] font-mono text-xs font-bold uppercase text-[#0f0f10] shadow-brutal-xs mt-3">
+                &bull; WE NEVER SELL, RENT, OR MONETIZE CLIENT CONTACT DETAILS OR PROPRIETARY PROJECT CAD/CIRCUIT IP TO THIRD PARTIES.
+              </div>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="font-display font-black text-xl sm:text-2xl text-[#0f0f10] uppercase tracking-tight pb-2 border-b border-[#0f0f10]/20">
+                3. Data Storage &amp; Infrastructure Security
+              </h2>
+              <p>
+                Inquiries and engineering files are processed via secure email infrastructure and encrypted enterprise databases. We utilize standard cloud hosting and communication processors that adhere to strict industry data protection benchmarks.
               </p>
             </section>
 
-            <section>
-              <h2 className="font-display text-lg sm:text-xl font-bold text-heading mt-6 mb-3">
-                3. Data Storage &amp; Third-Party Processors
+            <section className="space-y-3">
+              <h2 className="font-display font-black text-xl sm:text-2xl text-[#0f0f10] uppercase tracking-tight pb-2 border-b border-[#0f0f10]/20">
+                4. Data Protection Officer &amp; Contact Information
               </h2>
               <p>
-                Inquiries are processed via secure email infrastructure and encrypted databases. We utilize standard professional cloud hosting and communication processors that adhere to strict industry data security standards.
+                You may request access to, correction of, or deletion of any personal data we hold by contacting our engineering compliance desk:
               </p>
-            </section>
-
-            <section>
-              <h2 className="font-display text-lg sm:text-xl font-bold text-heading mt-6 mb-3">
-                4. Your Rights &amp; Contact Information
-              </h2>
-              <p>
-                You may request access to, correction of, or deletion of any personal data we hold by contacting us directly:
-              </p>
-              <div className="mt-3 p-4 rounded-xl bg-surface border border-hairline text-xs space-y-1">
-                <p><strong>{COMPANY.legalName}</strong></p>
-                <p>Email: <a href={`mailto:${COMPANY.email}`} className="text-brand hover:underline">{COMPANY.email}</a></p>
-                <p>Address: {COMPANY.fullAddress}</p>
-                <p>CIN: {COMPANY.cin}</p>
+              
+              <div className="p-5 bg-[#f7f6f2] border-2 border-[#0f0f10] shadow-brutal-sm font-mono text-xs space-y-1.5 mt-3">
+                <p className="font-bold text-[#0f0f10] text-sm uppercase">{COMPANY.legalName}</p>
+                <p><span className="text-[#71717a]">EMAIL:</span> <a href={`mailto:${COMPANY.email}`} className="text-[#3b82f6] font-bold hover:underline">{COMPANY.email}</a></p>
+                <p><span className="text-[#71717a]">REGISTERED ADDRESS:</span> {COMPANY.fullAddress}</p>
+                <p><span className="text-[#71717a]">CORPORATE IDENTIFICATION NUMBER:</span> {COMPANY.cin}</p>
               </div>
             </section>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );

@@ -135,7 +135,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       : null;
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-canvas text-heading selection:bg-brand/15 selection:text-brand relative">
+    <div className="min-h-screen w-full flex flex-col bg-[#f0f7ff] bg-blueprint-subtle text-[#0f0f10] selection:bg-[#3b82f6] selection:text-white relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -148,9 +148,9 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       )}
 
       {/* Reading Progress Indicator */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-50 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-1.5 bg-[#0f0f10]/10 z-50 pointer-events-none">
         <div
-          className="h-full bg-gradient-to-r from-brand to-brand-light transition-all duration-75"
+          className="h-full bg-[#3b82f6] transition-all duration-75"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -160,30 +160,30 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       {/* Main Container */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
         {/* Top Control Bar */}
-        <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 max-w-[860px] mx-auto xl:max-w-none">
+        <div className="flex items-center justify-between gap-4 mb-6 sm:mb-8 max-w-[880px] mx-auto xl:max-w-none font-mono">
           <Link
             href="/journal"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-muted hover:text-brand transition-colors group"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0f0f10] hover:text-[#3b82f6] transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>SolveMpire Journal</span>
+            <span>&larr; BACK TO JOURNAL INDEX</span>
           </Link>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-surface border border-slate-300 text-xs font-medium text-muted hover:text-heading hover:border-brand transition-all shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px] text-xs font-bold uppercase text-[#0f0f10] transition-all cursor-pointer"
               aria-label="Share article"
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-brand" />
-                  <span className="text-brand font-semibold">Copied!</span>
+                  <Check className="w-3.5 h-3.5 text-[#3b82f6]" />
+                  <span className="text-[#3b82f6]">LINK COPIED!</span>
                 </>
               ) : (
                 <>
                   <Share2 className="w-3.5 h-3.5" />
-                  <span>Share</span>
+                  <span>SHARE SPEC</span>
                 </>
               )}
             </button>
@@ -193,17 +193,17 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
         {/* 2-Column Layout: Sticky Left Document Outline + Central A4 Document Sheet */}
         <div className="flex justify-center items-start gap-8 relative">
           {/* ========================================================================= */}
-          {/* STICKY DOCUMENT OUTLINE SIDEBAR (Desktop Left Side, Hidden on Mobile) */}
+          {/* STICKY DOCUMENT OUTLINE SIDEBAR (Desktop Left Side) */}
           {/* ========================================================================= */}
           {tableOfContents && tableOfContents.length > 0 && (
-            <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none">
-              <div className="bg-white border border-slate-300 rounded-none p-5 shadow-xs">
-                <div className="flex items-center gap-2 pb-3 mb-3 border-b border-slate-200 text-xs font-bold text-brand uppercase tracking-wider">
-                  <ListOrdered className="w-4 h-4" />
-                  <span>Document Outline</span>
+            <aside className="hidden xl:block w-72 shrink-0 sticky top-28 space-y-4 select-none font-mono">
+              <div className="bg-white border-2 border-[#0f0f10] p-5 shadow-brutal-md">
+                <div className="flex items-center gap-2 pb-3 mb-3 border-b-2 border-[#0f0f10] text-xs font-black text-[#0f0f10] uppercase tracking-wider">
+                  <ListOrdered className="w-4 h-4 text-[#3b82f6]" />
+                  <span>DOCUMENT OUTLINE</span>
                 </div>
                 <nav>
-                  <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-200px)] overflow-y-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                  <ul className="space-y-1 text-xs leading-normal max-h-[calc(100vh-220px)] overflow-y-auto no-scrollbar">
                     {tableOfContents.map((item, idx) => {
                       const isActive = activeSectionId === item.id;
                       return (
@@ -211,23 +211,21 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                           <a
                             href={`#${item.id}`}
                             className={cn(
-                              "flex items-start gap-2 py-1.5 px-2 rounded-none transition-colors group text-left",
+                              "flex items-start gap-2 py-1.5 px-2 transition-colors group text-left border",
                               isActive
-                                ? "bg-ice-light text-brand font-semibold border-l-2 border-brand"
-                                : "text-slate-600 hover:text-brand hover:bg-slate-50"
+                                ? "bg-[#3b82f6] text-white font-bold border-[#0f0f10]"
+                                : "text-[#3f3f46] hover:bg-[#f0f7ff] hover:text-[#0f0f10] border-transparent"
                             )}
                           >
                             <span
                               className={cn(
-                                "font-mono text-[10px] shrink-0 mt-0.5",
-                                isActive
-                                  ? "text-brand font-bold"
-                                  : "text-slate-400 group-hover:text-brand"
+                                "text-[10px] shrink-0 mt-0.5 font-bold",
+                                isActive ? "text-white" : "text-[#71717a]"
                               )}
                             >
                               {String(idx + 1).padStart(2, "0")}.
                             </span>
-                            <span className="line-clamp-2">
+                            <span className="line-clamp-2 uppercase font-bold text-[11px]">
                               {item.title}
                             </span>
                           </a>
@@ -241,19 +239,45 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
           )}
 
           {/* ========================================================================= */}
-          {/* THE CRISP A4 DOCUMENT SHEET (Zero Rounded Corners, Pure Crisp Whitepaper) */}
+          {/* THE TECHNICAL DOSSIER WHITE PAPER */}
           {/* ========================================================================= */}
-          <div className="w-full max-w-[860px] flex-1 min-w-0">
-            <article className="w-full bg-white border border-slate-300 rounded-none shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] p-5 sm:p-10 md:p-14 lg:p-16 transition-all relative overflow-hidden break-words">
+          <div className="w-full max-w-[880px] flex-1 min-w-0">
+            <article className="w-full bg-white border-2 border-[#0f0f10] shadow-brutal-xl p-6 sm:p-12 md:p-14 transition-all relative overflow-hidden break-words">
+              {/* Top Dossier Terminal Strip */}
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b-2 border-[#0f0f10] font-mono text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
+                  <span className="font-bold uppercase tracking-wider text-[#0f0f10]">
+                    SPEC: WHITE_PAPER // SOLVEMPIRE R&D
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 bg-[#3b82f6] text-white font-bold uppercase border border-[#0f0f10]">
+                    {meta.category}
+                  </span>
+                  <span className="px-2 py-0.5 bg-[#f7f6f2] text-[#0f0f10] font-bold uppercase border border-[#0f0f10]">
+                    {meta.type}
+                  </span>
+                </div>
+              </div>
+
               {/* Article Title */}
-              <header className="pb-6 mb-6 border-b border-slate-200">
-                <h1 className="font-display font-bold text-2xl sm:text-4xl md:text-[2.65rem] text-heading tracking-tight leading-[1.18]">
+              <header className="pb-6 mb-8 border-b-2 border-[#0f0f10]">
+                <h1 className="font-display font-black text-3xl sm:text-4xl md:text-5xl text-[#0f0f10] tracking-tight uppercase leading-[1.05]">
                   {meta.title}
                 </h1>
+                
+                <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-mono font-bold text-[#71717a] uppercase">
+                  <span>BY {meta.author.name}</span>
+                  <span>•</span>
+                  <span>PUBLISHED: {meta.publishedAt}</span>
+                  <span>•</span>
+                  <span className="text-[#3b82f6]">{meta.readTime}</span>
+                </div>
               </header>
 
-              {/* Document Body - Clean Linear Flow */}
-              <div className="py-2 space-y-6 font-body text-body text-[15px] sm:text-[1.0625rem] leading-[1.8] text-slate-800">
+              {/* Document Body */}
+              <div className="py-2 space-y-6 font-body text-[15px] sm:text-base leading-[1.8] text-[#27272a]">
                 {sections.map((section, idx) => (
                   <RenderSection key={idx} section={section} />
                 ))}
@@ -261,15 +285,15 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Summary Takeaways Box */}
               {takeaways && takeaways.length > 0 && (
-                <div className="my-10 p-6 sm:p-8 rounded-none bg-slate-50 border-l-4 border-l-brand border-y border-r border-slate-200 space-y-3">
-                  <div className="flex items-center gap-2 text-brand font-display font-bold text-base sm:text-lg">
-                    <Sparkles className="w-5 h-5 shrink-0" />
-                    <span>Executive Summary &amp; Key Takeaways</span>
+                <div className="my-10 p-6 sm:p-8 bg-[#f7f6f2] border-2 border-[#0f0f10] shadow-brutal-sm space-y-4 font-mono">
+                  <div className="flex items-center gap-2 text-[#0f0f10] font-display font-black text-lg uppercase tracking-tight pb-2 border-b-2 border-[#0f0f10]">
+                    <Sparkles className="w-5 h-5 text-[#3b82f6] fill-[#3b82f6]" />
+                    <span>KEY TECHNICAL TAKEAWAYS &amp; FINDINGS</span>
                   </div>
-                  <ul className="space-y-2.5 pt-2 text-sm sm:text-base text-slate-800">
+                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-[#0f0f10]">
                     {takeaways.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-4 h-4 text-brand mt-1 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#3b82f6] mt-0.5 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -279,17 +303,14 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Frequently Asked Questions */}
               {faqs && faqs.length > 0 && (
-                <section
-                  className="my-12 pt-8 border-t border-slate-200 space-y-5 scroll-mt-24"
-                  id="faq"
-                >
+                <section className="my-12 pt-8 border-t-2 border-[#0f0f10] space-y-5 scroll-mt-24 font-mono" id="faq">
                   <div className="space-y-1">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-ice-light border border-brand/20 text-xs font-semibold text-brand uppercase tracking-wider">
+                    <div className="inline-flex items-center gap-2 px-2.5 py-0.5 bg-[#3b82f6] text-white border border-[#0f0f10] text-xs font-bold uppercase tracking-wider">
                       <HelpCircle className="w-3.5 h-3.5" />
-                      <span>FAQ Breakdown</span>
+                      <span>FAQ SPECIFICATION</span>
                     </div>
-                    <h3 className="font-display font-bold text-2xl sm:text-3xl text-heading tracking-tight">
-                      Frequently Asked Questions
+                    <h3 className="font-display font-black text-2xl sm:text-3xl text-[#0f0f10] uppercase tracking-tight">
+                      FREQUENTLY ASKED QUESTIONS
                     </h3>
                   </div>
 
@@ -299,35 +320,26 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                       return (
                         <div
                           key={idx}
-                          className={cn(
-                            "rounded-none border transition-all duration-200 overflow-hidden",
-                            isOpen
-                              ? "bg-slate-50/70 border-brand/40 shadow-xs"
-                              : "bg-white border-slate-200 hover:border-slate-300"
-                          )}
+                          className="border-2 border-[#0f0f10] bg-white shadow-brutal-xs"
                         >
                           <button
                             type="button"
                             onClick={() => toggleFaq(idx)}
-                            className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                            className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                             aria-expanded={isOpen}
                           >
-                            <span className="font-display font-semibold text-sm sm:text-base text-heading">
+                            <span className="font-display font-black text-sm sm:text-base text-[#0f0f10] uppercase">
                               {faq.question}
                             </span>
-                            <div
-                              className={cn(
-                                "w-7 h-7 rounded-none border flex items-center justify-center shrink-0 transition-transform duration-200",
-                                isOpen
-                                  ? "bg-ice-light border-brand/30 text-brand rotate-180"
-                                  : "bg-slate-100 border-slate-200 text-slate-500"
-                              )}
-                            >
+                            <div className={cn(
+                              "w-7 h-7 border-2 border-[#0f0f10] flex items-center justify-center shrink-0 transition-transform",
+                              isOpen ? "bg-[#3b82f6] text-white rotate-180" : "bg-[#f7f6f2] text-[#0f0f10]"
+                            )}>
                               <ChevronDown className="w-4 h-4" />
                             </div>
                           </button>
                           {isOpen && (
-                            <div className="px-4 sm:px-5 pb-5 pt-1 text-sm sm:text-base text-body leading-relaxed border-t border-slate-100">
+                            <div className="px-4 sm:px-5 pb-5 pt-2 text-xs sm:text-sm text-[#3f3f46] leading-relaxed border-t-2 border-[#0f0f10] bg-[#f0f7ff] font-normal font-sans">
                               {faq.answer}
                             </div>
                           )}
@@ -340,12 +352,12 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Tags */}
               {meta.tags && meta.tags.length > 0 && (
-                <div className="mt-10 pt-6 border-t border-slate-200 flex flex-wrap items-center gap-2 text-xs">
-                  <span className="text-muted font-semibold mr-1">Filed under:</span>
+                <div className="mt-10 pt-6 border-t-2 border-[#0f0f10] flex flex-wrap items-center gap-2 font-mono text-xs">
+                  <span className="text-[#71717a] font-bold uppercase mr-1">TOPIC INDEX:</span>
                   {meta.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-none bg-slate-50 border border-slate-200 text-slate-600 font-medium"
+                      className="px-2.5 py-1 bg-[#f7f6f2] border border-[#0f0f10] text-[#0f0f10] font-bold uppercase"
                     >
                       #{tag}
                     </span>
@@ -353,33 +365,33 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </div>
               )}
 
-              {/* Author Bio & Merged Publication Details Box */}
-              <div className="mt-12 p-6 sm:p-8 rounded-none bg-slate-50 border border-slate-300 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              {/* Author Bio Box */}
+              <div className="mt-12 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-md space-y-4 font-mono">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b-2 border-[#0f0f10]">
                   <Link
                     href={`/team/${authorSlug}`}
                     className="flex items-center gap-3.5 group focus:outline-none"
                   >
-                    <div className="relative w-14 h-14 rounded-none overflow-hidden border border-slate-300 shrink-0 bg-ice-light group-hover:border-brand transition-colors">
+                    <div className="relative w-14 h-14 overflow-hidden border-2 border-[#0f0f10] shrink-0 bg-white">
                       {meta.author.avatar ? (
                         <Image
                           src={meta.author.avatar}
                           alt={meta.author.name}
                           fill
-                          className="object-cover"
+                          className="object-cover grayscale group-hover:grayscale-0 transition-all"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-brand text-lg font-bold uppercase">
+                        <div className="w-full h-full flex items-center justify-center text-[#0f0f10] text-lg font-black uppercase">
                           {meta.author.name.charAt(0)}
                         </div>
                       )}
                     </div>
 
                     <div className="space-y-0.5">
-                      <h4 className="font-display font-bold text-lg text-heading group-hover:text-brand transition-colors">
+                      <h4 className="font-display font-black text-lg text-[#0f0f10] group-hover:text-[#3b82f6] uppercase tracking-tight">
                         {meta.author.name}
                       </h4>
-                      <span className="inline-block text-xs font-semibold text-brand">
+                      <span className="inline-block text-xs font-bold text-[#3b82f6] uppercase">
                         {meta.author.role}
                       </span>
                     </div>
@@ -387,53 +399,29 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
                   <Link
                     href={`/team/${authorSlug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-none bg-white hover:bg-brand text-brand hover:text-white border border-brand/30 text-xs font-semibold transition-all shadow-xs self-start sm:self-auto group"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-white hover:bg-[#3b82f6] text-[#0f0f10] hover:text-white border-2 border-[#0f0f10] text-xs font-bold uppercase transition-all shadow-brutal-xs self-start sm:self-auto group"
                   >
                     <User className="w-3.5 h-3.5" />
-                    <span>View Author Profile</span>
+                    <span>AUTHOR DOSSIER</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
 
-                <p className="text-sm text-body leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#3f3f46] leading-relaxed font-sans">
                   {meta.author.bio || `${meta.author.role} at SolveMpire.`}
                 </p>
-
-                {/* Merged Publication Date, Reading Time & Categories */}
-                <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs text-muted">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                      <Calendar className="w-3.5 h-3.5 opacity-70" />
-                      <span>Published {meta.publishedAt}</span>
-                    </span>
-                    <span className="opacity-40">•</span>
-                    <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
-                      <Clock className="w-3.5 h-3.5" />
-                      <span>{meta.readTime}</span>
-                    </span>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-none bg-white border border-slate-200 text-slate-700 font-medium text-[11px]">
-                      {meta.category}
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-none bg-white border border-slate-200 text-slate-500 font-medium text-[11px]">
-                      {meta.type}
-                    </span>
-                  </div>
-                </div>
               </div>
             </article>
 
             {/* Document Navigation - Next/Prev */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono">
               {prevPost ? (
                 <Link
                   href={`/journal/${prevPost.slug}`}
-                  className="p-5 rounded-none bg-white border border-slate-300 hover:border-brand/50 shadow-xs hover:shadow-md transition-all text-left group"
+                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-left group"
                 >
-                  <span className="text-xs text-muted block mb-1">← Previous Article</span>
-                  <span className="font-display font-semibold text-sm text-heading group-hover:text-brand line-clamp-1">
+                  <span className="text-xs font-bold text-[#71717a] uppercase block mb-1">&larr; PREVIOUS SPECIFICATION</span>
+                  <span className="font-display font-black text-sm text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1 uppercase">
                     {prevPost.title}
                   </span>
                 </Link>
@@ -444,10 +432,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               {nextPost && (
                 <Link
                   href={`/journal/${nextPost.slug}`}
-                  className="p-5 rounded-none bg-white border border-slate-300 hover:border-brand/50 shadow-xs hover:shadow-md transition-all text-right group ml-auto w-full"
+                  className="p-5 bg-white border-2 border-[#0f0f10] shadow-brutal-xs hover:shadow-brutal-sm transition-all text-right group ml-auto w-full"
                 >
-                  <span className="text-xs text-muted block mb-1">Next Article →</span>
-                  <span className="font-display font-semibold text-sm text-heading group-hover:text-brand line-clamp-1">
+                  <span className="text-xs font-bold text-[#71717a] uppercase block mb-1">NEXT SPECIFICATION &rarr;</span>
+                  <span className="font-display font-black text-sm text-[#0f0f10] group-hover:text-[#3b82f6] line-clamp-1 uppercase">
                     {nextPost.title}
                   </span>
                 </Link>
@@ -463,38 +451,38 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 }
 
 // =============================================================================
-// SECTION RENDERER ENGINE (Crisp Paper Layout)
+// SECTION RENDERER ENGINE (Neo-Brutalist Technical Spec Layout)
 // =============================================================================
 function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
     case "lead":
       return (
-        <p className="text-lg sm:text-xl font-normal leading-[1.7] text-heading mb-6">
+        <p className="text-base sm:text-lg font-medium leading-[1.7] text-[#0f0f10] mb-6 p-4 bg-[#f0f7ff] border-l-4 border-[#3b82f6] border-y border-r border-[#0f0f10]/10">
           {section.text}
         </p>
       );
 
     case "paragraph":
       return (
-        <p className="text-[15px] sm:text-[1.0625rem] leading-[1.78] text-slate-700 mb-5">
+        <p className="text-[15px] sm:text-base leading-[1.78] text-[#27272a] mb-5">
           {section.text}
         </p>
       );
 
     case "heading": {
       const h2Styles =
-        "font-display font-bold text-2xl sm:text-3xl text-heading tracking-tight leading-[1.25] mb-4 mt-10 pt-6 border-t border-slate-200 group relative scroll-mt-24";
+        "font-display font-black text-2xl sm:text-3xl text-[#0f0f10] tracking-tight uppercase leading-[1.2] mb-4 mt-10 pt-6 border-t-2 border-[#0f0f10] group relative scroll-mt-24";
       const h3Styles =
-        "font-display font-bold text-xl sm:text-2xl text-heading tracking-tight leading-[1.3] mb-3 mt-7 group relative scroll-mt-24";
+        "font-display font-black text-xl sm:text-2xl text-[#0f0f10] tracking-tight uppercase leading-[1.25] mb-3 mt-7 group relative scroll-mt-24";
       const h4Styles =
-        "font-display font-semibold text-lg sm:text-xl text-heading mb-2 mt-5 group relative scroll-mt-24";
+        "font-display font-black text-lg sm:text-xl text-[#0f0f10] uppercase mb-2 mt-5 group relative scroll-mt-24";
 
       if (section.level === 3) {
         return (
           <h3 id={section.id} className={h3Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-brand p-1"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -509,7 +497,7 @@ function RenderSection({ section }: { section: BlogSection }) {
           <h4 id={section.id} className={h4Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-brand p-1"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -523,7 +511,7 @@ function RenderSection({ section }: { section: BlogSection }) {
         <h2 id={section.id} className={h2Styles}>
           <a
             href={`#${section.id}`}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-brand p-1"
+            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[#71717a] hover:text-[#3b82f6] p-1 font-mono"
             aria-label={`Link to ${section.id}`}
           >
             <Hash className="w-4 h-4" />
@@ -535,7 +523,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "bullets":
       return (
-        <ul className="list-disc list-outside pl-6 space-y-2.5 my-5 text-slate-700 marker:text-brand text-[15px] sm:text-[1.0625rem] leading-[1.75]">
+        <ul className="list-disc list-outside pl-6 space-y-2.5 my-5 text-[#27272a] marker:text-[#3b82f6] text-[15px] sm:text-base leading-[1.75]">
           {section.items.map((item, i) => (
             <li key={i} className="pl-1">
               {item}
@@ -546,9 +534,9 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "numbered":
       return (
-        <ol className="list-decimal list-outside pl-6 space-y-3 my-5 text-slate-700 marker:text-brand marker:font-semibold text-[15px] sm:text-[1.0625rem] leading-[1.75]">
+        <ol className="list-decimal list-outside pl-6 space-y-3 my-5 text-[#27272a] marker:text-[#3b82f6] marker:font-bold font-mono text-[15px] sm:text-base leading-[1.75]">
           {section.items.map((item, i) => (
-            <li key={i} className="pl-1">
+            <li key={i} className="pl-1 font-sans">
               {item}
             </li>
           ))}
@@ -557,16 +545,16 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "quote":
       return (
-        <blockquote className="my-8 pl-6 border-l-4 border-brand italic text-base sm:text-lg text-heading leading-[1.65] bg-slate-50/80 py-4 pr-6 rounded-none border-y border-r border-slate-200">
-          <p className="mb-1">“{section.text}”</p>
+        <blockquote className="my-8 pl-6 border-l-4 border-[#3b82f6] bg-[#f0f7ff] border-y-2 border-r-2 border-[#0f0f10] shadow-brutal-xs py-5 pr-6 font-mono text-sm sm:text-base text-[#0f0f10] leading-[1.65]">
+          <p className="mb-2 italic">“{section.text}”</p>
           {(section.author || section.source) && (
-            <footer className="text-xs font-normal not-italic text-muted pt-1">
+            <footer className="text-xs uppercase font-bold text-[#71717a] pt-1">
               {section.author && (
-                <strong className="text-heading font-semibold">
+                <strong className="text-[#0f0f10]">
                   {section.author}
                 </strong>
               )}
-              {section.author && section.source && " — "}
+              {section.author && section.source && " // "}
               {section.source && <span>{section.source}</span>}
             </footer>
           )}
@@ -576,42 +564,37 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "callout": {
       const configs = {
         insight: {
-          icon: <Sparkles className="w-5 h-5 text-brand" />,
-          bg: "bg-slate-50 border-l-4 border-l-brand border-y border-r border-slate-200 text-slate-800",
-          title: "text-brand",
+          icon: <Sparkles className="w-5 h-5 text-[#3b82f6]" />,
+          bg: "bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-xs",
+          title: "text-[#3b82f6]",
         },
         science: {
-          icon: <Lightbulb className="w-5 h-5 text-blue-600" />,
-          bg: "bg-blue-50/50 border-l-4 border-l-blue-600 border-y border-r border-blue-200 text-slate-800",
-          title: "text-blue-700",
+          icon: <Lightbulb className="w-5 h-5 text-[#1d4ed8]" />,
+          bg: "bg-[#e0e7ff] border-2 border-[#0f0f10] shadow-brutal-xs",
+          title: "text-[#1d4ed8]",
         },
         warning: {
-          icon: <AlertCircle className="w-5 h-5 text-amber-600" />,
-          bg: "bg-amber-50/50 border-l-4 border-l-amber-600 border-y border-r border-amber-200 text-amber-950",
-          title: "text-amber-800",
+          icon: <AlertCircle className="w-5 h-5 text-[#b45309]" />,
+          bg: "bg-[#fef3c7] border-2 border-[#0f0f10] shadow-brutal-xs text-[#78350f]",
+          title: "text-[#92400e]",
         },
         tip: {
-          icon: <Info className="w-5 h-5 text-cyan-600" />,
-          bg: "bg-cyan-50/50 border-l-4 border-l-cyan-600 border-y border-r border-cyan-200 text-cyan-950",
-          title: "text-cyan-800",
+          icon: <Info className="w-5 h-5 text-[#0369a1]" />,
+          bg: "bg-[#e0f2fe] border-2 border-[#0f0f10] shadow-brutal-xs text-[#0c4a6e]",
+          title: "text-[#0369a1]",
         },
       };
       const cfg = configs[section.variant || "insight"];
 
       return (
-        <div className={cn("my-7 p-5 sm:p-6 rounded-none border space-y-2", cfg.bg)}>
-          <div className="flex items-center gap-2.5">
+        <div className={cn("my-7 p-5 sm:p-6 space-y-2 font-mono", cfg.bg)}>
+          <div className="flex items-center gap-2.5 pb-2 border-b border-[#0f0f10]/10">
             <div className="shrink-0">{cfg.icon}</div>
-            <h4
-              className={cn(
-                "font-display font-bold text-sm sm:text-base",
-                cfg.title
-              )}
-            >
+            <h4 className={cn("font-display font-black text-sm uppercase", cfg.title)}>
               {section.title}
             </h4>
           </div>
-          <div className="text-sm sm:text-base leading-[1.7] pl-7">
+          <div className="text-xs sm:text-sm leading-[1.7] font-sans text-[#0f0f10]">
             {section.text}
           </div>
         </div>
@@ -620,34 +603,34 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "table":
       return (
-        <div className="my-8 space-y-2">
+        <div className="my-8 space-y-2 font-mono">
           {section.data.caption && (
-            <p className="text-xs text-muted font-medium text-center">
-              {section.data.caption}
+            <p className="text-xs text-[#71717a] font-bold uppercase text-center">
+              // {section.data.caption}
             </p>
           )}
-          <div className="overflow-x-auto rounded-none border border-slate-200 bg-white">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
-              <thead className="bg-slate-50 border-b border-slate-200 text-slate-700 uppercase font-semibold">
+          <div className="overflow-x-auto border-2 border-[#0f0f10] bg-white shadow-brutal-xs">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead className="bg-[#f0f7ff] border-b-2 border-[#0f0f10] text-[#0f0f10] uppercase font-black">
                 <tr>
                   {section.data.headers.map((h, i) => (
-                    <th key={i} className="p-3.5 sm:p-4 whitespace-nowrap">
+                    <th key={i} className="p-3.5 whitespace-nowrap border-r border-[#0f0f10]/20 last:border-r-0">
                       {h}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tbody className="divide-y divide-[#0f0f10]/10 text-[#27272a]">
                 {section.data.rows.map((row, rIdx) => (
-                  <tr key={rIdx} className="hover:bg-slate-50/60 transition-colors">
+                  <tr key={rIdx} className="hover:bg-[#f0f7ff]/50 transition-colors">
                     {row.map((cell, cIdx) => (
                       <td
                         key={cIdx}
                         className={cn(
-                          "p-3.5 sm:p-4",
-                          cIdx === 0 && "font-semibold text-heading",
+                          "p-3.5 border-r border-[#0f0f10]/10 last:border-r-0",
+                          cIdx === 0 && "font-bold text-[#0f0f10]",
                           cIdx === (section.data.highlightColumnIndex ?? -1) &&
-                            "text-brand font-medium bg-ice-light/30"
+                            "text-[#3b82f6] font-bold bg-[#f0f7ff]"
                         )}
                       >
                         {cell}
@@ -664,30 +647,30 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "divider":
       return (
         <div className="my-10 flex items-center justify-center gap-3">
-          <div className="h-px bg-slate-200 flex-1" />
-          <div className="w-1.5 h-1.5 rounded-none bg-brand" />
-          <div className="h-px bg-slate-200 flex-1" />
+          <div className="h-0.5 bg-[#0f0f10] flex-1" />
+          <div className="w-2.5 h-2.5 bg-[#3b82f6] border border-[#0f0f10]" />
+          <div className="h-0.5 bg-[#0f0f10] flex-1" />
         </div>
       );
 
     case "cta":
       return (
-        <div className="my-10 p-6 sm:p-8 rounded-none bg-slate-50 border border-slate-300 text-center space-y-4">
-          <div className="inline-flex items-center justify-center w-10 h-10 rounded-none bg-ice-light text-brand mx-auto border border-brand/30">
-            <Sparkles className="w-5 h-5" />
+        <div className="my-10 p-6 sm:p-8 bg-[#f0f7ff] border-2 border-[#0f0f10] shadow-brutal-md text-center space-y-4 font-mono">
+          <div className="inline-flex items-center justify-center w-10 h-10 bg-white text-[#3b82f6] mx-auto border-2 border-[#0f0f10] shadow-brutal-xs">
+            <Sparkles className="w-5 h-5 fill-[#3b82f6]" />
           </div>
           <div className="space-y-1">
-            <h4 className="font-display font-bold text-xl text-heading">
+            <h4 className="font-display font-black text-xl text-[#0f0f10] uppercase">
               {section.title}
             </h4>
-            <p className="text-body text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#3f3f46] max-w-md mx-auto leading-relaxed font-sans">
               {section.text}
             </p>
           </div>
           <div className="pt-2">
             <Link
               href={section.buttonHref}
-              className="inline-flex items-center gap-2 bg-brand hover:bg-brand-hover text-white font-semibold text-xs sm:text-sm px-6 py-3 rounded-none shadow-md shadow-brand/20 transition-all"
+              className="inline-flex items-center gap-2 bg-[#3b82f6] hover:bg-[#1d4ed8] text-white font-mono font-bold text-xs uppercase px-6 py-3 border-2 border-[#0f0f10] shadow-brutal-xs active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
             >
               <span>{section.buttonText}</span>
               <ArrowRight className="w-3.5 h-3.5" />
