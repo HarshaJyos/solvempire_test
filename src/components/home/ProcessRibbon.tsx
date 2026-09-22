@@ -161,38 +161,33 @@ export function ProcessRibbon() {
           {processRows.map((row, rIdx) => (
             <div
               key={`process-row-${rIdx}`}
-              className={`gsap-process-row relative filter drop-shadow-sm group transition-transform duration-300 hover:-translate-y-0.5 ${
-                rIdx > 0 ? "md:-mt-[26px]" : ""
-              }`}
+              className={`gsap-process-row relative filter drop-shadow-sm group transition-transform duration-300 hover:-translate-y-0.5 ${rIdx > 0 ? "md:-mt-[26px]" : ""
+                }`}
             >
               {/* Desktop / Tablet View */}
               <div className="hidden md:flex relative w-full items-start">
                 {/* Left Step Card */}
                 <div
-                  className={`w-[calc(50%-24px)] h-[225px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 ${
-                    row.left.theme === "ice" ? "bg-ice text-slate-900" : "bg-periwinkle text-white"
-                  }`}
+                  className={`w-[calc(50%-24px)] h-[225px] flex rounded-l-2xl rounded-r-none overflow-hidden shrink-0 ${row.left.theme === "ice" ? "bg-ice text-slate-900" : "bg-periwinkle text-white"
+                    }`}
                 >
                   <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between shrink-0">
                     <span
-                      className={`font-display text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${
-                        row.left.theme === "ice" ? "text-brand" : "text-white"
-                      }`}
+                      className={`font-display text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${row.left.theme === "ice" ? "text-brand" : "text-white"
+                        }`}
                     >
                       {row.left.step}
                     </span>
                     <div>
                       <h3
-                        className={`font-display text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
-                          row.left.theme === "ice" ? "text-brand" : "text-white"
-                        }`}
+                        className={`font-display text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${row.left.theme === "ice" ? "text-brand" : "text-white"
+                          }`}
                       >
                         {row.left.name}
                       </h3>
                       <p
-                        className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${
-                          row.left.theme === "ice" ? "text-slate-800" : "text-white/90"
-                        }`}
+                        className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${row.left.theme === "ice" ? "text-slate-800" : "text-white/90"
+                          }`}
                       >
                         {row.left.desc}
                       </p>
@@ -238,9 +233,8 @@ export function ProcessRibbon() {
 
                 {/* Right Step Card */}
                 <div
-                  className={`w-[calc(50%-24px)] h-[225px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[30px] ${
-                    row.right.theme === "ice" ? "bg-ice text-slate-900" : "bg-periwinkle text-white"
-                  }`}
+                  className={`w-[calc(50%-24px)] h-[225px] flex rounded-r-2xl rounded-l-none overflow-hidden shrink-0 mt-[30px] ${row.right.theme === "ice" ? "bg-ice text-slate-900" : "bg-periwinkle text-white"
+                    }`}
                 >
                   <div className="w-[52%] h-full relative overflow-hidden bg-ink rounded-none">
                     <Image
@@ -253,24 +247,21 @@ export function ProcessRibbon() {
                   </div>
                   <div className="w-[48%] p-6 lg:p-7 flex flex-col justify-between items-end text-right shrink-0">
                     <span
-                      className={`font-display text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${
-                        row.right.theme === "ice" ? "text-brand" : "text-white"
-                      }`}
+                      className={`font-display text-4xl lg:text-[2.618rem] font-bold tracking-tight leading-none ${row.right.theme === "ice" ? "text-brand" : "text-white"
+                        }`}
                     >
                       {row.right.step}
                     </span>
                     <div>
                       <h3
-                        className={`font-display text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${
-                          row.right.theme === "ice" ? "text-brand" : "text-white"
-                        }`}
+                        className={`font-display text-xl lg:text-[1.35rem] font-bold leading-tight mb-1.5 ${row.right.theme === "ice" ? "text-brand" : "text-white"
+                          }`}
                       >
                         {row.right.name}
                       </h3>
                       <p
-                        className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${
-                          row.right.theme === "ice" ? "text-slate-800" : "text-white/90"
-                        }`}
+                        className={`text-xs lg:text-[13px] leading-[1.618] line-clamp-2 ${row.right.theme === "ice" ? "text-slate-800" : "text-white/90"
+                          }`}
                       >
                         {row.right.desc}
                       </p>
