@@ -1,256 +1,253 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #fafcff;
-  --color-canvas-alt: #f4f7ff;
-  --color-canvas-card: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-subtle: #f8fafc;
-  --color-surface-muted: #f1f5f9;
+  --color-canvas: #F0EDEA;
+  --color-canvas-card: #FFFFFF;
+  --color-canvas-alt: #E8E5E1;
 
-  --color-brand: #2563eb;
-  --color-brand-deep: #1d4ed8;
-  --color-brand-light: #60a5fa;
-  --color-brand-subtle: #eff6ff;
-  --color-brand-muted: #dbeafe;
+  --color-brand: #2563EB;
+  --color-brand-deep: #1D4ED8;
+  --color-brand-light: #60A5FA;
 
-  --color-heading: #0a0d14;
-  --color-body: #334155;
-  --color-muted: #64748b;
-  --color-hairline: #e2e8f0;
+  --color-heading: #181A1D;
+  --color-body: #374151;
+  --color-muted: #6B7280;
+  --color-hairline: rgba(24, 26, 29, 0.08);
 
   --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+:root {
+  --surface-canvas: #F0EDEA;
+  --surface-canvas-alt: #E6E2DE;
+  --surface-card: #FFFFFF;
+  --surface-card-subtle: #F7F5F3;
+  --text-heading: #181A1D;
+  --text-body: #374151;
+  --text-muted: #6B7280;
+  --border-hairline: rgba(24, 26, 29, 0.08);
+  --border-strong: rgba(24, 26, 29, 0.2);
+
+  --indisea-sky-blue: #0EA5E9;
+  --indisea-blue-800: #0369A1;
+  --indisea-signal-yellow: #FACC15;
+  --indisea-yellow-800: #854D0E;
+  --indisea-link-green: #22C55E;
+  --indisea-green-800: #166534;
+  --indisea-node-red: #EF4444;
+  --indisea-stone: #E5E2DF;
+  --indisea-charcoal: #181A1D;
+
+  --radius-card-sm: 16px;
+  --radius-card: 24px;
+  --radius-card-lg: 32px;
+}
+
+[data-theme="dark"] {
+  --surface-canvas: #121417;
+  --surface-canvas-alt: #181B20;
+  --surface-card: #1C1F24;
+  --surface-card-subtle: #23272E;
+  --text-heading: #F9FAFB;
+  --text-body: #D1D5DB;
+  --text-muted: #9CA3AF;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --indisea-stone: #2A2E35;
+}
+
+html {
+  background-color: var(--surface-canvas);
+  color: var(--text-body);
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   font-family: var(--font-sans);
-  background-color: var(--color-canvas);
-  color: var(--color-body);
+  background-color: var(--surface-canvas);
+  color: var(--text-body);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  color: var(--color-heading);
+  color: var(--text-heading);
 }
 
 /* ========================================================================= */
-/* PREMIUM ENGINEERING EDITORIAL: AMBIENT DEPTH & SOFT SHADOWS               */
+/* INDISEA SWISS 12-COLUMN GRID & WRAPPER SYSTEM                             */
 /* ========================================================================= */
-.shadow-editorial-xs {
-  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+.indisea-wrap {
+  width: 100%;
+  padding-left: clamp(20px, 4vw, 64px);
+  padding-right: clamp(20px, 4vw, 64px);
 }
 
-.shadow-editorial-sm {
-  box-shadow: 0 2px 8px -1px rgba(15, 23, 42, 0.05), 0 1px 3px 0 rgba(15, 23, 42, 0.03);
+.indisea-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(16px, 1.7vw, 24px);
 }
 
-.shadow-editorial-md {
-  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+/* Typography Classes */
+.indisea-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1;
 }
 
-.shadow-editorial-lg {
-  box-shadow: 0 20px 48px -6px rgba(15, 23, 42, 0.08), 0 8px 20px -4px rgba(15, 23, 42, 0.04);
+.indisea-mono {
+  font-family: var(--font-mono);
 }
 
-.shadow-editorial-glow {
-  box-shadow: 0 0 50px -10px rgba(37, 99, 235, 0.15);
+.indisea-figure {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.5vw, 76px);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--text-heading);
+}
+
+.indisea-card {
+  background: var(--surface-card);
+  border-radius: var(--radius-card);
+  padding: clamp(20px, 2.5vw, 36px);
+  border: 1px solid var(--border-hairline);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
+}
+
+.indisea-verb-yellow {
+  background: var(--indisea-signal-yellow);
+  color: #181A1D;
+  padding: 0.04em 0.18em;
+  margin: 0 -0.04em;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.indisea-verb-blue {
+  background: var(--indisea-sky-blue);
+  color: #FFFFFF;
+  padding: 0.04em 0.18em;
+  margin: 0 -0.04em;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.indisea-verb-green {
+  background: var(--indisea-link-green);
+  color: #FFFFFF;
+  padding: 0.04em 0.18em;
+  margin: 0 -0.04em;
+  border-radius: 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* ========================================================================= */
-/* BUTTONS: RESTRAINED MAGNETIC & ARROW SLIDE MICRO-INTERACTIONS             */
+/* BUTTONS: RESTRAINED PILL BUTTONS                                          */
 /* ========================================================================= */
-.btn-editorial {
+.btn-indisea-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--text-heading);
+  color: var(--surface-canvas);
   font-family: var(--font-display);
-  font-weight: 600;
-  border-radius: 0.75rem; /* 12px */
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.btn-editorial-primary {
-  background-color: #0f172a;
-  color: #ffffff;
-  box-shadow: 0 2px 8px -1px rgba(15, 23, 42, 0.12);
-}
-.btn-editorial-primary:hover {
-  background-color: #1e293b;
-  box-shadow: 0 8px 20px -2px rgba(15, 23, 42, 0.18);
+.btn-indisea-primary:hover {
+  opacity: 0.9;
   transform: translateY(-1px);
 }
-.btn-editorial-primary:active {
-  transform: translateY(0px) scale(0.99);
-}
 
-.btn-editorial-blue {
-  background-color: #2563eb;
-  color: #ffffff;
+.btn-indisea-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563EB;
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 14px -1px rgba(37, 99, 235, 0.3);
 }
-.btn-editorial-blue:hover {
-  background-color: #1d4ed8;
-  box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.4);
+.btn-indisea-blue:hover {
+  background-color: #1D4ED8;
   transform: translateY(-1px);
 }
-.btn-editorial-blue:active {
-  transform: translateY(0px) scale(0.99);
-}
-
-.btn-editorial-secondary {
-  background-color: #ffffff;
-  color: #0f172a;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
-}
-.btn-editorial-secondary:hover {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
-  transform: translateY(-1px);
-}
-.btn-editorial-secondary:active {
-  transform: translateY(0px) scale(0.99);
-}
-
-/* Arrow Slide Microinteraction */
-.group:hover .arrow-slide {
-  transform: translateX(4px);
-}
-.arrow-slide {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 /* ========================================================================= */
-/* BACKGROUNDS: TECHNICAL ATMOSPHERIC MINIMALISM                             */
+/* CONTINUOUS MARQUEE ANIMATIONS                                             */
 /* ========================================================================= */
-.bg-editorial-grid {
-  background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
-  background-size: 32px 32px;
+@keyframes indisea-marquee-left {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.bg-editorial-dots {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.35) 1px, transparent 1px);
-  background-size: 24px 24px;
+@keyframes indisea-marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
 }
 
-/* ========================================================================= */
-/* SIGNATURE ANIMATIONS & KEYFRAMES                                          */
-/* ========================================================================= */
-
-/* 1. Signature SVG Logo Path Draw */
-@keyframes path-draw {
-  0% {
-    stroke-dashoffset: 1000;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+.animate-marquee-left {
+  animation: indisea-marquee-left 36s linear infinite;
 }
 
-.animate-path-draw {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: path-draw 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-marquee-right {
+  animation: indisea-marquee-right 36s linear infinite;
 }
 
-/* 2. Ambient Gradient Drift */
-@keyframes gradient-drift {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translate(20px, -20px) scale(1.05);
-    opacity: 0.9;
-  }
-}
-
-.animate-gradient-drift {
-  animation: gradient-drift 12s ease-in-out infinite;
-}
-
-/* 3. Subtle Parallax / Floating Movement */
-@keyframes float-subtle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-float-subtle {
-  animation: float-subtle 6s ease-in-out infinite;
-}
-
-/* 4. Slow Client Logo Marquee */
-@keyframes marquee-slow {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee-slow {
-  display: flex;
-  width: max-content;
-  animation: marquee-slow 35s linear infinite;
-}
-.animate-marquee-slow:hover {
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
   animation-play-state: paused;
 }
 
-/* 5. Live Pulse Indicator */
-@keyframes pulse-dot {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
+/* Arrow Slide */
+.arrow-slide {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .arrow-slide {
+  transform: translateX(4px);
+}
+
+/* SVG Path Draw */
+@keyframes path-draw {
+  to {
+    stroke-dashoffset: 0;
   }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.4;
-  }
+}
+.animate-path-draw {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: path-draw 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.animate-pulse-dot {
-  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Scroll cues */
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
 }
-
-/* Micro Film Grain / Tactile Noise Texture */
-.bg-noise-grain {
-  position: fixed;
-  inset: 0;
-  opacity: 0.015;
-  pointer-events: none;
-  z-index: 9999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Opt-in scrollbar utility */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Accessibility: Reduced Motion Override */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
 }
