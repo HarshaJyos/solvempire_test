@@ -30,68 +30,68 @@ export default function WorkPage() {
             </p>
           </div>
 
-          {/* Case Studies Grid (Indisea Card Style) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-            {caseStudies.map((study) => (
+          {/* Case Studies Grid (Indisea Card Style - Compact) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {caseStudies.map((study, idx) => (
               <article
                 key={study.slug}
-                className="group relative rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 overflow-hidden shadow-sm transition-all duration-300 flex flex-col justify-between"
+                className="group relative rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 overflow-hidden shadow-2xs transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Visual Thumbnail */}
-                <div className="relative aspect-[16/10] w-full bg-slate-900 overflow-hidden border-b border-[var(--border-hairline)]">
+                <div className="relative aspect-[16/7.5] w-full bg-slate-900 overflow-hidden border-b border-[var(--border-hairline)]">
                   <Image
                     src={study.hero.src}
                     alt={study.hero.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-95 group-hover:opacity-100"
+                    className="object-cover transition-transform duration-500 group-hover:scale-103 opacity-95 group-hover:opacity-100"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
 
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-3 py-1 rounded-full bg-[var(--surface-card)]/90 backdrop-blur-md border border-[var(--border-hairline)] font-mono text-[10px] font-bold text-[var(--text-heading)] uppercase shadow-xs">
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[var(--surface-card)]/90 backdrop-blur-md border border-[var(--border-hairline)] font-mono text-[10px] font-bold text-[var(--text-heading)] uppercase shadow-2xs">
                       {study.category}
                     </span>
                   </div>
 
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className="px-3 py-1 rounded-full bg-emerald-500/90 text-white font-mono text-[10px] font-bold uppercase shadow-xs">
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/90 text-white font-mono text-[10px] font-bold uppercase shadow-2xs">
                       {study.status}
                     </span>
                   </div>
                 </div>
 
                 {/* Content Details */}
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between gap-6">
-                  <div className="space-y-3">
-                    <span className="indisea-eyebrow block">
-                      CLIENT: {study.client.toUpperCase()}
-                    </span>
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between gap-4">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
+                      <span>0{idx + 1} // {study.client}</span>
+                    </div>
 
-                    <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--text-heading)] leading-tight group-hover:text-[#2563EB] transition-colors">
+                    <h2 className="font-display text-xl sm:text-2xl font-extrabold tracking-tight text-[var(--text-heading)] leading-snug group-hover:text-[#2563EB] transition-colors">
                       <Link href={`/work/${study.slug}`} className="focus:outline-none">
                         <span className="absolute inset-0" />
                         {study.title}
                       </Link>
                     </h2>
 
-                    <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed line-clamp-3 font-normal">
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed line-clamp-2 font-normal">
                       {study.summary}
                     </p>
 
                     {/* Key Metrics */}
                     {study.metrics && study.metrics.length > 0 && (
-                      <div className="grid grid-cols-2 gap-3 pt-3 border-t border-[var(--border-hairline)]">
+                      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-[var(--border-hairline)]">
                         {study.metrics.slice(0, 2).map((m) => (
                           <div
                             key={m.label}
-                            className="p-3 bg-[var(--surface-canvas)] rounded-xl border border-[var(--border-hairline)]"
+                            className="p-2.5 bg-[var(--surface-canvas)] rounded-lg border border-[var(--border-hairline)]"
                           >
                             <span className="block font-mono text-[10px] text-[var(--text-muted)] font-semibold uppercase tracking-wide truncate">
                               {m.label}
                             </span>
-                            <span className="font-display text-base font-bold text-[var(--text-heading)] mt-0.5 block">
+                            <span className="font-display text-sm font-bold text-[var(--text-heading)] mt-0.5 block truncate">
                               {m.value}
                             </span>
                           </div>
@@ -101,12 +101,12 @@ export default function WorkPage() {
                   </div>
 
                   {/* Footer Tags & Action Link */}
-                  <div className="pt-4 border-t border-[var(--border-hairline)] flex flex-wrap items-center justify-between gap-3 text-xs">
-                    <div className="flex flex-wrap gap-1.5">
+                  <div className="pt-3 border-t border-[var(--border-hairline)] flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <div className="flex flex-wrap gap-1">
                       {study.disciplines.slice(0, 3).map((d) => (
                         <span
                           key={d}
-                          className="px-2.5 py-1 rounded-lg font-mono text-[10px] font-medium bg-[var(--surface-canvas)] text-[var(--text-muted)]"
+                          className="px-2 py-0.5 rounded font-mono text-[10px] font-medium bg-[var(--surface-canvas)] text-[var(--text-muted)]"
                         >
                           {d}
                         </span>
@@ -115,7 +115,7 @@ export default function WorkPage() {
 
                     <span className="inline-flex items-center gap-1 font-display font-bold text-xs text-[#2563EB] group-hover:translate-x-1 transition-transform">
                       <span>Read Dossier</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </div>

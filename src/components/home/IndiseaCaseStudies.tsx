@@ -10,8 +10,8 @@ export function IndiseaCaseStudies() {
   const featured = caseStudies.slice(0, 4);
 
   return (
-    <section id="work" className="py-24 sm:py-32 bg-[var(--surface-canvas)] font-sans border-b border-[var(--border-hairline)]">
-      <div className="indisea-wrap space-y-14 sm:space-y-16">
+    <section id="work" className="py-20 sm:py-24 bg-[var(--surface-canvas)] font-sans border-b border-[var(--border-hairline)]">
+      <div className="indisea-wrap space-y-12 sm:space-y-14">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
@@ -31,16 +31,16 @@ export function IndiseaCaseStudies() {
           </Link>
         </div>
 
-        {/* Clean, Impactful Case Studies Grid (Zero Tag Clutter) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        {/* Clean, Compact Case Studies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {featured.map((study, idx) => (
             <Link
               key={study.slug}
               href={`/work/${study.slug}`}
-              className="group flex flex-col space-y-5 rounded-3xl bg-[var(--surface-card)] p-4 sm:p-6 border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all duration-300 shadow-2xs"
+              className="group flex flex-col space-y-4 rounded-2xl bg-[var(--surface-card)] p-4 sm:p-5 border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all duration-300 shadow-2xs"
             >
-              {/* Clean Machine Photography */}
-              <div className="relative aspect-[16/10] w-full rounded-2xl bg-slate-950 overflow-hidden">
+              {/* Compact, Sleek Machine Photography */}
+              <div className="relative aspect-[16/7.5] w-full rounded-xl bg-slate-950 overflow-hidden">
                 <Image
                   src={study.hero.src}
                   alt={study.hero.alt}
@@ -51,24 +51,24 @@ export function IndiseaCaseStudies() {
               </div>
 
               {/* Editorial Text */}
-              <div className="space-y-3 px-1 sm:px-2 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">
+              <div className="space-y-2.5 px-1 flex-1 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
                     <span>0{idx + 1} // {study.client}</span>
                     <span className="text-emerald-600 font-semibold">{study.status}</span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors leading-tight">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors leading-snug">
                     {study.title}
                   </h3>
 
-                  <p className="font-sans text-sm sm:text-base text-[var(--text-muted)] leading-relaxed font-normal">
+                  <p className="font-sans text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed line-clamp-2 font-normal">
                     {study.summary}
                   </p>
                 </div>
 
                 {/* Single Key Metric & Action */}
-                <div className="pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between">
+                <div className="pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between">
                   {study.metrics && study.metrics.length > 0 ? (
                     <span className="font-mono text-xs font-semibold text-[var(--text-heading)]">
                       {study.metrics[0].value} {study.metrics[0].label.toLowerCase()}
