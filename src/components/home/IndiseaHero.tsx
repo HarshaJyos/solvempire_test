@@ -6,34 +6,55 @@ import { ArrowRight, ArrowDown } from "lucide-react";
 
 export function IndiseaHero() {
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-end pt-36 pb-12 sm:pb-16 overflow-hidden font-sans">
+    <section className="relative min-h-[88vh] sm:min-h-[94vh] flex flex-col justify-end pt-32 pb-12 sm:pt-40 sm:pb-16 overflow-hidden font-sans">
       <div className="indisea-wrap relative z-10 space-y-8 sm:space-y-12">
         {/* Eyebrow Label */}
         <div>
           <span className="indisea-eyebrow">01 / hero</span>
         </div>
 
-        {/* Massive Indisea-Style Display Headline with Verb Badges */}
+        {/* Indisea-Style Display Headline with Beautiful Highlight Badges */}
         <div className="max-w-6xl">
-          <h1 className="font-display font-extrabold text-[44px] sm:text-[76px] lg:text-[110px] xl:text-[132px] tracking-tight leading-[0.93] text-[var(--text-heading)]">
-            <span className="block">
-              We <span className="indisea-verb-yellow">design</span>,{" "}
-              <span className="indisea-verb-blue">engineer</span>,
-            </span>
-            <span className="block">
-              and <span className="indisea-verb-green">manufacture</span>
-            </span>
-            <span className="block text-slate-900">physical machines</span>
-            <span className="block text-[#2563EB]">&amp; connected hardware</span>
+          <h1 className="font-display font-extrabold text-[36px] sm:text-[54px] md:text-[68px] lg:text-[84px] xl:text-[96px] tracking-tight text-[var(--text-heading)] space-y-2 sm:space-y-4">
+            {/* Line 1: We [design], [engineer], */}
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
+              <span>We</span>
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#FACC15] text-[#181A1D] shadow-xs">
+                design
+              </span>
+              <span>,</span>
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#0284C7] text-white shadow-xs">
+                engineer
+              </span>
+              <span>,</span>
+            </div>
+
+            {/* Line 2: and [manufacture] */}
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
+              <span>and</span>
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#16A34A] text-white shadow-xs">
+                manufacture
+              </span>
+            </div>
+
+            {/* Line 3: physical machines */}
+            <div className="block leading-none text-slate-900 pt-1">
+              physical machines
+            </div>
+
+            {/* Line 4: & connected hardware. */}
+            <div className="block leading-none text-[#2563EB] pt-1">
+              &amp; connected hardware.
+            </div>
           </h1>
         </div>
 
         {/* Bottom Split: Action CTAs + Scroll Cue */}
-        <div className="pt-6 sm:pt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-t border-[var(--border-hairline)]">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-t border-[var(--border-hairline)]">
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
-              className="group btn-indisea-primary flex items-center gap-2 text-sm sm:text-base px-7 py-3.5"
+              className="group btn-indisea-primary flex items-center gap-2 text-sm sm:text-base px-7 py-3.5 shadow-xs"
             >
               <span>Talk to us</span>
               <ArrowRight className="w-4 h-4 arrow-slide" />

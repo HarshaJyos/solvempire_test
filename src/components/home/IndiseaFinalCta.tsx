@@ -6,17 +6,17 @@ import { ArrowRight, Mail, Phone, ShieldCheck } from "lucide-react";
 
 export function IndiseaFinalCta() {
   return (
-    <section className="py-24 sm:py-36 bg-[#0EA5E9] text-[#181A1D] font-sans relative overflow-hidden">
-      <div className="indisea-wrap space-y-10 sm:space-y-14 relative z-10">
+    <section className="py-20 sm:py-32 bg-[#0EA5E9] text-[#181A1D] font-sans relative overflow-hidden">
+      <div className="indisea-wrap space-y-8 sm:space-y-12 relative z-10">
         <div>
           <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#181A1D]/70 block">
             11 / talk to us
           </span>
         </div>
 
-        {/* Massive Headline */}
+        {/* Display Headline */}
         <div className="max-w-6xl">
-          <h2 className="font-display font-extrabold text-[44px] sm:text-[76px] lg:text-[110px] xl:text-[132px] tracking-tight leading-[0.92] text-[#181A1D]">
+          <h2 className="font-display font-extrabold text-[38px] sm:text-[64px] lg:text-[88px] xl:text-[104px] tracking-tight leading-[1.04] text-[#181A1D]">
             <span className="block">Let&apos;s start</span>
             <span className="block">building the</span>
             <span className="block">physical thing.</span>

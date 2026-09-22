@@ -127,32 +127,13 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
 }
 
+/* Clean Inline Marker Highlight */
 .indisea-verb-yellow {
   background: var(--indisea-signal-yellow);
   color: #181A1D;
-  padding: 0.04em 0.18em;
-  margin: 0 -0.04em;
-  border-radius: 6px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.indisea-verb-blue {
-  background: var(--indisea-sky-blue);
-  color: #FFFFFF;
-  padding: 0.04em 0.18em;
-  margin: 0 -0.04em;
-  border-radius: 6px;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.indisea-verb-green {
-  background: var(--indisea-link-green);
-  color: #FFFFFF;
-  padding: 0.04em 0.18em;
-  margin: 0 -0.04em;
-  border-radius: 6px;
+  padding: 0.02em 0.14em;
+  margin: 0 0.02em;
+  border-radius: 4px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -229,18 +210,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .group:hover .arrow-slide {
   transform: translateX(4px);
-}
-
-/* SVG Path Draw */
-@keyframes path-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-.animate-path-draw {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: path-draw 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Scroll cues */
