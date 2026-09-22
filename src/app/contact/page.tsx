@@ -53,10 +53,10 @@ export default function ContactPage() {
                     Direct Email
                   </span>
                   <a
-                    href="mailto:contact@solvempire.com"
+                    href="mailto:support@solvempire.com"
                     className="text-[#2563EB] font-bold text-sm hover:underline block"
                   >
-                    contact@solvempire.com
+                    support@solvempire.com
                   </a>
                 </div>
 
@@ -65,10 +65,10 @@ export default function ContactPage() {
                     Direct Phone
                   </span>
                   <a
-                    href="tel:+919121996739"
+                    href="tel:+919701341323"
                     className="text-[var(--text-heading)] font-bold text-sm hover:text-[#2563EB] block"
                   >
-                    +91 91219 96739
+                    +91 97013 41323
                   </a>
                 </div>
 
@@ -76,9 +76,21 @@ export default function ContactPage() {
                   <span className="indisea-eyebrow block mb-1">
                     Studio &amp; Prototyping Lab
                   </span>
-                  <p className="text-[var(--text-muted)] leading-relaxed text-sm">
-                    Bhimavaram, Andhra Pradesh, India
+                  <p className="text-[var(--text-heading)] font-medium leading-relaxed text-sm">
+                    SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu
                   </p>
+                  <p className="text-[var(--text-muted)] leading-relaxed text-sm">
+                    Kakinada, Andhra Pradesh, India
+                  </p>
+                  <a
+                    href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[#2563EB] font-bold text-xs hover:underline mt-1.5"
+                  >
+                    <span>Open in Google Maps</span>
+                    <span>↗</span>
+                  </a>
                 </div>
               </div>
             </div>

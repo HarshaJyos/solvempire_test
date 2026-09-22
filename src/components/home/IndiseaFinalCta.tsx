@@ -34,17 +34,17 @@ export function IndiseaFinalCta() {
           </Link>
 
           <a
-            href="mailto:contact@solvempire.com"
+            href="mailto:support@solvempire.com"
             className="font-display font-bold text-base sm:text-lg text-[#181A1D] border-b-2 border-[#181A1D]/40 pb-1 hover:border-[#181A1D] transition-colors"
           >
-            contact@solvempire.com
+            support@solvempire.com
           </a>
 
           <a
-            href="tel:+919121996739"
+            href="tel:+919701341323"
             className="font-display font-bold text-base sm:text-lg text-[#181A1D] border-b-2 border-[#181A1D]/40 pb-1 hover:border-[#181A1D] transition-colors"
           >
-            +91 91219 96739
+            +91 97013 41323
           </a>
         </div>
 

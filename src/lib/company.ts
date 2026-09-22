@@ -12,10 +12,13 @@ export const COMPANY = {
   websiteUrl: "https://www.solvempire.com",
   email: "support@solvempire.com",
   supportEmail: "support@solvempire.com",
+  phone: "+91 97013 41323",
+  phoneHref: "tel:+919701341323",
   city: "Kakinada, Andhra Pradesh, India",
+  addressShort: "Panasapadu, Kakinada, Andhra Pradesh, India",
   fullAddress:
-    "SFNO 244/3 D.No: 2-247/2, Near Medha School Employee, Panasapadu, Kakinada, East Godavari, Andhra Pradesh, 533005, India",
-  mapsUrl: "https://maps.app.goo.gl/Fksd6MhzFhw9WyT36",
+    "SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu, Kakinada, Andhra Pradesh, India",
+  mapsUrl: "https://maps.app.goo.gl/7awCUTuTPqBsHT4c7",
   getCopyright: (year: number = new Date().getFullYear()) =>
     `© ${year} SolveMpire Private Limited. All rights reserved.`,
   positioning: {

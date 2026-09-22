@@ -9,7 +9,7 @@ export function IndiseaFooter() {
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("contact@solvempire.com");
+    navigator.clipboard.writeText("support@solvempire.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -124,7 +124,7 @@ export function IndiseaFooter() {
                   onClick={handleCopyEmail}
                   className="inline-flex items-center gap-1.5 text-[var(--text-body)] hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
-                  <span>contact@solvempire.com</span>
+                  <span>support@solvempire.com</span>
                   {copied ? (
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
                   ) : (
@@ -135,17 +135,22 @@ export function IndiseaFooter() {
 
               <div>
                 <a
-                  href="tel:+919121996739"
+                  href="tel:+919701341323"
                   className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors block"
                 >
-                  +91 91219 96739
+                  +91 97013 41323
                 </a>
               </div>
 
               <div className="pt-1">
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                  Bhimavaram, Andhra Pradesh, India
-                </p>
+                <a
+                  href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[var(--text-muted)] hover:text-[#2563EB] leading-relaxed block"
+                >
+                  SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu, Kakinada, Andhra Pradesh, India ↗
+                </a>
               </div>
             </div>
           </div>

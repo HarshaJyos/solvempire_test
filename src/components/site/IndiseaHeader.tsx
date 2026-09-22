@@ -188,28 +188,33 @@ export function IndiseaHeader() {
             <div>
               <span className="indisea-eyebrow block mb-1">Direct Engineering Email</span>
               <a
-                href="mailto:contact@solvempire.com"
+                href="mailto:support@solvempire.com"
                 className="font-medium text-[var(--text-heading)] hover:text-[#2563EB] transition-colors"
               >
-                contact@solvempire.com
+                support@solvempire.com
               </a>
             </div>
 
             <div>
               <span className="indisea-eyebrow block mb-1">Direct Phone</span>
               <a
-                href="tel:+919121996739"
+                href="tel:+919701341323"
                 className="font-medium text-[var(--text-heading)] hover:text-[#2563EB] transition-colors"
               >
-                +91 91219 96739
+                +91 97013 41323
               </a>
             </div>
 
             <div>
               <span className="indisea-eyebrow block mb-1">Design Studio &amp; Lab</span>
-              <p className="text-[var(--text-muted)] font-normal text-xs leading-relaxed">
-                Bhimavaram, Andhra Pradesh, India
-              </p>
+              <a
+                href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[var(--text-muted)] hover:text-[#2563EB] font-normal text-xs leading-relaxed block"
+              >
+                Kakinada, Andhra Pradesh, India ↗
+              </a>
             </div>
 
             <div className="flex items-center sm:justify-end">

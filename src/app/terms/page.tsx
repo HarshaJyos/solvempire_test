@@ -58,8 +58,8 @@ export default function TermsPage() {
               </h2>
               <p>
                 For contract inquiries, MSA execution, or custom scoping terms, reach our legal desk at{" "}
-                <a href="mailto:contact@solvempire.com" className="text-[#2563EB] font-bold underline">
-                  contact@solvempire.com
+                <a href="mailto:support@solvempire.com" className="text-[#2563EB] font-bold underline">
+                  support@solvempire.com
                 </a>.
               </p>
             </section>

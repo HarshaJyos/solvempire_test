@@ -63,8 +63,8 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 For any privacy inquiries or legal governance requests, please contact our compliance desk directly at{" "}
-                <a href="mailto:contact@solvempire.com" className="text-[#2563EB] font-bold underline">
-                  contact@solvempire.com
+                <a href="mailto:support@solvempire.com" className="text-[#2563EB] font-bold underline">
+                  support@solvempire.com
                 </a>.
               </p>
             </section>
