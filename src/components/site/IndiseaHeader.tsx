@@ -9,7 +9,7 @@ const MENU_MODAL_ITEMS = [
   { num: "01", label: "Home", href: "/", color: "blue", desc: "Product engineering studio overview" },
   { num: "02", label: "Work", href: "/work", color: "green", desc: "Real-world production machines & systems" },
   { num: "03", label: "Capabilities", href: "/services", color: "yellow", desc: "Mechanical CAD, Multi-Layer PCB, RTOS & Cloud" },
-  { num: "04", label: "Process", href: "/#process", color: "blue", desc: "Discovery to volume manufacturing pipeline" },
+  { num: "04", label: "Process", href: "/process", color: "blue", desc: "Our 6-stage engineering lifecycle from discovery to fleet support" },
   { num: "05", label: "Team", href: "/team", color: "green", desc: "Core engineers, architects, and builders" },
   { num: "06", label: "About", href: "/about", color: "yellow", desc: "Studio mission, tenets, and manufacturing lab" },
   { num: "07", label: "Journal", href: "/journal", color: "blue", desc: "Engineering research papers & whitepapers" },

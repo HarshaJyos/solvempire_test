@@ -61,6 +61,11 @@ export function IndiseaFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/process" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                  Our Process
+                </Link>
+              </li>
+              <li>
                 <Link href="/work" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors font-medium">
                   Case Studies Archive
                 </Link>

@@ -5,6 +5,7 @@ import { IndiseaLiveWall } from "@/components/home/IndiseaLiveWall";
 import { IndiseaWhoWeAre } from "@/components/home/IndiseaWhoWeAre";
 import { IndiseaManifesto } from "@/components/home/IndiseaManifesto";
 import { IndiseaSystemTopology } from "@/components/home/IndiseaSystemTopology";
+import { IndiseaProcess } from "@/components/home/IndiseaProcess";
 import { IndiseaCaseStudies } from "@/components/home/IndiseaCaseStudies";
 import { IndiseaStickyStack } from "@/components/home/IndiseaStickyStack";
 import { IndiseaWhatYouGet } from "@/components/home/IndiseaWhatYouGet";
@@ -22,6 +23,7 @@ export default function HomePage() {
         <IndiseaWhoWeAre />
         <IndiseaManifesto />
         <IndiseaSystemTopology />
+        <IndiseaProcess />
         <IndiseaCaseStudies />
         <IndiseaStickyStack />
         <IndiseaWhatYouGet />
