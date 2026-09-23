@@ -349,7 +349,7 @@ export default function AboutPage() {
                       <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-none border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-slate-900 shadow-xs">
                         <Image
                           src={member.avatar}
-                          alt={member.name}
+                          alt={`${member.name} — ${member.role} at SolveMpire`}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />

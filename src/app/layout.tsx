@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { COMPANY } from "@/lib/company";
-import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo";
+import { buildOrganizationJsonLd, buildWebSiteJsonLd, buildLocalBusinessJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
 
 const bricolageGrotesque = Bricolage_Grotesque({
@@ -89,16 +90,19 @@ export default function RootLayout({
 }>) {
   const organizationSchema = buildOrganizationJsonLd();
   const websiteSchema = buildWebSiteJsonLd();
+  const localBusinessSchema = buildLocalBusinessJsonLd();
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <JsonLd schema={organizationSchema} />
         <JsonLd schema={websiteSchema} />
+        <JsonLd schema={localBusinessSchema} />
       </head>
       <body
         className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} min-h-screen bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#1F56C6]/15 selection:text-[#1F56C6] font-sans relative`}
       >
+        <GoogleAnalytics />
 
         {/* Very subtle technical film grain overlay */}
         <div className="bg-noise-grain" aria-hidden="true" />

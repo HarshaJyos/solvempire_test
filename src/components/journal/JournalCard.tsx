@@ -48,7 +48,7 @@ export function JournalCard({ post }: { post: JournalPostMeta }) {
               {post.author.avatar ? (
                 <Image
                   src={post.author.avatar}
-                  alt={post.author.name}
+                  alt={`${post.author.name} — SolveMpire Engineering Author`}
                   fill
                   className="object-cover"
                 />
@@ -66,7 +66,7 @@ export function JournalCard({ post }: { post: JournalPostMeta }) {
                 {ca.avatar ? (
                   <Image
                     src={ca.avatar}
-                    alt={ca.name}
+                    alt={`${ca.name} — SolveMpire Engineering Co-Author`}
                     fill
                     className="object-cover"
                   />

@@ -126,7 +126,7 @@ export default async function TeamMemberPage({
               <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-none border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-xs">
                 <Image
                   src={member.avatar}
-                  alt={member.name}
+                  alt={`${member.name} — ${member.role} at SolveMpire`}
                   fill
                   priority
                   className="object-cover"

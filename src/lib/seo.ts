@@ -112,6 +112,156 @@ export function buildOrganizationJsonLd() {
 }
 
 /**
+ * LocalBusiness / ProfessionalService Schema for Kakinada, Andhra Pradesh, India
+ */
+export function buildLocalBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": `${BASE_URL}/#localbusiness`,
+    name: "SolveMpire — Product & Hardware Engineering Studio",
+    legalName: COMPANY.legalName,
+    alternateName: [
+      "SolveMpire Kakinada",
+      "SolveMpire Engineering Studio Andhra Pradesh",
+      "SolveMpire Hardware Lab",
+    ],
+    image: [
+      `${BASE_URL}/logo.png`,
+      `${BASE_URL}/icon.png`,
+    ],
+    url: BASE_URL,
+    telephone: COMPANY.phone,
+    email: COMPANY.email,
+    priceRange: "$$$$",
+    currenciesAccepted: "INR, USD, EUR",
+    paymentAccepted: "Bank Transfer, Wire Transfer, UPI, Corporate Purchase Order",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu",
+      addressLocality: "Kakinada",
+      addressRegion: "Andhra Pradesh",
+      postalCode: "533005",
+      addressCountry: "IN",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 16.989065,
+      longitude: 82.247465,
+    },
+    hasMap: "https://maps.app.goo.gl/7awCUTuTPqBsHT4c7",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ],
+        opens: "09:00",
+        closes: "19:00",
+      },
+    ],
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Kakinada",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "East Godavari",
+      },
+      {
+        "@type": "City",
+        name: "Visakhapatnam",
+      },
+      {
+        "@type": "City",
+        name: "Rajahmundry",
+      },
+      {
+        "@type": "City",
+        name: "Vijayawada",
+      },
+      {
+        "@type": "City",
+        name: "Hyderabad",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Andhra Pradesh",
+      },
+      {
+        "@type": "Country",
+        name: "India",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Worldwide",
+      },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: COMPANY.phone,
+      contactType: "customer service",
+      email: COMPANY.email,
+      availableLanguage: ["English", "Telugu", "Hindi"],
+      areaServed: "Worldwide",
+    },
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: 16.989065,
+        longitude: 82.247465,
+      },
+      geoRadius: "500000",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Hardware & Product Engineering Services in Kakinada, Andhra Pradesh",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "3D Mechanical CAD & Enclosure Design",
+            description: "SolidWorks & Fusion 360 mechanical packaging, IP65 waterproof sealing, and DFM.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Custom Multi-Layer PCB Design in KiCad",
+            description: "High-density multi-layer electronics design, STM32/ESP32 schematics, and Gerber layout.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Embedded Firmware & HMI Development",
+            description: "Deterministic C/C++ firmware, FreeRTOS, DWIN DGUS touchscreen UI, and CAN bus protocols.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "IoT Cloud Telemetry & OTA Deployments",
+            description: "Fleet management dashboards, dynamic UPI payment sessions, and remote OTA firmware updates.",
+          },
+        },
+      ],
+    },
+  };
+}
+
+/**
  * WebSite Schema with Sitelinks Search
  */
 export function buildWebSiteJsonLd() {

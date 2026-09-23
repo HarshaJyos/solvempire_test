@@ -100,7 +100,7 @@ export default function TeamDirectoryPage() {
                     <div className="relative w-20 h-20 rounded-none border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-xs">
                       <Image
                         src={member.avatar}
-                        alt={member.name}
+                        alt={`${member.name} — ${member.role} at SolveMpire`}
                         fill
                         className="object-cover"
                       />

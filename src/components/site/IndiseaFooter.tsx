@@ -29,7 +29,7 @@ export function IndiseaFooter() {
             <Link href="/" className="inline-block relative h-8 w-44">
               <Image
                 src="/logo.png"
-                alt="SolveMpire"
+                alt="SolveMpire — Physical Product Engineering Studio Logo"
                 fill
                 className="object-contain object-left"
               />
@@ -189,7 +189,7 @@ export function IndiseaFooter() {
           <div className="relative w-full aspect-[2000/350] opacity-20 hover:opacity-35 transition-opacity">
             <Image
               src="/logo.svg"
-              alt="SolveMpire Wordmark"
+              alt="SolveMpire Monolithic Hardware Engineering Brand Wordmark"
               fill
               className="object-contain object-center"
             />

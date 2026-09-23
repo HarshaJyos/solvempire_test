@@ -71,7 +71,7 @@ export function IndiseaHeader() {
             <div className="relative h-7 sm:h-8 w-32 sm:w-40">
               <Image
                 src="/logo.png"
-                alt="SolveMpire"
+                alt="SolveMpire — Turnkey Physical Product Engineering Studio"
                 fill
                 priority
                 className="object-contain object-left"

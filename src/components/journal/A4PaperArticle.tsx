@@ -183,7 +183,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                         {auth.avatar ? (
                           <Image
                             src={auth.avatar}
-                            alt={auth.name}
+                            alt={`${auth.name} — SolveMpire Engineering Author Portrait`}
                             fill
                             className="object-cover"
                           />
