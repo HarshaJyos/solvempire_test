@@ -17,8 +17,8 @@ export const whatIsEndToEndBlog: BlogArticleData = {
       bio: "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
       slug: "hanish-jyosyabhatla",
     },
-    publishedAt: "Sep 18, 2026",
-    isoDate: "2026-09-18T00:00:00Z",
+    publishedAt: "Jul 01, 2026",
+    isoDate: "2026-07-01T00:00:00Z",
     readTime: "7 min read",
     tags: [
       "Product Engineering",
@@ -28,7 +28,7 @@ export const whatIsEndToEndBlog: BlogArticleData = {
       "MVP",
       "Quality Engineering",
     ],
-    featured: true,
+    featured: false,
   },
   tableOfContents: [
     { id: "what-is-end-to-end", title: "What Exactly Is End-to-End Product Engineering?" },

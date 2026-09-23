@@ -17,8 +17,8 @@ export const physicalProductBlog: BlogArticleData = {
       bio: "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
       slug: "hanish-jyosyabhatla",
     },
-    publishedAt: "Sep 16, 2026",
-    isoDate: "2026-09-16T00:00:00Z",
+    publishedAt: "Jul 03, 2026",
+    isoDate: "2026-07-03T00:00:00Z",
     readTime: "9 min read",
     tags: [
       "Hardware",
@@ -29,7 +29,7 @@ export const physicalProductBlog: BlogArticleData = {
       "Quality Control",
       "Logistics",
     ],
-    featured: true,
+    featured: false,
   },
   tableOfContents: [
     { id: "first-dont-build", title: "First, Don't Build the Product" },

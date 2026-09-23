@@ -17,8 +17,8 @@ export const indiaProductEngineeringBlog: BlogArticleData = {
       bio: "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
       slug: "hanish-jyosyabhatla",
     },
-    publishedAt: "Sep 14, 2026",
-    isoDate: "2026-09-14T00:00:00Z",
+    publishedAt: "Jul 05, 2026",
+    isoDate: "2026-07-05T00:00:00Z",
     readTime: "8 min read",
     tags: [
       "Product Engineering",

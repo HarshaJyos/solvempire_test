@@ -15,6 +15,7 @@
   - Teja Mandapalli: Co-Founder & Product Lead
   - Pavan Kumar Duggirala: Product Strategist & Marketing
   - Prasad Duggirala: AI/ML Engineer
+  - Gayathri Boyapati: Electronics Engineer, PCB & VLSI Specialist
 
 
 ## Core Disciplines

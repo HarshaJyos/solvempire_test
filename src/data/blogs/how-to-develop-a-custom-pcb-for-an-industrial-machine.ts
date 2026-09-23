@@ -16,8 +16,8 @@ export const howToDevelopCustomPcbBlog: BlogArticleData = {
       bio: "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
       slug: "gayathri-boyapati",
     },
-    publishedAt: "Sep 23, 2026",
-    isoDate: "2026-09-23T00:00:00Z",
+    publishedAt: "Jul 15, 2026",
+    isoDate: "2026-07-15T00:00:00Z",
     readTime: "12 min read",
     tags: [
       "Custom PCB",

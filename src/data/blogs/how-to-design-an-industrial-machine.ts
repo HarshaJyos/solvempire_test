@@ -18,8 +18,8 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
       bio: "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
       slug: "lohith-medisetti",
     },
-    publishedAt: "Sep 23, 2026",
-    isoDate: "2026-09-23T00:00:00Z",
+    publishedAt: "Jul 13, 2026",
+    isoDate: "2026-07-13T00:00:00Z",
     readTime: "11 min read",
     tags: [
       "Industrial Machines",
@@ -31,7 +31,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
       "Power Distribution",
       "Commissioning",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Industrial machine design begins with cycle time (takt time) and kinematic inertia matching: matching motor-to-load inertia ratios (J_load / J_motor ≤ 5:1) prevents resonance and positioning jitter.",

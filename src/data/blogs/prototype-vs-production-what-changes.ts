@@ -18,8 +18,8 @@ export const prototypeVsProductionBlog: BlogArticleData = {
       bio: "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
       slug: "teja-mandapalli",
     },
-    publishedAt: "Sep 23, 2026",
-    isoDate: "2026-09-23T00:00:00Z",
+    publishedAt: "Jul 11, 2026",
+    isoDate: "2026-07-11T00:00:00Z",
     readTime: "10 min read",
     tags: [
       "Prototyping",
@@ -31,7 +31,7 @@ export const prototypeVsProductionBlog: BlogArticleData = {
       "Quality Control",
       "Supply Chain",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "A working benchtop prototype proves functional feasibility; production engineering ensures 10,000 units can be built with 99.5% yield, identical tolerances, and compliant safety standards.",

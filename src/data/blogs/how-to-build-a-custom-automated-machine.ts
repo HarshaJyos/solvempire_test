@@ -17,8 +17,8 @@ export const customAutomatedMachineBlog: BlogArticleData = {
       bio: "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
       slug: "hanish-jyosyabhatla",
     },
-    publishedAt: "Sep 12, 2026",
-    isoDate: "2026-09-12T00:00:00Z",
+    publishedAt: "Jul 07, 2026",
+    isoDate: "2026-07-07T00:00:00Z",
     readTime: "10 min read",
     tags: [
       "Custom Automation",

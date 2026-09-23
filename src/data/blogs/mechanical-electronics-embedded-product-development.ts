@@ -27,8 +27,8 @@ export const mechanicalElectronicsEmbeddedBlog: BlogArticleData = {
         slug: "gayathri-boyapati",
       },
     ],
-    publishedAt: "Sep 23, 2026",
-    isoDate: "2026-09-23T00:00:00Z",
+    publishedAt: "Jul 09, 2026",
+    isoDate: "2026-07-09T00:00:00Z",
     readTime: "9 min read",
     tags: [
       "Hardware Engineering",
@@ -40,7 +40,7 @@ export const mechanicalElectronicsEmbeddedBlog: BlogArticleData = {
       "Product Development",
       "Supply Chain",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Hardware systems fail most frequently at the handoffs: when mechanical CAD models don't account for PCB component heights, or firmware timing misjudges physical actuator inertia.",
