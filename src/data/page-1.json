@@ -1,8 +1,44 @@
 {
   "page": 1,
   "totalPages": 2,
-  "totalPosts": 9,
+  "totalPosts": 10,
   "posts": [
+    {
+      "id": "post-010",
+      "slug": "how-to-design-an-industrial-hmi",
+      "title": "How to Design an Industrial HMI",
+      "excerpt": "A complete engineering guide to industrial Human-Machine Interface (HMI) design. Learn how senior product engineers select rugged touch displays, architect ISA-101 high-performance UIs, integrate serial DGUS and Linux protocols, seal IP65 bezels, and design fail-safe hybrid control panels.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "coAuthors": [
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
+      ],
+      "publishedAt": "Jul 19, 2026",
+      "isoDate": "2026-07-19T00:00:00Z",
+      "readTime": "11 min read",
+      "tags": [
+        "Industrial HMI",
+        "UI/UX Design",
+        "Touchscreen Hardware",
+        "DWIN DGUS",
+        "Embedded Linux",
+        "ISA-101",
+        "Custom Automation",
+        "Product Engineering"
+      ],
+      "featured": true
+    },
     {
       "id": "post-009",
       "slug": "how-embedded-firmware-controls-an-automated-machine",
@@ -29,7 +65,7 @@
         "Industrial Automation",
         "HMI & Telemetry"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "id": "post-008",
@@ -148,33 +184,6 @@
         "Mechatronics",
         "Product Development",
         "Supply Chain"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-004",
-      "slug": "how-to-build-a-custom-automated-machine",
-      "title": "How to Build a Custom Automated Machine",
-      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Jul 07, 2026",
-      "isoDate": "2026-07-07T00:00:00Z",
-      "readTime": "10 min read",
-      "tags": [
-        "Custom Automation",
-        "PLC",
-        "Robotics",
-        "Machine Vision",
-        "Mechanical Design",
-        "FAT",
-        "Commissioning"
       ],
       "featured": false
     }

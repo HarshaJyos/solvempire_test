@@ -31,7 +31,7 @@ export const howEmbeddedFirmwareControlsBlog: BlogArticleData = {
       "Industrial Automation",
       "HMI & Telemetry",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Firmware controls physics: unlike web servers where an unhandled exception causes a page reload, an unhandled race condition in industrial firmware burns MOSFETs, snaps actuator belts, or locks physical doors.",

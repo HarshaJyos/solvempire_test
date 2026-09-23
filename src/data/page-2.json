@@ -1,8 +1,35 @@
 {
   "page": 2,
   "totalPages": 2,
-  "totalPosts": 9,
+  "totalPosts": 10,
   "posts": [
+    {
+      "id": "post-004",
+      "slug": "how-to-build-a-custom-automated-machine",
+      "title": "How to Build a Custom Automated Machine",
+      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Jul 07, 2026",
+      "isoDate": "2026-07-07T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Custom Automation",
+        "PLC",
+        "Robotics",
+        "Machine Vision",
+        "Mechanical Design",
+        "FAT",
+        "Commissioning"
+      ],
+      "featured": false
+    },
     {
       "id": "post-003",
       "slug": "product-engineering-company-in-india",
