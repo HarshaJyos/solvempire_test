@@ -16,35 +16,35 @@ export function IndiseaHero() {
         {/* Indisea-Style Display Headline with Beautiful Sharp Highlight Badges */}
         <div className="max-w-6xl">
           <h1 className="font-display font-extrabold text-[36px] sm:text-[54px] md:text-[68px] lg:text-[84px] xl:text-[96px] tracking-tight text-[var(--text-heading)] space-y-2 sm:space-y-4">
-            {/* Line 1: We [DESIGN], [ENGINEER], */}
+            {/* Line 1: WE [DESIGN], [ENGINEER], */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
-              <span>We</span>
+              <span className="uppercase">WE</span>
               <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#FACC15] text-[#181A1D] border border-amber-400 shadow-2xs font-display uppercase tracking-wide">
-                design
+                DESIGN
               </span>
               <span>,</span>
               <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#1F56C6] text-white border border-[#17449E] shadow-2xs font-display uppercase tracking-wide">
-                engineer
+                ENGINEER
               </span>
               <span>,</span>
             </div>
 
-            {/* Line 2: and [MANUFACTURE] */}
+            {/* Line 2: AND [MANUFACTURE] */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
-              <span>and</span>
+              <span className="uppercase">AND</span>
               <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#16A34A] text-white border border-emerald-700 shadow-2xs font-display uppercase tracking-wide">
-                manufacture
+                MANUFACTURE
               </span>
             </div>
 
-            {/* Line 3: physical machines */}
-            <div className="block leading-none text-slate-900 pt-1">
-              physical machines
+            {/* Line 3: PHYSICAL MACHINES */}
+            <div className="block leading-none text-slate-900 pt-1 uppercase">
+              PHYSICAL MACHINES
             </div>
 
-            {/* Line 4: & connected hardware. */}
-            <div className="block leading-none text-[#1F56C6] pt-1">
-              &amp; connected hardware.
+            {/* Line 4: & CONNECTED HARDWARE. */}
+            <div className="block leading-none text-[#1F56C6] pt-1 uppercase">
+              &amp; CONNECTED HARDWARE.
             </div>
           </h1>
         </div>
