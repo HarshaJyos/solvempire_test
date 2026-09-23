@@ -7,8 +7,8 @@ import { ArrowUpRight } from "lucide-react";
 const CLIENTS = [
   { name: "FreshPod", sector: "Automated Sanitation Robotics", link: "/work/freshpod-machine" },
   { name: "Veyo Mobility", sector: "Smart Connected EV Telemetry", link: "/work" },
-  { name: "Loah Tech", sector: "Consumer Kinematic Hardware", link: "/work" },
-  { name: "Aditya University", sector: "Industrial R&D Testbed", link: "/work" },
+  { name: "Loah", sector: "ADHD Cognitive Support Software", link: "/work" },
+  { name: "Aditya University", sector: "Founding Campus & Incubation", link: "/work" },
   { name: "Risenine", sector: "Enterprise Cloud Platforms", link: "/work" },
 ];
 

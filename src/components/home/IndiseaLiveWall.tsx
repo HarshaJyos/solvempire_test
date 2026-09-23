@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Cpu, Box, HardDrive, Wifi, Shield, Layers, Zap, Wrench } from "lucide-react";
+import { Cpu, Box, HardDrive, Wifi, Shield, Layers, Zap, Wrench, GraduationCap, Sparkles } from "lucide-react";
 
 interface MarqueeCard {
   name: string;
@@ -16,8 +16,8 @@ const ROW_A: MarqueeCard[] = [
   { name: "FreshPod Kiosk", category: "Automated Sanitation", tag: "Production Fleet", link: "/work/freshpod-machine", icon: Box },
   { name: "Veyo Mobility", category: "Connected EV Telemetry", tag: "Deployed", link: "/work", icon: Zap },
   { name: "USS2 Switcher", category: "Microcontroller Relay", tag: "Hardware", link: "/work/uss2-switcher", icon: Cpu },
-  { name: "Loah Hardware", category: "Consumer Product Kinematics", tag: "DFM Verified", link: "/work", icon: Layers },
-  { name: "Aditya University Lab", category: "Industrial R&D Testbed", tag: "Lab System", link: "/work", icon: Wrench },
+  { name: "Loah", category: "ADHD Cognitive Support Software", tag: "Software Product", link: "/work", icon: Sparkles },
+  { name: "Aditya University", category: "Founding Campus & Incubation", tag: "Alma Mater", link: "/work", icon: GraduationCap },
   { name: "Egg Vending Machine", category: "Custom Mechatronics", tag: "Turnkey Machine", link: "/work", icon: Box },
 ];
 
