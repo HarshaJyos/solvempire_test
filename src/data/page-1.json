@@ -1,8 +1,36 @@
 {
   "page": 1,
   "totalPages": 1,
-  "totalPosts": 5,
+  "totalPosts": 6,
   "posts": [
+    {
+      "id": "post-006",
+      "slug": "prototype-vs-production-what-changes",
+      "title": "Prototype vs Production: What Really Changes When Hardware Goes to Scale?",
+      "excerpt": "A working proof-of-concept on a lab workbench is not a commercial product. Explore the exact engineering shifts between prototype and mass production—including DFM injection tooling, sheet metal bend tolerances, SMT panelization, automated test jigs, wire harness looms, and regulatory certifications.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "publishedAt": "Sep 23, 2026",
+      "isoDate": "2026-09-23T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Prototyping",
+        "Manufacturing",
+        "DFM",
+        "Hardware Engineering",
+        "PCB Assembly",
+        "Injection Molding",
+        "Quality Control",
+        "Supply Chain"
+      ],
+      "featured": true
+    },
     {
       "id": "post-005",
       "slug": "mechanical-electronics-embedded-product-development",
