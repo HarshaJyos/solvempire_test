@@ -130,7 +130,7 @@ git push origin master
 
 ---
 
-## 5. Current 19-Journal Chronological Registry (Reference Baseline)
+## 5. Current 21-Journal Chronological Registry (Reference Baseline)
 
 | # | ID | Slug | Published Date | Featured | Primary Author |
 |---|---|------|----------------|----------|----------------|
@@ -152,6 +152,8 @@ git push origin master
 | 16 | `post-016` | `can-bus-vs-rs485-vs-uart` | `Jul 31, 2026` | `false` | Gayathri Boyapati |
 | 17 | `post-017` | `ota-updates-for-industrial-machines` | `Aug 02, 2026` | `false` | Gayathri Boyapati |
 | 18 | `post-018` | `remote-monitoring-for-industrial-machines` | `Aug 04, 2026` | `false` | Gayathri Boyapati |
-| 19 | `post-019` | `engineering-a-commercial-helmet-sanitization-machine` | `Aug 06, 2026` | **`true`** | Hanish Jyosyabhatla |
+| 19 | `post-019` | `engineering-a-commercial-helmet-sanitization-machine` | `Aug 06, 2026` | `false` | Hanish Jyosyabhatla |
+| 20 | `post-020` | `ip65-automotive-sensor-design` | `Aug 08, 2026` | `false` | Gayathri Boyapati |
+| 21 | `post-021` | `automotive-sensor-enclosure-design` | `Aug 10, 2026` | **`true`** | Teja Mandapalli |
 
-*For Post 20 and onwards, continue with `Aug 08, 2026`, `Aug 10, 2026`, etc., maintaining the strict 2-day gap.*
+*For Post 22 and onwards, continue with `Aug 12, 2026`, `Aug 14, 2026`, etc., maintaining the strict 2-day gap.*

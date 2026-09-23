@@ -5,6 +5,7 @@ import page2Data from "@/data/page-2.json";
 import page3Data from "@/data/page-3.json";
 import page4Data from "@/data/page-4.json";
 import page5Data from "@/data/page-5.json";
+import page6Data from "@/data/page-6.json";
 
 // Registry of pre-bundled page chunks
 const pageChunks: Record<number, JournalPageChunk> = {
@@ -13,6 +14,7 @@ const pageChunks: Record<number, JournalPageChunk> = {
   3: page3Data as JournalPageChunk,
   4: page4Data as JournalPageChunk,
   5: page5Data as JournalPageChunk,
+  6: page6Data as JournalPageChunk,
 };
 
 export type JournalSortOption =

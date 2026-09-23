@@ -1,8 +1,86 @@
 {
   "page": 2,
-  "totalPages": 5,
-  "totalPosts": 19,
+  "totalPages": 6,
+  "totalPosts": 21,
   "posts": [
+    {
+      "id": "post-017",
+      "slug": "ota-updates-for-industrial-machines",
+      "title": "OTA Updates for Industrial Machines",
+      "subtitle": "Dual-Partition A/B Flash Architecture, Cryptographic Verification, Delta Compression, and Zero-Downtime Rollback Strategies for Mission-Critical Fleets.",
+      "excerpt": "A complete engineering guide to implementing secure, fail-safe Over-The-Air (OTA) firmware updates for industrial machines and connected kiosks. Explore dual-partition A/B flash mapping, cryptographic signature checks, power-loss resilience, delta compression over 4G LTE, and automated rollback state machines.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        "slug": "gayathri-boyapati"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        }
+      ],
+      "publishedAt": "Aug 02, 2026",
+      "isoDate": "2026-08-02T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "OTA Updates",
+        "Industrial Firmware",
+        "A/B Partitioning",
+        "Embedded Security",
+        "STM32 & ESP32",
+        "Embedded Linux",
+        "Fleet Management",
+        "Hardware Engineering"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-016",
+      "slug": "can-bus-vs-rs485-vs-uart",
+      "title": "CAN Bus vs RS-485 vs UART",
+      "subtitle": "An Industrial Protocol Comparison for Embedded Hardware, Distributed Machine Control, and Multi-Drop Automation Networks.",
+      "excerpt": "A senior electronics engineer's comparison of CAN Bus, RS-485 Modbus, and UART for industrial automation. Explore differential signaling physics, hardware vs software arbitration, noise immunity, cable length trade-offs, galvanic isolation, and production case studies.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        "slug": "gayathri-boyapati"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        }
+      ],
+      "publishedAt": "Jul 31, 2026",
+      "isoDate": "2026-07-31T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "CAN Bus",
+        "RS-485",
+        "UART",
+        "Industrial Protocols",
+        "Embedded Systems",
+        "Modbus RTU",
+        "Distributed Control",
+        "Hardware Engineering"
+      ],
+      "featured": false
+    },
     {
       "id": "post-015",
       "slug": "pcb-and-enclosure-mechanical-design",
@@ -84,98 +162,6 @@
         "Thermal Management",
         "Industrial Design",
         "Hardware Engineering",
-        "Manufacturing Scale"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-013",
-      "slug": "from-cad-to-manufacturing-product-engineering-workflow",
-      "title": "From CAD to Manufacturing: Product Engineering Workflow",
-      "subtitle": "A Senior Engineer's Guide to Parametric 3D CAD, Electromechanical Co-Design, DFM Tooling Rules, GD&T Drawings, and Factory EVT/DVT/PVT Validation.",
-      "excerpt": "The complete, practical engineering guide to taking physical products from 3D CAD to volume factory production. Learn top-down parametric assembly architecture, KiCad-to-CAD electromechanical co-design, sheet metal & injection tooling DFM, ASME Y14.5 GD&T drawings, and EVT/DVT/PVT quality validation.",
-      "category": "Hardware & Manufacturing",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Teja Mandapalli",
-        "role": "Co-Founder & Product Lead",
-        "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-        "slug": "teja-mandapalli"
-      },
-      "coAuthors": [
-        {
-          "name": "Lohith Medisetti",
-          "role": "Co-Founder & COO",
-          "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-          "slug": "lohith-medisetti"
-        },
-        {
-          "name": "Hanish Jyosyabhatla",
-          "role": "Founder & CEO",
-          "avatar": "/avatars/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-          "slug": "hanish-jyosyabhatla"
-        }
-      ],
-      "publishedAt": "Jul 25, 2026",
-      "isoDate": "2026-07-25T00:00:00Z",
-      "readTime": "13 min read",
-      "tags": [
-        "CAD to Manufacturing",
-        "DFM",
-        "Mechanical Engineering",
-        "Injection Molding",
-        "Sheet Metal",
-        "GD&T",
-        "Prototyping",
-        "Manufacturing Scale"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-012",
-      "slug": "industrial-automation-product-development",
-      "title": "Industrial Automation Product Development",
-      "subtitle": "A Complete Blueprint from Process Feasibility, Mechatronics, and Custom Electronics to Production Tooling, Safety Certification, and Commercial Fleet Deployment.",
-      "excerpt": "How to transition from a bespoke one-off automated machine to a scalable, commercially certified industrial automation product. Explore takt time physics, structural kinematics, custom PCB consolidation, FreeRTOS firmware, DFM sheet metal tooling, and turnkey fleet manufacturing.",
-      "category": "Custom Automation",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Lohith Medisetti",
-        "role": "Co-Founder & COO",
-        "avatar": "/lohith.webp",
-        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-        "slug": "lohith-medisetti"
-      },
-      "coAuthors": [
-        {
-          "name": "Hanish Jyosyabhatla",
-          "role": "Founder & CEO",
-          "avatar": "/avatars/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-          "slug": "hanish-jyosyabhatla"
-        },
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Jul 23, 2026",
-      "isoDate": "2026-07-23T00:00:00Z",
-      "readTime": "13 min read",
-      "tags": [
-        "Industrial Automation",
-        "Product Development",
-        "Mechatronics",
-        "Custom Machinery",
-        "Embedded Systems",
-        "DFM",
-        "Safety Engineering",
         "Manufacturing Scale"
       ],
       "featured": false

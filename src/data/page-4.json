@@ -1,8 +1,67 @@
 {
   "page": 4,
-  "totalPages": 5,
-  "totalPosts": 19,
+  "totalPages": 6,
+  "totalPosts": 21,
   "posts": [
+    {
+      "id": "post-009",
+      "slug": "how-embedded-firmware-controls-an-automated-machine",
+      "title": "How Embedded Firmware Controls an Automated Machine",
+      "subtitle": "From deterministic RTOS task scheduling and state machines to hardware timers, CAN bus distributed control, and fail-safe safety interlocks.",
+      "excerpt": "A senior engineer's deep dive into industrial embedded firmware. Explore FreeRTOS task scheduling, hierarchical state machines, microsecond hardware timer PWM, CAN bus distributed architectures, DWIN HMI interfacing, and fail-safe safety watchdogs.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+        "slug": "gayathri-boyapati"
+      },
+      "publishedAt": "Jul 17, 2026",
+      "isoDate": "2026-07-17T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Embedded Firmware",
+        "FreeRTOS",
+        "STM32",
+        "CAN Bus",
+        "State Machines",
+        "Motion Control",
+        "Industrial Automation",
+        "HMI & Telemetry"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-008",
+      "slug": "how-to-develop-a-custom-pcb-for-an-industrial-machine",
+      "title": "How to Develop a Custom PCB for an Industrial Machine",
+      "excerpt": "From electrical requirements, silicon selection, hierarchical schematics, and ERC simulations to impedance stackups, thermal floorplanning, DFM, and automated Bed-of-Nails testing. The complete engineering guide to industrial PCB development.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+        "slug": "gayathri-boyapati"
+      },
+      "publishedAt": "Jul 15, 2026",
+      "isoDate": "2026-07-15T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Custom PCB",
+        "KiCad",
+        "Industrial Electronics",
+        "STM32",
+        "Linux SoM",
+        "CAN Bus",
+        "DFM",
+        "Embedded Hardware"
+      ],
+      "featured": false
+    },
     {
       "id": "post-007",
       "slug": "how-to-design-an-industrial-machine",
@@ -60,74 +119,6 @@
         "Injection Molding",
         "Quality Control",
         "Supply Chain"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-005",
-      "slug": "mechanical-electronics-embedded-product-development",
-      "title": "Mechanical + Electronics + Embedded: The Trinity of Physical Product Development",
-      "subtitle": "Why 80% of hardware projects fail at the boundaries between CAD packaging, PCB routing, and firmware determinism—and how a unified engineering studio builds deployable machines.",
-      "excerpt": "A complete guide to multi-discipline physical product engineering. Learn how mechanical CAD, custom PCB layout, and real-time embedded firmware interact during prototyping, thermal validation, DFM, and fleet deployment—with authentic engineering lessons from 200+ deployed machines.",
-      "category": "Product Development",
-      "type": "Engineering Guide",
-      "author": {
-        "name": "Lohith Medisetti",
-        "role": "Co-Founder & COO",
-        "avatar": "/avatars/lohith.webp",
-        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-        "slug": "lohith-medisetti"
-      },
-      "coAuthors": [
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Jul 09, 2026",
-      "isoDate": "2026-07-09T00:00:00Z",
-      "readTime": "9 min read",
-      "tags": [
-        "Hardware Engineering",
-        "Mechanical CAD",
-        "Custom PCB",
-        "Embedded Firmware",
-        "DFM",
-        "Mechatronics",
-        "Product Development",
-        "Supply Chain"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-004",
-      "slug": "how-to-build-a-custom-automated-machine",
-      "title": "How to Build a Custom Automated Machine",
-      "subtitle": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, and FAT commissioning.",
-      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-        "slug": "hanish-jyosyabhatla"
-      },
-      "publishedAt": "Jul 07, 2026",
-      "isoDate": "2026-07-07T00:00:00Z",
-      "readTime": "10 min read",
-      "tags": [
-        "Custom Automation",
-        "PLC",
-        "Robotics",
-        "Machine Vision",
-        "Mechanical Design",
-        "FAT",
-        "Commissioning"
       ],
       "featured": false
     }

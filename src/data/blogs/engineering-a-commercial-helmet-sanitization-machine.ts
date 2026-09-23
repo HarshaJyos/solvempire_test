@@ -56,7 +56,7 @@ export const engineeringACommercialHelmetSanitizationMachineBlog: BlogArticleDat
       "DFM",
       "IoT Cloud Telemetry",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Commercial helmet sanitization requires a synchronized tripartite sterilization cycle: high-density gaseous Ozone (O3) for deep fabric foam penetration, germicidal 254 nm UV-C radiation for exterior hard shell disinfection, and forced heated air convection (48°C–52°C) for moisture extraction and sweat de-humidification.",

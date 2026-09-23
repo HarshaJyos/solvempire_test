@@ -1,8 +1,100 @@
 {
   "page": 3,
-  "totalPages": 5,
-  "totalPosts": 19,
+  "totalPages": 6,
+  "totalPosts": 21,
   "posts": [
+    {
+      "id": "post-013",
+      "slug": "from-cad-to-manufacturing-product-engineering-workflow",
+      "title": "From CAD to Manufacturing: Product Engineering Workflow",
+      "subtitle": "A Senior Engineer's Guide to Parametric 3D CAD, Electromechanical Co-Design, DFM Tooling Rules, GD&T Drawings, and Factory EVT/DVT/PVT Validation.",
+      "excerpt": "The complete, practical engineering guide to taking physical products from 3D CAD to volume factory production. Learn top-down parametric assembly architecture, KiCad-to-CAD electromechanical co-design, sheet metal & injection tooling DFM, ASME Y14.5 GD&T drawings, and EVT/DVT/PVT quality validation.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
+      },
+      "coAuthors": [
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        },
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        }
+      ],
+      "publishedAt": "Jul 25, 2026",
+      "isoDate": "2026-07-25T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "CAD to Manufacturing",
+        "DFM",
+        "Mechanical Engineering",
+        "Injection Molding",
+        "Sheet Metal",
+        "GD&T",
+        "Prototyping",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-012",
+      "slug": "industrial-automation-product-development",
+      "title": "Industrial Automation Product Development",
+      "subtitle": "A Complete Blueprint from Process Feasibility, Mechatronics, and Custom Electronics to Production Tooling, Safety Certification, and Commercial Fleet Deployment.",
+      "excerpt": "How to transition from a bespoke one-off automated machine to a scalable, commercially certified industrial automation product. Explore takt time physics, structural kinematics, custom PCB consolidation, FreeRTOS firmware, DFM sheet metal tooling, and turnkey fleet manufacturing.",
+      "category": "Custom Automation",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+        "slug": "lohith-medisetti"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Jul 23, 2026",
+      "isoDate": "2026-07-23T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "Industrial Automation",
+        "Product Development",
+        "Mechatronics",
+        "Custom Machinery",
+        "Embedded Systems",
+        "DFM",
+        "Safety Engineering",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
     {
       "id": "post-011",
       "slug": "how-to-integrate-payment-into-a-physical-machine",
@@ -78,65 +170,6 @@
         "ISA-101",
         "Custom Automation",
         "Product Engineering"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-009",
-      "slug": "how-embedded-firmware-controls-an-automated-machine",
-      "title": "How Embedded Firmware Controls an Automated Machine",
-      "subtitle": "From deterministic RTOS task scheduling and state machines to hardware timers, CAN bus distributed control, and fail-safe safety interlocks.",
-      "excerpt": "A senior engineer's deep dive into industrial embedded firmware. Explore FreeRTOS task scheduling, hierarchical state machines, microsecond hardware timer PWM, CAN bus distributed architectures, DWIN HMI interfacing, and fail-safe safety watchdogs.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Gayathri Boyapati",
-        "role": "Electronics Engineer, PCB & VLSI Specialist",
-        "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
-        "slug": "gayathri-boyapati"
-      },
-      "publishedAt": "Jul 17, 2026",
-      "isoDate": "2026-07-17T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "Embedded Firmware",
-        "FreeRTOS",
-        "STM32",
-        "CAN Bus",
-        "State Machines",
-        "Motion Control",
-        "Industrial Automation",
-        "HMI & Telemetry"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-008",
-      "slug": "how-to-develop-a-custom-pcb-for-an-industrial-machine",
-      "title": "How to Develop a Custom PCB for an Industrial Machine",
-      "excerpt": "From electrical requirements, silicon selection, hierarchical schematics, and ERC simulations to impedance stackups, thermal floorplanning, DFM, and automated Bed-of-Nails testing. The complete engineering guide to industrial PCB development.",
-      "category": "Hardware & Manufacturing",
-      "type": "Engineering Guide",
-      "author": {
-        "name": "Gayathri Boyapati",
-        "role": "Electronics Engineer, PCB & VLSI Specialist",
-        "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
-        "slug": "gayathri-boyapati"
-      },
-      "publishedAt": "Jul 15, 2026",
-      "isoDate": "2026-07-15T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "Custom PCB",
-        "KiCad",
-        "Industrial Electronics",
-        "STM32",
-        "Linux SoM",
-        "CAN Bus",
-        "DFM",
-        "Embedded Hardware"
       ],
       "featured": false
     }
