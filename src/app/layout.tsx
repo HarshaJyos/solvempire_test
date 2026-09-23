@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Manrope, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { COMPANY } from "@/lib/company";
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "./globals.css";
 
-const manrope = Manrope({
+const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
@@ -22,6 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(COMPANY.websiteUrl),
@@ -96,8 +97,9 @@ export default function RootLayout({
         <JsonLd schema={websiteSchema} />
       </head>
       <body
-        className={`${manrope.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} min-h-screen bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#2563eb]/15 selection:text-[#1d4ed8] font-sans relative`}
+        className={`${bricolageGrotesque.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} min-h-screen bg-[#fafcff] text-[#0f172a] antialiased selection:bg-[#1F56C6]/15 selection:text-[#1F56C6] font-sans relative`}
       >
+
         {/* Very subtle technical film grain overlay */}
         <div className="bg-noise-grain" aria-hidden="true" />
         {children}

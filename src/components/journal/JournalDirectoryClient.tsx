@@ -142,7 +142,7 @@ export function JournalDirectoryClient() {
       {/* Top Back Link */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--text-muted)] hover:text-[#2563EB] uppercase tracking-wider transition-colors group"
+        className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--text-muted)] hover:text-[#1F56C6] uppercase tracking-wider transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
         <span>&larr; Return to Studio</span>
@@ -151,12 +151,12 @@ export function JournalDirectoryClient() {
       {/* Hero Title Section */}
       <div className="max-w-4xl space-y-4 text-left border-b border-[var(--border-hairline)] pb-10">
         <span className="indisea-eyebrow">
-          01 / research &amp; engineering papers
+          01 / RESEARCH &amp; ENGINEERING PAPERS
         </span>
 
-        <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+        <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] text-[var(--text-heading)] tracking-tight leading-[1.06] uppercase">
           Engineering in Public. <br />
-          <span className="text-[#2563EB]">Documenting Science &amp; Systems.</span>
+          <span className="text-[#1F56C6]">Documenting Science &amp; Systems.</span>
         </h1>
 
         <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] max-w-2xl leading-relaxed font-normal">
@@ -166,7 +166,7 @@ export function JournalDirectoryClient() {
 
       {/* Search Bar */}
       <div className="relative group">
-        <div className="relative flex items-center rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs focus-within:border-[#2563EB] focus-within:ring-2 focus-within:ring-[#2563EB]/10 transition-all">
+        <div className="relative flex items-center rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs focus-within:border-[#1F56C6] focus-within:ring-2 focus-within:ring-[#1F56C6]/10 transition-all">
           <div className="pl-5 text-[var(--text-muted)]">
             <Search className="w-5 h-5" />
           </div>
@@ -189,14 +189,14 @@ export function JournalDirectoryClient() {
                   setSearchQuery("");
                   setCurrentPage(1);
                 }}
-                className="p-1.5 rounded-lg text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer"
+                className="p-1.5 rounded-none text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer"
                 aria-label="Clear search"
               >
                 <X className="w-4 h-4" />
               </button>
             )}
 
-            <span className="hidden sm:inline-block px-2.5 py-1 rounded-md bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-xs font-mono text-[var(--text-muted)]">
+            <span className="hidden sm:inline-block px-2.5 py-1 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-xs font-mono text-[var(--text-muted)] uppercase">
               {filteredPosts.length} {filteredPosts.length === 1 ? "result" : "results"}
             </span>
           </div>
@@ -207,7 +207,7 @@ export function JournalDirectoryClient() {
           <div className="lg:hidden flex flex-wrap items-center gap-1.5 pt-3">
             <span className="text-xs font-semibold text-[var(--text-muted)] mr-1">Active:</span>
             {searchQuery.trim() && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#2563EB]/10 text-xs text-[#2563EB] font-medium">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-none bg-[#1F56C6]/10 text-xs text-[#1F56C6] font-medium">
                 <span>&quot;{searchQuery}&quot;</span>
                 <button onClick={() => setSearchQuery("")}>
                   <X className="w-3 h-3" />
@@ -218,7 +218,7 @@ export function JournalDirectoryClient() {
             {selectedCategories.map((cat) => (
               <span
                 key={cat}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#2563EB]/10 text-xs text-[#2563EB] font-medium"
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-none bg-[#1F56C6]/10 text-xs text-[#1F56C6] font-medium uppercase font-mono"
               >
                 <span>{cat}</span>
                 <button onClick={() => toggleCategory(cat)}>
@@ -230,7 +230,7 @@ export function JournalDirectoryClient() {
             <button
               type="button"
               onClick={handleResetFilters}
-              className="text-xs text-[#2563EB] hover:underline font-semibold ml-1 py-1 cursor-pointer"
+              className="text-xs text-[#1F56C6] hover:underline font-semibold ml-1 py-1 cursor-pointer uppercase font-mono"
             >
               Clear all
             </button>
@@ -242,11 +242,11 @@ export function JournalDirectoryClient() {
       <div className="indisea-grid items-start gap-8 lg:gap-10">
         {/* Desktop Filter Sidebar (Span 4) */}
         <aside className="hidden lg:block col-span-4 space-y-5 sticky top-28">
-          <div className="rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] p-6 shadow-xs space-y-6">
+          <div className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] p-6 shadow-xs space-y-6">
             {/* Header */}
             <div className="flex items-center justify-between pb-3.5 border-b border-[var(--border-hairline)]">
               <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-[#2563EB]" />
+                <Filter className="w-4 h-4 text-[#1F56C6]" />
                 <h2 className="font-display font-bold text-xs uppercase tracking-wider text-[var(--text-heading)]">
                   Topic Filters
                 </h2>
@@ -255,7 +255,7 @@ export function JournalDirectoryClient() {
               {isFiltering && (
                 <button
                   onClick={handleResetFilters}
-                  className="text-xs font-semibold text-[#2563EB] hover:underline cursor-pointer"
+                  className="text-xs font-semibold text-[#1F56C6] hover:underline cursor-pointer uppercase font-mono"
                 >
                   Clear All
                 </button>
@@ -275,14 +275,14 @@ export function JournalDirectoryClient() {
                     <label
                       key={cat}
                       onClick={() => toggleCategory(cat)}
-                      className="flex items-center justify-between p-2 rounded-xl hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer select-none text-xs"
+                      className="flex items-center justify-between p-2 rounded-none hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer select-none text-xs"
                     >
                       <div className="flex items-center gap-2.5">
                         <div
                           className={cn(
-                            "w-4 h-4 rounded flex items-center justify-center border transition-all",
+                            "w-4 h-4 rounded-none flex items-center justify-center border transition-all",
                             isChecked
-                              ? "bg-[#2563EB] border-[#2563EB] text-white"
+                              ? "bg-[#1F56C6] border-[#1F56C6] text-white"
                               : "border-[var(--border-hairline)] bg-[var(--surface-canvas)]"
                           )}
                         >
@@ -312,14 +312,14 @@ export function JournalDirectoryClient() {
                     <label
                       key={t}
                       onClick={() => toggleType(t)}
-                      className="flex items-center justify-between p-2 rounded-xl hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer select-none text-xs"
+                      className="flex items-center justify-between p-2 rounded-none hover:bg-[var(--surface-canvas)] transition-colors cursor-pointer select-none text-xs"
                     >
                       <div className="flex items-center gap-2.5">
                         <div
                           className={cn(
-                            "w-4 h-4 rounded flex items-center justify-center border transition-all",
+                            "w-4 h-4 rounded-none flex items-center justify-center border transition-all",
                             isChecked
-                              ? "bg-[#2563EB] border-[#2563EB] text-white"
+                              ? "bg-[#1F56C6] border-[#1F56C6] text-white"
                               : "border-[var(--border-hairline)] bg-[var(--surface-canvas)]"
                           )}
                         >
@@ -341,16 +341,16 @@ export function JournalDirectoryClient() {
         {/* Main Results Column (Span 8) */}
         <div className="col-span-12 lg:col-span-8 space-y-6">
           {/* Toolbar */}
-          <div className="p-4 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="p-4 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
             <button
               type="button"
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-canvas)] border border-[var(--border-hairline)] font-semibold text-[var(--text-heading)]"
+              className="lg:hidden inline-flex items-center gap-2 px-3 py-1.5 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] font-semibold text-[var(--text-heading)]"
             >
-              <Filter className="w-3.5 h-3.5 text-[#2563EB]" />
+              <Filter className="w-3.5 h-3.5 text-[#1F56C6]" />
               <span>Filters</span>
               {totalActiveFilterCount > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full bg-[#2563EB] text-white text-[10px]">
+                <span className="px-1.5 py-0.2 rounded-none bg-[#1F56C6] text-white text-[10px]">
                   {totalActiveFilterCount}
                 </span>
               )}
@@ -369,7 +369,7 @@ export function JournalDirectoryClient() {
                   setSortBy(e.target.value as JournalSortOption);
                   setCurrentPage(1);
                 }}
-                className="h-8 pl-2.5 pr-7 rounded-lg bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-xs font-medium text-[var(--text-heading)] focus:outline-none cursor-pointer"
+                className="h-8 pl-2.5 pr-7 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-xs font-medium text-[var(--text-heading)] focus:outline-none cursor-pointer"
               >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
@@ -381,21 +381,21 @@ export function JournalDirectoryClient() {
 
           {/* Featured Spotlight Card */}
           {featuredPost && (
-            <div className="p-6 sm:p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400/80 shadow-xs transition-all relative overflow-hidden group">
+            <div className="p-6 sm:p-8 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 shadow-xs transition-all relative overflow-hidden group">
               <div className="space-y-4 relative z-10">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#2563EB]/10 text-[#2563EB] text-[11px] font-mono font-bold uppercase tracking-wider">
+                  <span className="px-2.5 py-0.5 rounded-none bg-[#1F56C6]/10 text-[#1F56C6] text-[11px] font-mono font-bold uppercase tracking-wider">
                     {featuredPost.category}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-[var(--surface-canvas)] text-[var(--text-muted)] text-[11px] font-mono font-medium">
+                  <span className="px-2 py-0.5 rounded-none bg-[var(--surface-canvas)] text-[var(--text-muted)] text-[11px] font-mono font-medium uppercase">
                     {featuredPost.type}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-amber-800 bg-[#FACC15]/20 px-2 py-0.5 rounded-full border border-amber-300">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-amber-800 bg-[#FACC15]/20 px-2 py-0.5 rounded-none border border-amber-300 uppercase">
                     <Sparkles className="w-3 h-3 text-amber-600" /> Featured Spotlight
                   </span>
                 </div>
 
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors leading-tight">
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors leading-tight uppercase tracking-tight">
                   <Link href={`/journal/${featuredPost.slug}`}>
                     {featuredPost.title}
                   </Link>
@@ -407,14 +407,14 @@ export function JournalDirectoryClient() {
 
                 <div className="pt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--border-hairline)] text-xs text-[var(--text-muted)]">
                   <div className="flex items-center gap-2 font-mono text-[11px]">
-                    <span className="text-[var(--text-heading)] font-semibold">{featuredPost.author.name}</span>
+                    <span className="text-[var(--text-heading)] font-semibold uppercase">{featuredPost.author.name}</span>
                     <span>•</span>
-                    <span className="text-[#2563EB] font-bold">{featuredPost.readTime}</span>
+                    <span className="text-[#1F56C6] font-bold">{featuredPost.readTime}</span>
                   </div>
 
                   <Link
                     href={`/journal/${featuredPost.slug}`}
-                    className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] group-hover:text-[#1D4ED8]"
+                    className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#1F56C6] group-hover:text-[#17449E] uppercase tracking-wider"
                   >
                     <span>Read White Paper</span>
                     <ArrowRight className="w-3.5 h-3.5 arrow-slide" />
@@ -432,14 +432,14 @@ export function JournalDirectoryClient() {
               ))}
             </div>
           ) : (
-            <div className="py-16 px-6 text-center rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] space-y-4">
+            <div className="py-16 px-6 text-center rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] space-y-4">
               <Search className="w-8 h-8 text-[var(--text-muted)] mx-auto" />
-              <p className="font-display font-bold text-lg text-[var(--text-heading)]">
+              <p className="font-display font-bold text-lg text-[var(--text-heading)] uppercase">
                 No matching journal entries found
               </p>
               <button
                 onClick={handleResetFilters}
-                className="btn-indisea-blue text-xs py-2.5 px-5 cursor-pointer"
+                className="btn-indisea-blue text-xs py-2.5 px-5 cursor-pointer uppercase tracking-wider"
               >
                 Clear All Filters
               </button>

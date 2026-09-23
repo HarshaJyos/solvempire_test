@@ -16,15 +16,15 @@ export function IndiseaCaseStudies() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
             <span className="indisea-eyebrow">06 / featured case studies</span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08]">
               Real-World Systems. <br />
-              <span className="text-[#2563EB]">Built, Tested &amp; Shipped.</span>
+              <span className="text-[#1F56C6]">Built, Tested &amp; Shipped.</span>
             </h2>
           </div>
 
           <Link
             href="/work"
-            className="group inline-flex items-center gap-2 font-display text-sm font-bold text-[var(--text-heading)] hover:text-[#2563EB] transition-colors whitespace-nowrap"
+            className="group inline-flex items-center gap-2 font-display text-sm font-bold text-[var(--text-heading)] hover:text-[#1F56C6] transition-colors whitespace-nowrap"
           >
             <span>View All {caseStudies.length} Case Studies</span>
             <ArrowRight className="w-4 h-4 arrow-slide" />
@@ -58,7 +58,7 @@ export function IndiseaCaseStudies() {
                     <span className="text-emerald-600 font-semibold">{study.status}</span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors leading-snug">
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-tight text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors leading-snug">
                     {study.title}
                   </h3>
 
@@ -67,19 +67,11 @@ export function IndiseaCaseStudies() {
                   </p>
                 </div>
 
-                {/* Single Key Metric & Action */}
                 <div className="pt-3 border-t border-[var(--border-hairline)] flex items-center justify-between">
-                  {study.metrics && study.metrics.length > 0 ? (
-                    <span className="font-mono text-xs font-semibold text-[var(--text-heading)]">
-                      {study.metrics[0].value} {study.metrics[0].label.toLowerCase()}
-                    </span>
-                  ) : (
-                    <span className="font-mono text-xs text-[var(--text-muted)]">
-                      Turnkey Engineering
-                    </span>
-                  )}
-
-                  <span className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] group-hover:translate-x-1 transition-transform">
+                  <span className="font-mono text-xs text-[var(--text-muted)] uppercase tracking-wider">
+                    {study.category}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#1F56C6] group-hover:translate-x-1 transition-transform">
                     <span>Explore Case Study</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </span>
@@ -88,6 +80,7 @@ export function IndiseaCaseStudies() {
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   );

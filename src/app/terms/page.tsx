@@ -32,22 +32,22 @@ export default function TermsPage() {
 
       
       <main id="main-content" className="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-28">
-        <div className="p-8 sm:p-12 md:p-14 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-8">
+        <div className="p-8 sm:p-12 md:p-14 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-8">
           <div>
-            <span className="indisea-eyebrow text-[#2563EB] block mb-2">
+            <span className="indisea-eyebrow text-[#1F56C6] block mb-2">
               CIN: {COMPANY.cin}
             </span>
-            <h1 className="font-display font-extrabold text-3xl sm:text-5xl tracking-tight text-[var(--text-heading)] mb-2">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl tracking-tight text-[var(--text-heading)] mb-2 uppercase">
               Terms of Service
             </h1>
-            <p className="font-mono text-xs text-[var(--text-muted)]">
+            <p className="font-mono text-xs text-[var(--text-muted)] uppercase">
               Last Updated: September 2026 // {COMPANY.legalName}
             </p>
           </div>
 
           <div className="space-y-8 text-[15px] sm:text-base leading-relaxed text-[var(--text-body)] font-normal">
             <section className="space-y-3">
-              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)]">
+              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)] uppercase">
                 1. Scope of Engineering Services
               </h2>
               <p>
@@ -56,7 +56,7 @@ export default function TermsPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)]">
+              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)] uppercase">
                 2. Intellectual Property Ownership
               </h2>
               <p>
@@ -65,12 +65,12 @@ export default function TermsPage() {
             </section>
 
             <section className="space-y-3">
-              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)]">
+              <h2 className="font-display font-bold text-xl sm:text-2xl text-[var(--text-heading)] pb-2 border-b border-[var(--border-hairline)] uppercase">
                 3. Direct Legal Inquiries
               </h2>
               <p>
                 For contract inquiries, MSA execution, or custom scoping terms, reach our legal desk at{" "}
-                <a href="mailto:support@solvempire.com" className="text-[#2563EB] font-bold underline">
+                <a href="mailto:support@solvempire.com" className="text-[#1F56C6] font-bold underline">
                   support@solvempire.com
                 </a>.
               </p>

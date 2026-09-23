@@ -86,8 +86,8 @@ const PROCESS_CARDS: ProcessCard[] = [
       title: "Market Tray Research for EGGORA",
       slug: "eggora",
     },
-    bgClass: "bg-[#0284C7] text-white",
-    numColor: "text-sky-200/25",
+    bgClass: "bg-[#1F56C6] text-white",
+    numColor: "text-blue-200/25",
     watermark: "1",
     topOffset: "top-20",
     icon: Search,
@@ -134,7 +134,7 @@ const PROCESS_CARDS: ProcessCard[] = [
       title: "FreshPod DGUS Touchscreen & Payment Engine",
       slug: "freshpod-hmi",
     },
-    bgClass: "bg-[#2563EB] text-white",
+    bgClass: "bg-[#1F56C6] text-white",
     numColor: "text-blue-200/25",
     watermark: "3",
     topOffset: "top-28",
@@ -227,21 +227,20 @@ export default function ProcessPage() {
       <JsonLd schema={howToSchema} />
       <IndiseaHeader />
 
-
       <main id="main-content" className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">
           {/* Header Banner */}
           <div className="max-w-4xl space-y-6">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="indisea-eyebrow">01 / our engineering process</span>
+              <span className="indisea-eyebrow">01 / OUR ENGINEERING PROCESS</span>
               <span className="marker-pill marker-pill-yellow text-[11px] uppercase tracking-wide font-mono">
                 The 6-Stage Lifecycle
               </span>
             </div>
 
-            <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.04]">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08]">
               How We Build. <br />
-              <span className="text-[#2563EB]">From Discovery to Commercial Fleets.</span>
+              <span className="text-[#1F56C6]">From Discovery to Commercial Fleets.</span>
             </h1>
 
             <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] max-w-3xl leading-relaxed font-normal">
@@ -252,19 +251,17 @@ export default function ProcessPage() {
           {/* Stacking Cards Container */}
           <div className="space-y-12">
             {PROCESS_CARDS.map((card) => {
-              const Icon = card.icon;
-
               return (
                 <div
                   key={card.stepNumber}
-                  className={`sticky ${card.topOffset} rounded-3xl ${card.bgClass} p-8 sm:p-12 lg:p-16 shadow-xl overflow-hidden border border-white/10`}
+                  className={`sticky ${card.topOffset} rounded-none ${card.bgClass} p-8 sm:p-12 lg:p-16 shadow-xl overflow-hidden border border-white/10`}
                 >
                   <div className="indisea-grid items-center relative z-10">
                     {/* Left Column: Content */}
                     <div className="col-span-12 lg:col-span-8 space-y-6">
                       {/* Eyebrow Badges */}
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs">
+                        <span className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-none bg-white/20 backdrop-blur-xs">
                           OUR PROCESS // STAGE {card.stepNumber}
                         </span>
                         <span className="font-mono text-xs font-bold uppercase tracking-widest text-white/80">
@@ -272,9 +269,9 @@ export default function ProcessPage() {
                         </span>
                       </div>
 
-                      {/* Giant Title & Summary */}
+                      {/* Title & Summary */}
                       <div className="space-y-2">
-                        <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+                        <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-[48px] uppercase tracking-tight leading-[1.1]">
                           {card.stepNumber}. {card.title}
                         </h2>
                         <p className="font-sans text-lg sm:text-2xl text-white font-semibold leading-snug">
@@ -311,7 +308,7 @@ export default function ProcessPage() {
                           {card.deliverables.map((del) => (
                             <span
                               key={del}
-                              className="px-2.5 py-1 rounded-lg bg-white/15 backdrop-blur-xs text-white font-mono text-[11px] font-medium border border-white/10"
+                              className="px-2.5 py-1 rounded-none bg-white/15 backdrop-blur-xs text-white font-mono text-[11px] font-medium border border-white/10 uppercase"
                             >
                               {del}
                             </span>
@@ -320,7 +317,7 @@ export default function ProcessPage() {
 
                         <Link
                           href={`/work/${card.caseStudy.slug}`}
-                          className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-white hover:underline bg-white/20 px-3.5 py-1.5 rounded-full self-start sm:self-center shrink-0 transition-colors"
+                          className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-white hover:underline bg-white/20 px-3.5 py-1.5 rounded-none self-start sm:self-center shrink-0 transition-colors uppercase tracking-wider"
                         >
                           <span>Applied: {card.caseStudy.title}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
@@ -332,7 +329,7 @@ export default function ProcessPage() {
                     <div className="col-span-12 lg:col-span-4 hidden lg:flex justify-end items-center">
                       <span
                         aria-hidden="true"
-                        className={`font-display font-extrabold text-[180px] xl:text-[240px] leading-none select-none ${card.numColor}`}
+                        className={`font-display font-extrabold text-[160px] xl:text-[200px] leading-none select-none ${card.numColor}`}
                       >
                         {card.watermark}
                       </span>
@@ -344,13 +341,13 @@ export default function ProcessPage() {
           </div>
 
           {/* Bottom Callout Banner */}
-          <div className="p-8 sm:p-12 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs text-center space-y-6">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#2563EB] text-white mx-auto shadow-2xs">
+          <div className="p-8 sm:p-12 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs text-center space-y-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-none bg-[#1F56C6] text-white mx-auto shadow-xs">
               <Sparkles className="w-6 h-6" />
             </div>
 
             <div className="space-y-2 max-w-2xl mx-auto">
-              <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[var(--text-heading)] tracking-tight">
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl uppercase tracking-tight text-[var(--text-heading)]">
                 Have a Complex Product to Engineer?
               </h3>
               <p className="font-sans text-sm sm:text-base text-[var(--text-muted)] leading-relaxed font-normal">
@@ -361,7 +358,7 @@ export default function ProcessPage() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="btn-indisea-blue text-xs py-3 px-8 tracking-wide uppercase font-mono font-bold"
+                className="btn-indisea-blue text-xs py-3 px-8 tracking-wider uppercase font-mono font-bold"
               >
                 <span>Scope Your Project With Lead Engineers &rarr;</span>
               </Link>

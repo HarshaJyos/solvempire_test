@@ -39,17 +39,18 @@ export function IndiseaWhoWeWorkWith() {
             >
               <div className="flex items-center justify-between">
                 <span className="indisea-eyebrow">PARTNER</span>
-                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#2563EB] transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#1F56C6] transition-colors" />
               </div>
 
               <div>
-                <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                <h3 className="font-display font-extrabold text-lg sm:text-xl uppercase tracking-tight text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors">
                   {c.name}
                 </h3>
                 <span className="font-mono text-[10px] text-[var(--text-muted)] uppercase block mt-1">
                   {c.sector}
                 </span>
               </div>
+
             </Link>
           ))}
         </div>

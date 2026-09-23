@@ -58,10 +58,10 @@ export default function ServicesPage() {
         <div className="indisea-wrap space-y-16">
           {/* Header Banner */}
           <div className="max-w-4xl space-y-6">
-            <span className="indisea-eyebrow">01 / capabilities &amp; specializations</span>
-            <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+            <span className="indisea-eyebrow">01 / CAPABILITIES &amp; SPECIALIZATIONS</span>
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] text-[var(--text-heading)] tracking-tight leading-[1.06] uppercase">
               Unified Engineering Disciplines. <br />
-              <span className="text-[#2563EB]">Physical &amp; Digital Co-Design.</span>
+              <span className="text-[#1F56C6]">Physical &amp; Digital Co-Design.</span>
             </h1>
             <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] max-w-2xl leading-relaxed font-normal">
               We bridge the gap between physical mechanics, custom electronics, embedded firmware, and cloud software. One unified engineering bench from initial concept to commercial tooling and field support.
@@ -74,14 +74,14 @@ export default function ServicesPage() {
               <section
                 key={discipline.id}
                 id={discipline.id}
-                className="rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm overflow-hidden"
+                className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs overflow-hidden"
               >
                 {/* Header Bar */}
                 <div className="bg-[var(--surface-canvas-alt)]/60 border-b border-[var(--border-hairline)] px-6 sm:px-10 py-4 flex items-center justify-between">
                   <span className="indisea-eyebrow">
-                    DISCIPLINE 0{idx + 1} // {discipline.eyebrow}
+                    DISCIPLINE 0{idx + 1} // {discipline.eyebrow.toUpperCase()}
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-[var(--surface-card)] text-[#2563EB] font-mono text-[10px] font-bold border border-[var(--border-hairline)] uppercase">
+                  <span className="px-3 py-1 rounded-none bg-[var(--surface-card)] text-[#1F56C6] font-mono text-[10px] font-bold border border-[var(--border-hairline)] uppercase">
                     IN-HOUSE FACILITY
                   </span>
                 </div>
@@ -91,7 +91,7 @@ export default function ServicesPage() {
                     {/* Left Column: Overview (Span 5) */}
                     <div className="col-span-12 lg:col-span-5 space-y-6">
                       <div>
-                        <h2 className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-heading)] tracking-tight leading-tight mb-3">
+                        <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight leading-tight uppercase mb-3">
                           {discipline.title}
                         </h2>
                         <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed font-normal">
@@ -108,7 +108,7 @@ export default function ServicesPage() {
                           {discipline.tools.map((tool) => (
                             <span
                               key={tool}
-                              className="px-2.5 py-1 rounded-lg font-mono text-xs font-medium bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-[var(--text-heading)]"
+                              className="px-2.5 py-1 rounded-none font-mono text-xs font-semibold bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-[var(--text-heading)] uppercase"
                             >
                               {tool}
                             </span>
@@ -127,9 +127,9 @@ export default function ServicesPage() {
                           {discipline.capabilities.map((cap) => (
                             <li
                               key={cap}
-                              className="flex items-start gap-2.5 p-3 rounded-xl bg-[var(--surface-canvas)] border border-[var(--border-hairline)]"
+                              className="flex items-start gap-2.5 p-3.5 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)]"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] mt-2 shrink-0" />
+                              <span className="w-1.5 h-1.5 rounded-none bg-[#1F56C6] mt-2 shrink-0" />
                               <span className="font-medium text-xs sm:text-sm">{cap}</span>
                             </li>
                           ))}
@@ -148,17 +148,17 @@ export default function ServicesPage() {
                             return (
                               <Link
                                 href={`/work/${cs.slug}`}
-                                className="group p-4 rounded-2xl bg-[var(--surface-canvas)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all flex items-center justify-between"
+                                className="group p-4 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all flex items-center justify-between"
                               >
                                 <div>
-                                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors block">
+                                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors block uppercase tracking-tight">
                                     {cs.title}
                                   </span>
-                                  <span className="font-mono text-[10px] text-[var(--text-muted)] block mt-0.5">
+                                  <span className="font-mono text-[10px] text-[var(--text-muted)] block mt-0.5 uppercase">
                                     Client: {cs.client} &bull; {cs.status}
                                   </span>
                                 </div>
-                                <ArrowUpRight className="w-4 h-4 text-[#2563EB] group-hover:translate-x-0.5 transition-transform shrink-0" />
+                                <ArrowUpRight className="w-4 h-4 text-[#1F56C6] group-hover:translate-x-0.5 transition-transform shrink-0" />
                               </Link>
                             );
                           })()}

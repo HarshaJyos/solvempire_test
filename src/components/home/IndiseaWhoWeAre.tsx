@@ -31,7 +31,7 @@ export function IndiseaWhoWeAre() {
         {/* 4 Figure Cards Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <div className="indisea-card flex flex-col justify-between space-y-4">
-            <div className="indisea-figure text-[#2563EB]">005+</div>
+            <div className="indisea-figure text-[#1F56C6]">005+</div>
             <div>
               <h4 className="font-display font-bold text-sm text-[var(--text-heading)]">
                 End-to-End Systems

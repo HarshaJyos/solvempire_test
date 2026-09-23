@@ -83,7 +83,7 @@ export function IndiseaHeader() {
           <div className="flex items-center gap-3 sm:gap-4 relative z-50">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--text-heading)] text-[var(--surface-canvas)] font-display font-bold text-xs tracking-wide uppercase hover:opacity-90 transition-all shadow-2xs"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1F56C6] text-white font-display font-bold text-xs tracking-wide uppercase hover:bg-[#17449E] transition-all shadow-2xs"
             >
               <span>Talk to us</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -141,7 +141,7 @@ export function IndiseaHeader() {
                   <span
                     className={`font-mono text-xs sm:text-sm font-bold tracking-widest transition-colors ${
                       item.color === "blue"
-                        ? "text-[var(--indisea-sky-blue)]"
+                        ? "text-[#1F56C6]"
                         : item.color === "yellow"
                         ? "text-[var(--indisea-yellow-800)]"
                         : item.color === "red"
@@ -151,7 +151,7 @@ export function IndiseaHeader() {
                   >
                     {item.num}
                   </span>
-                  <span className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-none text-[var(--text-heading)] group-hover:text-[#2563EB] group-hover:translate-x-2 transition-all">
+                  <span className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[44px] uppercase tracking-tight leading-none text-[var(--text-heading)] group-hover:text-[#1F56C6] group-hover:translate-x-2 transition-all">
                     {item.label}
                   </span>
                 </Link>
@@ -166,7 +166,7 @@ export function IndiseaHeader() {
                 <span className="indisea-eyebrow">
                   SECTION {activeItem.num} // SPECIFICATION
                 </span>
-                <h3 className="font-display font-extrabold text-2xl text-[var(--text-heading)]">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl uppercase tracking-tight text-[var(--text-heading)]">
                   {activeItem.label}
                 </h3>
                 <p className="font-sans text-sm text-[var(--text-muted)] leading-relaxed">
@@ -176,8 +176,9 @@ export function IndiseaHeader() {
 
               <div className="pt-4 border-t border-[var(--border-hairline)] flex items-center justify-between text-xs font-mono text-[var(--text-muted)]">
                 <span>SOLVEMPIRE // STUDIO</span>
-                <span className="text-[#2563EB] font-bold uppercase">PHYSICAL + DIGITAL</span>
+                <span className="text-[#1F56C6] font-bold uppercase">PHYSICAL + DIGITAL</span>
               </div>
+
             </div>
           </div>
         </div>
@@ -189,7 +190,7 @@ export function IndiseaHeader() {
               <span className="indisea-eyebrow block mb-1">Direct Engineering Email</span>
               <a
                 href="mailto:support@solvempire.com"
-                className="font-medium text-[var(--text-heading)] hover:text-[#2563EB] transition-colors"
+                className="font-medium text-[var(--text-heading)] hover:text-[#1F56C6] transition-colors"
               >
                 support@solvempire.com
               </a>
@@ -199,7 +200,7 @@ export function IndiseaHeader() {
               <span className="indisea-eyebrow block mb-1">Direct Phone</span>
               <a
                 href="tel:+919701341323"
-                className="font-medium text-[var(--text-heading)] hover:text-[#2563EB] transition-colors"
+                className="font-medium text-[var(--text-heading)] hover:text-[#1F56C6] transition-colors"
               >
                 +91 97013 41323
               </a>
@@ -211,7 +212,7 @@ export function IndiseaHeader() {
                 href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[var(--text-muted)] hover:text-[#2563EB] font-normal text-xs leading-relaxed block"
+                className="text-[var(--text-muted)] hover:text-[#1F56C6] font-normal text-xs leading-relaxed block"
               >
                 Kakinada, Andhra Pradesh, India ↗
               </a>

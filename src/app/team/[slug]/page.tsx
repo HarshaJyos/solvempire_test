@@ -102,14 +102,13 @@ export default async function TeamMemberPage({
       <JsonLd schema={personSchema} />
       <IndiseaHeader />
 
-
       <main className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-12 sm:space-y-16">
           {/* Breadcrumb Back Link */}
           <div className="border-b border-[var(--border-hairline)] pb-4">
             <Link
               href="/team"
-              className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--text-muted)] hover:text-[#2563EB] uppercase tracking-wider transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs font-bold text-[var(--text-muted)] hover:text-[#1F56C6] uppercase tracking-wider transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Team Directory</span>
@@ -117,9 +116,9 @@ export default async function TeamMemberPage({
           </div>
 
           {/* Profile Card Dossier */}
-          <div className="p-8 sm:p-12 lg:p-14 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-8">
+          <div className="p-8 sm:p-12 lg:p-14 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-8">
             <div className="flex flex-col sm:flex-row gap-8 items-start">
-              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-2xs">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-none border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-xs">
                 <Image
                   src={member.avatar}
                   alt={member.name}
@@ -130,10 +129,10 @@ export default async function TeamMemberPage({
               </div>
 
               <div className="space-y-3 flex-1">
-                <span className="indisea-eyebrow text-[#2563EB] block">
+                <span className="indisea-eyebrow text-[#1F56C6] block uppercase">
                   {member.role}
                 </span>
-                <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-[var(--text-heading)] tracking-tight">
+                <h1 className="font-display font-extrabold text-3xl sm:text-5xl text-[var(--text-heading)] tracking-tight uppercase">
                   {member.name}
                 </h1>
                 <p className="font-sans text-base sm:text-lg text-[var(--text-muted)] leading-relaxed font-normal max-w-3xl">
@@ -144,7 +143,7 @@ export default async function TeamMemberPage({
                 <div className="pt-2 flex flex-wrap items-center gap-6 text-xs text-[var(--text-muted)]">
                   <div className="flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>{member.location || "Andhra Pradesh, India"}</span>
+                    <span>{(member.location || "Andhra Pradesh, India").toUpperCase()}</span>
                   </div>
                   {member.socials && (
                     <TeamSocialLinks
@@ -166,7 +165,7 @@ export default async function TeamMemberPage({
                   {member.focusAreas.map((area) => (
                     <span
                       key={area}
-                      className="px-3 py-1.5 rounded-xl bg-[var(--surface-canvas)] font-mono text-xs font-semibold text-[var(--text-heading)] border border-[var(--border-hairline)]"
+                      className="px-3 py-1.5 rounded-none bg-[var(--surface-canvas)] font-mono text-xs font-semibold text-[var(--text-heading)] border border-[var(--border-hairline)] uppercase"
                     >
                       {area}
                     </span>
@@ -180,7 +179,7 @@ export default async function TeamMemberPage({
           {authorPosts.length > 0 && (
             <section className="space-y-6">
               <span className="indisea-eyebrow block">
-                Research Publications by {member.name}
+                Research Publications by {member.name.toUpperCase()}
               </span>
               <AuthorArticlesList posts={authorPosts} authorName={member.name} />
             </section>

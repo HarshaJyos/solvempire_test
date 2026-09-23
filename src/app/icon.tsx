@@ -12,14 +12,14 @@ export default function Icon() {
       <div
         style={{
           fontSize: 20,
-          background: "#2563eb",
+          background: "#1F56C6",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: "white",
-          borderRadius: "6px",
+          borderRadius: "0px",
           fontWeight: 800,
           fontFamily: "sans-serif",
         }}

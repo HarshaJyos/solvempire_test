@@ -29,11 +29,12 @@ export function IndiseaProof() {
       <div className="indisea-wrap space-y-16">
         <div>
           <span className="indisea-eyebrow">10 / proof</span>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[var(--text-heading)] tracking-tight leading-[1.05] mt-4">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08] mt-4">
             What our engineering <br />
             partners are saying.
           </h2>
         </div>
+
 
         <div className="space-y-6">
           {TESTIMONIALS.map((t, idx) => (

@@ -16,12 +16,13 @@ export function IndiseaFinalCta() {
 
         {/* Display Headline */}
         <div className="max-w-6xl">
-          <h2 className="font-display font-extrabold text-[38px] sm:text-[64px] lg:text-[88px] xl:text-[104px] tracking-tight leading-[1.04] text-[#181A1D]">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] xl:text-[64px] uppercase tracking-tight leading-[1.08] text-[#181A1D]">
             <span className="block">Let&apos;s start</span>
             <span className="block">building the</span>
             <span className="block">physical thing.</span>
           </h2>
         </div>
+
 
         {/* Contact Strip */}
         <div className="flex flex-wrap items-center gap-6 sm:gap-10 pt-4">

@@ -65,15 +65,15 @@ export function IndiseaProcess() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <span className="indisea-eyebrow">05 / our engineering lifecycle</span>
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08]">
               How We Engineer. <br />
-              <span className="text-[#2563EB]">A Connected 6-Stage Pipeline.</span>
+              <span className="text-[#1F56C6]">A Connected 6-Stage Pipeline.</span>
             </h2>
           </div>
 
           <Link
             href="/process"
-            className="group inline-flex items-center gap-2 font-display text-sm font-bold text-[#2563EB] hover:text-[#1D4ED8] transition-colors whitespace-nowrap"
+            className="group inline-flex items-center gap-2 font-display text-sm font-bold text-[#1F56C6] hover:text-[#17449E] transition-colors whitespace-nowrap"
           >
             <span>Explore Full Process Details</span>
             <ArrowRight className="w-4 h-4 arrow-slide" />
@@ -87,28 +87,28 @@ export function IndiseaProcess() {
 
           {/* 6 Connected Steps Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
-            {STAGES.map((s, idx) => {
+            {STAGES.map((s) => {
               const Icon = s.icon;
               return (
                 <div
                   key={s.num}
-                  className="flex flex-col space-y-4 group p-4 sm:p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-[#2563EB] transition-all duration-300 shadow-2xs hover:shadow-xs"
+                  className="flex flex-col space-y-4 group p-4 sm:p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-[#1F56C6] transition-all duration-300 shadow-2xs hover:shadow-xs"
                 >
                   {/* Step Header with Node Indicator */}
                   <div className="flex items-center justify-between">
-                    <div className="w-9 h-9 rounded-full bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center font-mono text-xs font-bold group-hover:bg-[#2563EB] group-hover:text-white transition-colors shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-[#1F56C6]/10 text-[#1F56C6] flex items-center justify-center font-mono text-xs font-bold group-hover:bg-[#1F56C6] group-hover:text-white transition-colors shrink-0">
                       {s.num}
                     </div>
-                    <Icon className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#2563EB] transition-colors shrink-0" />
+                    <Icon className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[#1F56C6] transition-colors shrink-0" />
                   </div>
 
                   {/* Content */}
                   <div className="space-y-1.5 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="font-display font-extrabold text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                      <h3 className="font-display font-extrabold text-base sm:text-lg uppercase tracking-tight text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors">
                         {s.phase}
                       </h3>
-                      <p className="font-sans text-xs font-semibold text-[#2563EB] mt-0.5 leading-snug">
+                      <p className="font-sans text-xs font-semibold text-[#1F56C6] mt-0.5 leading-snug">
                         {s.summary}
                       </p>
                     </div>
@@ -128,11 +128,12 @@ export function IndiseaProcess() {
           <span className="uppercase tracking-wider">END-TO-END METHODOLOGY // NO VENDOR DISCONNECTS</span>
           <Link
             href="/process"
-            className="inline-flex items-center gap-1.5 font-bold text-[#2563EB] hover:underline"
+            className="inline-flex items-center gap-1.5 font-bold text-[#1F56C6] hover:underline"
           >
             <span>Read Complete Milestone &amp; DFM Breakdown &rarr;</span>
           </Link>
         </div>
+
       </div>
     </section>
   );

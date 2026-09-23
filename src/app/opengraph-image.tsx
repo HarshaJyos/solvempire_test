@@ -29,8 +29,8 @@ export default async function Image() {
             style={{
               width: "48px",
               height: "48px",
-              borderRadius: "12px",
-              background: "#2563eb",
+              borderRadius: "0px",
+              background: "#1F56C6",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -47,7 +47,7 @@ export default async function Image() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "950px" }}>
-          <span style={{ fontSize: "20px", fontWeight: 700, color: "#2563eb", letterSpacing: "2px", textTransform: "uppercase" }}>
+          <span style={{ fontSize: "20px", fontWeight: 700, color: "#1F56C6", letterSpacing: "2px", textTransform: "uppercase" }}>
             {COMPANY.positioning.eyebrow}
           </span>
           <h1 style={{ fontSize: "64px", fontWeight: 800, color: "#0a0f1d", lineHeight: 1.1, margin: 0, letterSpacing: "-1.5px" }}>
@@ -62,7 +62,7 @@ export default async function Image() {
           <span style={{ fontSize: "18px", color: "#64748b", fontWeight: 600 }}>
             Mechanical CAD · Custom PCB · Firmware · Cloud Telemetry
           </span>
-          <span style={{ fontSize: "18px", color: "#2563eb", fontWeight: 700 }}>
+          <span style={{ fontSize: "18px", color: "#1F56C6", fontWeight: 700 }}>
             solvempire.com
           </span>
         </div>

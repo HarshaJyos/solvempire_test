@@ -13,17 +13,17 @@ export function IndiseaHero() {
           <span className="indisea-eyebrow">01 / hero</span>
         </div>
 
-        {/* Indisea-Style Display Headline with Beautiful Highlight Badges */}
+        {/* Indisea-Style Display Headline with Beautiful Sharp Highlight Badges */}
         <div className="max-w-6xl">
           <h1 className="font-display font-extrabold text-[36px] sm:text-[54px] md:text-[68px] lg:text-[84px] xl:text-[96px] tracking-tight text-[var(--text-heading)] space-y-2 sm:space-y-4">
             {/* Line 1: We [design], [engineer], */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
               <span>We</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#FACC15] text-[#181A1D] shadow-xs">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#FACC15] text-[#181A1D] border border-amber-400 shadow-2xs font-display">
                 design
               </span>
               <span>,</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#0284C7] text-white shadow-xs">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#1F56C6] text-white border border-[#17449E] shadow-2xs font-display">
                 engineer
               </span>
               <span>,</span>
@@ -32,7 +32,7 @@ export function IndiseaHero() {
             {/* Line 2: and [manufacture] */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
               <span>and</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-xl sm:rounded-2xl bg-[#16A34A] text-white shadow-xs">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#16A34A] text-white border border-emerald-700 shadow-2xs font-display">
                 manufacture
               </span>
             </div>
@@ -43,7 +43,7 @@ export function IndiseaHero() {
             </div>
 
             {/* Line 4: & connected hardware. */}
-            <div className="block leading-none text-[#2563EB] pt-1">
+            <div className="block leading-none text-[#1F56C6] pt-1">
               &amp; connected hardware.
             </div>
           </h1>
@@ -54,7 +54,7 @@ export function IndiseaHero() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/contact"
-              className="group btn-indisea-primary flex items-center gap-2 text-sm sm:text-base px-7 py-3.5 shadow-xs"
+              className="group btn-indisea-blue flex items-center gap-2 text-sm sm:text-base px-7 py-3.5 shadow-xs"
             >
               <span>Talk to us</span>
               <ArrowRight className="w-4 h-4 arrow-slide" />
@@ -67,6 +67,7 @@ export function IndiseaHero() {
               <span>Explore Deployed Systems &rarr;</span>
             </Link>
           </div>
+
 
           <div className="flex items-center gap-2 text-[var(--text-muted)] font-mono text-xs font-semibold uppercase tracking-wider">
             <a

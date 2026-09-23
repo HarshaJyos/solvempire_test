@@ -88,7 +88,7 @@ export function IndiseaDossierArticle({
           <div className="flex items-center justify-between border-b border-[var(--border-hairline)] pb-4 font-mono text-xs">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-bold text-[var(--text-muted)] hover:text-[#2563EB] uppercase tracking-wider transition-colors group"
+              className="inline-flex items-center gap-2 font-bold text-[var(--text-muted)] hover:text-[#1F56C6] uppercase tracking-wider transition-colors group"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
               <span>&larr; Back to Case Studies</span>
@@ -96,14 +96,14 @@ export function IndiseaDossierArticle({
 
             <div className="flex items-center gap-4">
               <span className="hidden sm:inline-flex items-center gap-1.5 text-emerald-600 font-bold uppercase">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-none bg-emerald-500 animate-pulse" />
                 <span>{study.status}</span>
               </span>
 
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center gap-1.5 text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors cursor-pointer uppercase tracking-wider"
                 aria-label="Share case study"
               >
                 {copied ? (
@@ -133,7 +133,7 @@ export function IndiseaDossierArticle({
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.04]">
+              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-[64px] text-[var(--text-heading)] tracking-tight leading-[1.04] uppercase">
                 {study.title}
               </h1>
 
@@ -143,7 +143,7 @@ export function IndiseaDossierArticle({
             </div>
 
             {/* Hero Machine Visual */}
-            <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full rounded-2xl sm:rounded-3xl bg-slate-950 overflow-hidden border border-[var(--border-hairline)] shadow-xs">
+            <div className="relative aspect-[16/8] sm:aspect-[21/9] w-full rounded-none bg-slate-950 overflow-hidden border border-[var(--border-hairline)] shadow-xs">
               <Image
                 src={study.hero.src}
                 alt={study.hero.alt}
@@ -155,20 +155,20 @@ export function IndiseaDossierArticle({
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
               <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 z-10 flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="px-3 py-1 rounded-full bg-[var(--surface-card)]/90 backdrop-blur-md border border-[var(--border-hairline)] text-xs font-mono font-bold text-[var(--text-heading)] uppercase shadow-xs">
+                <span className="px-3 py-1 rounded-none bg-[var(--surface-card)]/90 backdrop-blur-md border border-[var(--border-hairline)] text-xs font-mono font-bold text-[var(--text-heading)] uppercase shadow-xs">
                   CLIENT: {study.client}
                 </span>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-mono font-bold uppercase shadow-xs">
+                <span className="px-3 py-1 rounded-none bg-emerald-600 text-white text-xs font-mono font-bold uppercase shadow-xs">
                   {study.status}
                 </span>
               </div>
             </div>
 
-            {/* Architectural Technical Spec Ledger (No text truncation!) */}
-            <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 font-mono text-xs">
+            {/* Architectural Technical Spec Ledger */}
+            <div className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 font-mono text-xs">
               <div className="p-5 sm:p-6 space-y-1.5">
                 <span className="indisea-eyebrow block">Client Entity</span>
-                <span className="font-display font-bold text-sm sm:text-base text-[var(--text-heading)] block leading-snug">
+                <span className="font-display font-bold text-sm sm:text-base text-[var(--text-heading)] block leading-snug uppercase">
                   {study.client}
                 </span>
               </div>
@@ -193,7 +193,7 @@ export function IndiseaDossierArticle({
                   {study.disciplines.map((d) => (
                     <span
                       key={d}
-                      className="px-2 py-0.5 rounded bg-[var(--surface-canvas)] text-[var(--text-heading)] text-[11px] font-medium"
+                      className="px-2 py-0.5 rounded-none bg-[var(--surface-canvas)] text-[var(--text-heading)] text-[11px] font-semibold uppercase"
                     >
                       {d}
                     </span>
@@ -203,16 +203,15 @@ export function IndiseaDossierArticle({
             </div>
           </header>
 
-          {/* Key Production Metrics Ledger (Unified Grid with clean typography) */}
+          {/* Key Production Metrics Ledger */}
           {study.metrics && study.metrics.length > 0 && (
             <section id="metrics" className="space-y-4 pt-2">
               <span className="indisea-eyebrow block">
-                01 / verified production metrics &amp; volume
+                01 / VERIFIED PRODUCTION METRICS &amp; VOLUME
               </span>
 
-              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
+              <div className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs divide-y sm:divide-y-0 sm:divide-x divide-[var(--border-hairline)] grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
                 {study.metrics.map((m) => {
-                  // Cleanly handle qualifiers like "200,000+ (reported)" to avoid wrapping large fonts
                   const match = m.value.match(/^([^(]+)(.*)$/);
                   const primaryVal = match ? match[1].trim() : m.value;
                   const secondaryVal = match && match[2] ? match[2].trim() : "";
@@ -226,11 +225,11 @@ export function IndiseaDossierArticle({
                         {m.label}
                       </span>
                       <div className="space-y-0.5">
-                        <span className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#2563EB] block tracking-tight leading-none">
+                        <span className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#1F56C6] block tracking-tight leading-none uppercase">
                           {primaryVal}
                         </span>
                         {secondaryVal && (
-                          <span className="font-mono text-[11px] text-[var(--text-muted)] font-medium block">
+                          <span className="font-mono text-[11px] text-[var(--text-muted)] font-medium block uppercase">
                             {secondaryVal}
                           </span>
                         )}
@@ -242,27 +241,27 @@ export function IndiseaDossierArticle({
             </section>
           )}
 
-          {/* Core Engineering Highlights (Integrated Architectural Matrix) */}
+          {/* Core Engineering Highlights */}
           {study.highlights && study.highlights.length > 0 && (
             <section id="highlights" className="space-y-5 pt-4">
               <div className="space-y-1">
                 <span className="indisea-eyebrow block">
-                  02 / tangible engineering highlights
+                  02 / TANGIBLE ENGINEERING HIGHLIGHTS
                 </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight uppercase">
                   What Makes This System Unique
                 </h2>
               </div>
 
               {/* Integrated Specification Grid */}
-              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y divide-[var(--border-hairline)] overflow-hidden">
+              <div className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs divide-y divide-[var(--border-hairline)] overflow-hidden">
                 {study.highlights.map((highlight, idx) => (
                   <div
                     key={idx}
                     className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[var(--surface-canvas)]/40 transition-colors group"
                   >
                     <div className="flex items-start gap-3.5 sm:gap-5">
-                      <span className="font-mono text-xs font-bold text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded-md shrink-0 mt-0.5">
+                      <span className="font-mono text-xs font-bold text-[#1F56C6] bg-[#1F56C6]/10 px-2.5 py-1 rounded-none shrink-0 mt-0.5 uppercase tracking-wide">
                         SPEC // 0{idx + 1}
                       </span>
                       <p className="font-sans text-sm sm:text-base font-medium text-[var(--text-heading)] leading-snug">
@@ -282,10 +281,10 @@ export function IndiseaDossierArticle({
 
           {/* 12-Column Detailed Engineering Breakdown */}
           <div className="indisea-grid items-start gap-8 lg:gap-12 pt-6 border-t border-[var(--border-hairline)]">
-            {/* Left Sticky Sidebar (No fixed height or inner scrollbar!) */}
+            {/* Left Sticky Sidebar */}
             <aside className="hidden lg:block col-span-4 sticky top-28 space-y-5">
               {/* Document Outline */}
-              <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
+              <div className="p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-3">
                 <span className="indisea-eyebrow block">System Sections</span>
                 <nav className="space-y-1 text-xs font-display">
                   {tocItems.map((item, idx) => {
@@ -295,9 +294,9 @@ export function IndiseaDossierArticle({
                         key={item.id}
                         href={`#${item.id}`}
                         className={cn(
-                          "flex items-center gap-2.5 py-2 px-3 rounded-xl transition-all leading-snug",
+                          "flex items-center gap-2.5 py-2 px-3 rounded-none transition-all leading-snug uppercase tracking-tight",
                           isActive
-                            ? "bg-[#2563EB] text-white font-bold shadow-2xs"
+                            ? "bg-[#1F56C6] text-white font-bold shadow-xs"
                             : "text-[var(--text-muted)] hover:text-[var(--text-heading)] hover:bg-[var(--surface-canvas)]"
                         )}
                       >
@@ -317,8 +316,8 @@ export function IndiseaDossierArticle({
               </div>
 
               {/* Lead Engineering Scoping Box */}
-              <div className="p-5 rounded-2xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-2.5">
-                <span className="indisea-eyebrow text-[#0284C7] block">
+              <div className="p-5 rounded-none bg-[#1F56C6]/10 border border-[#1F56C6]/20 space-y-2.5">
+                <span className="indisea-eyebrow text-[#1F56C6] block">
                   Building a Similar System?
                 </span>
                 <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed font-normal">
@@ -326,7 +325,7 @@ export function IndiseaDossierArticle({
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8] pt-1"
+                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#1F56C6] hover:text-[#17449E] pt-1 uppercase tracking-wider"
                 >
                   <span>Scope With Lead Engineers &rarr;</span>
                 </Link>
@@ -342,10 +341,10 @@ export function IndiseaDossierArticle({
                   className="space-y-4 pt-6 first:pt-0 border-t first:border-0 border-[var(--border-hairline)]"
                 >
                   <div className="space-y-1.5">
-                    <span className="indisea-eyebrow text-[#2563EB]">
+                    <span className="indisea-eyebrow text-[#1F56C6]">
                       0{idx + 3} // ARCHITECTURE CHAPTER
                     </span>
-                    <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
+                    <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight uppercase">
                       {sec.heading}
                     </h2>
                   </div>
@@ -360,7 +359,7 @@ export function IndiseaDossierArticle({
               {study.outcomes && study.outcomes.length > 0 && (
                 <section
                   id="outcomes"
-                  className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-emerald-500/10 border border-emerald-500/25 space-y-4 shadow-2xs"
+                  className="p-6 sm:p-8 rounded-none bg-emerald-500/10 border border-emerald-500/25 space-y-4 shadow-xs"
                 >
                   <div className="flex items-center gap-2 text-emerald-800">
                     <Sparkles className="w-5 h-5 text-emerald-600" />
@@ -369,7 +368,7 @@ export function IndiseaDossierArticle({
                     </span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-emerald-950 tracking-tight">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-[28px] text-emerald-950 tracking-tight uppercase">
                     Validated Performance In The Real World
                   </h3>
 
@@ -391,10 +390,10 @@ export function IndiseaDossierArticle({
             {prevStudy ? (
               <Link
                 href={`/work/${prevStudy.slug}`}
-                className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between group shadow-2xs"
+                className="p-5 sm:p-6 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between group shadow-xs"
               >
                 <span className="indisea-eyebrow block mb-2">&larr; Previous Case Study</span>
-                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors uppercase tracking-tight">
                   {prevStudy.title}
                 </span>
               </Link>
@@ -405,10 +404,10 @@ export function IndiseaDossierArticle({
             {nextStudy && (
               <Link
                 href={`/work/${nextStudy.slug}`}
-                className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between sm:text-right group shadow-2xs"
+                className="p-5 sm:p-6 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-colors flex flex-col justify-between sm:text-right group shadow-xs"
               >
                 <span className="indisea-eyebrow block mb-2">Next Case Study &rarr;</span>
-                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors uppercase tracking-tight">
                   {nextStudy.title}
                 </span>
               </Link>

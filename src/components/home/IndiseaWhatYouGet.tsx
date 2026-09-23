@@ -47,13 +47,14 @@ export function IndiseaWhatYouGet() {
 
               {/* Bottom Text Content */}
               <div className="space-y-4">
-                <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-[var(--text-heading)] leading-tight">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl uppercase tracking-tight text-[var(--text-heading)] leading-snug">
                   {b.title}
                 </h3>
                 <p className="font-sans text-sm sm:text-base text-[var(--text-muted)] leading-relaxed font-normal">
                   {b.description}
                 </p>
               </div>
+
             </div>
           ))}
         </div>

@@ -5,16 +5,16 @@
   --color-canvas-card: #FFFFFF;
   --color-canvas-alt: #E8E5E1;
 
-  --color-brand: #2563EB;
-  --color-brand-deep: #1D4ED8;
-  --color-brand-light: #60A5FA;
+  --color-brand: #1F56C6;
+  --color-brand-deep: #17449E;
+  --color-brand-light: #4A7FE8;
 
   --color-heading: #181A1D;
   --color-body: #374151;
   --color-muted: #6B7280;
   --color-hairline: rgba(24, 26, 29, 0.08);
 
-  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
@@ -30,8 +30,9 @@
   --border-hairline: rgba(24, 26, 29, 0.08);
   --border-strong: rgba(24, 26, 29, 0.2);
 
+  --indisea-brand-blue: #1F56C6;
   --indisea-sky-blue: #0EA5E9;
-  --indisea-blue-800: #0369A1;
+  --indisea-blue-800: #17449E;
   --indisea-signal-yellow: #FACC15;
   --indisea-yellow-800: #854D0E;
   --indisea-link-green: #22C55E;
@@ -112,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .indisea-figure {
   font-family: var(--font-display);
-  font-size: clamp(36px, 5.5vw, 76px);
+  font-size: clamp(36px, 5.5vw, 64px);
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.04em;
@@ -127,19 +128,50 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
 }
 
-/* Clean Inline Marker Highlight */
+/* Clean Inline Marker Highlight — Sharp Edges */
 .indisea-verb-yellow {
   background: var(--indisea-signal-yellow);
   color: #181A1D;
-  padding: 0.02em 0.14em;
+  padding: 0.02em 0.18em;
   margin: 0 0.02em;
-  border-radius: 4px;
+  border-radius: 0px !important;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
 
+/* Marker Pill Highlighter Badges — Sharp Edges */
+.marker-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 0px !important;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+}
+
+.marker-pill-yellow {
+  background-color: #FACC15;
+  color: #181A1D;
+  border-color: #EAB308;
+}
+
+.marker-pill-blue {
+  background-color: #1F56C6;
+  color: #FFFFFF;
+  border-color: #17449E;
+}
+
+.marker-pill-stone {
+  background-color: var(--surface-canvas-alt);
+  color: var(--text-heading);
+  border-color: var(--border-hairline);
+}
+
 /* ========================================================================= */
-/* BUTTONS: RESTRAINED PILL BUTTONS                                          */
+/* BUTTONS: RESTRAINED SHARP/ROUNDED PILL BUTTONS                            */
 /* ========================================================================= */
 .btn-indisea-primary {
   display: inline-flex;
@@ -149,8 +181,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--surface-canvas);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
-  padding: 14px 28px;
+  font-size: 14px;
+  padding: 13px 26px;
   border-radius: 9999px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -163,20 +195,21 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #2563EB;
+  background-color: #1F56C6;
   color: #FFFFFF;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 15px;
-  padding: 14px 28px;
+  font-size: 14px;
+  padding: 13px 26px;
   border-radius: 9999px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 14px -1px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 14px -1px rgba(31, 86, 198, 0.28);
 }
 .btn-indisea-blue:hover {
-  background-color: #1D4ED8;
+  background-color: #17449E;
   transform: translateY(-1px);
 }
+
 
 /* ========================================================================= */
 /* CONTINUOUS MARQUEE ANIMATIONS                                             */

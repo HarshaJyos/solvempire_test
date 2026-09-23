@@ -92,15 +92,15 @@ export async function sendContactInquiryEmail(
   <meta charset="utf-8">
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #0f172a; background-color: #f8fafc; margin: 0; padding: 24px; }
-    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 0px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
     .header { background: #000000; color: #ffffff; padding: 24px 32px; }
-    .header h2 { margin: 0; font-size: 20px; font-weight: 700; }
-    .badge { display: inline-block; background: #2563eb; color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-top: 8px; }
+    .header h2 { margin: 0; font-size: 20px; font-weight: 700; text-transform: uppercase; }
+    .badge { display: inline-block; background: #1F56C6; color: #ffffff; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 0px; margin-top: 8px; }
     .content { padding: 32px; }
     .field-group { margin-bottom: 20px; }
     .field-label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
     .field-value { font-size: 15px; color: #0f172a; font-weight: 500; }
-    .field-box { background: #f1f5f9; border-radius: 8px; padding: 14px 16px; font-size: 14px; color: #1e293b; white-space: pre-wrap; margin-top: 6px; }
+    .field-box { background: #f1f5f9; border-radius: 0px; padding: 14px 16px; font-size: 14px; color: #1e293b; white-space: pre-wrap; margin-top: 6px; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
     .footer { background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 20px 32px; font-size: 12px; color: #64748b; text-align: center; }
   </style>

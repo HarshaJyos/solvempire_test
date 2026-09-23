@@ -71,10 +71,10 @@ export default function AboutPage() {
         <div className="indisea-wrap space-y-20">
           {/* Header */}
           <div className="max-w-4xl space-y-6">
-            <span className="indisea-eyebrow">01 / about studio &amp; mission</span>
-            <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+            <span className="indisea-eyebrow">01 / ABOUT STUDIO &amp; MISSION</span>
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] text-[var(--text-heading)] tracking-tight leading-[1.06] uppercase">
               Engineering Real-World Products. <br />
-              <span className="text-[#2563EB]">Built to Solve Critical Problems.</span>
+              <span className="text-[#1F56C6]">Built to Solve Critical Problems.</span>
             </h1>
             <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] max-w-2xl leading-relaxed font-normal">
               SolveMpire is an integrated product engineering studio based in Andhra Pradesh, India. We partner with founders, venture-backed startups, and industrial clients worldwide to build turnkey machines, custom electronics, and connected software.
@@ -83,11 +83,11 @@ export default function AboutPage() {
 
           {/* Operating Tenets */}
           <section className="space-y-8">
-            <span className="indisea-eyebrow block">02 / operating tenets</span>
+            <span className="indisea-eyebrow block">02 / OPERATING TENETS</span>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-4">
-                <span className="font-mono text-3xl font-extrabold text-[#2563EB] block">01</span>
-                <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)]">
+              <div className="p-8 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-4">
+                <span className="font-mono text-3xl font-extrabold text-[#1F56C6] block">01</span>
+                <h3 className="font-display font-extrabold text-lg sm:text-xl text-[var(--text-heading)] uppercase tracking-tight">
                   Unified Disciplines Under One Roof
                 </h3>
                 <p className="font-sans text-sm text-[var(--text-muted)] leading-relaxed font-normal">
@@ -95,9 +95,9 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-4">
+              <div className="p-8 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-4">
                 <span className="font-mono text-3xl font-extrabold text-[#CA8A04] block">02</span>
-                <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)]">
+                <h3 className="font-display font-extrabold text-lg sm:text-xl text-[var(--text-heading)] uppercase tracking-tight">
                   DFM Rigor From Day One
                 </h3>
                 <p className="font-sans text-sm text-[var(--text-muted)] leading-relaxed font-normal">
@@ -105,9 +105,9 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="p-8 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm space-y-4">
+              <div className="p-8 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-4">
                 <span className="font-mono text-3xl font-extrabold text-[#16A34A] block">03</span>
-                <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)]">
+                <h3 className="font-display font-extrabold text-lg sm:text-xl text-[var(--text-heading)] uppercase tracking-tight">
                   Long-Term Production Ownership
                 </h3>
                 <p className="font-sans text-sm text-[var(--text-muted)] leading-relaxed font-normal">
@@ -121,14 +121,14 @@ export default function AboutPage() {
           <section id="team" className="space-y-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <span className="indisea-eyebrow block">03 / team &amp; architects</span>
-                <h2 className="font-display font-extrabold text-3xl sm:text-4xl text-[var(--text-heading)] tracking-tight mt-2">
+                <span className="indisea-eyebrow block">03 / TEAM &amp; ARCHITECTS</span>
+                <h2 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-[48px] text-[var(--text-heading)] tracking-tight uppercase mt-2">
                   Engineering Leadership
                 </h2>
               </div>
               <Link
                 href="/team"
-                className="font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8] transition-colors inline-flex items-center gap-1"
+                className="font-display font-bold text-xs text-[#1F56C6] hover:text-[#17449E] transition-colors inline-flex items-center gap-1 uppercase tracking-wider"
               >
                 <span>View Full Team Directory &rarr;</span>
               </Link>
@@ -138,7 +138,7 @@ export default function AboutPage() {
               {teamMembers.map((member) => (
                 <div
                   key={member.id}
-                  className="group rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm overflow-hidden flex flex-col justify-between transition-all hover:border-slate-400/80"
+                  className="group rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs overflow-hidden flex flex-col justify-between transition-all hover:border-slate-400"
                 >
                   <div className="relative w-full aspect-[4/4.5] bg-slate-900 overflow-hidden">
                     <Image
@@ -151,10 +151,10 @@ export default function AboutPage() {
 
                   <div className="p-6 space-y-3">
                     <div>
-                      <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)]">
+                      <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)] uppercase tracking-tight">
                         {member.name}
                       </h3>
-                      <span className="font-mono text-xs text-[#2563EB] font-bold block mt-0.5">
+                      <span className="font-mono text-xs text-[#1F56C6] font-bold block mt-0.5 uppercase tracking-wide">
                         {member.role}
                       </span>
                     </div>

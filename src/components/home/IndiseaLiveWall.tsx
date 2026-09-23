@@ -47,10 +47,10 @@ export function IndiseaLiveWall() {
               return (
                 <div
                   key={`${item.name}-${idx}`}
-                  className="group relative flex-none w-[240px] sm:w-[280px] h-[120px] sm:h-[135px] p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all flex flex-col justify-between"
+                  className="group relative flex-none w-[240px] sm:w-[280px] h-[120px] sm:h-[135px] p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--surface-canvas)] flex items-center justify-center text-[#2563EB]">
+                    <div className="w-8 h-8 rounded-none bg-[var(--surface-canvas)] flex items-center justify-center text-[#1F56C6]">
                       <Icon className="w-4 h-4" />
                     </div>
                     <span className="font-mono text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider">
@@ -59,7 +59,7 @@ export function IndiseaLiveWall() {
                   </div>
 
                   <div>
-                    <h3 className="font-display font-bold text-base text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                    <h3 className="font-display font-bold text-base uppercase text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors">
                       {item.name}
                     </h3>
                     <p className="font-mono text-[11px] text-[var(--text-muted)] truncate">
@@ -80,10 +80,10 @@ export function IndiseaLiveWall() {
               return (
                 <div
                   key={`${item.name}-${idx}`}
-                  className="group relative flex-none w-[240px] sm:w-[280px] h-[120px] sm:h-[135px] p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all flex flex-col justify-between"
+                  className="group relative flex-none w-[240px] sm:w-[280px] h-[120px] sm:h-[135px] p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400/80 transition-all flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--surface-canvas)] flex items-center justify-center text-slate-700">
+                    <div className="w-8 h-8 rounded-none bg-[var(--surface-canvas)] flex items-center justify-center text-slate-700">
                       <Icon className="w-4 h-4" />
                     </div>
                     <span className="font-mono text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider">
@@ -92,7 +92,7 @@ export function IndiseaLiveWall() {
                   </div>
 
                   <div>
-                    <h3 className="font-display font-bold text-base text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors">
+                    <h3 className="font-display font-bold text-base uppercase text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors">
                       {item.name}
                     </h3>
                     <p className="font-mono text-[11px] text-[var(--text-muted)] truncate">

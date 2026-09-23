@@ -75,13 +75,12 @@ export default function TeamDirectoryPage() {
       <JsonLd schema={teamListSchema} />
       <IndiseaHeader />
 
-
       <main className="flex-1 w-full pt-36 pb-28">
         <div className="indisea-wrap space-y-16">
           {/* Hero Section */}
           <div className="max-w-4xl space-y-6">
-            <span className="indisea-eyebrow">01 / engineering team directory</span>
-            <h1 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+            <span className="indisea-eyebrow">01 / ENGINEERING TEAM DIRECTORY</span>
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] text-[var(--text-heading)] tracking-tight leading-[1.06] uppercase">
               Engineers, Architects &amp; Builders.
             </h1>
             <p className="font-sans text-base sm:text-xl text-[var(--text-muted)] max-w-2xl leading-relaxed font-normal">
@@ -94,11 +93,11 @@ export default function TeamDirectoryPage() {
             {members.map((member) => (
               <article
                 key={member.slug}
-                className="rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 shadow-sm"
+                className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 shadow-xs"
               >
                 <div className="space-y-5">
                   <div className="flex items-center gap-5">
-                    <div className="relative w-20 h-20 rounded-2xl border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-2xs">
+                    <div className="relative w-20 h-20 rounded-none border border-[var(--border-hairline)] overflow-hidden shrink-0 bg-[var(--surface-canvas)] shadow-xs">
                       <Image
                         src={member.avatar}
                         alt={member.name}
@@ -107,10 +106,10 @@ export default function TeamDirectoryPage() {
                       />
                     </div>
                     <div>
-                      <span className="indisea-eyebrow text-[#2563EB] block mb-1">
+                      <span className="indisea-eyebrow text-[#1F56C6] block mb-1 uppercase">
                         {member.role}
                       </span>
-                      <h2 className="font-display font-extrabold text-2xl text-[var(--text-heading)] hover:text-[#2563EB] transition-colors">
+                      <h2 className="font-display font-extrabold text-xl sm:text-2xl text-[var(--text-heading)] hover:text-[#1F56C6] transition-colors uppercase tracking-tight">
                         <Link href={`/team/${member.slug}`}>
                           {member.name}
                         </Link>
@@ -128,7 +127,7 @@ export default function TeamDirectoryPage() {
                       {member.focusAreas.map((area) => (
                         <span
                           key={area}
-                          className="px-2.5 py-1 rounded-lg bg-[var(--surface-canvas)] font-mono text-xs font-medium text-[var(--text-heading)] border border-[var(--border-hairline)]"
+                          className="px-2.5 py-1 rounded-none bg-[var(--surface-canvas)] font-mono text-xs font-semibold text-[var(--text-heading)] border border-[var(--border-hairline)] uppercase"
                         >
                           {area}
                         </span>
@@ -154,7 +153,7 @@ export default function TeamDirectoryPage() {
 
                   <Link
                     href={`/team/${member.slug}`}
-                    className="inline-flex items-center gap-1 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8]"
+                    className="inline-flex items-center gap-1 font-display font-bold text-xs text-[#1F56C6] hover:text-[#17449E] uppercase tracking-wider"
                   >
                     <span>View Dossier</span>
                     <ArrowUpRight className="w-4 h-4" />

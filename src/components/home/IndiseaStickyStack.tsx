@@ -19,9 +19,9 @@ const PANELS: ReasonPanel[] = [
     title: "Hardware gaps in product roadmaps & client RFPs",
     description:
       "A client asks whether you can deliver a dedicated physical device, automated kiosk, or connected controller. Deals stall while software teams scope mechanical and PCB work nobody was hired for. We take the entire hardware scope and build it.",
-    bgClass: "bg-[#0284C7] text-white",
-    badgeBg: "bg-[#0369A1]",
-    numColor: "text-sky-200/30",
+    bgClass: "bg-[#1F56C6] text-white",
+    badgeBg: "bg-[#17449E]",
+    numColor: "text-blue-200/30",
     watermark: "1",
     topOffset: "top-20",
   },
@@ -59,7 +59,7 @@ export function IndiseaStickyStack() {
 
         {/* Sticky Stacked Cards */}
         <div className="space-y-12">
-          {PANELS.map((panel, idx) => (
+          {PANELS.map((panel) => (
             <div
               key={panel.reasonNumber}
               className={`sticky ${panel.topOffset} rounded-3xl ${panel.bgClass} p-8 sm:p-14 lg:p-16 shadow-lg overflow-hidden border border-white/10`}
@@ -68,7 +68,7 @@ export function IndiseaStickyStack() {
                 {/* Text Content */}
                 <div className="col-span-12 lg:col-span-8 space-y-6">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs">
+                    <span className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-none bg-white/20 backdrop-blur-xs">
                       07 // WHY COMPANIES CALL US
                     </span>
                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-white/80">
@@ -76,7 +76,7 @@ export function IndiseaStickyStack() {
                     </span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.05]">
+                  <h3 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-[48px] uppercase tracking-tight leading-[1.1]">
                     {panel.title}
                   </h3>
 
@@ -84,6 +84,7 @@ export function IndiseaStickyStack() {
                     {panel.description}
                   </p>
                 </div>
+
 
                 {/* Right Column / Background Giant Numeral */}
                 <div className="col-span-12 lg:col-span-4 flex justify-end items-center">

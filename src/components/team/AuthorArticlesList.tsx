@@ -108,26 +108,26 @@ export function AuthorArticlesList({
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-brand uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#1F56C6] uppercase tracking-wider">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Articles by {authorName.split(" ")[0]}</span>
           </div>
-          <h2 className="font-display font-bold text-2xl text-heading">
+          <h2 className="font-display font-extrabold text-2xl text-[var(--text-heading)] uppercase tracking-tight">
             Published Journal Entries
           </h2>
         </div>
 
-        <span className="text-xs text-muted bg-surface px-3 py-1.5 rounded-full border border-hairline shadow-xs self-start sm:self-auto">
+        <span className="text-xs text-[var(--text-muted)] bg-[var(--surface-card)] px-3 py-1.5 rounded-none border border-[var(--border-hairline)] shadow-xs self-start sm:self-auto uppercase font-mono">
           {filteredPosts.length} {filteredPosts.length === 1 ? "article" : "articles"} available
         </span>
       </div>
 
       {/* Breathable Search & Filter Controls */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-hairline space-y-3.5 shadow-xs">
+      <div className="p-4 sm:p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] space-y-3.5 shadow-xs">
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           {/* Search Input */}
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
             <input
               type="text"
               value={searchQuery}
@@ -136,7 +136,7 @@ export function AuthorArticlesList({
                 setCurrentPage(1);
               }}
               placeholder={`Search within ${authorName.split(" ")[0]}'s articles...`}
-              className="w-full h-11 pl-10 pr-9 rounded-xl bg-canvas border border-hairline text-sm text-heading placeholder-muted focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand/30 transition-all font-body"
+              className="w-full h-11 pl-10 pr-9 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-sm text-[var(--text-heading)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-[#1F56C6] focus:ring-1 focus:ring-[#1F56C6]/30 transition-all font-sans"
             />
             {searchQuery && (
               <button
@@ -144,7 +144,7 @@ export function AuthorArticlesList({
                   setSearchQuery("");
                   setCurrentPage(1);
                 }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-heading transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors cursor-pointer"
                 aria-label="Clear search"
               >
                 <X className="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ export function AuthorArticlesList({
 
           {/* Sort Selector */}
           <div className="flex items-center gap-2 shrink-0">
-            <SlidersHorizontal className="w-3.5 h-3.5 text-muted hidden sm:inline" />
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[var(--text-muted)] hidden sm:inline" />
             <select
               value={selectedSort}
               onChange={(e) => {
@@ -162,12 +162,12 @@ export function AuthorArticlesList({
                 setCurrentPage(1);
               }}
               aria-label="Sort articles"
-              className="h-11 px-3 rounded-xl bg-canvas border border-hairline text-xs text-body focus:text-heading focus:outline-none focus:border-brand cursor-pointer font-medium"
+              className="h-11 px-3 rounded-none bg-[var(--surface-canvas)] border border-[var(--border-hairline)] text-xs text-[var(--text-body)] focus:text-[var(--text-heading)] focus:outline-none focus:border-[#1F56C6] cursor-pointer font-medium"
             >
-              <option value="newest" className="bg-white text-heading">Newest First</option>
-              <option value="oldest" className="bg-white text-heading">Oldest First</option>
-              <option value="shortest" className="bg-white text-heading">Quick Read (Shortest)</option>
-              <option value="longest" className="bg-white text-heading">Deep Read (Longest)</option>
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="shortest">Quick Read (Shortest)</option>
+              <option value="longest">Deep Read (Longest)</option>
             </select>
           </div>
         </div>
@@ -175,7 +175,7 @@ export function AuthorArticlesList({
         {/* Category Pills Bar */}
         {categories.length > 2 && (
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none pt-1">
-            <span className="text-xs font-semibold text-muted mr-1 hidden sm:inline">
+            <span className="text-xs font-semibold text-[var(--text-muted)] mr-1 hidden sm:inline uppercase font-mono">
               Category:
             </span>
             {categories.map((cat) => {
@@ -187,10 +187,10 @@ export function AuthorArticlesList({
                     setSelectedCategory(cat);
                     setCurrentPage(1);
                   }}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-none text-xs font-semibold whitespace-nowrap transition-all cursor-pointer uppercase font-mono ${
                     isActive
-                      ? "bg-brand text-white font-semibold shadow-xs"
-                      : "bg-surface-subtle text-body border border-hairline hover:bg-canvas hover:text-heading"
+                      ? "bg-[#1F56C6] text-white shadow-xs"
+                      : "bg-[var(--surface-canvas)] text-[var(--text-body)] border border-[var(--border-hairline)] hover:bg-[var(--surface-canvas-alt)] hover:text-[var(--text-heading)]"
                   }`}
                 >
                   {cat}
@@ -202,14 +202,14 @@ export function AuthorArticlesList({
 
         {/* Active Filter Summary / Reset */}
         {isFiltering && (
-          <div className="flex items-center justify-between pt-2 border-t border-hairline text-xs">
-            <span className="text-muted">
-              Showing <strong className="text-heading font-semibold">{filteredPosts.length}</strong> filtered{" "}
+          <div className="flex items-center justify-between pt-2 border-t border-[var(--border-hairline)] text-xs font-mono">
+            <span className="text-[var(--text-muted)]">
+              Showing <strong className="text-[var(--text-heading)] font-semibold">{filteredPosts.length}</strong> filtered{" "}
               {filteredPosts.length === 1 ? "result" : "results"}
             </span>
             <button
               onClick={handleResetFilters}
-              className="inline-flex items-center gap-1 text-brand hover:underline font-medium cursor-pointer"
+              className="inline-flex items-center gap-1 text-[#1F56C6] hover:underline font-semibold cursor-pointer uppercase"
             >
               <RotateCcw className="w-3 h-3" />
               <span>Reset filters</span>
@@ -224,35 +224,35 @@ export function AuthorArticlesList({
           {paginatedPosts.map((post) => (
             <article
               key={post.id}
-              className="group p-6 sm:p-7 rounded-2xl bg-surface border border-hairline hover:border-brand/40 transition-all duration-200 shadow-xs hover:shadow-lg hover:-translate-y-0.5 space-y-3"
+              className="group p-6 sm:p-7 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-[#1F56C6]/40 transition-all duration-200 shadow-xs hover:shadow-md space-y-3"
             >
               <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-ice-light text-brand text-xs font-semibold border border-brand/20">
+                <span className="px-2.5 py-0.5 rounded-none bg-[#1F56C6]/10 text-[#1F56C6] text-xs font-semibold border border-[#1F56C6]/20 uppercase font-mono">
                   {post.category}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-surface-subtle text-muted text-xs border border-hairline">
+                <span className="px-2.5 py-0.5 rounded-none bg-[var(--surface-canvas)] text-[var(--text-muted)] text-xs border border-[var(--border-hairline)] uppercase font-mono">
                   {post.type}
                 </span>
               </div>
 
-              <h3 className="font-display font-bold text-xl text-heading group-hover:text-brand transition-colors leading-snug">
+              <h3 className="font-display font-extrabold text-xl text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors leading-snug uppercase tracking-tight">
                 <Link href={`/journal/${post.slug}`}>
                   {post.title}
                 </Link>
               </h3>
 
-              <p className="font-body text-sm sm:text-base text-body line-clamp-2 leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-[var(--text-body)] line-clamp-2 leading-relaxed">
                 {post.excerpt}
               </p>
 
-              <div className="pt-3.5 border-t border-hairline flex flex-wrap items-center justify-between gap-2.5 text-xs text-muted">
-                <div className="flex items-center gap-2.5 sm:gap-3 whitespace-nowrap">
+              <div className="pt-3.5 border-t border-[var(--border-hairline)] flex flex-wrap items-center justify-between gap-2.5 text-xs text-[var(--text-muted)]">
+                <div className="flex items-center gap-2.5 sm:gap-3 whitespace-nowrap font-mono text-[11px] uppercase">
                   <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                     <Calendar className="w-3.5 h-3.5 opacity-70 shrink-0" />
                     <span>{post.publishedAt}</span>
                   </span>
                   <span className="opacity-40">•</span>
-                  <span className="inline-flex items-center gap-1.5 text-brand font-medium whitespace-nowrap">
+                  <span className="inline-flex items-center gap-1.5 text-[#1F56C6] font-bold whitespace-nowrap">
                     <Clock className="w-3.5 h-3.5 shrink-0" />
                     <span>{post.readTime}</span>
                   </span>
@@ -260,7 +260,7 @@ export function AuthorArticlesList({
 
                 <Link
                   href={`/journal/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-brand group-hover:translate-x-1 transition-transform whitespace-nowrap shrink-0"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-[#1F56C6] group-hover:translate-x-1 transition-transform whitespace-nowrap shrink-0 uppercase tracking-wider font-display"
                 >
                   <span>Read Journal</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -270,16 +270,16 @@ export function AuthorArticlesList({
           ))}
         </div>
       ) : (
-        <div className="py-12 px-6 text-center rounded-2xl bg-surface border border-hairline space-y-3 shadow-xs">
-          <p className="font-display text-base font-bold text-heading">
+        <div className="py-12 px-6 text-center rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] space-y-3 shadow-xs">
+          <p className="font-display text-base font-bold text-[var(--text-heading)] uppercase">
             No matching articles found
           </p>
-          <p className="font-body text-xs sm:text-sm text-body max-w-sm mx-auto">
+          <p className="font-sans text-xs sm:text-sm text-[var(--text-body)] max-w-sm mx-auto">
             Try adjusting your search terms or clearing your category filters.
           </p>
           <button
             onClick={handleResetFilters}
-            className="px-4 py-2 rounded-xl bg-brand text-white text-xs font-bold hover:bg-brand-hover transition-all cursor-pointer shadow-sm"
+            className="btn-indisea-blue text-xs py-2 px-5 cursor-pointer uppercase tracking-wider"
           >
             Clear Filters
           </button>

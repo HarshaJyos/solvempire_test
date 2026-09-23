@@ -38,11 +38,11 @@ export function IndiseaFooter() {
               We design, engineer, prototype, and manufacture physical machines, custom electronics, and connected IoT platforms.
             </p>
             <div className="pt-1 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--surface-card)] border border-[var(--border-hairline)] text-[10px] font-mono font-bold text-slate-700 uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] text-[10px] font-mono font-bold text-slate-700 uppercase">
+                <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse" />
                 <span>IN-HOUSE LAB ACTIVE</span>
               </span>
-              <span className="font-mono text-[11px] text-[var(--text-muted)]">DFM // ISO STANDARDS</span>
+              <span className="font-mono text-[11px] text-[var(--text-muted)] uppercase">DFM // ISO STANDARDS</span>
             </div>
           </div>
 
@@ -51,37 +51,37 @@ export function IndiseaFooter() {
             <span className="indisea-eyebrow block">Navigation</span>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/services" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Capabilities
                 </Link>
               </li>
               <li>
-                <Link href="/process" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/process" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Our Process
                 </Link>
               </li>
               <li>
-                <Link href="/work" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors font-medium">
+                <Link href="/work" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors font-medium">
                   Case Studies Archive
                 </Link>
               </li>
               <li>
-                <Link href="/journal" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/journal" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Research &amp; Journal
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/about" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   About Studio
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors">
+                <Link href="/contact" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Contact
                 </Link>
               </li>
@@ -96,7 +96,7 @@ export function IndiseaFooter() {
                 <li key={study.slug}>
                   <Link
                     href={`/work/${study.slug}`}
-                    className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors block leading-snug"
+                    className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors block leading-snug"
                   >
                     {study.title}
                   </Link>
@@ -110,27 +110,27 @@ export function IndiseaFooter() {
             <span className="indisea-eyebrow block">Disciplines</span>
             <ul className="space-y-2 text-sm text-[var(--text-body)]">
               <li>
-                <Link href="/services#mechanical" className="hover:text-[#2563EB] transition-colors">
+                <Link href="/services#mechanical" className="hover:text-[#1F56C6] transition-colors">
                   Mechanical CAD &amp; DFM
                 </Link>
               </li>
               <li>
-                <Link href="/services#electronics" className="hover:text-[#2563EB] transition-colors">
+                <Link href="/services#electronics" className="hover:text-[#1F56C6] transition-colors">
                   Custom Multi-Layer PCB
                 </Link>
               </li>
               <li>
-                <Link href="/services#firmware" className="hover:text-[#2563EB] transition-colors">
+                <Link href="/services#firmware" className="hover:text-[#1F56C6] transition-colors">
                   Embedded RTOS Firmware
                 </Link>
               </li>
               <li>
-                <Link href="/services#cloud" className="hover:text-[#2563EB] transition-colors">
+                <Link href="/services#cloud" className="hover:text-[#1F56C6] transition-colors">
                   Cloud IoT &amp; Telemetry
                 </Link>
               </li>
               <li>
-                <Link href="/services#manufacturing" className="hover:text-[#2563EB] transition-colors">
+                <Link href="/services#manufacturing" className="hover:text-[#1F56C6] transition-colors">
                   Volume Manufacturing
                 </Link>
               </li>
@@ -145,7 +145,7 @@ export function IndiseaFooter() {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-1.5 text-[var(--text-body)] hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-[var(--text-body)] hover:text-[#1F56C6] transition-colors cursor-pointer"
                 >
                   <span className="break-all">support@solvempire.com</span>
                   {copied ? (
@@ -159,7 +159,7 @@ export function IndiseaFooter() {
               <div>
                 <a
                   href="tel:+919701341323"
-                  className="text-[var(--text-body)] hover:text-[#2563EB] transition-colors block font-mono text-xs"
+                  className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors block font-mono text-xs"
                 >
                   +91 97013 41323
                 </a>
@@ -170,7 +170,7 @@ export function IndiseaFooter() {
                   href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-[var(--text-muted)] hover:text-[#2563EB] leading-relaxed block"
+                  className="text-xs text-[var(--text-muted)] hover:text-[#1F56C6] leading-relaxed block"
                 >
                   SFNO 244/3, D.No: 2-247/2, Near Medha School Employee, Panasapadu, Kakinada, Andhra Pradesh, India ↗
                 </a>
@@ -206,7 +206,7 @@ export function IndiseaFooter() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-heading)] hover:text-[#2563EB] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--text-heading)] hover:text-[#1F56C6] transition-colors cursor-pointer"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

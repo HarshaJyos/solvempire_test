@@ -17,7 +17,7 @@ export function IndiseaSystemTopology() {
         <div className="indisea-grid items-center gap-12 lg:gap-16">
           {/* Left Column: Editorial Explanation */}
           <div className="col-span-12 lg:col-span-6 space-y-8">
-            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[var(--text-heading)] leading-[1.05] tracking-tight">
+            <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] leading-[1.08] tracking-tight">
               We sit between your real-world problem and every physical system required to solve it.
             </h2>
 
@@ -30,20 +30,20 @@ export function IndiseaSystemTopology() {
               </p>
             </div>
 
-            {/* 3 Pill Badges */}
+            {/* 3 Sharp Highlighter Badges */}
             <div className="flex flex-wrap gap-3 pt-2">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-card)] border border-[var(--border-hairline)] text-sm font-display font-semibold text-[var(--text-heading)] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[var(--indisea-sky-blue)]" />
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-[var(--text-heading)] shadow-2xs">
+                <span className="w-2 h-2 rounded-none bg-[#1F56C6]" />
                 <span>Domain Expertise</span>
               </span>
 
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-card)] border border-[var(--border-hairline)] text-sm font-display font-semibold text-[var(--text-heading)] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[var(--indisea-signal-yellow)]" />
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-[var(--text-heading)] shadow-2xs">
+                <span className="w-2 h-2 rounded-none bg-[var(--indisea-signal-yellow)]" />
                 <span>Operational Maturity</span>
               </span>
 
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-card)] border border-[var(--border-hairline)] text-sm font-display font-semibold text-[var(--text-heading)] shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-[var(--indisea-link-green)]" />
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] text-xs sm:text-sm font-display font-bold uppercase tracking-wider text-[var(--text-heading)] shadow-2xs">
+                <span className="w-2 h-2 rounded-none bg-[var(--indisea-link-green)]" />
                 <span>Unified In-House Model</span>
               </span>
             </div>
@@ -82,15 +82,16 @@ export function IndiseaSystemTopology() {
 
                 {/* Center Hub Node: SolveMpire Core */}
                 <div className="col-span-4 flex flex-col items-center text-center space-y-2">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-[#2563EB] bg-[#2563EB] text-white flex items-center justify-center shadow-md">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-[#1F56C6] bg-[#1F56C6] text-white flex items-center justify-center shadow-md">
                     <span className="font-display font-extrabold text-xs sm:text-sm tracking-tight text-center leading-tight">
                       SOLVE<br />MPIRE
                     </span>
                   </div>
-                  <span className="font-mono text-[10px] font-bold text-[#2563EB] uppercase tracking-wider">
+                  <span className="font-mono text-[10px] font-bold text-[#1F56C6] uppercase tracking-wider">
                     Engineering Hub
                   </span>
                 </div>
+
 
                 {/* Right Target Nodes: 4 Disciplines */}
                 <div className="col-span-5 flex flex-col gap-3 sm:gap-4 py-2">

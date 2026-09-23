@@ -95,7 +95,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
       {/* Top Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-[var(--border-hairline)] z-50 pointer-events-none">
         <div
-          className="h-full bg-[#2563EB] transition-all duration-75"
+          className="h-full bg-[#1F56C6] transition-all duration-75"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -108,22 +108,22 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
           <div className="flex items-center justify-between border-b border-[var(--border-hairline)] pb-4 font-mono text-xs">
             <Link
               href="/journal"
-              className="inline-flex items-center gap-2 font-bold text-[var(--text-muted)] hover:text-[#2563EB] uppercase tracking-wider transition-colors group"
+              className="inline-flex items-center gap-2 font-bold text-[var(--text-muted)] hover:text-[#1F56C6] uppercase tracking-wider transition-colors group"
             >
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
               <span>&larr; Back to Journal Index</span>
             </Link>
 
             <div className="flex items-center gap-4">
-              <span className="hidden sm:inline-flex items-center gap-1.5 text-[#2563EB] font-bold uppercase">
-                <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-[#1F56C6] font-bold uppercase">
+                <span className="w-2 h-2 rounded-none bg-[#1F56C6] animate-pulse" />
                 <span>{meta.category}</span>
               </span>
 
               <button
                 type="button"
                 onClick={handleCopy}
-                className="inline-flex items-center gap-1.5 text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-[var(--text-muted)] hover:text-[var(--text-heading)] transition-colors cursor-pointer uppercase tracking-wider"
                 aria-label="Share article"
               >
                 {copied ? (
@@ -153,7 +153,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </span>
               </div>
 
-              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl text-[var(--text-heading)] tracking-tight leading-[1.04]">
+              <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-[64px] text-[var(--text-heading)] tracking-tight leading-[1.04] uppercase">
                 {meta.title}
               </h1>
 
@@ -163,12 +163,12 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
             </div>
 
             {/* Author and Publication Metadata Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs text-xs font-mono">
+            <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs text-xs font-mono">
               <Link
                 href={`/team/${authorSlug}`}
                 className="flex items-center gap-3 group focus:outline-none"
               >
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[var(--border-hairline)] shrink-0 bg-[#2563EB]/10">
+                <div className="relative w-10 h-10 rounded-none overflow-hidden border border-[var(--border-hairline)] shrink-0 bg-[#1F56C6]/10">
                   {meta.author.avatar ? (
                     <Image
                       src={meta.author.avatar}
@@ -177,50 +177,50 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-[#2563EB] text-sm font-bold uppercase">
+                    <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-sm font-bold uppercase">
                       {meta.author.name.charAt(0)}
                     </div>
                   )}
                 </div>
 
                 <div>
-                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#2563EB] transition-colors block leading-snug">
+                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors block leading-snug uppercase">
                     {meta.author.name}
                   </span>
-                  <span className="text-[11px] text-[var(--text-muted)] block">
+                  <span className="text-[11px] text-[var(--text-muted)] block uppercase">
                     {meta.author.role}
                   </span>
                 </div>
               </Link>
 
-              <div className="flex items-center gap-3 sm:gap-4 text-[var(--text-muted)]">
+              <div className="flex items-center gap-3 sm:gap-4 text-[var(--text-muted)] uppercase">
                 <span>Published {meta.publishedAt}</span>
                 <span>•</span>
-                <span className="text-[#2563EB] font-bold">{meta.readTime}</span>
+                <span className="text-[#1F56C6] font-bold">{meta.readTime}</span>
               </div>
             </div>
           </header>
 
-          {/* Upfront Key Insights / Executive Summary (Unified Architectural Matrix) */}
+          {/* Upfront Key Insights / Executive Summary */}
           {takeaways && takeaways.length > 0 && (
             <section className="space-y-4 pt-2">
               <div className="space-y-1">
                 <span className="indisea-eyebrow block">
-                  01 / executive summary &amp; core thesis
+                  01 / EXECUTIVE SUMMARY &amp; CORE THESIS
                 </span>
-                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[var(--text-heading)] tracking-tight">
+                <h2 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight uppercase">
                   Key Insights At A Glance
                 </h2>
               </div>
 
-              {/* Seamless Grid Container without box-in-box nesting */}
-              <div className="rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs divide-y divide-[var(--border-hairline)] overflow-hidden">
+              {/* Seamless Grid Container with Sharp Edges */}
+              <div className="rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs divide-y divide-[var(--border-hairline)] overflow-hidden">
                 {takeaways.map((item, idx) => (
                   <div
                     key={idx}
                     className="p-5 sm:p-6 flex items-start gap-4 sm:gap-5 hover:bg-[var(--surface-canvas)]/40 transition-colors"
                   >
-                    <span className="font-mono text-xs font-bold text-[#2563EB] bg-[#2563EB]/10 px-2.5 py-1 rounded-md shrink-0 mt-0.5">
+                    <span className="font-mono text-xs font-bold text-[#1F56C6] bg-[#1F56C6]/10 px-2.5 py-1 rounded-none shrink-0 mt-0.5 uppercase tracking-wide">
                       KEY // 0{idx + 1}
                     </span>
                     <p className="font-sans text-sm sm:text-base text-[var(--text-heading)] font-medium leading-relaxed">
@@ -234,10 +234,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
           {/* 12-Column Swiss Grid Layout */}
           <div className="indisea-grid items-start gap-8 lg:gap-12 pt-6 border-t border-[var(--border-hairline)]">
-            {/* Left Sticky Table of Contents (Span 4) - Zero inner scrollbars, full natural display */}
+            {/* Left Sticky Table of Contents (Span 4) */}
             <aside className="hidden lg:block col-span-4 sticky top-28 space-y-5">
               {tableOfContents && tableOfContents.length > 0 && (
-                <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-3">
+                <div className="p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-3">
                   <span className="indisea-eyebrow block">Document Outline</span>
                   <nav className="space-y-1 text-xs font-display">
                     {tableOfContents.map((item, idx) => {
@@ -247,9 +247,9 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                           key={item.id || idx}
                           href={`#${item.id}`}
                           className={cn(
-                            "flex items-start gap-2.5 py-2 px-3 rounded-xl transition-all leading-snug text-left",
+                            "flex items-start gap-2.5 py-2 px-3 rounded-none transition-all leading-snug text-left uppercase tracking-tight",
                             isActive
-                              ? "bg-[#2563EB] text-white font-bold shadow-2xs"
+                              ? "bg-[#1F56C6] text-white font-bold shadow-xs"
                               : "text-[var(--text-muted)] hover:bg-[var(--surface-canvas)] hover:text-[var(--text-heading)]"
                           )}
                         >
@@ -270,8 +270,8 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               )}
 
               {/* Lead Engineering Scope Callout */}
-              <div className="p-5 rounded-2xl bg-[#0EA5E9]/10 border border-[#0EA5E9]/20 space-y-2.5">
-                <span className="indisea-eyebrow text-[#0284C7] block">
+              <div className="p-5 rounded-none bg-[#1F56C6]/10 border border-[#1F56C6]/20 space-y-2.5">
+                <span className="indisea-eyebrow text-[#1F56C6] block">
                   Have a Technical Challenge?
                 </span>
                 <p className="font-sans text-xs text-[var(--text-heading)] leading-relaxed font-normal">
@@ -279,7 +279,7 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#2563EB] hover:text-[#1D4ED8] pt-1"
+                  className="inline-flex items-center gap-1.5 font-display font-bold text-xs text-[#1F56C6] hover:text-[#17449E] pt-1 uppercase tracking-wider"
                 >
                   <span>Scope With Lead Engineers &rarr;</span>
                 </Link>
@@ -287,13 +287,13 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
 
               {/* Topics Filed */}
               {meta.tags && meta.tags.length > 0 && (
-                <div className="p-5 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs space-y-2.5">
+                <div className="p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-2.5">
                   <span className="indisea-eyebrow block">Topics Filed</span>
                   <div className="flex flex-wrap gap-1.5">
                     {meta.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-1 rounded-lg font-mono text-[11px] font-medium bg-[var(--surface-canvas)] text-[var(--text-muted)]"
+                        className="px-2.5 py-1 rounded-none font-mono text-[11px] font-medium bg-[var(--surface-canvas)] text-[var(--text-muted)] uppercase"
                       >
                         #{tag}
                       </span>
@@ -315,10 +315,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
               {faqs && faqs.length > 0 && (
                 <section className="my-12 pt-10 border-t border-[var(--border-hairline)] space-y-6 scroll-mt-24 font-sans" id="faq">
                   <div className="space-y-1">
-                    <span className="indisea-eyebrow text-[#2563EB] block">
+                    <span className="indisea-eyebrow text-[#1F56C6] block">
                       Frequently Asked Questions
                     </span>
-                    <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-[var(--text-heading)] tracking-tight">
+                    <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight uppercase">
                       Technical Inquiries &amp; Clarifications
                     </h3>
                   </div>
@@ -330,9 +330,9 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                         <div
                           key={idx}
                           className={cn(
-                            "rounded-2xl border transition-all duration-200 overflow-hidden",
+                            "rounded-none border transition-all duration-200 overflow-hidden",
                             isOpen
-                              ? "bg-[var(--surface-card)] border-[#2563EB]/40 shadow-xs"
+                              ? "bg-[var(--surface-card)] border-[#1F56C6]/40 shadow-xs"
                               : "bg-[var(--surface-card)] border-[var(--border-hairline)]"
                           )}
                         >
@@ -346,8 +346,8 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                               {faq.question}
                             </span>
                             <div className={cn(
-                              "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200",
-                              isOpen ? "bg-[#2563EB] text-white rotate-180" : "bg-[var(--surface-canvas)] text-[var(--text-muted)]"
+                              "w-8 h-8 rounded-none flex items-center justify-center shrink-0 transition-transform duration-200",
+                              isOpen ? "bg-[#1F56C6] text-white rotate-180" : "bg-[var(--surface-canvas)] text-[var(--text-muted)]"
                             )}>
                               <ChevronDown className="w-4 h-4" />
                             </div>
@@ -369,10 +369,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 {prevPost ? (
                   <Link
                     href={`/journal/${prevPost.slug}`}
-                    className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-left group shadow-2xs"
+                    className="p-5 sm:p-6 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-left group shadow-xs"
                   >
                     <span className="indisea-eyebrow block mb-2">&larr; Previous Deep Dive</span>
-                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
+                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#1F56C6] line-clamp-1 transition-colors uppercase tracking-tight">
                       {prevPost.title}
                     </span>
                   </Link>
@@ -383,10 +383,10 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
                 {nextPost && (
                   <Link
                     href={`/journal/${nextPost.slug}`}
-                    className="p-5 sm:p-6 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-right group ml-auto w-full shadow-2xs"
+                    className="p-5 sm:p-6 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] hover:border-slate-400 transition-all text-right group ml-auto w-full shadow-xs"
                   >
                     <span className="indisea-eyebrow block mb-2">Next Deep Dive &rarr;</span>
-                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#2563EB] line-clamp-1 transition-colors">
+                    <span className="font-display font-bold text-base sm:text-lg text-[var(--text-heading)] group-hover:text-[#1F56C6] line-clamp-1 transition-colors uppercase tracking-tight">
                       {nextPost.title}
                     </span>
                   </Link>
@@ -406,7 +406,7 @@ function RenderSection({ section }: { section: BlogSection }) {
   switch (section.type) {
     case "lead":
       return (
-        <p className="text-xl sm:text-2xl font-medium leading-[1.6] text-[var(--text-heading)] mb-8 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-2xs">
+        <p className="text-xl sm:text-2xl font-medium leading-[1.6] text-[var(--text-heading)] mb-8 p-6 sm:p-8 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs">
           {section.text}
         </p>
       );
@@ -420,18 +420,18 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "heading": {
       const h2Styles =
-        "font-display font-extrabold text-2xl sm:text-4xl text-[var(--text-heading)] tracking-tight leading-[1.15] mb-5 mt-12 pt-8 border-t border-[var(--border-hairline)] group relative scroll-mt-24";
+        "font-display font-extrabold text-2xl sm:text-3xl lg:text-[34px] text-[var(--text-heading)] tracking-tight leading-[1.15] mb-5 mt-12 pt-8 border-t border-[var(--border-hairline)] group relative scroll-mt-24 uppercase";
       const h3Styles =
-        "font-display font-extrabold text-xl sm:text-2xl text-[var(--text-heading)] tracking-tight leading-[1.25] mb-4 mt-8 group relative scroll-mt-24";
+        "font-display font-extrabold text-xl sm:text-2xl text-[var(--text-heading)] tracking-tight leading-[1.25] mb-4 mt-8 group relative scroll-mt-24 uppercase";
       const h4Styles =
-        "font-display font-bold text-lg sm:text-xl text-[var(--text-heading)] mb-3 mt-6 group relative scroll-mt-24";
+        "font-display font-bold text-lg sm:text-xl text-[var(--text-heading)] mb-3 mt-6 group relative scroll-mt-24 uppercase";
 
       if (section.level === 3) {
         return (
           <h3 id={section.id} className={h3Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#2563EB] p-1"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#1F56C6] p-1"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -446,7 +446,7 @@ function RenderSection({ section }: { section: BlogSection }) {
           <h4 id={section.id} className={h4Styles}>
             <a
               href={`#${section.id}`}
-              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#2563EB] p-1"
+              className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#1F56C6] p-1"
               aria-label={`Link to ${section.id}`}
             >
               <Hash className="w-4 h-4" />
@@ -460,7 +460,7 @@ function RenderSection({ section }: { section: BlogSection }) {
         <h2 id={section.id} className={h2Styles}>
           <a
             href={`#${section.id}`}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#2563EB] p-1"
+            className="absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[var(--text-muted)] hover:text-[#1F56C6] p-1"
             aria-label={`Link to ${section.id}`}
           >
             <Hash className="w-4 h-4" />
@@ -472,7 +472,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "bullets":
       return (
-        <ul className="list-disc list-outside pl-6 space-y-3 my-6 text-[var(--text-body)] marker:text-[#2563EB] text-base sm:text-lg leading-[1.75]">
+        <ul className="list-disc list-outside pl-6 space-y-3 my-6 text-[var(--text-body)] marker:text-[#1F56C6] text-base sm:text-lg leading-[1.75]">
           {section.items.map((item, i) => (
             <li key={i} className="pl-1">
               {item}
@@ -483,7 +483,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "numbered":
       return (
-        <ol className="list-decimal list-outside pl-6 space-y-3 my-6 text-[var(--text-body)] marker:text-[#2563EB] marker:font-bold text-base sm:text-lg leading-[1.75]">
+        <ol className="list-decimal list-outside pl-6 space-y-3 my-6 text-[var(--text-body)] marker:text-[#1F56C6] marker:font-bold text-base sm:text-lg leading-[1.75]">
           {section.items.map((item, i) => (
             <li key={i} className="pl-1">
               {item}
@@ -494,7 +494,7 @@ function RenderSection({ section }: { section: BlogSection }) {
 
     case "quote":
       return (
-        <blockquote className="my-10 pl-6 sm:pl-8 border-l-4 border-[#2563EB] italic text-lg sm:text-2xl text-[var(--text-heading)] leading-[1.5] bg-[var(--surface-card)] py-6 pr-6 rounded-r-2xl sm:rounded-r-3xl border-y border-r border-[var(--border-hairline)] shadow-2xs font-display">
+        <blockquote className="my-10 pl-6 sm:pl-8 border-l-4 border-[#1F56C6] italic text-lg sm:text-2xl text-[var(--text-heading)] leading-[1.5] bg-[var(--surface-card)] py-6 pr-6 rounded-none border-y border-r border-[var(--border-hairline)] shadow-xs font-display">
           <p className="mb-2">“{section.text}”</p>
           {(section.author || section.source) && (
             <footer className="text-xs font-mono font-normal not-italic text-[var(--text-muted)] pt-2">
@@ -513,9 +513,9 @@ function RenderSection({ section }: { section: BlogSection }) {
     case "callout": {
       const configs = {
         insight: {
-          icon: <Sparkles className="w-5 h-5 text-[#2563EB]" />,
-          bg: "bg-[#2563EB]/10 border border-[#2563EB]/20 text-[var(--text-heading)]",
-          title: "text-[#1E40AF]",
+          icon: <Sparkles className="w-5 h-5 text-[#1F56C6]" />,
+          bg: "bg-[#1F56C6]/10 border border-[#1F56C6]/20 text-[var(--text-heading)]",
+          title: "text-[#17449E]",
         },
         science: {
           icon: <Lightbulb className="w-5 h-5 text-[#CA8A04]" />,
@@ -536,10 +536,10 @@ function RenderSection({ section }: { section: BlogSection }) {
       const cfg = configs[section.variant || "insight"];
 
       return (
-        <div className={cn("my-8 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border space-y-3 shadow-2xs", cfg.bg)}>
+        <div className={cn("my-8 p-6 sm:p-8 rounded-none border space-y-3 shadow-xs", cfg.bg)}>
           <div className="flex items-center gap-2.5">
             <div className="shrink-0">{cfg.icon}</div>
-            <h4 className={cn("font-display font-extrabold text-base sm:text-lg", cfg.title)}>
+            <h4 className={cn("font-display font-extrabold text-base sm:text-lg uppercase", cfg.title)}>
               {section.title}
             </h4>
           </div>
@@ -554,11 +554,11 @@ function RenderSection({ section }: { section: BlogSection }) {
       return (
         <div className="my-10 space-y-2">
           {section.data.caption && (
-            <p className="text-xs text-[var(--text-muted)] font-mono text-center">
+            <p className="text-xs text-[var(--text-muted)] font-mono text-center uppercase">
               {section.data.caption}
             </p>
           )}
-          <div className="overflow-x-auto rounded-2xl border border-[var(--border-hairline)] bg-[var(--surface-card)] shadow-2xs">
+          <div className="overflow-x-auto rounded-none border border-[var(--border-hairline)] bg-[var(--surface-card)] shadow-xs">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead className="bg-[var(--surface-canvas)] border-b border-[var(--border-hairline)] text-[var(--text-heading)] uppercase font-semibold">
                 <tr>
@@ -579,7 +579,7 @@ function RenderSection({ section }: { section: BlogSection }) {
                           "p-4",
                           cIdx === 0 && "font-semibold text-[var(--text-heading)]",
                           cIdx === (section.data.highlightColumnIndex ?? -1) &&
-                            "text-[#2563EB] font-bold bg-[#2563EB]/5"
+                            "text-[#1F56C6] font-bold bg-[#1F56C6]/5"
                         )}
                       >
                         {cell}
@@ -597,19 +597,19 @@ function RenderSection({ section }: { section: BlogSection }) {
       return (
         <div className="my-12 flex items-center justify-center gap-3">
           <div className="h-px bg-[var(--border-hairline)] flex-1" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+          <div className="w-1.5 h-1.5 rounded-none bg-[#1F56C6]" />
           <div className="h-px bg-[var(--border-hairline)] flex-1" />
         </div>
       );
 
     case "cta":
       return (
-        <div className="my-12 p-8 sm:p-10 rounded-2xl sm:rounded-3xl bg-[#2563EB]/10 border border-[#2563EB]/25 text-center space-y-4 shadow-xs">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#2563EB] text-white mx-auto shadow-2xs">
+        <div className="my-12 p-8 sm:p-10 rounded-none bg-[#1F56C6]/10 border border-[#1F56C6]/25 text-center space-y-4 shadow-xs">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-none bg-[#1F56C6] text-white mx-auto shadow-xs">
             <Sparkles className="w-6 h-6" />
           </div>
           <div className="space-y-1">
-            <h4 className="font-display font-extrabold text-2xl text-[var(--text-heading)]">
+            <h4 className="font-display font-extrabold text-2xl text-[var(--text-heading)] uppercase">
               {section.title}
             </h4>
             <p className="text-[var(--text-muted)] text-sm sm:text-base max-w-md mx-auto leading-relaxed">
@@ -619,7 +619,7 @@ function RenderSection({ section }: { section: BlogSection }) {
           <div className="pt-2">
             <Link
               href={section.buttonHref}
-              className="btn-indisea-blue text-xs py-3 px-8 tracking-wide"
+              className="btn-indisea-blue text-xs py-3 px-8 tracking-wide uppercase"
             >
               <span>{section.buttonText} &rarr;</span>
             </Link>

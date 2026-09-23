@@ -11,19 +11,20 @@ export function IndiseaManifesto() {
           <span className="indisea-eyebrow">04 / the problem</span>
         </div>
 
-        {/* Headline with Clean Line-Height */}
+        {/* Headline with Clean Line-Height & Uppercase */}
         <div className="max-w-6xl">
-          <h2 className="font-display font-extrabold text-[36px] sm:text-[58px] lg:text-[80px] xl:text-[92px] tracking-tight leading-[1.04]">
+          <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] xl:text-[60px] uppercase tracking-tight leading-[1.08]">
             <span className="block">Hardware</span>
             <span className="block">shouldn&apos;t be your</span>
-            <span className="block text-[#2563EB]">engineering bottleneck.</span>
+            <span className="block text-[#1F56C6]">engineering bottleneck.</span>
           </h2>
         </div>
 
         {/* Fine Detail Split */}
         <div className="indisea-grid pt-6 border-t border-[var(--border-hairline)]">
           <div className="col-span-12 lg:col-span-6 space-y-4">
-            <span className="block w-16 h-1 rounded-full bg-[var(--indisea-signal-yellow)]" />
+            <span className="block w-16 h-1 rounded-none bg-[var(--indisea-signal-yellow)]" />
+
             <p className="font-sans text-base sm:text-lg text-[var(--text-muted)] leading-relaxed font-normal">
               Physical product development fails when mechanical CAD, circuit board fabrication, and embedded firmware are fractured across disconnected vendors.
             </p>

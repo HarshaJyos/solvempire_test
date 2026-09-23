@@ -81,12 +81,12 @@ export default function ContactPage() {
             <div className="col-span-12 lg:col-span-5 space-y-8">
               <div className="space-y-4">
                 <span className="indisea-eyebrow">
-                  01 / project initiation &amp; scoping
+                  01 / PROJECT INITIATION &amp; SCOPING
                 </span>
 
-                <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[var(--text-heading)] tracking-tight leading-[1.05]">
+                <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] text-[var(--text-heading)] tracking-tight leading-[1.06] uppercase">
                   Let&apos;s Scope <br />
-                  <span className="text-[#2563EB]">Your Product.</span>
+                  <span className="text-[#1F56C6]">Your Product.</span>
                 </h1>
 
                 <p className="font-sans text-base sm:text-lg text-[var(--text-muted)] leading-relaxed font-normal">
@@ -94,8 +94,8 @@ export default function ContactPage() {
                 </p>
 
                 {/* Expectation Box */}
-                <div className="p-6 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-2">
-                  <span className="indisea-eyebrow text-[#2563EB] block">
+                <div className="p-6 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs space-y-2">
+                  <span className="indisea-eyebrow text-[#1F56C6] block">
                     What happens next?
                   </span>
                   <p className="font-sans text-sm text-[var(--text-heading)] font-medium leading-relaxed">
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   </span>
                   <a
                     href="mailto:support@solvempire.com"
-                    className="text-[#2563EB] font-bold text-sm hover:underline block"
+                    className="text-[#1F56C6] font-bold text-sm hover:underline block"
                   >
                     support@solvempire.com
                   </a>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                   </span>
                   <a
                     href="tel:+919701341323"
-                    className="text-[var(--text-heading)] font-bold text-sm hover:text-[#2563EB] block"
+                    className="text-[var(--text-heading)] font-bold text-sm hover:text-[#1F56C6] block font-mono"
                   >
                     +91 97013 41323
                   </a>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                     href="https://maps.app.goo.gl/7awCUTuTPqBsHT4c7"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[#2563EB] font-bold text-xs hover:underline mt-1.5"
+                    className="inline-flex items-center gap-1 text-[#1F56C6] font-bold text-xs hover:underline mt-1.5 uppercase tracking-wider"
                   >
                     <span>Open in Google Maps</span>
                     <span>↗</span>
@@ -155,7 +155,7 @@ export default function ContactPage() {
 
             {/* Right Column: Interactive Multi-Step Form (Span 7) */}
             <div className="col-span-12 lg:col-span-7">
-              <div className="p-6 sm:p-10 rounded-3xl bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-sm">
+              <div className="p-6 sm:p-10 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs">
                 <MultiStepContactWizard theme="light" />
               </div>
             </div>

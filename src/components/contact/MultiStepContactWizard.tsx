@@ -227,19 +227,19 @@ export function MultiStepContactWizard({
 
   if (isSubmitted) {
     return (
-      <div className="rounded-3xl bg-white border border-slate-200/90 shadow-editorial-lg p-8 sm:p-12 text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
+      <div className="rounded-none bg-white border border-slate-200/90 shadow-xs p-8 sm:p-12 text-center space-y-6">
+        <div className="w-16 h-16 rounded-none bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto">
           <CheckCircle2 className="w-8 h-8" />
         </div>
         <div className="space-y-2">
-          <h3 className="font-display font-bold text-2xl sm:text-3xl text-slate-950">
+          <h3 className="font-display font-bold text-2xl sm:text-3xl text-slate-950 uppercase tracking-tight">
             Project Brief Received
           </h3>
           <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed">
             {serverMessage || "Thank you! Our engineering team will review your requirements and reply with a scoping call link within 1 business day."}
           </p>
         </div>
-        <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/60 max-w-md mx-auto text-xs font-mono text-slate-700 text-left space-y-1">
+        <div className="p-4 rounded-none bg-slate-50 border border-slate-200/60 max-w-md mx-auto text-xs font-mono text-slate-700 text-left space-y-1">
           <p><strong>Selected Discipline:</strong> {formData.projectType}</p>
           <p><strong>Current Stage:</strong> {formData.stage}</p>
           <p><strong>Target Timeline:</strong> {formData.timeline}</p>
@@ -261,7 +261,7 @@ export function MultiStepContactWizard({
             });
             setFormRenderTime(Date.now());
           }}
-          className="btn-editorial btn-editorial-blue px-7 py-3 text-xs tracking-wide cursor-pointer shadow-editorial-sm"
+          className="btn-indisea-blue px-7 py-3 text-xs tracking-wider uppercase cursor-pointer"
         >
           <span>Scope Another Project</span>
         </button>
@@ -270,16 +270,16 @@ export function MultiStepContactWizard({
   }
 
   return (
-    <div className="w-full rounded-3xl bg-white border border-slate-200/90 shadow-editorial-lg overflow-hidden font-sans">
+    <div className="w-full rounded-none bg-white border border-slate-200/90 shadow-xs overflow-hidden font-sans">
       {/* Header Bar */}
       <div className="bg-slate-50/80 border-b border-slate-100 px-6 sm:px-8 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-600" />
+          <span className="w-2 h-2 rounded-none bg-[#1F56C6]" />
           <span className="font-mono font-bold text-xs text-slate-700 uppercase tracking-wide">
             PROJECT SCOPING // STEP 0{step} OF 04
           </span>
         </div>
-        <span className="font-mono font-bold text-xs text-blue-600 uppercase">
+        <span className="font-mono font-bold text-xs text-[#1F56C6] uppercase">
           {step === 1 && "DISCIPLINE"}
           {step === 2 && "STAGE"}
           {step === 3 && "TIMELINE"}
@@ -290,7 +290,7 @@ export function MultiStepContactWizard({
       {/* Progress Bar */}
       <div className="w-full h-1 bg-slate-100">
         <div
-          className="h-full bg-blue-600 transition-all duration-300 ease-out"
+          className="h-full bg-[#1F56C6] transition-all duration-300 ease-out"
           style={{ width: `${(step / 4) * 100}%` }}
         />
       </div>
@@ -312,7 +312,7 @@ export function MultiStepContactWizard({
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1 uppercase tracking-tight">
                 What are you engineering?
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -330,22 +330,22 @@ export function MultiStepContactWizard({
                     type="button"
                     onClick={() => handleSelectOption("projectType", opt.value)}
                     className={cn(
-                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer",
+                      "w-full text-left p-4 rounded-none border transition-all duration-200 flex items-start gap-4 cursor-pointer",
                       isSelected
-                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-x-1"
+                        ? "bg-[#1F56C6]/5 border-[#1F56C6] shadow-xs translate-x-1"
                         : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
                     )}
                   >
                     <div
                       className={cn(
-                        "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
-                        isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                        "w-10 h-10 rounded-none flex items-center justify-center shrink-0 transition-colors",
+                        isSelected ? "bg-[#1F56C6] text-white" : "bg-slate-100 text-slate-600"
                       )}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5">
+                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5 uppercase tracking-tight">
                         {opt.title}
                       </h4>
                       <p className="text-xs text-slate-500 font-normal leading-relaxed">
@@ -361,10 +361,10 @@ export function MultiStepContactWizard({
               <button
                 type="button"
                 onClick={handleNext}
-                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
+                className="group btn-indisea-blue px-6 py-3 text-xs tracking-wider uppercase cursor-pointer"
               >
                 <span>Continue</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-white" />
               </button>
             </div>
           </div>
@@ -374,7 +374,7 @@ export function MultiStepContactWizard({
         {step === 2 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1 uppercase tracking-tight">
                 Current Development Stage
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -392,22 +392,22 @@ export function MultiStepContactWizard({
                     type="button"
                     onClick={() => handleSelectOption("stage", opt.value)}
                     className={cn(
-                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-start gap-4 cursor-pointer",
+                      "w-full text-left p-4 rounded-none border transition-all duration-200 flex items-start gap-4 cursor-pointer",
                       isSelected
-                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-x-1"
+                        ? "bg-[#1F56C6]/5 border-[#1F56C6] shadow-xs translate-x-1"
                         : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
                     )}
                   >
                     <div
                       className={cn(
-                        "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors",
-                        isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                        "w-10 h-10 rounded-none flex items-center justify-center shrink-0 transition-colors",
+                        isSelected ? "bg-[#1F56C6] text-white" : "bg-slate-100 text-slate-600"
                       )}
                     >
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5">
+                      <h4 className="font-display font-bold text-sm sm:text-base text-slate-900 mb-0.5 uppercase tracking-tight">
                         {opt.title}
                       </h4>
                       <p className="text-xs text-slate-500 font-normal leading-relaxed">
@@ -423,18 +423,18 @@ export function MultiStepContactWizard({
               <button
                 type="button"
                 onClick={handleBack}
-                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer"
+                className="px-5 py-3 rounded-none bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold tracking-wider uppercase cursor-pointer"
               >
-                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5 inline" />
                 <span>Back</span>
               </button>
               <button
                 type="button"
                 onClick={handleNext}
-                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
+                className="group btn-indisea-blue px-6 py-3 text-xs tracking-wider uppercase cursor-pointer"
               >
                 <span>Continue</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-white" />
               </button>
             </div>
           </div>
@@ -444,7 +444,7 @@ export function MultiStepContactWizard({
         {step === 3 && (
           <div className="space-y-6">
             <div>
-              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1 uppercase tracking-tight">
                 Target Launch Timeline
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -462,22 +462,22 @@ export function MultiStepContactWizard({
                     type="button"
                     onClick={() => handleSelectOption("timeline", opt.value)}
                     className={cn(
-                      "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex flex-col justify-between cursor-pointer space-y-3",
+                      "w-full text-left p-4 rounded-none border transition-all duration-200 flex flex-col justify-between cursor-pointer space-y-3",
                       isSelected
-                        ? "bg-blue-50/60 border-blue-600 shadow-editorial-xs translate-y-[-2px]"
+                        ? "bg-[#1F56C6]/5 border-[#1F56C6] shadow-xs translate-y-[-2px]"
                         : "bg-white border-slate-200/80 hover:bg-slate-50 hover:border-slate-300"
                     )}
                   >
                     <div className="flex items-center gap-3">
                       <div
                         className={cn(
-                          "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors",
-                          isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-600"
+                          "w-8 h-8 rounded-none flex items-center justify-center shrink-0 transition-colors",
+                          isSelected ? "bg-[#1F56C6] text-white" : "bg-slate-100 text-slate-600"
                         )}
                       >
                         <Icon className="w-4 h-4" />
                       </div>
-                      <h4 className="font-display font-bold text-sm text-slate-900">
+                      <h4 className="font-display font-bold text-sm text-slate-900 uppercase tracking-tight">
                         {opt.title}
                       </h4>
                     </div>
@@ -493,18 +493,18 @@ export function MultiStepContactWizard({
               <button
                 type="button"
                 onClick={handleBack}
-                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer"
+                className="px-5 py-3 rounded-none bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold tracking-wider uppercase cursor-pointer"
               >
-                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5 inline" />
                 <span>Back</span>
               </button>
               <button
                 type="button"
                 onClick={handleNext}
-                className="group btn-editorial btn-editorial-primary px-6 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer"
+                className="group btn-indisea-blue px-6 py-3 text-xs tracking-wider uppercase cursor-pointer"
               >
                 <span>Continue</span>
-                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-blue-400" />
+                <ArrowRight className="w-3.5 h-3.5 ml-2 arrow-slide text-white" />
               </button>
             </div>
           </div>
@@ -514,7 +514,7 @@ export function MultiStepContactWizard({
         {step === 4 && (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1">
+              <h3 className="font-display font-bold text-2xl text-slate-950 mb-1 uppercase tracking-tight">
                 Technical Brief &amp; Contact
               </h3>
               <p className="text-xs sm:text-sm text-slate-500">
@@ -533,7 +533,7 @@ export function MultiStepContactWizard({
                   placeholder="e.g. Alex Mercer"
                   value={formData.name}
                   onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
-                  className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
+                  className="w-full p-3.5 rounded-none bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1F56C6] focus:ring-2 focus:ring-[#1F56C6]/10 transition-all"
                 />
                 {errors.name && <p className="text-xs text-rose-600 mt-1">{errors.name[0]}</p>}
               </div>
@@ -548,7 +548,7 @@ export function MultiStepContactWizard({
                   placeholder="alex@company.com"
                   value={formData.email}
                   onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
-                  className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
+                  className="w-full p-3.5 rounded-none bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1F56C6] focus:ring-2 focus:ring-[#1F56C6]/10 transition-all"
                 />
                 {errors.email && <p className="text-xs text-rose-600 mt-1">{errors.email[0]}</p>}
               </div>
@@ -563,7 +563,7 @@ export function MultiStepContactWizard({
                 placeholder="e.g. Mercer Robotics"
                 value={formData.company}
                 onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
-                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all"
+                className="w-full p-3.5 rounded-none bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1F56C6] focus:ring-2 focus:ring-[#1F56C6]/10 transition-all"
               />
             </div>
 
@@ -577,7 +577,7 @@ export function MultiStepContactWizard({
                 placeholder="Briefly describe what you are engineering, key packaging/MCU constraints, target volume, or current development roadblocks..."
                 value={formData.description}
                 onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
-                className="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-500/10 transition-all leading-relaxed"
+                className="w-full p-3.5 rounded-none bg-slate-50 border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:bg-white focus:border-[#1F56C6] focus:ring-2 focus:ring-[#1F56C6]/10 transition-all leading-relaxed"
               />
               {errors.description && (
                 <p className="text-xs text-rose-600 mt-1">{errors.description[0]}</p>
@@ -585,7 +585,7 @@ export function MultiStepContactWizard({
             </div>
 
             {serverMessage && (
-              <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-700">
+              <div className="p-3.5 rounded-none bg-rose-50 border border-rose-200 text-xs text-rose-700">
                 {serverMessage}
               </div>
             )}
@@ -595,15 +595,15 @@ export function MultiStepContactWizard({
                 type="button"
                 onClick={handleBack}
                 disabled={isSubmitting}
-                className="btn-editorial btn-editorial-secondary px-5 py-3 text-xs tracking-wide cursor-pointer disabled:opacity-50"
+                className="px-5 py-3 rounded-none bg-slate-100 text-slate-700 hover:bg-slate-200 text-xs font-bold tracking-wider uppercase cursor-pointer disabled:opacity-50"
               >
-                <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+                <ArrowLeft className="w-3.5 h-3.5 mr-1.5 inline" />
                 <span>Back</span>
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group btn-editorial btn-editorial-blue px-7 py-3 text-xs tracking-wide shadow-editorial-sm cursor-pointer disabled:opacity-50"
+                className="group btn-indisea-blue px-7 py-3 text-xs tracking-wider uppercase cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>
