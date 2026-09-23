@@ -17,6 +17,7 @@ import { pcbAndEnclosureMechanicalDesignBlog } from "./pcb-and-enclosure-mechani
 import { canBusVsRs485VsUartBlog } from "./can-bus-vs-rs485-vs-uart";
 import { otaUpdatesForIndustrialMachinesBlog } from "./ota-updates-for-industrial-machines";
 import { remoteMonitoringForIndustrialMachinesBlog } from "./remote-monitoring-for-industrial-machines";
+import { engineeringACommercialHelmetSanitizationMachineBlog } from "./engineering-a-commercial-helmet-sanitization-machine";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
@@ -37,6 +38,7 @@ export const allBlogs: BlogArticleData[] = [
   canBusVsRs485VsUartBlog,
   otaUpdatesForIndustrialMachinesBlog,
   remoteMonitoringForIndustrialMachinesBlog,
+  engineeringACommercialHelmetSanitizationMachineBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {

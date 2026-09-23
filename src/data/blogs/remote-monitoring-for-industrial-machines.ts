@@ -47,7 +47,7 @@ export const remoteMonitoringForIndustrialMachinesBlog: BlogArticleData = {
       "Fleet Management",
       "Custom Automation",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Unattended industrial machines cannot be managed through reactive user complaints: real-time telemetry must detect actuator degradation, optical dust accumulation, and thermal rises before catastrophic field failure.",

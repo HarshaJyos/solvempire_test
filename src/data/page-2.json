@@ -1,12 +1,52 @@
 {
   "page": 2,
   "totalPages": 5,
-  "totalPosts": 18,
+  "totalPosts": 19,
   "posts": [
+    {
+      "id": "post-015",
+      "slug": "pcb-and-enclosure-mechanical-design",
+      "title": "PCB + Enclosure Mechanical Design",
+      "subtitle": "Electromechanical Co-Design, Thermal Clearance Envelopes, Connector Placement, and Vibration Isolation for Commercial Hardware.",
+      "excerpt": "A complete guide to electromechanical co-design. Learn how senior engineers synchronize KiCad 3D PCBA models with parametric CAD, design screw-head trace keep-outs, eliminate connector clash, engineer thermal gap pad conduction, and isolate PCBs from machine vibration.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        "slug": "gayathri-boyapati"
+      },
+      "coAuthors": [
+        {
+          "name": "Teja Mandapalli",
+          "role": "Co-Founder & Product Lead",
+          "avatar": "/teja.webp",
+          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+          "slug": "teja-mandapalli"
+        }
+      ],
+      "publishedAt": "Jul 29, 2026",
+      "isoDate": "2026-07-29T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Electromechanical Co-Design",
+        "PCB Design",
+        "Enclosure Engineering",
+        "KiCad to CAD",
+        "Thermal Packaging",
+        "Vibration Damping",
+        "DFM",
+        "Hardware Engineering"
+      ],
+      "featured": false
+    },
     {
       "id": "post-014",
       "slug": "ip65-enclosure-design",
       "title": "IP65 Enclosure Design",
+      "subtitle": "Mechanical Sealing, Gasket Channel Engineering, Thermal Management, and Production Validation for Outdoor and Industrial Hardware.",
       "excerpt": "A complete mechanical engineering guide to designing certified IP65 waterproof and dust-tight enclosures. Explore elastomer material selection (Silicone vs EPDM vs FIPFG), tongue-and-groove compression geometry, fastener pitch equations, ePTFE breather vents, and fanless thermal conduction.",
       "category": "Hardware & Manufacturing",
       "type": "Engineering Guide",
@@ -14,20 +54,23 @@
         "name": "Teja Mandapalli",
         "role": "Co-Founder & Product Lead",
         "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
       },
       "coAuthors": [
         {
           "name": "Lohith Medisetti",
           "role": "Co-Founder & COO",
           "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
         },
         {
           "name": "Gayathri Boyapati",
           "role": "Electronics Engineer, PCB & VLSI Specialist",
           "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
         }
       ],
       "publishedAt": "Jul 27, 2026",
@@ -49,6 +92,7 @@
       "id": "post-013",
       "slug": "from-cad-to-manufacturing-product-engineering-workflow",
       "title": "From CAD to Manufacturing: Product Engineering Workflow",
+      "subtitle": "A Senior Engineer's Guide to Parametric 3D CAD, Electromechanical Co-Design, DFM Tooling Rules, GD&T Drawings, and Factory EVT/DVT/PVT Validation.",
       "excerpt": "The complete, practical engineering guide to taking physical products from 3D CAD to volume factory production. Learn top-down parametric assembly architecture, KiCad-to-CAD electromechanical co-design, sheet metal & injection tooling DFM, ASME Y14.5 GD&T drawings, and EVT/DVT/PVT quality validation.",
       "category": "Hardware & Manufacturing",
       "type": "Complete Guide",
@@ -56,20 +100,23 @@
         "name": "Teja Mandapalli",
         "role": "Co-Founder & Product Lead",
         "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
       },
       "coAuthors": [
         {
           "name": "Lohith Medisetti",
           "role": "Co-Founder & COO",
           "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
         },
         {
           "name": "Hanish Jyosyabhatla",
           "role": "Founder & CEO",
           "avatar": "/avatars/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
         }
       ],
       "publishedAt": "Jul 25, 2026",
@@ -91,6 +138,7 @@
       "id": "post-012",
       "slug": "industrial-automation-product-development",
       "title": "Industrial Automation Product Development",
+      "subtitle": "A Complete Blueprint from Process Feasibility, Mechatronics, and Custom Electronics to Production Tooling, Safety Certification, and Commercial Fleet Deployment.",
       "excerpt": "How to transition from a bespoke one-off automated machine to a scalable, commercially certified industrial automation product. Explore takt time physics, structural kinematics, custom PCB consolidation, FreeRTOS firmware, DFM sheet metal tooling, and turnkey fleet manufacturing.",
       "category": "Custom Automation",
       "type": "Complete Guide",
@@ -98,20 +146,23 @@
         "name": "Lohith Medisetti",
         "role": "Co-Founder & COO",
         "avatar": "/lohith.webp",
-        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+        "slug": "lohith-medisetti"
       },
       "coAuthors": [
         {
           "name": "Hanish Jyosyabhatla",
           "role": "Founder & CEO",
           "avatar": "/avatars/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
         },
         {
           "name": "Gayathri Boyapati",
           "role": "Electronics Engineer, PCB & VLSI Specialist",
           "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
         }
       ],
       "publishedAt": "Jul 23, 2026",
@@ -126,42 +177,6 @@
         "DFM",
         "Safety Engineering",
         "Manufacturing Scale"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-011",
-      "slug": "how-to-integrate-payment-into-a-physical-machine",
-      "title": "How to Integrate Payment into a Physical Machine",
-      "excerpt": "A complete engineering guide to integrating payment systems into physical machines and unattended kiosks. Explore real-time dynamic UPI QR generation, EMV card POS serial interfaces, MDB 4.3 vending protocols, automated drop sensor refunds, and anti-fraud hardware architecture.",
-      "category": "Product Engineering",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "coAuthors": [
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
-        }
-      ],
-      "publishedAt": "Jul 21, 2026",
-      "isoDate": "2026-07-21T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "Payment Integration",
-        "Dynamic UPI",
-        "MDB Protocol",
-        "POS Terminals",
-        "Unattended Kiosks",
-        "IoT Architecture",
-        "Embedded Hardware",
-        "Custom Automation"
       ],
       "featured": false
     }

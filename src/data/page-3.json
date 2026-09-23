@@ -1,12 +1,52 @@
 {
   "page": 3,
   "totalPages": 5,
-  "totalPosts": 18,
+  "totalPosts": 19,
   "posts": [
+    {
+      "id": "post-011",
+      "slug": "how-to-integrate-payment-into-a-physical-machine",
+      "title": "How to Integrate Payment into a Physical Machine",
+      "subtitle": "Dynamic UPI, POS Card Readers, MDB Vending Protocols, and Fail-Safe IoT Telemetry for Unattended Kiosks and Automated Machinery.",
+      "excerpt": "A complete engineering guide to integrating payment systems into physical machines and unattended kiosks. Explore real-time dynamic UPI QR generation, EMV card POS serial interfaces, MDB 4.3 vending protocols, automated drop sensor refunds, and anti-fraud hardware architecture.",
+      "category": "Product Engineering",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+        "slug": "hanish-jyosyabhatla"
+      },
+      "coAuthors": [
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Jul 21, 2026",
+      "isoDate": "2026-07-21T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Payment Integration",
+        "Dynamic UPI",
+        "MDB Protocol",
+        "POS Terminals",
+        "Unattended Kiosks",
+        "IoT Architecture",
+        "Embedded Hardware",
+        "Custom Automation"
+      ],
+      "featured": false
+    },
     {
       "id": "post-010",
       "slug": "how-to-design-an-industrial-hmi",
       "title": "How to Design an Industrial HMI",
+      "subtitle": "Hardware Selection, UI/UX Architecture, and Real-Time Protocol Integration for Factory Machinery and Automated Kiosks.",
       "excerpt": "A complete engineering guide to industrial Human-Machine Interface (HMI) design. Learn how senior product engineers select rugged touch displays, architect ISA-101 high-performance UIs, integrate serial DGUS and Linux protocols, seal IP65 bezels, and design fail-safe hybrid control panels.",
       "category": "Custom Automation",
       "type": "Technical Guide",
@@ -14,14 +54,16 @@
         "name": "Teja Mandapalli",
         "role": "Co-Founder & Product Lead",
         "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
       },
       "coAuthors": [
         {
           "name": "Gayathri Boyapati",
           "role": "Electronics Engineer, PCB & VLSI Specialist",
           "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
         }
       ],
       "publishedAt": "Jul 19, 2026",
@@ -43,6 +85,7 @@
       "id": "post-009",
       "slug": "how-embedded-firmware-controls-an-automated-machine",
       "title": "How Embedded Firmware Controls an Automated Machine",
+      "subtitle": "From deterministic RTOS task scheduling and state machines to hardware timers, CAN bus distributed control, and fail-safe safety interlocks.",
       "excerpt": "A senior engineer's deep dive into industrial embedded firmware. Explore FreeRTOS task scheduling, hierarchical state machines, microsecond hardware timer PWM, CAN bus distributed architectures, DWIN HMI interfacing, and fail-safe safety watchdogs.",
       "category": "Custom Automation",
       "type": "Technical Guide",
@@ -50,7 +93,8 @@
         "name": "Gayathri Boyapati",
         "role": "Electronics Engineer, PCB & VLSI Specialist",
         "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs."
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+        "slug": "gayathri-boyapati"
       },
       "publishedAt": "Jul 17, 2026",
       "isoDate": "2026-07-17T00:00:00Z",
@@ -78,7 +122,8 @@
         "name": "Gayathri Boyapati",
         "role": "Electronics Engineer, PCB & VLSI Specialist",
         "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs."
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+        "slug": "gayathri-boyapati"
       },
       "publishedAt": "Jul 15, 2026",
       "isoDate": "2026-07-15T00:00:00Z",
@@ -92,34 +137,6 @@
         "CAN Bus",
         "DFM",
         "Embedded Hardware"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-007",
-      "slug": "how-to-design-an-industrial-machine",
-      "title": "How to Design an Industrial Machine: The Complete Engineering Guide",
-      "excerpt": "A masterclass in industrial machine design. Learn how senior engineers calculate actuator kinematics, design rigid structural frames, isolate electrical power distribution, write deterministic real-time firmware, and commission reliable 24/7 production machinery.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Lohith Medisetti",
-        "role": "Co-Founder & COO",
-        "avatar": "/lohith.webp",
-        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
-      },
-      "publishedAt": "Jul 13, 2026",
-      "isoDate": "2026-07-13T00:00:00Z",
-      "readTime": "11 min read",
-      "tags": [
-        "Industrial Machines",
-        "Mechanical Design",
-        "Custom Automation",
-        "Embedded Systems",
-        "PLC & RTOS",
-        "Pneumatics",
-        "Power Distribution",
-        "Commissioning"
       ],
       "featured": false
     }
