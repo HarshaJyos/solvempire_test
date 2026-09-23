@@ -29,7 +29,7 @@ export const howToDevelopCustomPcbBlog: BlogArticleData = {
       "DFM",
       "Embedded Hardware",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Industrial PCB reliability starts with the power architecture: strict physical separation of high-voltage AC mains, 24V inductive actuator power, 5V switching rails, and 3.3V digital logic with star grounding and optical isolation.",

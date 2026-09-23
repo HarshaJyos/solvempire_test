@@ -1,8 +1,35 @@
 {
   "page": 2,
   "totalPages": 2,
-  "totalPosts": 8,
+  "totalPosts": 9,
   "posts": [
+    {
+      "id": "post-003",
+      "slug": "product-engineering-company-in-india",
+      "title": "Product Engineering Company in India: Complete Guide",
+      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
+      "category": "Product Strategy",
+      "type": "Industry Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Jul 05, 2026",
+      "isoDate": "2026-07-05T00:00:00Z",
+      "readTime": "8 min read",
+      "tags": [
+        "Product Engineering",
+        "India Tech",
+        "Software Partner",
+        "MVP",
+        "Architecture",
+        "Founders",
+        "Strategy"
+      ],
+      "featured": false
+    },
     {
       "id": "post-002",
       "slug": "how-to-develop-a-physical-product-from-idea-to-manufacturing",

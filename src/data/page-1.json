@@ -1,8 +1,36 @@
 {
   "page": 1,
   "totalPages": 2,
-  "totalPosts": 8,
+  "totalPosts": 9,
   "posts": [
+    {
+      "id": "post-009",
+      "slug": "how-embedded-firmware-controls-an-automated-machine",
+      "title": "How Embedded Firmware Controls an Automated Machine",
+      "excerpt": "A senior engineer's deep dive into industrial embedded firmware. Explore FreeRTOS task scheduling, hierarchical state machines, microsecond hardware timer PWM, CAN bus distributed architectures, DWIN HMI interfacing, and fail-safe safety watchdogs.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs."
+      },
+      "publishedAt": "Jul 17, 2026",
+      "isoDate": "2026-07-17T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Embedded Firmware",
+        "FreeRTOS",
+        "STM32",
+        "CAN Bus",
+        "State Machines",
+        "Motion Control",
+        "Industrial Automation",
+        "HMI & Telemetry"
+      ],
+      "featured": true
+    },
     {
       "id": "post-008",
       "slug": "how-to-develop-a-custom-pcb-for-an-industrial-machine",
@@ -29,7 +57,7 @@
         "DFM",
         "Embedded Hardware"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "id": "post-007",
@@ -147,33 +175,6 @@
         "Mechanical Design",
         "FAT",
         "Commissioning"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-003",
-      "slug": "product-engineering-company-in-india",
-      "title": "Product Engineering Company in India: Complete Guide",
-      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
-      "category": "Product Strategy",
-      "type": "Industry Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Jul 05, 2026",
-      "isoDate": "2026-07-05T00:00:00Z",
-      "readTime": "8 min read",
-      "tags": [
-        "Product Engineering",
-        "India Tech",
-        "Software Partner",
-        "MVP",
-        "Architecture",
-        "Founders",
-        "Strategy"
       ],
       "featured": false
     }
