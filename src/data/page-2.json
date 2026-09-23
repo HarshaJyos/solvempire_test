@@ -1,68 +1,140 @@
 {
   "page": 2,
-  "totalPages": 2,
-  "totalPosts": 10,
+  "totalPages": 5,
+  "totalPosts": 18,
   "posts": [
     {
-      "id": "post-004",
-      "slug": "how-to-build-a-custom-automated-machine",
-      "title": "How to Build a Custom Automated Machine",
-      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Jul 07, 2026",
-      "isoDate": "2026-07-07T00:00:00Z",
-      "readTime": "10 min read",
-      "tags": [
-        "Custom Automation",
-        "PLC",
-        "Robotics",
-        "Machine Vision",
-        "Mechanical Design",
-        "FAT",
-        "Commissioning"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-003",
-      "slug": "product-engineering-company-in-india",
-      "title": "Product Engineering Company in India: Complete Guide",
-      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
-      "category": "Product Strategy",
-      "type": "Industry Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Jul 05, 2026",
-      "isoDate": "2026-07-05T00:00:00Z",
-      "readTime": "8 min read",
-      "tags": [
-        "Product Engineering",
-        "India Tech",
-        "Software Partner",
-        "MVP",
-        "Architecture",
-        "Founders",
-        "Strategy"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-002",
-      "slug": "how-to-develop-a-physical-product-from-idea-to-manufacturing",
-      "title": "How to Develop a Physical Product from Idea to Manufacturing",
-      "excerpt": "A realistic roadmap from napkin sketch and CAD to prototypes, DFM, tooling, factory vetting, quality control, and international logistics without expensive mistakes.",
+      "id": "post-014",
+      "slug": "ip65-enclosure-design",
+      "title": "IP65 Enclosure Design",
+      "excerpt": "A complete mechanical engineering guide to designing certified IP65 waterproof and dust-tight enclosures. Explore elastomer material selection (Silicone vs EPDM vs FIPFG), tongue-and-groove compression geometry, fastener pitch equations, ePTFE breather vents, and fanless thermal conduction.",
       "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "coAuthors": [
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
+      ],
+      "publishedAt": "Jul 27, 2026",
+      "isoDate": "2026-07-27T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "IP65 Enclosure",
+        "Mechanical Sealing",
+        "Gasket Design",
+        "DFM",
+        "Thermal Management",
+        "Industrial Design",
+        "Hardware Engineering",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-013",
+      "slug": "from-cad-to-manufacturing-product-engineering-workflow",
+      "title": "From CAD to Manufacturing: Product Engineering Workflow",
+      "excerpt": "The complete, practical engineering guide to taking physical products from 3D CAD to volume factory production. Learn top-down parametric assembly architecture, KiCad-to-CAD electromechanical co-design, sheet metal & injection tooling DFM, ASME Y14.5 GD&T drawings, and EVT/DVT/PVT quality validation.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "coAuthors": [
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+        },
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+        }
+      ],
+      "publishedAt": "Jul 25, 2026",
+      "isoDate": "2026-07-25T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "CAD to Manufacturing",
+        "DFM",
+        "Mechanical Engineering",
+        "Injection Molding",
+        "Sheet Metal",
+        "GD&T",
+        "Prototyping",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-012",
+      "slug": "industrial-automation-product-development",
+      "title": "Industrial Automation Product Development",
+      "excerpt": "How to transition from a bespoke one-off automated machine to a scalable, commercially certified industrial automation product. Explore takt time physics, structural kinematics, custom PCB consolidation, FreeRTOS firmware, DFM sheet metal tooling, and turnkey fleet manufacturing.",
+      "category": "Custom Automation",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
+      ],
+      "publishedAt": "Jul 23, 2026",
+      "isoDate": "2026-07-23T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "Industrial Automation",
+        "Product Development",
+        "Mechatronics",
+        "Custom Machinery",
+        "Embedded Systems",
+        "DFM",
+        "Safety Engineering",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-011",
+      "slug": "how-to-integrate-payment-into-a-physical-machine",
+      "title": "How to Integrate Payment into a Physical Machine",
+      "excerpt": "A complete engineering guide to integrating payment systems into physical machines and unattended kiosks. Explore real-time dynamic UPI QR generation, EMV card POS serial interfaces, MDB 4.3 vending protocols, automated drop sensor refunds, and anti-fraud hardware architecture.",
+      "category": "Product Engineering",
       "type": "Complete Guide",
       "author": {
         "name": "Hanish Jyosyabhatla",
@@ -70,43 +142,26 @@
         "avatar": "/avatars/hanish.webp",
         "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
       },
-      "publishedAt": "Jul 03, 2026",
-      "isoDate": "2026-07-03T00:00:00Z",
-      "readTime": "9 min read",
-      "tags": [
-        "Hardware",
-        "Manufacturing",
-        "DFM",
-        "Prototyping",
-        "Tooling",
-        "Quality Control",
-        "Logistics"
+      "coAuthors": [
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
       ],
-      "featured": false
-    },
-    {
-      "id": "post-001",
-      "slug": "what-is-end-to-end-product-engineering",
-      "title": "What Is End-to-End Product Engineering?",
-      "excerpt": "Why 'just an app' is never just an app. A practical breakdown of end-to-end product engineering from discovery, UX, and scalable architecture to DevOps, observability, and continuous feedback loops.",
-      "category": "Product Engineering",
-      "type": "Deep Dive",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Jul 01, 2026",
-      "isoDate": "2026-07-01T00:00:00Z",
-      "readTime": "7 min read",
+      "publishedAt": "Jul 21, 2026",
+      "isoDate": "2026-07-21T00:00:00Z",
+      "readTime": "12 min read",
       "tags": [
-        "Product Engineering",
-        "Architecture",
-        "DevOps",
-        "Software Development",
-        "MVP",
-        "Quality Engineering"
+        "Payment Integration",
+        "Dynamic UPI",
+        "MDB Protocol",
+        "POS Terminals",
+        "Unattended Kiosks",
+        "IoT Architecture",
+        "Embedded Hardware",
+        "Custom Automation"
       ],
       "featured": false
     }

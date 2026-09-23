@@ -148,8 +148,8 @@ export const teamMembers: TeamMember[] = [
       "Signal Integrity & EMC Compliance",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      email: "support@solvempire.com",
+      linkedin: "https://www.linkedin.com/in/gayathri-boyapati-384b72402",
+      email: "boyapatigayathri77@gmail.com",
     },
   },
 ];

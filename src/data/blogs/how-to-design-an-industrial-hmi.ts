@@ -40,7 +40,7 @@ export const howToDesignIndustrialHmiBlog: BlogArticleData = {
       "Custom Automation",
       "Product Engineering",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Industrial HMI design is fundamentally different from mobile app design: consumer apps optimize for user engagement, while industrial HMIs optimize for split-second situational awareness, zero operator fatigue, and zero catastrophic operational errors.",

@@ -9,6 +9,14 @@ import { howToDesignIndustrialMachineBlog } from "./how-to-design-an-industrial-
 import { howToDevelopCustomPcbBlog } from "./how-to-develop-a-custom-pcb-for-an-industrial-machine";
 import { howEmbeddedFirmwareControlsBlog } from "./how-embedded-firmware-controls-an-automated-machine";
 import { howToDesignIndustrialHmiBlog } from "./how-to-design-an-industrial-hmi";
+import { howToIntegratePaymentBlog } from "./how-to-integrate-payment-into-a-physical-machine";
+import { industrialAutomationProductDevelopmentBlog } from "./industrial-automation-product-development";
+import { fromCadToManufacturingBlog } from "./from-cad-to-manufacturing-product-engineering-workflow";
+import { ip65EnclosureDesignBlog } from "./ip65-enclosure-design";
+import { pcbAndEnclosureMechanicalDesignBlog } from "./pcb-and-enclosure-mechanical-design";
+import { canBusVsRs485VsUartBlog } from "./can-bus-vs-rs485-vs-uart";
+import { otaUpdatesForIndustrialMachinesBlog } from "./ota-updates-for-industrial-machines";
+import { remoteMonitoringForIndustrialMachinesBlog } from "./remote-monitoring-for-industrial-machines";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
@@ -21,6 +29,14 @@ export const allBlogs: BlogArticleData[] = [
   howToDevelopCustomPcbBlog,
   howEmbeddedFirmwareControlsBlog,
   howToDesignIndustrialHmiBlog,
+  howToIntegratePaymentBlog,
+  industrialAutomationProductDevelopmentBlog,
+  fromCadToManufacturingBlog,
+  ip65EnclosureDesignBlog,
+  pcbAndEnclosureMechanicalDesignBlog,
+  canBusVsRs485VsUartBlog,
+  otaUpdatesForIndustrialMachinesBlog,
+  remoteMonitoringForIndustrialMachinesBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {

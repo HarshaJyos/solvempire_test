@@ -1,0 +1,125 @@
+{
+  "page": 4,
+  "totalPages": 5,
+  "totalPosts": 18,
+  "posts": [
+    {
+      "id": "post-006",
+      "slug": "prototype-vs-production-what-changes",
+      "title": "Prototype vs Production: What Really Changes When Hardware Goes to Scale?",
+      "excerpt": "A working proof-of-concept on a lab workbench is not a commercial product. Explore the exact engineering shifts between prototype and mass production—including DFM injection tooling, sheet metal bend tolerances, SMT panelization, automated test jigs, wire harness looms, and regulatory certifications.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "publishedAt": "Jul 11, 2026",
+      "isoDate": "2026-07-11T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Prototyping",
+        "Manufacturing",
+        "DFM",
+        "Hardware Engineering",
+        "PCB Assembly",
+        "Injection Molding",
+        "Quality Control",
+        "Supply Chain"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-005",
+      "slug": "mechanical-electronics-embedded-product-development",
+      "title": "Mechanical + Electronics + Embedded: The Trinity of Physical Product Development",
+      "excerpt": "Why 80% of hardware projects fail at the boundaries between CAD packaging, PCB routing, and firmware determinism—and how a unified engineering studio builds deployable machines.",
+      "category": "Product Development",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+      },
+      "coAuthors": [
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
+      ],
+      "publishedAt": "Jul 09, 2026",
+      "isoDate": "2026-07-09T00:00:00Z",
+      "readTime": "9 min read",
+      "tags": [
+        "Hardware Engineering",
+        "Mechanical CAD",
+        "Custom PCB",
+        "Embedded Firmware",
+        "DFM",
+        "Mechatronics",
+        "Product Development",
+        "Supply Chain"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-004",
+      "slug": "how-to-build-a-custom-automated-machine",
+      "title": "How to Build a Custom Automated Machine",
+      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Jul 07, 2026",
+      "isoDate": "2026-07-07T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Custom Automation",
+        "PLC",
+        "Robotics",
+        "Machine Vision",
+        "Mechanical Design",
+        "FAT",
+        "Commissioning"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-003",
+      "slug": "product-engineering-company-in-india",
+      "title": "Product Engineering Company in India: Complete Guide",
+      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
+      "category": "Product Strategy",
+      "type": "Industry Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/avatars/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
+      },
+      "publishedAt": "Jul 05, 2026",
+      "isoDate": "2026-07-05T00:00:00Z",
+      "readTime": "8 min read",
+      "tags": [
+        "Product Engineering",
+        "India Tech",
+        "Software Partner",
+        "MVP",
+        "Architecture",
+        "Founders",
+        "Strategy"
+      ],
+      "featured": false
+    }
+  ]
+}

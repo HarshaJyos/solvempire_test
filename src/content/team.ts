@@ -58,7 +58,7 @@ export const teamMembers: TeamMember[] = [
     image: "/avatars/gayatri.jpeg",
     slug: "gayathri-boyapati",
     bio: "Electronics Engineer & PCB/VLSI Design Specialist architecting custom multilayer PCB layouts, power distribution, and real-time embedded hardware.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/gayathri-boyapati-384b72402",
   },
   {
     id: "06",

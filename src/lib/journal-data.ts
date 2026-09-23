@@ -2,11 +2,17 @@ import { JournalManifest, JournalPageChunk, JournalPostMeta } from "@/types/jour
 import manifestData from "@/data/manifest.json";
 import page1Data from "@/data/page-1.json";
 import page2Data from "@/data/page-2.json";
+import page3Data from "@/data/page-3.json";
+import page4Data from "@/data/page-4.json";
+import page5Data from "@/data/page-5.json";
 
 // Registry of pre-bundled page chunks
 const pageChunks: Record<number, JournalPageChunk> = {
   1: page1Data as JournalPageChunk,
   2: page2Data as JournalPageChunk,
+  3: page3Data as JournalPageChunk,
+  4: page4Data as JournalPageChunk,
+  5: page5Data as JournalPageChunk,
 };
 
 export type JournalSortOption =

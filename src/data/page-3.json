@@ -1,0 +1,127 @@
+{
+  "page": 3,
+  "totalPages": 5,
+  "totalPosts": 18,
+  "posts": [
+    {
+      "id": "post-010",
+      "slug": "how-to-design-an-industrial-hmi",
+      "title": "How to Design an Industrial HMI",
+      "excerpt": "A complete engineering guide to industrial Human-Machine Interface (HMI) design. Learn how senior product engineers select rugged touch displays, architect ISA-101 high-performance UIs, integrate serial DGUS and Linux protocols, seal IP65 bezels, and design fail-safe hybrid control panels.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing."
+      },
+      "coAuthors": [
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration."
+        }
+      ],
+      "publishedAt": "Jul 19, 2026",
+      "isoDate": "2026-07-19T00:00:00Z",
+      "readTime": "11 min read",
+      "tags": [
+        "Industrial HMI",
+        "UI/UX Design",
+        "Touchscreen Hardware",
+        "DWIN DGUS",
+        "Embedded Linux",
+        "ISA-101",
+        "Custom Automation",
+        "Product Engineering"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-009",
+      "slug": "how-embedded-firmware-controls-an-automated-machine",
+      "title": "How Embedded Firmware Controls an Automated Machine",
+      "excerpt": "A senior engineer's deep dive into industrial embedded firmware. Explore FreeRTOS task scheduling, hierarchical state machines, microsecond hardware timer PWM, CAN bus distributed architectures, DWIN HMI interfacing, and fail-safe safety watchdogs.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs."
+      },
+      "publishedAt": "Jul 17, 2026",
+      "isoDate": "2026-07-17T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Embedded Firmware",
+        "FreeRTOS",
+        "STM32",
+        "CAN Bus",
+        "State Machines",
+        "Motion Control",
+        "Industrial Automation",
+        "HMI & Telemetry"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-008",
+      "slug": "how-to-develop-a-custom-pcb-for-an-industrial-machine",
+      "title": "How to Develop a Custom PCB for an Industrial Machine",
+      "excerpt": "From electrical requirements, silicon selection, hierarchical schematics, and ERC simulations to impedance stackups, thermal floorplanning, DFM, and automated Bed-of-Nails testing. The complete engineering guide to industrial PCB development.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs."
+      },
+      "publishedAt": "Jul 15, 2026",
+      "isoDate": "2026-07-15T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Custom PCB",
+        "KiCad",
+        "Industrial Electronics",
+        "STM32",
+        "Linux SoM",
+        "CAN Bus",
+        "DFM",
+        "Embedded Hardware"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-007",
+      "slug": "how-to-design-an-industrial-machine",
+      "title": "How to Design an Industrial Machine: The Complete Engineering Guide",
+      "excerpt": "A masterclass in industrial machine design. Learn how senior engineers calculate actuator kinematics, design rigid structural frames, isolate electrical power distribution, write deterministic real-time firmware, and commission reliable 24/7 production machinery.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+      },
+      "publishedAt": "Jul 13, 2026",
+      "isoDate": "2026-07-13T00:00:00Z",
+      "readTime": "11 min read",
+      "tags": [
+        "Industrial Machines",
+        "Mechanical Design",
+        "Custom Automation",
+        "Embedded Systems",
+        "PLC & RTOS",
+        "Pneumatics",
+        "Power Distribution",
+        "Commissioning"
+      ],
+      "featured": false
+    }
+  ]
+}
