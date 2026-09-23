@@ -84,7 +84,7 @@ structure. Every nav and footer link must point to one of these, or be deleted.
 /work/freshpod-machine
 /work/freshpod-platform
 /work/freshpod-hmi
-/work/eggora
+/work/aeegz
 /services                  Capabilities, grouped into 4 disciplines
 /about                     Company + team + how we work
 /contact                   Contact form page
@@ -448,9 +448,9 @@ export type CaseStudy = {
   - Delivered within the constraints of a display platform with no native web support
   - Running as an integral part of the Freshpod customer experience
 
-### 3.6 — EGGORA Egg Vending Machine
-- slug: `eggora`
-- title: `EGGORA — Modular, Tray-Agnostic Vending Architecture`
+### 3.6 — AEEGZ Egg Vending Machine
+- slug: `aeegz`
+- title: `AEEGZ — Modular, Tray-Agnostic Vending Architecture`
 - category: `SMART AUTOMATION / VENDING`
 - client: `Dadspire Solutions`
 - status: `Phase 1 prototype in fabrication`
@@ -605,7 +605,7 @@ and a real tool list from 3.8.
 | 02 | CONSTRAINED PACKAGING | USS2 18 mm envelope; secure-comms 25 mm enclosure |
 | 03 | SMART CONNECTED SYSTEMS | Freshpod platform: 190+ machines, OTA, dynamic payments |
 | 04 | RELIABILITY IN THE FIELD | Freshpod: field failures investigated and resolved post-deployment |
-| 05 | PRODUCTION READY | USS2 tooling complete, 10,000+ unit target; EGGORA full manufacturing documentation |
+| 05 | PRODUCTION READY | USS2 tooling complete, 10,000+ unit target; AEEGZ full manufacturing documentation |
 | 06 | LONG-TERM SUPPORT | 4-year and up-to-10-year engineering support agreements |
 
 The current pillar copy is filler — 45-word sentences that say nothing. Cut each

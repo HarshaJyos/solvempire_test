@@ -62,7 +62,7 @@ export const mechanicalElectronicsEmbeddedBlog: BlogArticleData = {
     },
     {
       type: "paragraph",
-      text: "In consumer software, if an API contract changes, you update a schema in a pull request and redeploy in ten minutes. In physical hardware engineering, if a mechanical engineer moves a mounting boss by 3 millimeters without checking the PCB layout, a $15,000 injection mold is ruined, 500 circuit boards become useless paperweights, and production is delayed by four months.",
+      text: "In consumer software, if an API contract changes, you update a schema in a pull request and redeploy in ten minutes. In physical hardware engineering, if a mechanical engineer moves a mounting boss by 3 millimeters without checking the PCB layout, a ₹12 Lakh injection mold is ruined, 500 circuit boards become useless paperweights, and production is delayed by four months.",
     },
     {
       type: "paragraph",

@@ -37,7 +37,7 @@
 - USS2 Switcher Automotive Sensor: Ultra-compact 18 mm diameter x 75 mm cylindrical threaded housing with IP65 silicone O-ring sealing and vibration-resistant PCB ribs for automotive client in China; 10,000+ units planned volume.
 - Portable Secure Communications Device: Handheld 25 mm slim enclosure packaging 16650 battery, RF modules, and custom PCB with passive thermal dissipation for international security client.
 - FreshPod Connected Cloud Platform: Live IoT platform managing 190+ machines with real-time heartbeats, dynamic QR generation, OTA updates, and 3-year software framework.
-- EGGORA Modular Egg Vending Machine: High-density tray-agnostic egg vending architecture (~702 egg capacity across 42 doors) with custom KiCad STM32 + Linux SoM PCB and CAN bus expansion.
+- AEEGZ Modular Egg Vending Machine: High-density tray-agnostic egg vending architecture (~702 egg capacity across 42 doors) with custom KiCad STM32 + Linux SoM PCB and CAN bus expansion.
 
 ## Important URLs
 - Homepage: https://solvempire.com/

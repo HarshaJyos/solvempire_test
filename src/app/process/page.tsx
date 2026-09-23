@@ -83,8 +83,8 @@ const PROCESS_CARDS: ProcessCard[] = [
     ],
     deliverables: ["ERD Specification", "Constraint Map", "BOM Budgeting", "Tech Stack Matrix"],
     caseStudy: {
-      title: "Market Tray Research for EGGORA",
-      slug: "eggora",
+      title: "Market Tray Research for AEEGZ",
+      slug: "aeegz",
     },
     bgClass: "bg-[#1F56C6] text-white",
     numColor: "text-blue-200/25",

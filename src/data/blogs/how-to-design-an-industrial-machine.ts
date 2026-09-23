@@ -50,7 +50,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
     { id: "step-6-pneumatics-and-hydraulics", title: "Step 6: Pneumatic Manifolds, Regulators & Vacuum Systems" },
     { id: "step-7-sensors-feedback-hmi", title: "Step 7: Industrial Sensors, Feedback Loops & Touchscreen HMIs" },
     { id: "step-8-safety-and-compliance", title: "Step 8: Machine Safety Engineering (ISO 13849-1 & SIL)" },
-    { id: "real-world-case-study", title: "Real-World Case Study: The Freshpod & Eggora Machines" },
+    { id: "real-world-case-study", title: "Real-World Case Study: The Freshpod & AEEGZ Machines" },
     { id: "step-9-fat-sat-commissioning", title: "Step 9: Factory Acceptance Testing (FAT) & Site Commissioning" },
     { id: "comparison-table", title: "Custom Embedded Machine vs. Standard PLC Architecture" },
     { id: "how-to-start", title: "Building Your Custom Industrial Machine" },
@@ -252,7 +252,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
       type: "heading",
       level: 2,
       id: "real-world-case-study",
-      text: "Real-World Case Study: The Freshpod & Eggora Machines",
+      text: "Real-World Case Study: The Freshpod & AEEGZ Machines",
     },
     {
       type: "paragraph",
@@ -262,7 +262,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
       type: "bullets",
       items: [
         "Freshpod Helmet Sanitization Machine: Fully redesigned in Autodesk Fusion 360 into an 80+ part CNC stainless-steel assembly. We engineered a custom 12V ESP32 control PCB to eliminate legacy freeze states, designed an aerodynamic ventilation vortex loop, built dynamic Razorpay QR tools for DWIN DGUS over UART, and deployed OTA updates across 200+ machines operating in 3 countries.",
-        "Eggora Automated Vending Machine: Engineered custom kinematics for delicate physical food payload handling, integrated multi-channel relay electronics, dynamic payment workflows, and real-time inventory telemetry.",
+        "AEEGZ Automated Vending Machine: Engineered custom kinematics for delicate physical food payload handling, integrated multi-channel relay electronics, dynamic payment workflows, and real-time inventory telemetry.",
       ],
     },
     {
@@ -282,7 +282,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
         headers: ["Parameter", "Traditional Modular PLC", "SolveMpire Custom Embedded Studio"],
         highlightColumnIndex: 2,
         rows: [
-          ["Unit Hardware Cost", "$1,500 – $4,000 per machine", "$150 – $450 per machine (70% savings)"],
+          ["Unit Hardware Cost", "₹1,20,000 – ₹3,50,000 per machine", "₹12,000 – ₹35,000 per machine (70%+ savings)"],
           ["Physical Space / Footprint", "Bulky DIN-rail electrical cabinet", "Compact, single multi-layer custom PCB"],
           ["IoT & Cloud Telemetry", "Requires expensive external edge gateways", "Native Wi-Fi/LTE/MQTT built directly on board"],
           ["Custom HMI & Payments", "Limited to expensive proprietary industrial HMIs", "Custom DWIN DGUS / Dynamic UPI QR integration"],

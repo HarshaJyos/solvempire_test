@@ -219,7 +219,7 @@ export const prototypeVsProductionBlog: BlogArticleData = {
     },
     {
       type: "paragraph",
-      text: "In prototyping, you buy 10 resistors on DigiKey or Mouser for $0.20 each. In volume production, you buy cut tape or whole reels (5,000 pcs) directly from authorized component manufacturers for $0.003 each.",
+      text: "In prototyping, you buy 10 resistors on component distributors for ₹15 to ₹20 each. In volume production, you buy cut tape or whole reels (5,000 pcs) directly from authorized component manufacturers for ₹0.25 to ₹0.50 each.",
     },
     {
       type: "paragraph",
@@ -328,7 +328,7 @@ export const prototypeVsProductionBlog: BlogArticleData = {
     {
       question: "What is the typical cost and lead time for plastic injection mold tooling?",
       answer:
-        "Aluminum prototype/bridge tooling typically costs $3,000 to $8,000 and takes 2 to 4 weeks. Hardened steel multi-cavity production molds (rated for 500,000+ shots) cost $10,000 to $35,000+ and take 6 to 8 weeks depending on part complexity, lifters, and side-actions.",
+        "Aluminum prototype/bridge tooling typically costs ₹2.5 Lakh to ₹6.5 Lakh and takes 2 to 4 weeks. Hardened steel multi-cavity production molds (rated for 500,000+ shots) cost ₹8 Lakh to ₹28 Lakh+ and take 6 to 8 weeks depending on part complexity, lifters, and side-actions.",
     },
     {
       question: "What is an automated Bed-of-Nails test fixture and why is it necessary?",

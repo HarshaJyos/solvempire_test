@@ -388,7 +388,7 @@ export const whatIsEndToEndBlog: BlogArticleData = {
   ],
   takeaways: [
     "Product engineering connects discovery, design, development, DevOps, and post-launch analytics into one continuous feedback loop.",
-    "Prototypes and customer interviews save hundreds of thousands of dollars by invalidating flawed assumptions before expensive code is written.",
+    "Prototypes and user testing save lakhs of rupees and months of rework by invalidating flawed assumptions before expensive tooling or code is written.",
     "Architecture should solve today's real requirements with sensible room for tomorrow—not scale zero users to hypothetical millions.",
     "Launch day is the start of learning, not the end of the project.",
   ],

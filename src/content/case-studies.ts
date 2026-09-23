@@ -387,9 +387,9 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "eggora",
+    slug: "aeegz",
     order: 6,
-    title: "Egg Vending Machine (EGGORA) — Modular Architecture & Custom PCB",
+    title: "Egg Vending Machine (AEEGZ) — Modular Architecture & Custom PCB",
     category: "SMART AUTOMATION / VENDING & PCB",
     client: "Dadspire Solutions",
     status: "Phase 1 prototype in fabrication",
@@ -422,7 +422,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     hero: {
       src: "/case_Studies/communication-device.png",
-      alt: "EGGORA smart modular egg vending machine CAD render",
+      alt: "AEEGZ smart modular egg vending machine CAD render",
     },
     sections: [
       {

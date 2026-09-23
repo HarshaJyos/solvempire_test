@@ -35,7 +35,7 @@ export const serviceDisciplines: ServiceDiscipline[] = [
       "Manufacturing packages: CAD, STEP, DXF, BOM, and assembly drawings",
     ],
     tools: ["Autodesk Fusion 360", "Sheet Metal DFM", "Injection Moulding DFM"],
-    caseStudySlugs: ["secure-comms-enclosure", "uss2-switcher", "freshpod-machine", "eggora"],
+    caseStudySlugs: ["secure-comms-enclosure", "uss2-switcher", "freshpod-machine", "aeegz"],
   },
   {
     id: "electronics",
@@ -54,7 +54,7 @@ export const serviceDisciplines: ServiceDiscipline[] = [
       "Fail-safe safety interlocks & remote error alerting",
     ],
     tools: ["KiCad", "ESP32", "STM32", "Linux SoM", "CAN bus"],
-    caseStudySlugs: ["freshpod-machine", "eggora", "freshpod-platform"],
+    caseStudySlugs: ["freshpod-machine", "aeegz", "freshpod-platform"],
   },
   {
     id: "hmi",
@@ -163,13 +163,13 @@ export const partnerPillars: PartnerPillar[] = [
     tag: "PRODUCTION READY",
     title: "From Engineering Designs to Tooling and Manufacturing",
     description:
-      "We provided comprehensive production documentation and tooling support for the 10,000+ unit USS2 automotive sensor, and delivered complete DFM drawings for the 42-compartment EGGORA vending system. We build practical designs ready for CNC bending, sheet metal, and injection molding.",
+      "We provided comprehensive production documentation and tooling support for the 10,000+ unit USS2 automotive sensor, and delivered complete DFM drawings for the 42-compartment AEEGZ vending system. We build practical designs ready for CNC bending, sheet metal, and injection molding.",
     tools: [
       { name: "Fusion 360", category: "Production CAD" },
       { name: "Sheet Metal DFM", category: "CNC Bending" },
       { name: "STEP & DXF", category: "Tooling Packages" },
     ],
-    projectSlug: "eggora",
+    projectSlug: "aeegz",
   },
   {
     id: "06",

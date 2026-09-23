@@ -105,7 +105,7 @@ export const physicalProductBlog: BlogArticleData = {
     },
     {
       type: "quote",
-      text: "You can build an amazing product that costs $40 to manufacture and discover that customers only want to pay $45 for it. Technically, you have a product. Financially, you have a hobby.",
+      text: "You can build an amazing product that costs ₹3,500 to manufacture and discover that customers only want to pay ₹3,800 for it. Technically, you have a product. Financially, you have a hobby.",
       author: "Hanish Jyosyabhatla",
       source: "Founder & CEO, SolveMpire",
     },
@@ -213,7 +213,7 @@ export const physicalProductBlog: BlogArticleData = {
         rows: [
           ["Primary Goal", "Answer questions & prove feasibility", "Repeatable, defect-free unit volume"],
           ["Manufacturing Method", "3D printing, hand assembly, CNC", "Injection molding, stamping, automated SMT"],
-          ["Unit Cost", "High per-unit cost ($100s–$1000s)", "Optimized landed cost ($5–$30)"],
+          ["Unit Cost", "High per-unit cost (₹8,000–₹80,000+)", "Optimized landed cost (₹400–₹2,500)"],
           ["Upfront Capital", "Low material & machine time expense", "High tooling, molds, and MOQ commitments"],
           ["Tolerance Control", "Hand-fitted by engineers", "Strict geometric dimensioning & tolerancing (GD&T)"],
         ],
@@ -377,7 +377,7 @@ export const physicalProductBlog: BlogArticleData = {
     {
       question: "What is Design for Manufacturability (DFM) and why is it critical?",
       answer:
-        "DFM is the engineering practice of designing components so they are easy, cost-effective, and consistent to produce using specific manufacturing methods (injection molding, CNC, sheet metal, casting, or SMT). Fixing a design flaw in CAD costs a few hours; fixing it after steel molds are cut can cost tens of thousands of dollars.",
+        "DFM is the engineering practice of designing components so they are easy, cost-effective, and consistent to produce using specific manufacturing methods (injection molding, CNC, sheet metal, casting, or SMT). Fixing a design flaw in CAD costs a few hours; fixing it after steel molds are cut can cost lakhs of rupees.",
     },
     {
       question: "What is the difference between factory unit price and landed cost?",
