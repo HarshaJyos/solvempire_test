@@ -16,23 +16,23 @@ export function IndiseaHero() {
         {/* Indisea-Style Display Headline with Beautiful Sharp Highlight Badges */}
         <div className="max-w-6xl">
           <h1 className="font-display font-extrabold text-[36px] sm:text-[54px] md:text-[68px] lg:text-[84px] xl:text-[96px] tracking-tight text-[var(--text-heading)] space-y-2 sm:space-y-4">
-            {/* Line 1: We [design], [engineer], */}
+            {/* Line 1: We [DESIGN], [ENGINEER], */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
               <span>We</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#FACC15] text-[#181A1D] border border-amber-400 shadow-2xs font-display">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#FACC15] text-[#181A1D] border border-amber-400 shadow-2xs font-display uppercase tracking-wide">
                 design
               </span>
               <span>,</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#1F56C6] text-white border border-[#17449E] shadow-2xs font-display">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#1F56C6] text-white border border-[#17449E] shadow-2xs font-display uppercase tracking-wide">
                 engineer
               </span>
               <span>,</span>
             </div>
 
-            {/* Line 2: and [manufacture] */}
+            {/* Line 2: and [MANUFACTURE] */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 leading-none">
               <span>and</span>
-              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#16A34A] text-white border border-emerald-700 shadow-2xs font-display">
+              <span className="inline-flex items-center px-3 sm:px-5 py-0.5 sm:py-1 rounded-none bg-[#16A34A] text-white border border-emerald-700 shadow-2xs font-display uppercase tracking-wide">
                 manufacture
               </span>
             </div>
