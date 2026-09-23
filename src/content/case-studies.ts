@@ -47,24 +47,24 @@ export const caseStudies: CaseStudy[] = [
       { label: "Mechanical components", value: "80+ unique parts" },
     ],
     summary:
-      "Developed a commercially deployed automated helmet sanitization system spanning mechanical engineering, custom ESP32 electronics, embedded firmware, DWIN touchscreen HMI, Razorpay payments, and cloud-based fleet management — 200+ machines operating across 3 countries processing 200,000+ helmets.",
+      "Modernized and redesigned FreshPod's automated helmet sanitization machine from the ground up — reverse-engineering the complete physical assembly in Autodesk Fusion 360 (80+ parts), recreating the master control PCB to eliminate legacy freeze states, rewriting firmware for dynamic Razorpay UPI QR codes, redesigning DGUS HMI tools, and deploying OTA updates with real-time heartbeat telemetry across 200+ machines in 3 countries.",
     highlights: [
-      "80+ unique mechanical components; stainless-steel CNC-fabricated enclosure (5 ft × 2 ft × 2 ft, 50–75 kg)",
-      "Multi-stage automated UV + fogging treatment sequence with magnetic door interlock & safety fail-safes",
-      "Single custom ESP32 control PCB with 12V power architecture, refined across 5+ hardware revisions",
-      "Field-tested thermal & airflow engineering with dedicated ventilation mesh outlet for interior helmet treatment",
-      "Integrated Razorpay payment workflow driving dynamic physical machine access & sanitization cycles",
-      "Up to 10-year engineering support agreement covering mechanical, firmware, PCB, and on-site engineering",
+      "Complete 3D CAD redesign in Autodesk Fusion 360 (80+ unique mechanical components, stainless-steel CNC enclosure)",
+      "Re-engineered custom ESP32 master control PCB from scratch across 5+ revisions, resolving legacy hardware lock-ups",
+      "Redesigned DWIN DGUS display tooling and binary UART protocol to render dynamic Razorpay UPI QR codes natively",
+      "Over-The-Air (OTA) firmware pipeline with dual-partition flash recovery and live machine heartbeat diagnostics",
+      "Field-tested aerodynamic ventilation loop and micro-perforated mesh exhaust for deep interior helmet treatment",
+      "Long-term engineering partnership with up to 10-year support agreement covering mechanical, PCB, and firmware revisions",
     ],
     disciplines: [
-      "Mechanical Engineering",
-      "Custom PCB Design",
-      "ESP32 Firmware",
-      "HMI/UX",
-      "Payment Integration",
-      "Thermal Engineering",
-      "Cloud & OTA",
-      "Production Support",
+      "Mechanical CAD (Fusion 360)",
+      "Custom PCB Re-Engineering",
+      "ESP32 C++ Firmware",
+      "DWIN DGUS HMI",
+      "Razorpay Dynamic UPI",
+      "Thermal Aerodynamics",
+      "OTA Updates & Telemetry",
+      "Volume Production Support",
     ],
     hero: {
       src: "/case_Studies/freshpod.png",
@@ -72,8 +72,8 @@ export const caseStudies: CaseStudy[] = [
     },
     sections: [
       {
-        heading: "Overview & Project Genesis",
-        body: "Freshpod approached our team to develop a commercially deployable automated helmet sanitization machine capable of serving different types of helmets in a compact, operator-assisted public-service environment.\n\nThe project went far beyond simple enclosure styling. Our team engineered the complete mechanical system, custom control PCB, embedded firmware, touchscreen HMI, payment workflow, remote monitoring infrastructure, and production engineering documentation, working closely with Freshpod's manufacturing operation in Andhra Pradesh, India.\n\nThe resulting system has progressed from early prototype development to a fleet of 200+ deployed machines across India, Nepal, and Sri Lanka.",
+        heading: "Overview & Modernization Genesis",
+        body: "FreshPod India had developed an early-generation physical machine for automated helmet sanitization, but was facing severe scaling and field reliability bottlenecks: their legacy control PCB frequently locked up under relay switching loads, the mechanical structure lacked standardized production CAD documentation, the display could not process dynamic payment QR codes, and operators had zero remote observability or OTA update capabilities.\n\nFreshpod partnered with SolveMpire to execute a complete end-to-end modernization. Our team reverse-engineered and redesigned the entire physical machine in Autodesk Fusion 360, recreated the master electronics PCB from scratch, rebuilt the embedded firmware and DGUS HMI tools for dynamic Razorpay UPI integration, and established a cloud-connected fleet management platform with real-time heartbeats and OTA updates.\n\nThe modernized machine scaled from prototype remediation to a robust commercial fleet of 200+ deployed units across India, Nepal, and Sri Lanka.",
       },
       {
         heading: "From Payment to Sanitized Helmet Workflow",
@@ -266,11 +266,11 @@ export const caseStudies: CaseStudy[] = [
       { label: "Software framework", value: "3-year update framework" },
     ],
     summary:
-      "We engineered the complete connected software ecosystem for FreshPod India's automated helmet sanitization machines — from ESP32 firmware and safety-critical machine control to dynamic payments, cloud infrastructure, OTA updates, and centralized fleet management across 190+ deployed machines.",
+      "We engineered the complete connected software and firmware modernization for FreshPod India — upgrading legacy firmware to handle dynamic Razorpay UPI QR codes, building custom DGUS display tooling, deploying dual-partition OTA updates, and building centralized cloud fleet telemetry across 190+ deployed machines.",
     highlights: [
-      "End-to-end stack: ESP32 firmware → Dynamic payments → Cloud backend → Fleet management dashboard",
-      "Dynamic payment session generation with QR pre-fetching to cut customer waiting time",
-      "Cloud infrastructure built on Next.js, Node.js, TypeScript, MongoDB, and Firebase",
+      "Full firmware overhaul: ESP32 FreeRTOS control → Dynamic Razorpay payments → Cloud backend → Fleet telemetry",
+      "Dynamic payment session generation with QR pre-fetching to cut customer waiting time to zero",
+      "Custom DWIN DGUS protocol tools allowing non-browser hardware to render real-time payment QR codes",
       "Centralized fleet management: real-time machine heartbeat, error tracking, revenue metrics, and operator RBAC",
       "Over-the-air (OTA) firmware pipeline enabling remote machine updates without manual field servicing",
       "Two architecture generations deployed across 190+ machines with 3-year software update framework",
@@ -282,8 +282,8 @@ export const caseStudies: CaseStudy[] = [
       "TypeScript",
       "MongoDB",
       "Firebase",
-      "Razorpay",
-      "MQTT",
+      "Razorpay Dynamic UPI",
+      "MQTT Telemetry",
       "OTA Updates",
       "IoT Fleet Management",
     ],
@@ -293,8 +293,8 @@ export const caseStudies: CaseStudy[] = [
     },
     sections: [
       {
-        heading: "Overview: From Hardware to Connected Platform",
-        body: "FreshPod India approached us to develop the complete software and firmware ecosystem for its automated helmet sanitization machines. The challenge was not simply to control UV, fogging, thermal drying, and exhaust systems — it was to build a reliable connected platform capable of operating hundreds of machines in the field, handling payments, guiding customers through the cleaning cycle, and giving operators centralized control over the entire fleet.\n\nWe engineered the system from the embedded machine firmware to the cloud backend and administrative dashboard, creating a unified ecosystem where every machine operates independently while remaining connected to a centralized management platform.",
+        heading: "Overview: Modernizing Machine Control & Fleet Observability",
+        body: "FreshPod India had early-stage machines deployed in the field, but the original software stack suffered from reliability bottlenecks: the machine controller lacked dynamic payment capabilities, operators had no visibility into machine health or revenue, and firmware updates required manual on-site visits.\n\nSolveMpire was engaged to engineer the complete software, firmware, and cloud modernization. We rebuilt the ESP32 firmware with deterministic state control, redesigned the DGUS display tools to handle dynamic Razorpay QR codes, and built a centralized cloud management platform with live heartbeats, transaction analytics, and remote OTA deployment.\n\nToday, the platform connects over 190 machines across India, processing thousands of daily sanitization sessions seamlessly.",
       },
       {
         heading: "Embedded Firmware & Deterministic Machine Control",
@@ -338,11 +338,11 @@ export const caseStudies: CaseStudy[] = [
       { label: "Payment type", value: "Dynamic UPI/QR" },
     ],
     summary:
-      "We designed and engineered FreshPod India's complete embedded HMI experience — from 14 custom machine screens and customer workflows to dynamic QR payments over UART — bringing a modern UI to a DWIN DGUS platform without HTML/JavaScript support.",
+      "We redesigned and engineered FreshPod India's complete embedded HMI experience — building custom DGUS tooling and a binary UART protocol to render dynamic Razorpay UPI QR codes on non-browser hardware across 14 synchronized machine workflow screens.",
     highlights: [
+      "Redesigned DWIN DGUS display tools to accept dynamic Razorpay UPI QR codes natively over binary UART",
       "14 dedicated HMI screens covering the entire payment-to-sanitization customer journey",
-      "Dynamic QR rendering over UART/DGUS protocol on a display without a browser engine",
-      "Tight synchronization between physical machine state (UV/fans/locks) and on-screen graphics",
+      "Tight synchronization between physical machine state (UV/fog/fans/locks) and on-screen graphics",
       "Public-facing UX designed for intuitive step-by-step guidance with zero prior technical knowledge",
       "Integrated payment lifecycle: QR generation → display → webhook verification → automated door release",
     ],
