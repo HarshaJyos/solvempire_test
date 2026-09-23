@@ -1,8 +1,36 @@
 {
   "page": 1,
-  "totalPages": 1,
-  "totalPosts": 6,
+  "totalPages": 2,
+  "totalPosts": 7,
   "posts": [
+    {
+      "id": "post-007",
+      "slug": "how-to-design-an-industrial-machine",
+      "title": "How to Design an Industrial Machine: The Complete Engineering Guide",
+      "excerpt": "A masterclass in industrial machine design. Learn how senior engineers calculate actuator kinematics, design rigid structural frames, isolate electrical power distribution, write deterministic real-time firmware, and commission reliable 24/7 production machinery.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+      },
+      "publishedAt": "Sep 23, 2026",
+      "isoDate": "2026-09-23T00:00:00Z",
+      "readTime": "11 min read",
+      "tags": [
+        "Industrial Machines",
+        "Mechanical Design",
+        "Custom Automation",
+        "Embedded Systems",
+        "PLC & RTOS",
+        "Pneumatics",
+        "Power Distribution",
+        "Commissioning"
+      ],
+      "featured": true
+    },
     {
       "id": "post-006",
       "slug": "prototype-vs-production-what-changes",
@@ -136,33 +164,6 @@
         "Architecture",
         "Founders",
         "Strategy"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-004",
-      "slug": "how-to-build-a-custom-automated-machine",
-      "title": "How to Build a Custom Automated Machine",
-      "excerpt": "From process requirements and proofs-of-concept to mechanical CAD, PLCs, robotics, machine vision, FAT, and commissioning. The complete engineering guide to custom automation.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production."
-      },
-      "publishedAt": "Sep 12, 2026",
-      "isoDate": "2026-09-12T00:00:00Z",
-      "readTime": "10 min read",
-      "tags": [
-        "Custom Automation",
-        "PLC",
-        "Robotics",
-        "Machine Vision",
-        "Mechanical Design",
-        "FAT",
-        "Commissioning"
       ],
       "featured": false
     }
