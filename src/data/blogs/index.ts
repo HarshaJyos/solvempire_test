@@ -6,6 +6,7 @@ import { customAutomatedMachineBlog } from "./how-to-build-a-custom-automated-ma
 import { mechanicalElectronicsEmbeddedBlog } from "./mechanical-electronics-embedded-product-development";
 import { prototypeVsProductionBlog } from "./prototype-vs-production-what-changes";
 import { howToDesignIndustrialMachineBlog } from "./how-to-design-an-industrial-machine";
+import { howToDevelopCustomPcbBlog } from "./how-to-develop-a-custom-pcb-for-an-industrial-machine";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
@@ -15,6 +16,7 @@ export const allBlogs: BlogArticleData[] = [
   mechanicalElectronicsEmbeddedBlog,
   prototypeVsProductionBlog,
   howToDesignIndustrialMachineBlog,
+  howToDevelopCustomPcbBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {

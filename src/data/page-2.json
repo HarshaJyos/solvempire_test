@@ -1,8 +1,36 @@
 {
   "page": 2,
   "totalPages": 2,
-  "totalPosts": 7,
+  "totalPosts": 8,
   "posts": [
+    {
+      "id": "post-008",
+      "slug": "how-to-develop-a-custom-pcb-for-an-industrial-machine",
+      "title": "How to Develop a Custom PCB for an Industrial Machine",
+      "excerpt": "From electrical requirements, silicon selection, hierarchical schematics, and ERC simulations to impedance stackups, thermal floorplanning, DFM, and automated Bed-of-Nails testing. The complete engineering guide to industrial PCB development.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/avatars/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Leading mechanical engineering, custom KiCad PCB hardware development, DFM/DFA tooling, and mass manufacturing operations."
+      },
+      "publishedAt": "Sep 23, 2026",
+      "isoDate": "2026-09-23T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Custom PCB",
+        "KiCad",
+        "Industrial Electronics",
+        "STM32",
+        "Linux SoM",
+        "CAN Bus",
+        "DFM",
+        "Embedded Hardware"
+      ],
+      "featured": true
+    },
     {
       "id": "post-004",
       "slug": "how-to-build-a-custom-automated-machine",

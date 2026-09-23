@@ -389,40 +389,40 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "aeegz",
     order: 6,
-    title: "Egg Vending Machine (AEEGZ) — Modular Architecture & Custom PCB",
+    title: "Egg Vending Machine (AEEGZ) — Modular Architecture & Dual 4-Layer KiCad PCBs",
     category: "SMART AUTOMATION / VENDING & PCB",
     client: "Dadspire Solutions",
     status: "Phase 1 prototype in fabrication",
     metrics: [
       { label: "Phase 1 capacity", value: "~700 eggs (702 exact)" },
       { label: "Compartments", value: "42 doors" },
-      { label: "Expansion target", value: "~1,500 eggs" },
-      { label: "Tray brands analyzed", value: "20+ brands" },
-      { label: "CAD revisions", value: "6 major iterations" },
+      { label: "PCB Architecture", value: "Dual 4-layer KiCad boards" },
+      { label: "Expansion Bus", value: "Daisy-chainable CAN" },
+      { label: "CAD Revisions", value: "6 major iterations" },
     ],
     summary:
-      "Designed a modular, tray-agnostic egg vending architecture for high-density egg storage (~702 eggs across 42 variable-pitch compartments), paired with a custom hierarchical KiCad PCB architecture (STM32 real-time control + Linux SoM + CAN bus + door controller).",
+      "Designed a modular, tray-agnostic egg vending architecture for high-density egg storage (~702 eggs across 42 variable-pitch compartments), powered by a dual 4-layer KiCad PCB architecture: a Main Controller running a Toradex Verdin i.MX 8M Plus Linux SoM and STM32F407 MCU, and modular 20-channel CAN Door Controllers for infinite daisy-chainable scaling.",
     highlights: [
       "Variable-pitch compartment architecture: 12 six-egg, 15 twelve-egg, and 15 thirty-egg doors (~702 egg capacity)",
-      "Tray-agnostic design derived from market research across 20+ locally available commercial tray brands",
+      "Dual 4-layer PCB architecture: Master board (i.MX 8M Plus Linux SoM + STM32F407) and modular CAN Door Controllers",
+      "Daisy-chainable CAN expansion: 20-door module banks plug into CAN bus without central MCU rewiring",
       "Eliminated motorized egg-by-egg dispensing, preventing egg collision, double drops, and drop jams",
-      "Modular cabinet expansion via CAN bus — additional 20-door banks connect without requiring a new MCU",
-      "Custom KiCad PCB: STM32 real-time control, Linux SoM high-level computing, MOSFET drivers, and safety interlocks",
+      "Full hardware protection: TI LM76003 3.5A synchronous buck, LMR33630 regulators, SS14 flyback diodes, and NUP2105L CAN ESD protection",
       "Phased roadmap: Phase 1 (passive ventilation & thermal mapping) → Phase 2 (active AC) → Phase 3 (modular boiler)",
     ],
     disciplines: [
       "Mechanical Engineering",
-      "Industrial KiCad PCB",
-      "STM32",
-      "Linux SoM",
-      "CAN Bus",
-      "Sheet Metal DFM",
-      "Fusion 360",
+      "4-Layer KiCad PCB Design",
+      "STM32F407 ARM Cortex-M4",
+      "Toradex Verdin i.MX 8M Plus",
+      "Industrial CAN Bus",
+      "Power Electronics & DFM",
+      "Autodesk Fusion 360",
       "Vending Architecture",
     ],
     hero: {
-      src: "/case_Studies/communication-device.png",
-      alt: "AEEGZ smart modular egg vending machine CAD render",
+      src: "/case_Studies/aeegz-main-pcb.jpg",
+      alt: "AEEGZ 4-layer master controller PCB with Toradex Verdin i.MX 8M Plus SoM, STM32F407, and CAN bus",
     },
     sections: [
       {
@@ -442,20 +442,16 @@ export const caseStudies: CaseStudy[] = [
         body: "There is no motorized egg-by-egg dispensing mechanism. The workflow is:\n\nCustomer selects tray → payment confirmed → corresponding compartment unlocks → customer opens door and removes tray → door closes.\n\nThis decision eliminated an entire category of failure modes (individual egg handling, egg-by-egg actuation, double dispensing, egg collisions, and motorized mechanism jams), shifting the engineering focus to high-density, secure storage.",
       },
       {
-        heading: "Mechanical Security & Rear-Accessible Compartments",
-        body: "Each storage compartment features its own stainless-steel door with a transparent viewing window and a 9–12 V solenoid lock. Control electronics live in a dedicated rear compartment, physically isolated from the egg-storage area, allowing servicing without disturbing customer compartments.",
+        heading: "Master Control PCB: Toradex Verdin i.MX 8M Plus + STM32F407",
+        body: "The central intelligence runs on a custom 4-layer KiCad master control board designed around a heterogeneous computing architecture:\n\n• Linux Application Layer: Toradex Verdin i.MX 8M Plus System-on-Module (SoM) seated in a 260-pin DDR4 SODIMM socket, running high-level touchscreen UI, payment gateway sessions, camera vision, and MQTT cloud telemetry.\n• Real-Time Control Layer: STM32F407VET6 (168 MHz ARM Cortex-M4F) executing deterministic state machines, safety interlocks, and sensor polling.\n• Industrial Power Architecture: 24 V DC input with P-channel MOSFET reverse-polarity protection, TI LM76003 (3.5 A synchronous buck) stepping down 24 V to 5 V, AP63203 (2 A buck) generating 3.3 V, and low-noise AMS1117 LDO.\n• Peripheral Hub: USB2512B 2-port Hi-Speed USB hub, AP2192 current-limited power switches, TPD4EUSB30 ESD arrays, dual CR2032 RTC battery backups, and SN65HVD230 CAN transceiver with NUP2105L TVS protection.",
+      },
+      {
+        heading: "Modular CAN Door Controller: Daisy-Chainable 20-Door Subsystem",
+        body: "Rather than running 100+ wires back to the central controller, we engineered a dedicated 4-layer Door Controller board that acts as an independent CAN bus node:\n\n• 20 High-Current Solenoid Channels: High-side/low-side MOSFET drivers switching 9 V–12 V pulses to solenoid locks, protected by 20× SS14 Schottky flyback diodes.\n• 20 Sensor Feedback Channels: Optocoupled door microswitch inputs with RC low-pass debouncing and 20× onboard 0603 SMD indicator LEDs for instant visual diagnostics.\n• Scalable Daisy-Chaining: Features CAN Input (J6) and CAN Output (J49) terminal blocks with 5 A PTC input fusing and dual LMR33630 buck regulators. Expanding the machine from 42 doors to 100+ doors requires simply linking an additional door PCB over a 3-wire CAN bus without changing main MCU firmware.",
       },
       {
         heading: "Environmental Monitoring & 3-Point Thermal Mapping",
         body: "Phase 1 incorporates passive ventilation via three fans and three temperature sensors positioned at the top, middle, and bottom of the cabinet. Rather than a single temperature reading, this builds a thermal map of the cabinet to generate empirical data for Phase 2 active AC cooling integration.",
-      },
-      {
-        heading: "Custom KiCad Modular PCB Architecture (STM32 + Linux SoM + CAN)",
-        body: "We designed a custom industrial control PCB architecture in KiCad as the electrical backbone. The architecture splits real-time control from high-level computing:\n\n• STM32 Control Layer: Real-time sensor monitoring, safety interlocks, door/actuator control, and machine I/O.\n• Linux SoM Interface: Application layer, network connectivity, vending logic, and future software expansion.\n• Dedicated MOSFET/Actuator Driver Section: Isolated load switching for solenoids and locks.\n• Regulated Power Section: Isolated 3.3 V and 5 V rails for noise immunity.",
-      },
-      {
-        heading: "Dedicated Modular Door Controller Subsystem",
-        body: "Alongside the main PCB, we designed a dedicated door-controller subsystem connected via CAN bus. Additional 20-door expansion cabinets plug in over a three-wire CAN interface without requiring a new central MCU.",
       },
       {
         heading: "Phased Thermal & Cooking Expansion Roadmap",
@@ -463,15 +459,15 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Manufacturing Engineering: Stainless Steel CNC Bending",
-        body: "Complete production documentation was delivered in Autodesk Fusion 360, including 3D CAD, 2D manufacturing drawings, DXF files, bend drawings, BOM, assembly exploded views, and welding specifications across 6 major CAD revisions. Phase 1 prototype fabrication is currently in progress.",
+        body: "Complete production documentation was delivered in Autodesk Fusion 360 and KiCad, including 3D CAD, 2D manufacturing drawings, DXF files, bend drawings, BOMs, Gerber packages, and assembly documentation across 6 major CAD revisions. Phase 1 prototype fabrication is currently in progress.",
       },
     ],
     outcomes: [
       "Tray-agnostic storage architecture accommodating 6-, 12-, and 30-egg commercial formats",
-      "~702-egg Phase 1 capacity designed to scale to ~1,500 eggs via plug-and-play CAN modules",
-      "Custom hierarchical KiCad PCB separating real-time safety/control from Linux application logic",
+      "~702-egg Phase 1 capacity designed to scale to ~1,500 eggs via plug-and-play CAN door modules",
+      "Dual 4-layer KiCad PCBs separating Linux application logic from real-time safety and daisy-chainable door driving",
       "Eliminated motorized dispensing drop failures through secure compartment unlocking",
-      "Phase 1 prototype currently in fabrication following 6 major CAD revisions",
+      "Complete production Gerber packages, DFM-verified BOMs, and fabrication documentation delivered",
     ],
   },
 ];
