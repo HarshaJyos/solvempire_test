@@ -1,8 +1,104 @@
 {
   "page": 1,
   "totalPages": 6,
-  "totalPosts": 21,
+  "totalPosts": 23,
   "posts": [
+    {
+      "id": "post-023",
+      "slug": "how-to-choose-a-product-engineering-partner",
+      "title": "How to Choose a Product Engineering Partner",
+      "subtitle": "A Founder's Guide to Evaluating Technical Depth, Multidisciplinary Ownership, DFM Rigor & True Commercial Engineering Costs.",
+      "excerpt": "Why choosing a product engineering partner is a critical founder decision, not an outsourcing contract. Explore the 5 red flags of pseudo-engineering firms, the 4 non-negotiable core disciplines (CAD, PCB, Firmware, Tooling), 100% IP ownership terms, transparent milestone pricing, and how to transition prototypes into certified volume manufacturing without expensive rework.",
+      "category": "Product Strategy",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+        "slug": "hanish-jyosyabhatla"
+      },
+      "coAuthors": [
+        {
+          "name": "Pavan Kumar Duggirala",
+          "role": "Product Strategist & Marketing",
+          "avatar": "/avatars/pavan.jpg",
+          "bio": "Product Strategist & Marketing Lead at SolveMpire. Driving product go-to-market strategies, positioning, engineering documentation, and client engagement.",
+          "slug": "pavan-kumar-duggirala"
+        },
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        }
+      ],
+      "publishedAt": "Aug 14, 2026",
+      "isoDate": "2026-08-14T00:00:00Z",
+      "readTime": "15 min read",
+      "tags": [
+        "Product Engineering",
+        "Engineering Partner",
+        "Product Strategy",
+        "Hardware Development",
+        "DFM",
+        "Turnkey Engineering",
+        "Founders Guide",
+        "Contract Manufacturing",
+        "IP Ownership",
+        "Venture Scale"
+      ],
+      "featured": true
+    },
+    {
+      "id": "post-022",
+      "slug": "ai-and-computer-vision-for-industrial-automation",
+      "title": "AI + Computer Vision for Industrial Automation",
+      "subtitle": "Edge-AI Architectures, TensorRT Quantization, Global Shutter Optics, and Sub-50ms Defect Classification on Physical Assembly Lines.",
+      "excerpt": "A senior AI engineer's guide to deploying computer vision and edge-AI models on automated industrial machines. Explore global shutter camera physics, telecentric optics, TensorRT INT8 quantization, embedded NPU hardware (Jetson Orin vs NXP i.MX8), microsecond strobe synchronization, and real-time pneumatic reject actuation.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Prasad Duggirala",
+        "role": "AI/ML Engineer",
+        "avatar": "/avatars/prasad.png",
+        "bio": "AI/ML Engineer at SolveMpire. Developing intelligent edge-AI models, computer vision pipelines, telemetry analytics, and predictive maintenance algorithms.",
+        "slug": "prasad-duggirala"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Aug 12, 2026",
+      "isoDate": "2026-08-12T00:00:00Z",
+      "readTime": "14 min read",
+      "tags": [
+        "Computer Vision",
+        "Edge AI",
+        "Industrial Automation",
+        "TensorRT",
+        "Jetson Orin",
+        "Global Shutter",
+        "Quality Inspection",
+        "Embedded Linux",
+        "Neural Networks",
+        "Custom Automation"
+      ],
+      "featured": false
+    },
     {
       "id": "post-021",
       "slug": "automotive-sensor-enclosure-design",
@@ -49,7 +145,7 @@
         "Tooling Engineering",
         "Hardware Manufacturing"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "id": "post-020",
@@ -96,107 +192,6 @@
         "Ultrasonic Sensor",
         "Hardware Engineering",
         "DFM"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-019",
-      "slug": "engineering-a-commercial-helmet-sanitization-machine",
-      "title": "Engineering a Commercial Helmet Sanitization Machine",
-      "subtitle": "From CAD Enclosure & Ozone Fluidics to Custom PCB Controller, Dynamic UPI Payments & 200+ Field Deployments.",
-      "excerpt": "A complete engineering teardown of architecting, prototyping, and mass-manufacturing a commercial automated helmet sanitization machine. Discover parametric sheet metal CAD, multi-stage ozone (O3) and UV-C disinfection cycles, custom STM32/ESP32 mainboards, DWIN DGUS touchscreens, dynamic UPI QR payment integration, and field reliability across 200,000+ commercial cycles.",
-      "category": "Custom Automation",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-        "slug": "hanish-jyosyabhatla"
-      },
-      "coAuthors": [
-        {
-          "name": "Teja Mandapalli",
-          "role": "Co-Founder & Product Lead",
-          "avatar": "/teja.webp",
-          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-          "slug": "teja-mandapalli"
-        },
-        {
-          "name": "Lohith Medisetti",
-          "role": "Co-Founder & COO",
-          "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-          "slug": "lohith-medisetti"
-        },
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Aug 06, 2026",
-      "isoDate": "2026-08-06T00:00:00Z",
-      "readTime": "15 min read",
-      "tags": [
-        "Helmet Sanitization Machine",
-        "Product Engineering",
-        "FreshPod Machine",
-        "Ozone Disinfection",
-        "UV-C Sterilization",
-        "Custom PCB Design",
-        "Dynamic UPI Payments",
-        "Industrial Automation",
-        "DFM",
-        "IoT Cloud Telemetry"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-018",
-      "slug": "remote-monitoring-for-industrial-machines",
-      "title": "Remote Monitoring for Industrial Machines",
-      "subtitle": "MQTT over TLS 1.3, Cellular IoT Telemetry, Real-Time Edge Diagnostics, and Fail-Safe Fleet Management for Unattended Hardware.",
-      "excerpt": "A complete engineering guide to architecting remote monitoring and telemetry systems for industrial machines. Explore MQTT over TLS 1.3 framing, 4G LTE Cat-1 cellular fallback, edge anomaly detection, offline non-volatile FRAM queueing, dynamic cloud dashboards, and predictive maintenance case studies.",
-      "category": "Custom Automation",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Gayathri Boyapati",
-        "role": "Electronics Engineer, PCB & VLSI Specialist",
-        "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-        "slug": "gayathri-boyapati"
-      },
-      "coAuthors": [
-        {
-          "name": "Hanish Jyosyabhatla",
-          "role": "Founder & CEO",
-          "avatar": "/avatars/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-          "slug": "hanish-jyosyabhatla"
-        },
-        {
-          "name": "Lohith Medisetti",
-          "role": "Co-Founder & COO",
-          "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-          "slug": "lohith-medisetti"
-        }
-      ],
-      "publishedAt": "Aug 04, 2026",
-      "isoDate": "2026-08-04T00:00:00Z",
-      "readTime": "13 min read",
-      "tags": [
-        "Remote Monitoring",
-        "Industrial IoT",
-        "MQTT Telemetry",
-        "Predictive Maintenance",
-        "Edge Diagnostics",
-        "4G LTE Cat-1",
-        "Fleet Management",
-        "Custom Automation"
       ],
       "featured": false
     }

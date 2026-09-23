@@ -1,8 +1,109 @@
 {
   "page": 2,
   "totalPages": 6,
-  "totalPosts": 21,
+  "totalPosts": 23,
   "posts": [
+    {
+      "id": "post-019",
+      "slug": "engineering-a-commercial-helmet-sanitization-machine",
+      "title": "Engineering a Commercial Helmet Sanitization Machine",
+      "subtitle": "From CAD Enclosure & Ozone Fluidics to Custom PCB Controller, Dynamic UPI Payments & 200+ Field Deployments.",
+      "excerpt": "A complete engineering teardown of architecting, prototyping, and mass-manufacturing a commercial automated helmet sanitization machine. Discover parametric sheet metal CAD, multi-stage ozone (O3) and UV-C disinfection cycles, custom STM32/ESP32 mainboards, DWIN DGUS touchscreens, dynamic UPI QR payment integration, and field reliability across 200,000+ commercial cycles.",
+      "category": "Custom Automation",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+        "slug": "hanish-jyosyabhatla"
+      },
+      "coAuthors": [
+        {
+          "name": "Teja Mandapalli",
+          "role": "Co-Founder & Product Lead",
+          "avatar": "/teja.webp",
+          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+          "slug": "teja-mandapalli"
+        },
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Aug 06, 2026",
+      "isoDate": "2026-08-06T00:00:00Z",
+      "readTime": "15 min read",
+      "tags": [
+        "Helmet Sanitization Machine",
+        "Product Engineering",
+        "FreshPod Machine",
+        "Ozone Disinfection",
+        "UV-C Sterilization",
+        "Custom PCB Design",
+        "Dynamic UPI Payments",
+        "Industrial Automation",
+        "DFM",
+        "IoT Cloud Telemetry"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-018",
+      "slug": "remote-monitoring-for-industrial-machines",
+      "title": "Remote Monitoring for Industrial Machines",
+      "subtitle": "MQTT over TLS 1.3, Cellular IoT Telemetry, Real-Time Edge Diagnostics, and Fail-Safe Fleet Management for Unattended Hardware.",
+      "excerpt": "A complete engineering guide to architecting remote monitoring and telemetry systems for industrial machines. Explore MQTT over TLS 1.3 framing, 4G LTE Cat-1 cellular fallback, edge anomaly detection, offline non-volatile FRAM queueing, dynamic cloud dashboards, and predictive maintenance case studies.",
+      "category": "Custom Automation",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        "slug": "gayathri-boyapati"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/avatars/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        },
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        }
+      ],
+      "publishedAt": "Aug 04, 2026",
+      "isoDate": "2026-08-04T00:00:00Z",
+      "readTime": "13 min read",
+      "tags": [
+        "Remote Monitoring",
+        "Industrial IoT",
+        "MQTT Telemetry",
+        "Predictive Maintenance",
+        "Edge Diagnostics",
+        "4G LTE Cat-1",
+        "Fleet Management",
+        "Custom Automation"
+      ],
+      "featured": false
+    },
     {
       "id": "post-017",
       "slug": "ota-updates-for-industrial-machines",
@@ -78,91 +179,6 @@
         "Modbus RTU",
         "Distributed Control",
         "Hardware Engineering"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-015",
-      "slug": "pcb-and-enclosure-mechanical-design",
-      "title": "PCB + Enclosure Mechanical Design",
-      "subtitle": "Electromechanical Co-Design, Thermal Clearance Envelopes, Connector Placement, and Vibration Isolation for Commercial Hardware.",
-      "excerpt": "A complete guide to electromechanical co-design. Learn how senior engineers synchronize KiCad 3D PCBA models with parametric CAD, design screw-head trace keep-outs, eliminate connector clash, engineer thermal gap pad conduction, and isolate PCBs from machine vibration.",
-      "category": "Hardware & Manufacturing",
-      "type": "Engineering Guide",
-      "author": {
-        "name": "Gayathri Boyapati",
-        "role": "Electronics Engineer, PCB & VLSI Specialist",
-        "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-        "slug": "gayathri-boyapati"
-      },
-      "coAuthors": [
-        {
-          "name": "Teja Mandapalli",
-          "role": "Co-Founder & Product Lead",
-          "avatar": "/teja.webp",
-          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-          "slug": "teja-mandapalli"
-        }
-      ],
-      "publishedAt": "Jul 29, 2026",
-      "isoDate": "2026-07-29T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "Electromechanical Co-Design",
-        "PCB Design",
-        "Enclosure Engineering",
-        "KiCad to CAD",
-        "Thermal Packaging",
-        "Vibration Damping",
-        "DFM",
-        "Hardware Engineering"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-014",
-      "slug": "ip65-enclosure-design",
-      "title": "IP65 Enclosure Design",
-      "subtitle": "Mechanical Sealing, Gasket Channel Engineering, Thermal Management, and Production Validation for Outdoor and Industrial Hardware.",
-      "excerpt": "A complete mechanical engineering guide to designing certified IP65 waterproof and dust-tight enclosures. Explore elastomer material selection (Silicone vs EPDM vs FIPFG), tongue-and-groove compression geometry, fastener pitch equations, ePTFE breather vents, and fanless thermal conduction.",
-      "category": "Hardware & Manufacturing",
-      "type": "Engineering Guide",
-      "author": {
-        "name": "Teja Mandapalli",
-        "role": "Co-Founder & Product Lead",
-        "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-        "slug": "teja-mandapalli"
-      },
-      "coAuthors": [
-        {
-          "name": "Lohith Medisetti",
-          "role": "Co-Founder & COO",
-          "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-          "slug": "lohith-medisetti"
-        },
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Jul 27, 2026",
-      "isoDate": "2026-07-27T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "IP65 Enclosure",
-        "Mechanical Sealing",
-        "Gasket Design",
-        "DFM",
-        "Thermal Management",
-        "Industrial Design",
-        "Hardware Engineering",
-        "Manufacturing Scale"
       ],
       "featured": false
     }

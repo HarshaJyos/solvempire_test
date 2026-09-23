@@ -1,8 +1,93 @@
 {
   "page": 3,
   "totalPages": 6,
-  "totalPosts": 21,
+  "totalPosts": 23,
   "posts": [
+    {
+      "id": "post-015",
+      "slug": "pcb-and-enclosure-mechanical-design",
+      "title": "PCB + Enclosure Mechanical Design",
+      "subtitle": "Electromechanical Co-Design, Thermal Clearance Envelopes, Connector Placement, and Vibration Isolation for Commercial Hardware.",
+      "excerpt": "A complete guide to electromechanical co-design. Learn how senior engineers synchronize KiCad 3D PCBA models with parametric CAD, design screw-head trace keep-outs, eliminate connector clash, engineer thermal gap pad conduction, and isolate PCBs from machine vibration.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Gayathri Boyapati",
+        "role": "Electronics Engineer, PCB & VLSI Specialist",
+        "avatar": "/avatars/gayatri.jpeg",
+        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        "slug": "gayathri-boyapati"
+      },
+      "coAuthors": [
+        {
+          "name": "Teja Mandapalli",
+          "role": "Co-Founder & Product Lead",
+          "avatar": "/teja.webp",
+          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+          "slug": "teja-mandapalli"
+        }
+      ],
+      "publishedAt": "Jul 29, 2026",
+      "isoDate": "2026-07-29T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "Electromechanical Co-Design",
+        "PCB Design",
+        "Enclosure Engineering",
+        "KiCad to CAD",
+        "Thermal Packaging",
+        "Vibration Damping",
+        "DFM",
+        "Hardware Engineering"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-014",
+      "slug": "ip65-enclosure-design",
+      "title": "IP65 Enclosure Design",
+      "subtitle": "Mechanical Sealing, Gasket Channel Engineering, Thermal Management, and Production Validation for Outdoor and Industrial Hardware.",
+      "excerpt": "A complete mechanical engineering guide to designing certified IP65 waterproof and dust-tight enclosures. Explore elastomer material selection (Silicone vs EPDM vs FIPFG), tongue-and-groove compression geometry, fastener pitch equations, ePTFE breather vents, and fanless thermal conduction.",
+      "category": "Hardware & Manufacturing",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
+      },
+      "coAuthors": [
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Jul 27, 2026",
+      "isoDate": "2026-07-27T00:00:00Z",
+      "readTime": "12 min read",
+      "tags": [
+        "IP65 Enclosure",
+        "Mechanical Sealing",
+        "Gasket Design",
+        "DFM",
+        "Thermal Management",
+        "Industrial Design",
+        "Hardware Engineering",
+        "Manufacturing Scale"
+      ],
+      "featured": false
+    },
     {
       "id": "post-013",
       "slug": "from-cad-to-manufacturing-product-engineering-workflow",
@@ -92,84 +177,6 @@
         "DFM",
         "Safety Engineering",
         "Manufacturing Scale"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-011",
-      "slug": "how-to-integrate-payment-into-a-physical-machine",
-      "title": "How to Integrate Payment into a Physical Machine",
-      "subtitle": "Dynamic UPI, POS Card Readers, MDB Vending Protocols, and Fail-Safe IoT Telemetry for Unattended Kiosks and Automated Machinery.",
-      "excerpt": "A complete engineering guide to integrating payment systems into physical machines and unattended kiosks. Explore real-time dynamic UPI QR generation, EMV card POS serial interfaces, MDB 4.3 vending protocols, automated drop sensor refunds, and anti-fraud hardware architecture.",
-      "category": "Product Engineering",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-        "slug": "hanish-jyosyabhatla"
-      },
-      "coAuthors": [
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Jul 21, 2026",
-      "isoDate": "2026-07-21T00:00:00Z",
-      "readTime": "12 min read",
-      "tags": [
-        "Payment Integration",
-        "Dynamic UPI",
-        "MDB Protocol",
-        "POS Terminals",
-        "Unattended Kiosks",
-        "IoT Architecture",
-        "Embedded Hardware",
-        "Custom Automation"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-010",
-      "slug": "how-to-design-an-industrial-hmi",
-      "title": "How to Design an Industrial HMI",
-      "subtitle": "Hardware Selection, UI/UX Architecture, and Real-Time Protocol Integration for Factory Machinery and Automated Kiosks.",
-      "excerpt": "A complete engineering guide to industrial Human-Machine Interface (HMI) design. Learn how senior product engineers select rugged touch displays, architect ISA-101 high-performance UIs, integrate serial DGUS and Linux protocols, seal IP65 bezels, and design fail-safe hybrid control panels.",
-      "category": "Custom Automation",
-      "type": "Technical Guide",
-      "author": {
-        "name": "Teja Mandapalli",
-        "role": "Co-Founder & Product Lead",
-        "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-        "slug": "teja-mandapalli"
-      },
-      "coAuthors": [
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Jul 19, 2026",
-      "isoDate": "2026-07-19T00:00:00Z",
-      "readTime": "11 min read",
-      "tags": [
-        "Industrial HMI",
-        "UI/UX Design",
-        "Touchscreen Hardware",
-        "DWIN DGUS",
-        "Embedded Linux",
-        "ISA-101",
-        "Custom Automation",
-        "Product Engineering"
       ],
       "featured": false
     }

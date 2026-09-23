@@ -1,8 +1,68 @@
 {
   "page": 5,
   "totalPages": 6,
-  "totalPosts": 21,
+  "totalPosts": 23,
   "posts": [
+    {
+      "id": "post-007",
+      "slug": "how-to-design-an-industrial-machine",
+      "title": "How to Design an Industrial Machine: The Complete Engineering Guide",
+      "subtitle": "From structural kinematics and 24V power distribution to deterministic RTOS/PLC control, pneumatic integration, and factory commissioning.",
+      "excerpt": "A masterclass in industrial machine design. Learn how senior engineers calculate actuator kinematics, design rigid structural frames, isolate electrical power distribution, write deterministic real-time firmware, and commission reliable 24/7 production machinery.",
+      "category": "Custom Automation",
+      "type": "Technical Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+        "slug": "lohith-medisetti"
+      },
+      "publishedAt": "Jul 13, 2026",
+      "isoDate": "2026-07-13T00:00:00Z",
+      "readTime": "11 min read",
+      "tags": [
+        "Industrial Machines",
+        "Mechanical Design",
+        "Custom Automation",
+        "Embedded Systems",
+        "PLC & RTOS",
+        "Pneumatics",
+        "Power Distribution",
+        "Commissioning"
+      ],
+      "featured": false
+    },
+    {
+      "id": "post-006",
+      "slug": "prototype-vs-production-what-changes",
+      "title": "Prototype vs Production: What Really Changes When Hardware Goes to Scale?",
+      "subtitle": "Why a working 3D-printed prototype is only 20% of the journey, and the exact electromechanical shifts required to manufacture commercial-grade hardware.",
+      "excerpt": "A working proof-of-concept on a lab workbench is not a commercial product. Explore the exact engineering shifts between prototype and mass production—including DFM injection tooling, sheet metal bend tolerances, SMT panelization, automated test jigs, wire harness looms, and regulatory certifications.",
+      "category": "Hardware & Manufacturing",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Teja Mandapalli",
+        "role": "Co-Founder & Product Lead",
+        "avatar": "/teja.webp",
+        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+        "slug": "teja-mandapalli"
+      },
+      "publishedAt": "Jul 11, 2026",
+      "isoDate": "2026-07-11T00:00:00Z",
+      "readTime": "10 min read",
+      "tags": [
+        "Prototyping",
+        "Manufacturing",
+        "DFM",
+        "Hardware Engineering",
+        "PCB Assembly",
+        "Injection Molding",
+        "Quality Control",
+        "Supply Chain"
+      ],
+      "featured": false
+    },
     {
       "id": "post-005",
       "slug": "mechanical-electronics-embedded-product-development",
@@ -68,64 +128,6 @@
         "Mechanical Design",
         "FAT",
         "Commissioning"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-003",
-      "slug": "product-engineering-company-in-india",
-      "title": "Product Engineering Company in India: Complete Guide",
-      "subtitle": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract.",
-      "excerpt": "Why choosing a product engineering partner is a founder decision, not an outsourcing contract. How to evaluate technical depth, problem ownership, MVP scope, and true engineering costs.",
-      "category": "Product Strategy",
-      "type": "Industry Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-        "slug": "hanish-jyosyabhatla"
-      },
-      "publishedAt": "Jul 05, 2026",
-      "isoDate": "2026-07-05T00:00:00Z",
-      "readTime": "8 min read",
-      "tags": [
-        "Product Engineering",
-        "India Tech",
-        "Software Partner",
-        "MVP",
-        "Architecture",
-        "Founders",
-        "Strategy"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-002",
-      "slug": "how-to-develop-a-physical-product-from-idea-to-manufacturing",
-      "title": "How to Develop a Physical Product from Idea to Manufacturing",
-      "subtitle": "A practical guide from napkin sketches and 3D CAD to DFM, tooling, factory vetting, and international logistics.",
-      "excerpt": "A realistic roadmap from napkin sketch and CAD to prototypes, DFM, tooling, factory vetting, quality control, and international logistics without expensive mistakes.",
-      "category": "Hardware & Manufacturing",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Hanish Jyosyabhatla",
-        "role": "Founder & CEO",
-        "avatar": "/avatars/hanish.webp",
-        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-        "slug": "hanish-jyosyabhatla"
-      },
-      "publishedAt": "Jul 03, 2026",
-      "isoDate": "2026-07-03T00:00:00Z",
-      "readTime": "9 min read",
-      "tags": [
-        "Hardware",
-        "Manufacturing",
-        "DFM",
-        "Prototyping",
-        "Tooling",
-        "Quality Control",
-        "Logistics"
       ],
       "featured": false
     }

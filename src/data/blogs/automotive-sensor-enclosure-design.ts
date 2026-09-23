@@ -49,7 +49,7 @@ export const automotiveSensorEnclosureDesignBlog: BlogArticleData = {
       "Tooling Engineering",
       "Hardware Manufacturing",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Polymer selection determines 15-year automotive survival: 30% glass-filled Polybutylene Terephthalate (PBT-GF30) provides exceptional dimensional stability, high continuous heat deflection (HDT > 200°C), zero moisture absorption, and chemical immunity to gasoline, brake fluid, and road salt.",

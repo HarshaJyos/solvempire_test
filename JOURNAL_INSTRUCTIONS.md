@@ -130,7 +130,7 @@ git push origin master
 
 ---
 
-## 5. Current 21-Journal Chronological Registry (Reference Baseline)
+## 5. Current 23-Journal Chronological Registry (Reference Baseline)
 
 | # | ID | Slug | Published Date | Featured | Primary Author |
 |---|---|------|----------------|----------|----------------|
@@ -154,6 +154,8 @@ git push origin master
 | 18 | `post-018` | `remote-monitoring-for-industrial-machines` | `Aug 04, 2026` | `false` | Gayathri Boyapati |
 | 19 | `post-019` | `engineering-a-commercial-helmet-sanitization-machine` | `Aug 06, 2026` | `false` | Hanish Jyosyabhatla |
 | 20 | `post-020` | `ip65-automotive-sensor-design` | `Aug 08, 2026` | `false` | Gayathri Boyapati |
-| 21 | `post-021` | `automotive-sensor-enclosure-design` | `Aug 10, 2026` | **`true`** | Teja Mandapalli |
+| 21 | `post-021` | `automotive-sensor-enclosure-design` | `Aug 10, 2026` | `false` | Teja Mandapalli |
+| 22 | `post-022` | `ai-and-computer-vision-for-industrial-automation` | `Aug 12, 2026` | `false` | Prasad Duggirala |
+| 23 | `post-023` | `how-to-choose-a-product-engineering-partner` | `Aug 14, 2026` | **`true`** | Hanish Jyosyabhatla |
 
-*For Post 22 and onwards, continue with `Aug 12, 2026`, `Aug 14, 2026`, etc., maintaining the strict 2-day gap.*
+*For Post 24 and onwards, continue with `Aug 16, 2026`, `Aug 18, 2026`, etc., maintaining the strict 2-day gap.*

@@ -20,6 +20,8 @@ import { remoteMonitoringForIndustrialMachinesBlog } from "./remote-monitoring-f
 import { engineeringACommercialHelmetSanitizationMachineBlog } from "./engineering-a-commercial-helmet-sanitization-machine";
 import { ip65AutomotiveSensorDesignBlog } from "./ip65-automotive-sensor-design";
 import { automotiveSensorEnclosureDesignBlog } from "./automotive-sensor-enclosure-design";
+import { aiAndComputerVisionForIndustrialAutomationBlog } from "./ai-and-computer-vision-for-industrial-automation";
+import { howToChooseAProductEngineeringPartnerBlog } from "./how-to-choose-a-product-engineering-partner";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
@@ -43,6 +45,8 @@ export const allBlogs: BlogArticleData[] = [
   engineeringACommercialHelmetSanitizationMachineBlog,
   ip65AutomotiveSensorDesignBlog,
   automotiveSensorEnclosureDesignBlog,
+  aiAndComputerVisionForIndustrialAutomationBlog,
+  howToChooseAProductEngineeringPartnerBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {
