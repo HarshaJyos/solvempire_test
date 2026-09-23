@@ -34,7 +34,7 @@ const TESTIMONIALS: Testimonial[] = [
       "“Working with SolveMpire made our hardware journey much smoother. They handled the stainless-steel enclosure design, custom control board, and the touchscreen payment interface end-to-end. Having a single engineering team manage the mechanical, electronics, and firmware meant fewer headaches for us, and our machines have been running reliably in the field.”",
     author: "Founder & CEO",
     role: "Executive Leadership",
-    company: "FreshPod Technologies",
+    company: "FreshPod India",
     caseStudyTitle: "FreshPod Commercial Sanitization Fleet",
     caseStudyHref: "/work/freshpod-machine",
     tag: "Commercial Fleet Deployed Across India & Global Markets",
