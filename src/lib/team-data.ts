@@ -22,8 +22,8 @@ export const teamMembers: TeamMember[] = [
       "Executive Leadership",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      email: "support@solvempire.com",
+      linkedin: "https://www.linkedin.com/in/hanish-jyosyabhatla/",
+      email: "hanish@solvempire.com",
     },
   },
   {
@@ -47,8 +47,8 @@ export const teamMembers: TeamMember[] = [
       "Commercial Strategy",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      email: "support@solvempire.com",
+      linkedin: "https://www.linkedin.com/in/lohith-medisetti-0a9979268/",
+      email: "lohith@solvempire.com",
     },
   },
   {
@@ -72,8 +72,7 @@ export const teamMembers: TeamMember[] = [
       "Design Validation",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      email: "support@solvempire.com",
+      email: "teja@solvempire.com",
     },
   },
   {
@@ -97,15 +96,15 @@ export const teamMembers: TeamMember[] = [
       "Engineering Communications",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      email: "support@solvempire.com",
+      linkedin: "https://www.linkedin.com/in/duggirala-venkata-pavan-kumar-8754912b1/",
+      email: "7pavankumar9@gmail.com",
     },
   },
   {
     slug: "prasad-duggirala",
     name: "Prasad Duggirala",
     role: "AI/ML Engineer",
-    avatar: "/avatars/pavan.jpg",
+    avatar: "/avatars/prasad.png",
     shortBio:
       "AI/ML Engineer at SolveMpire. Developing intelligent edge-AI models, computer vision pipelines, telemetry analytics, and predictive maintenance algorithms.",
     location: "Andhra Pradesh, India",
@@ -122,9 +121,8 @@ export const teamMembers: TeamMember[] = [
       "Predictive Maintenance",
     ],
     socials: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      email: "support@solvempire.com",
+      linkedin: "https://www.linkedin.com/in/prasad-duggirala/",
+      email: "djnanasatyaprasad@gmail.com",
     },
   },
   {

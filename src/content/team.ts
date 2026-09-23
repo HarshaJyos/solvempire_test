@@ -12,6 +12,7 @@ export type TeamMember = {
   slug: string;
   bio?: string;
   linkedin?: string;
+  email?: string;
 };
 
 export const teamMembers: TeamMember[] = [
@@ -22,7 +23,8 @@ export const teamMembers: TeamMember[] = [
     image: "/hanish.webp",
     slug: "hanish-jyosyabhatla",
     bio: "Founder & CEO directing multidisciplinary engineering architecture across mechanical design, custom electronics, embedded firmware, and connected software platforms.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/hanish-jyosyabhatla/",
+    email: "hanish@solvempire.com",
   },
   {
     id: "02",
@@ -31,7 +33,8 @@ export const teamMembers: TeamMember[] = [
     image: "/lohith.webp",
     slug: "lohith-medisetti",
     bio: "Co-Founder & COO managing manufacturing partnerships, supply chain execution, deployment logistics, and operational reliability.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/lohith-medisetti-0a9979268/",
+    email: "lohith@solvempire.com",
   },
   {
     id: "03",
@@ -40,7 +43,7 @@ export const teamMembers: TeamMember[] = [
     image: "/teja.webp",
     slug: "teja-mandapalli",
     bio: "Co-Founder & Product Lead driving product conceptualization, ergonomic mechanical packaging, industrial validation, and user experience.",
-    linkedin: "https://linkedin.com",
+    email: "teja@solvempire.com",
   },
   {
     id: "04",
@@ -49,7 +52,8 @@ export const teamMembers: TeamMember[] = [
     image: "/avatars/pavan.jpg",
     slug: "pavan-kumar-duggirala",
     bio: "Product strategist driving market positioning, product roadmaps, technical marketing, and engineering narratives.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/duggirala-venkata-pavan-kumar-8754912b1/",
+    email: "7pavankumar9@gmail.com",
   },
   {
     id: "05",
@@ -59,14 +63,16 @@ export const teamMembers: TeamMember[] = [
     slug: "gayathri-boyapati",
     bio: "Electronics Engineer & PCB/VLSI Design Specialist architecting custom multilayer PCB layouts, power distribution, and real-time embedded hardware.",
     linkedin: "https://www.linkedin.com/in/gayathri-boyapati-384b72402",
+    email: "boyapatigayathri77@gmail.com",
   },
   {
     id: "06",
     name: "Prasad Duggirala",
     role: "AI/ML Engineer",
-    image: "/avatars/pavan.jpg",
+    image: "/avatars/prasad.png",
     slug: "prasad-duggirala",
     bio: "AI/ML Engineer developing edge computer vision models, telemetry analytics, and predictive maintenance algorithms for hardware systems.",
-    linkedin: "https://linkedin.com",
+    linkedin: "https://www.linkedin.com/in/prasad-duggirala/",
+    email: "djnanasatyaprasad@gmail.com",
   },
 ];
