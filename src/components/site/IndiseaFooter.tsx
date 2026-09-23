@@ -81,6 +81,11 @@ export function IndiseaFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/team" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
+                  Engineering Team
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-[var(--text-body)] hover:text-[#1F56C6] transition-colors">
                   Contact
                 </Link>
