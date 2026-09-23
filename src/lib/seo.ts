@@ -79,6 +79,12 @@ export function buildOrganizationJsonLd() {
         jobTitle: "Electronics Engineer, PCB & VLSI Specialist",
         url: `${BASE_URL}/team/gayathri-boyapati`,
       },
+      {
+        "@type": "Person",
+        name: "Bhuvana Sarika Ch",
+        jobTitle: "HR & Lead Management",
+        url: `${BASE_URL}/team/bhuvana-sarika-ch`,
+      },
     ],
 
     identifier: {

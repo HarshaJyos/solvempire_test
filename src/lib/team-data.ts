@@ -150,6 +150,31 @@ export const teamMembers: TeamMember[] = [
       email: "boyapatigayathri77@gmail.com",
     },
   },
+  {
+    slug: "bhuvana-sarika-ch",
+    name: "Bhuvana Sarika Ch",
+    role: "HR & Lead Management",
+    avatar: "/avatars/sarika.webp",
+    shortBio:
+      "HR Management & Lead Management Lead at SolveMpire. Driving talent acquisition, organizational culture, client lead qualification, and strategic relationship management across engineering projects.",
+    location: "Kakinada, Andhra Pradesh, India",
+    story: [
+      "Bhuvana Sarika manages human resources, organizational operations, and client lead management workflows at SolveMpire.",
+      "She oversees end-to-end recruitment of specialized mechanical, electronics, and embedded firmware engineering talent, ensuring team enablement and high-performance culture.",
+      "Sarika also manages inbound client inquiries, project lead scoping pipelines, and cross-functional communication between prospective partners and technical engineering squads.",
+    ],
+    focusAreas: [
+      "HR Management & Talent Acquisition",
+      "Lead Management & Client Intake",
+      "Organizational Operations",
+      "Team Enablement & Culture",
+      "Client Relationship Management",
+    ],
+    socials: {
+      linkedin: "https://www.linkedin.com/in/bhuvana-sarika-ch-225177258/",
+      email: "chbsarika@gmail.com",
+    },
+  },
 ];
 
 export function getTeamMember(slug: string): TeamMember | undefined {
