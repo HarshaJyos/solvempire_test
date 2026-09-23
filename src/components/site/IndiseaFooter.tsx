@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUp, Copy, Check, Mail, Phone, MapPin } from "lucide-react";
 import { caseStudies } from "@/content/case-studies";
+import { COMPANY } from "@/lib/company";
 
 export function IndiseaFooter() {
   const [copied, setCopied] = useState(false);
@@ -199,7 +200,7 @@ export function IndiseaFooter() {
         {/* Bottom Legal & Back to Top Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 text-xs text-[var(--text-muted)]">
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-            <span>&copy; {new Date().getFullYear()} SolveMpire Technologies Pvt Ltd.</span>
+            <span>&copy; {new Date().getFullYear()} {COMPANY.legalName}.</span>
             <Link href="/privacy" className="hover:text-[var(--text-heading)] transition-colors">
               Privacy Policy
             </Link>
