@@ -31,12 +31,26 @@ Always attribute articles to team members matching their authentic domain specia
 | **Teja Mandapalli** | Co-Founder & Product Lead (`/teja.webp`, slug: `teja-mandapalli`) | Mechanical 3D CAD (Autodesk Fusion 360), DFM sheet metal bending & injection tooling, IP65/IP67 enclosure sealing, industrial ergonomics, HMI UI/UX. | **Email**: `teja@solvempire.com` |
 | **Pavan Kumar Duggirala** | Product Strategist & Marketing (`/avatars/pavan.jpg`, slug: `pavan-kumar-duggirala`) | Product strategy, technical marketing, client roadmaps, engineering narratives. | **LinkedIn**: `https://www.linkedin.com/in/duggirala-venkata-pavan-kumar-8754912b1/`<br>**Email**: `7pavankumar9@gmail.com` |
 | **Prasad Duggirala** | AI/ML Engineer (`/avatars/prasad.png`, slug: `prasad-duggirala`) | Edge AI, computer vision, sensor fusion, predictive maintenance algorithms. | **LinkedIn**: `https://www.linkedin.com/in/prasad-duggirala/`<br>**Email**: `djnanasatyaprasad@gmail.com` |
+| **Bhuvana Sarika Ch** | HR & Lead Management (`/avatars/sarika.webp`, slug: `bhuvana-sarika-ch`) | HR management, talent acquisition, lead qualification, client intake workflows, organizational culture. | **LinkedIn**: `https://www.linkedin.com/in/bhuvana-sarika-ch-225177258/`<br>**Email**: `chbsarika@gmail.com` |
 
 > **Co-Authoring Guidelines**: When an article bridges mechanics, electronics, or firmware (e.g. Electromechanical Co-Design, IP65 Enclosures, Payment Kiosks), always list the primary specialist as `author` and relevant leads as `coAuthors`.
 
 ---
 
-## 3. Mandatory Editorial & Technical Standards
+## 3. Team Member Addition & Update Workflow
+
+For standalone team member instructions, refer to `TEAM_INSTRUCTIONS.md`. The workflow is summarized below:
+
+1. **Avatar Asset**: Save the headshot image to `public/avatars/<slug-name>.<webp|png|jpg>`.
+2. **Data Registration**: Append a typed `TeamMember` object in `src/lib/team-data.ts` (defining `slug`, `name`, `role`, `avatar`, `shortBio`, `location`, `story`, `focusAreas`, `socials`).
+3. **Schema.org Integration**: Add the member to the `founder` / team array inside `buildOrganizationJsonLd()` in `src/lib/seo.ts`.
+4. **Auto-Generated Pages**: Adding to `src/lib/team-data.ts` automatically generates `/team/<slug>`, renders the card on `/team` and `/about`, and adds the URL to `sitemap.xml`.
+5. **Build Verification**: Run `npm run build` to ensure 0 TypeScript or rendering errors.
+
+
+---
+
+## 4. Mandatory Editorial & Technical Standards
 
 1. **Strict 2-Day Publication Cadence**:
    - The first blog (`what-is-end-to-end-product-engineering`) is dated **`Jul 01, 2026`**.
@@ -82,7 +96,7 @@ Always attribute articles to team members matching their authentic domain specia
 
 ---
 
-## 4. Step-by-Step Workflow for Adding New Journals
+## 5. Step-by-Step Workflow for Adding New Journals
 
 When the user asks for new journal articles (e.g., "next 2 journals X and Y"):
 
@@ -130,7 +144,7 @@ git push origin master
 
 ---
 
-## 5. Current 25-Journal Chronological Registry (Reference Baseline)
+## 6. Current 25-Journal Chronological Registry (Reference Baseline)
 
 | # | ID | Slug | Published Date | Featured | Primary Author |
 |---|---|------|----------------|----------|----------------|
