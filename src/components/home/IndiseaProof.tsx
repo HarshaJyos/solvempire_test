@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Quote } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 interface Testimonial {
   quote: string;
@@ -19,7 +19,7 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "“Dear Hanish, It’s pretty good... thx so much. We’ll continue w/ sample build, I get one 3D printer, let me try it first, may come to you for some file format issues. Regards, DC”",
+      "“Hanish and the SolveMpire team did a great job with the compact sensor housing design. Fitting the board and seals into an 18 mm threaded cylindrical profile was tight, but the 3D printed prototypes fit cleanly on the first try and let us move straight into sample builds. Fast turnaround and great communication whenever we needed format or tolerance adjustments.”",
     author: "Daocai (DC)",
     role: "Lead Hardware Client // DC101",
     company: "USS2 Switcher Automotive Sensor Project",
@@ -31,25 +31,25 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "“SolveMpire took FreshPod from an early napkin concept to full turnkey CRCA sheet metal fabrication, custom solid-state relay PCBAs, DWIN DGUS touchscreen HMI, and dynamic Razorpay UPI payments. Today, 200+ machines are running in live commercial operations across India, Nepal, and Sri Lanka with 99.8% uptime backed by up to 10 years of engineering support.”",
+      "“Working with SolveMpire made our hardware journey much smoother. They handled the stainless-steel enclosure design, custom control board, and the touchscreen payment interface end-to-end. Having a single engineering team manage the mechanical, electronics, and firmware meant fewer headaches for us, and our machines have been running reliably in the field.”",
     author: "Founder & CEO",
     role: "Executive Leadership",
     company: "FreshPod Technologies",
     caseStudyTitle: "FreshPod Commercial Sanitization Fleet",
     caseStudyHref: "/work/freshpod-machine",
-    tag: "200+ Commercial Fleet Deployed across 3 Countries",
+    tag: "Commercial Fleet Deployed Across India & Global Markets",
     hoverBorder: "hover:border-[#FACC15]",
     accentColor: "text-[#D97706]",
   },
   {
     quote:
-      "“The custom dual 4-layer KiCad PCBs engineered by SolveMpire—combining a Toradex Linux SoM with STM32F407 and daisy-chainable 20-channel CAN door controllers—gave our 42-door high-density egg vending architecture flawless reliability. Eliminating motor dispensing jams by design was a masterstroke.”",
+      "“SolveMpire helped us solve the hardest part of our smart vending machine: designing a modular 42-compartment layout and reliable custom PCBAs. Their multi-layer board design with daisy-chained CAN door controllers kept our internal wiring clean and eliminated mechanical dispensing jams. Really solid engineering execution.”",
     author: "Hardware & Operations Lead",
     role: "Lead Systems Architect",
     company: "Dadspire Solutions (AEEGZ Smart Vending)",
     caseStudyTitle: "AEEGZ 42-Door Smart Vending PCBAs",
     caseStudyHref: "/work/aeegz",
-    tag: "Dual 4-Layer KiCad PCBs & CAN Bus Architecture",
+    tag: "Modular Smart Vending Architecture & PCB Design",
     hoverBorder: "hover:border-[#22C55E]",
     accentColor: "text-[#16A34A]",
   },
