@@ -86,7 +86,12 @@ export default async function TeamMemberPage({
   const authorPosts = allPosts.filter(
     (post) =>
       post.author.name.toLowerCase() === member.name.toLowerCase() ||
-      post.author.avatar.includes(member.slug.split("-")[0])
+      post.author.avatar.includes(member.slug.split("-")[0]) ||
+      post.coAuthors?.some(
+        (ca) =>
+          ca.name.toLowerCase() === member.name.toLowerCase() ||
+          ca.avatar.includes(member.slug.split("-")[0])
+      )
   );
 
   const breadcrumbsSchema = buildBreadcrumbsJsonLd([

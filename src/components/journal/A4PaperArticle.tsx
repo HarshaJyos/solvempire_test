@@ -163,35 +163,56 @@ export function A4PaperArticle({ article, prevPost, nextPost }: A4PaperArticlePr
             </div>
 
             {/* Author and Publication Metadata Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs text-xs font-mono">
-              <Link
-                href={`/team/${authorSlug}`}
-                className="flex items-center gap-3 group focus:outline-none"
-              >
-                <div className="relative w-10 h-10 rounded-none overflow-hidden border border-[var(--border-hairline)] shrink-0 bg-[#1F56C6]/10">
-                  {meta.author.avatar ? (
-                    <Image
-                      src={meta.author.avatar}
-                      alt={meta.author.name}
-                      fill
-                      className="object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-sm font-bold uppercase">
-                      {meta.author.name.charAt(0)}
-                    </div>
-                  )}
-                </div>
+            <div className="flex flex-wrap items-center justify-between gap-6 p-5 rounded-none bg-[var(--surface-card)] border border-[var(--border-hairline)] shadow-xs text-xs font-mono">
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+                {[meta.author, ...(meta.coAuthors || [])].map((auth, aIdx) => {
+                  const aSlug =
+                    auth.slug ||
+                    auth.name
+                      .toLowerCase()
+                      .replace(/[^\w\s-]/g, "")
+                      .replace(/\s+/g, "-");
 
-                <div>
-                  <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors block leading-snug uppercase">
-                    {meta.author.name}
-                  </span>
-                  <span className="text-[11px] text-[var(--text-muted)] block uppercase">
-                    {meta.author.role}
-                  </span>
-                </div>
-              </Link>
+                  return (
+                    <Link
+                      key={auth.name || aIdx}
+                      href={`/team/${aSlug}`}
+                      className="flex items-center gap-3 group focus:outline-none"
+                    >
+                      <div className="relative w-10 h-10 rounded-none overflow-hidden border border-[var(--border-hairline)] shrink-0 bg-[#1F56C6]/10">
+                        {auth.avatar ? (
+                          <Image
+                            src={auth.avatar}
+                            alt={auth.name}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-sm font-bold uppercase">
+                            {auth.name.charAt(0)}
+                          </div>
+                        )}
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-display font-bold text-sm text-[var(--text-heading)] group-hover:text-[#1F56C6] transition-colors block leading-snug uppercase">
+                            {auth.name}
+                          </span>
+                          {aIdx > 0 && (
+                            <span className="text-[9px] px-1.5 py-0.5 bg-[#1F56C6]/10 text-[#1F56C6] font-mono font-bold uppercase tracking-wider">
+                              Co-Author
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] text-[var(--text-muted)] block uppercase">
+                          {auth.role}
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
 
               <div className="flex items-center gap-3 sm:gap-4 text-[var(--text-muted)] uppercase">
                 <span>Published {meta.publishedAt}</span>

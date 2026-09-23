@@ -53,6 +53,15 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: "05",
+    name: "Gayathri Boyapati",
+    role: "Electronics Engineer, PCB & VLSI Specialist",
+    image: "/avatars/gayatri.jpeg",
+    slug: "gayathri-boyapati",
+    bio: "Electronics Engineer & PCB/VLSI Design Specialist architecting custom multilayer PCB layouts, power distribution, and real-time embedded hardware.",
+    linkedin: "https://linkedin.com",
+  },
+  {
+    id: "06",
     name: "Prasad Duggirala",
     role: "AI/ML Engineer",
     image: "/avatars/pavan.jpg",

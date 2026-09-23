@@ -14,6 +14,7 @@ export interface JournalPostMeta {
   category: string;
   type: string; // e.g. "Alpha Beta Release", "Build Log 01", "Neuroscience", "Deep Dive"
   author: JournalAuthor;
+  coAuthors?: JournalAuthor[];
   publishedAt: string; // e.g. "September 14, 2026"
   isoDate: string; // e.g. "2026-09-14" for JSON-LD
   readTime: string; // e.g. "4 min read"

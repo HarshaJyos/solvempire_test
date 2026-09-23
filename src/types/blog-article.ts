@@ -15,6 +15,7 @@ export interface BlogMeta {
   category: string;
   type: string;
   author: BlogAuthor;
+  coAuthors?: BlogAuthor[];
   publishedAt: string;
   isoDate: string;
   readTime: string;

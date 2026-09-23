@@ -10,11 +10,11 @@ export const howToDevelopCustomPcbBlog: BlogArticleData = {
     category: "Hardware & Manufacturing",
     type: "Engineering Guide",
     author: {
-      name: "Lohith Medisetti",
-      role: "Co-Founder & COO",
-      avatar: "/avatars/lohith.webp",
-      bio: "Co-Founder & COO at SolveMpire. Leading mechanical engineering, custom KiCad PCB hardware development, DFM/DFA tooling, and mass manufacturing operations.",
-      slug: "lohith-medisetti",
+      name: "Gayathri Boyapati",
+      role: "Electronics Engineer, PCB & VLSI Specialist",
+      avatar: "/avatars/gayatri.jpeg",
+      bio: "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+      slug: "gayathri-boyapati",
     },
     publishedAt: "Sep 23, 2026",
     isoDate: "2026-09-23T00:00:00Z",
@@ -287,8 +287,8 @@ export const howToDevelopCustomPcbBlog: BlogArticleData = {
     {
       type: "quote",
       text: "By isolating high-channel door actuation into a modular 4-layer CAN secondary board, expanding the AEEGZ machine from 42 doors to 100+ doors requires zero changes to the main controller or firmware architecture—you simply daisy-chain another 20-channel board over three wires.",
-      author: "Lohith Medisetti",
-      source: "Co-Founder & COO, SolveMpire",
+      author: "Gayathri Boyapati",
+      source: "Electronics Engineer, PCB & VLSI Specialist, SolveMpire",
     },
     {
       type: "heading",

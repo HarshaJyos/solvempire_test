@@ -127,6 +127,31 @@ export const teamMembers: TeamMember[] = [
       email: "support@solvempire.com",
     },
   },
+  {
+    slug: "gayathri-boyapati",
+    name: "Gayathri Boyapati",
+    role: "Electronics Engineer, PCB & VLSI Specialist",
+    avatar: "/avatars/gayatri.jpeg",
+    shortBio:
+      "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Architecting custom multilayer PCB layouts, real-time embedded hardware, power distribution, and VLSI circuit designs.",
+    location: "Andhra Pradesh, India",
+    story: [
+      "Gayathri leads custom electronic hardware development, multilayer PCB schematic and layout engineering, and power electronics architecture at SolveMpire.",
+      "With deep expertise in KiCad, high-speed differential routing, signal integrity analysis, and VLSI design, she transforms complex electromechanical requirements into robust, noise-immune production circuit boards.",
+      "She architects hardware systems with rigorous galvanic isolation, transient suppression, DFM optimization, and automated Bed-of-Nails test fixtures for scalable industrial fleets.",
+    ],
+    focusAreas: [
+      "Custom Multilayer PCB Design",
+      "KiCad Schematics & High-Speed Routing",
+      "Power Electronics & Buck Regulators",
+      "VLSI & Silicon Architecture",
+      "Signal Integrity & EMC Compliance",
+    ],
+    socials: {
+      linkedin: "https://linkedin.com",
+      email: "support@solvempire.com",
+    },
+  },
 ];
 
 export function getTeamMember(slug: string): TeamMember | undefined {

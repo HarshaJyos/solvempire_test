@@ -73,6 +73,12 @@ export function buildOrganizationJsonLd() {
         jobTitle: "AI/ML Engineer",
         url: `${BASE_URL}/team/prasad-duggirala`,
       },
+      {
+        "@type": "Person",
+        name: "Gayathri Boyapati",
+        jobTitle: "Electronics Engineer, PCB & VLSI Specialist",
+        url: `${BASE_URL}/team/gayathri-boyapati`,
+      },
     ],
 
     identifier: {

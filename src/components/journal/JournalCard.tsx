@@ -43,23 +43,51 @@ export function JournalCard({ post }: { post: JournalPostMeta }) {
       <div className="pt-3.5 border-t border-[var(--border-hairline)] flex flex-wrap items-center justify-between gap-3 text-xs font-sans">
         {/* Author */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="relative w-7 h-7 rounded-none overflow-hidden border border-[var(--border-hairline)] shrink-0 bg-[#1F56C6]/10">
-            {post.author.avatar ? (
-              <Image
-                src={post.author.avatar}
-                alt={post.author.name}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-[10px] font-bold uppercase">
-                {post.author.name.charAt(0)}
+          <div className="flex -space-x-1.5 overflow-hidden shrink-0">
+            <div className="relative w-7 h-7 rounded-none overflow-hidden border border-[var(--border-hairline)] bg-[#1F56C6]/10">
+              {post.author.avatar ? (
+                <Image
+                  src={post.author.avatar}
+                  alt={post.author.name}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-[10px] font-bold uppercase">
+                  {post.author.name.charAt(0)}
+                </div>
+              )}
+            </div>
+            {post.coAuthors?.map((ca, idx) => (
+              <div
+                key={idx}
+                className="relative w-7 h-7 rounded-none overflow-hidden border border-[var(--border-hairline)] bg-[#1F56C6]/10"
+              >
+                {ca.avatar ? (
+                  <Image
+                    src={ca.avatar}
+                    alt={ca.name}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-[#1F56C6] text-[10px] font-bold uppercase">
+                    {ca.name.charAt(0)}
+                  </div>
+                )}
               </div>
-            )}
+            ))}
           </div>
           <div className="min-w-0">
-            <p className="text-[var(--text-heading)] font-semibold text-xs leading-none mb-0.5 truncate uppercase">{post.author.name}</p>
-            <p className="text-[10px] text-[var(--text-muted)] leading-none truncate uppercase">{post.author.role}</p>
+            <p className="text-[var(--text-heading)] font-semibold text-xs leading-none mb-0.5 truncate uppercase">
+              {post.author.name}
+              {post.coAuthors && post.coAuthors.length > 0 && ` & ${post.coAuthors[0].name.split(" ")[0]}`}
+            </p>
+            <p className="text-[10px] text-[var(--text-muted)] leading-none truncate uppercase">
+              {post.coAuthors && post.coAuthors.length > 0
+                ? "Co-Authored Paper"
+                : post.author.role}
+            </p>
           </div>
         </div>
 

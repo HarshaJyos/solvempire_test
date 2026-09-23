@@ -14,10 +14,19 @@ export const mechanicalElectronicsEmbeddedBlog: BlogArticleData = {
     author: {
       name: "Lohith Medisetti",
       role: "Co-Founder & COO",
-      avatar: "/lohith.webp",
+      avatar: "/avatars/lohith.webp",
       bio: "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
       slug: "lohith-medisetti",
     },
+    coAuthors: [
+      {
+        name: "Gayathri Boyapati",
+        role: "Electronics Engineer, PCB & VLSI Specialist",
+        avatar: "/avatars/gayatri.jpeg",
+        bio: "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+        slug: "gayathri-boyapati",
+      },
+    ],
     publishedAt: "Sep 23, 2026",
     isoDate: "2026-09-23T00:00:00Z",
     readTime: "9 min read",
