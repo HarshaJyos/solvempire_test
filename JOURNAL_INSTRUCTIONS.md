@@ -130,7 +130,7 @@ git push origin master
 
 ---
 
-## 5. Current 23-Journal Chronological Registry (Reference Baseline)
+## 5. Current 25-Journal Chronological Registry (Reference Baseline)
 
 | # | ID | Slug | Published Date | Featured | Primary Author |
 |---|---|------|----------------|----------|----------------|
@@ -156,6 +156,8 @@ git push origin master
 | 20 | `post-020` | `ip65-automotive-sensor-design` | `Aug 08, 2026` | `false` | Gayathri Boyapati |
 | 21 | `post-021` | `automotive-sensor-enclosure-design` | `Aug 10, 2026` | `false` | Teja Mandapalli |
 | 22 | `post-022` | `ai-and-computer-vision-for-industrial-automation` | `Aug 12, 2026` | `false` | Prasad Duggirala |
-| 23 | `post-023` | `how-to-choose-a-product-engineering-partner` | `Aug 14, 2026` | **`true`** | Hanish Jyosyabhatla |
+| 23 | `post-023` | `how-to-choose-a-product-engineering-partner` | `Aug 14, 2026` | `false` | Hanish Jyosyabhatla |
+| 24 | `post-024` | `cost-of-developing-an-industrial-machine-in-india` | `Aug 16, 2026` | `false` | Lohith Medisetti |
+| 25 | `post-025` | `how-solvempire-takes-products-from-concept-to-deployment` | `Aug 18, 2026` | **`true`** | Hanish Jyosyabhatla |
 
-*For Post 24 and onwards, continue with `Aug 16, 2026`, `Aug 18, 2026`, etc., maintaining the strict 2-day gap.*
+*For Post 26 and onwards, continue with `Aug 20, 2026`, `Aug 22, 2026`, etc., maintaining the strict 2-day gap.*

@@ -49,7 +49,7 @@ export const howToChooseAProductEngineeringPartnerBlog: BlogArticleData = {
       "IP Ownership",
       "Venture Scale",
     ],
-    featured: true,
+    featured: false,
   },
   takeaways: [
     "Choosing an engineering partner is an equity-defining strategic partnership, not an outsourcing contract: a flawed design forces multi-month redesigns, blown seed rounds, and unrecoverable tooling capital expenditures.",

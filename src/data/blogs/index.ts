@@ -22,6 +22,8 @@ import { ip65AutomotiveSensorDesignBlog } from "./ip65-automotive-sensor-design"
 import { automotiveSensorEnclosureDesignBlog } from "./automotive-sensor-enclosure-design";
 import { aiAndComputerVisionForIndustrialAutomationBlog } from "./ai-and-computer-vision-for-industrial-automation";
 import { howToChooseAProductEngineeringPartnerBlog } from "./how-to-choose-a-product-engineering-partner";
+import { costOfDevelopingAnIndustrialMachineInIndiaBlog } from "./cost-of-developing-an-industrial-machine-in-india";
+import { howSolvempireTakesProductsFromConceptToDeploymentBlog } from "./how-solvempire-takes-products-from-concept-to-deployment";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
@@ -47,6 +49,8 @@ export const allBlogs: BlogArticleData[] = [
   automotiveSensorEnclosureDesignBlog,
   aiAndComputerVisionForIndustrialAutomationBlog,
   howToChooseAProductEngineeringPartnerBlog,
+  costOfDevelopingAnIndustrialMachineInIndiaBlog,
+  howSolvempireTakesProductsFromConceptToDeploymentBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {

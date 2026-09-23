@@ -1,8 +1,110 @@
 {
   "page": 1,
-  "totalPages": 6,
-  "totalPosts": 23,
+  "totalPages": 7,
+  "totalPosts": 25,
   "posts": [
+    {
+      "id": "post-025",
+      "slug": "how-solvempire-takes-products-from-concept-to-deployment",
+      "title": "How SolveMpire Takes Products from Concept to Deployment",
+      "subtitle": "The 6-Stage Turnkey Product Engineering Methodology: Mechanical CAD, Custom PCBs, Embedded Firmware, and Factory Mass Manufacturing.",
+      "excerpt": "An inside look at SolveMpire's proprietary 6-Stage Engineering Process. Discover how our integrated studio takes complex electromechanical products from napkin sketch requirements to multi-layer KiCad schematics, 3D parametric CAD, functional prototypes, factory tooling qualification, and 10-year field fleet support.",
+      "category": "Product Engineering",
+      "type": "Complete Guide",
+      "author": {
+        "name": "Hanish Jyosyabhatla",
+        "role": "Founder & CEO",
+        "avatar": "/hanish.webp",
+        "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+        "slug": "hanish-jyosyabhatla"
+      },
+      "coAuthors": [
+        {
+          "name": "Lohith Medisetti",
+          "role": "Co-Founder & COO",
+          "avatar": "/lohith.webp",
+          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+          "slug": "lohith-medisetti"
+        },
+        {
+          "name": "Teja Mandapalli",
+          "role": "Co-Founder & Product Lead",
+          "avatar": "/teja.webp",
+          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
+          "slug": "teja-mandapalli"
+        },
+        {
+          "name": "Gayathri Boyapati",
+          "role": "Electronics Engineer, PCB & VLSI Specialist",
+          "avatar": "/avatars/gayatri.jpeg",
+          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
+          "slug": "gayathri-boyapati"
+        }
+      ],
+      "publishedAt": "Aug 18, 2026",
+      "isoDate": "2026-08-18T00:00:00Z",
+      "readTime": "16 min read",
+      "tags": [
+        "SolveMpire Process",
+        "Product Engineering",
+        "Turnkey Hardware",
+        "6-Stage Lifecycle",
+        "Mechanical CAD",
+        "Custom PCB",
+        "Embedded Firmware",
+        "DFM",
+        "Mass Manufacturing",
+        "Case Studies"
+      ],
+      "featured": true
+    },
+    {
+      "id": "post-024",
+      "slug": "cost-of-developing-an-industrial-machine-in-india",
+      "title": "Cost of Developing an Industrial Machine in India",
+      "subtitle": "A Transparent Financial & Engineering Breakdown: Mechanical CAD, Custom PCBs, Firmware, Tooling, and Unit BOM Economics.",
+      "excerpt": "A comprehensive financial and engineering guide to the true costs of developing, prototyping, and manufacturing a custom industrial machine or automated commercial kiosk in India. Explore mechanical fabrication, custom PCB electronics, firmware, tooling capital expenditures, prototype iterations, and 60%–75% cost efficiencies compared to Western development.",
+      "category": "Product Strategy",
+      "type": "Industry Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
+        "slug": "lohith-medisetti"
+      },
+      "coAuthors": [
+        {
+          "name": "Hanish Jyosyabhatla",
+          "role": "Founder & CEO",
+          "avatar": "/hanish.webp",
+          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
+          "slug": "hanish-jyosyabhatla"
+        },
+        {
+          "name": "Pavan Kumar Duggirala",
+          "role": "Product Strategist & Marketing",
+          "avatar": "/avatars/pavan.jpg",
+          "bio": "Product Strategist & Marketing Lead at SolveMpire. Driving product go-to-market strategies, positioning, engineering documentation, and client engagement.",
+          "slug": "pavan-kumar-duggirala"
+        }
+      ],
+      "publishedAt": "Aug 16, 2026",
+      "isoDate": "2026-08-16T00:00:00Z",
+      "readTime": "14 min read",
+      "tags": [
+        "Machine Development Cost",
+        "Industrial Automation",
+        "Product Strategy",
+        "Manufacturing in India",
+        "BOM Cost Breakdown",
+        "Hardware Engineering",
+        "DFM",
+        "Tooling CapEx",
+        "Prototyping Costs"
+      ],
+      "featured": false
+    },
     {
       "id": "post-023",
       "slug": "how-to-choose-a-product-engineering-partner",
@@ -49,7 +151,7 @@
         "IP Ownership",
         "Venture Scale"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "id": "post-022",
@@ -96,102 +198,6 @@
         "Embedded Linux",
         "Neural Networks",
         "Custom Automation"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-021",
-      "slug": "automotive-sensor-enclosure-design",
-      "title": "Automotive Sensor Enclosure Design",
-      "subtitle": "PBT-GF30 Polymers, Radial O-Ring Glands, Ultrasonic Welding, Anti-Vibration Internal Ribs & High-Volume Tooling.",
-      "excerpt": "A masterclass in mechanical packaging, materials science, and high-volume injection tooling for automotive sensor enclosures. Explore 30% glass-filled PBT (PBT-GF30) vs PA66 selection, ultrasonic welding energy directors, radial O-ring compression equations, internal anti-vibration PCB retention ribs, and multi-cavity DFM tooling for 10,000+ unit production runs.",
-      "category": "Hardware & Manufacturing",
-      "type": "Complete Guide",
-      "author": {
-        "name": "Teja Mandapalli",
-        "role": "Co-Founder & Product Lead",
-        "avatar": "/teja.webp",
-        "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-        "slug": "teja-mandapalli"
-      },
-      "coAuthors": [
-        {
-          "name": "Lohith Medisetti",
-          "role": "Co-Founder & COO",
-          "avatar": "/lohith.webp",
-          "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery.",
-          "slug": "lohith-medisetti"
-        },
-        {
-          "name": "Gayathri Boyapati",
-          "role": "Electronics Engineer, PCB & VLSI Specialist",
-          "avatar": "/avatars/gayatri.jpeg",
-          "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-          "slug": "gayathri-boyapati"
-        }
-      ],
-      "publishedAt": "Aug 10, 2026",
-      "isoDate": "2026-08-10T00:00:00Z",
-      "readTime": "14 min read",
-      "tags": [
-        "Automotive Enclosure",
-        "Sensor Packaging",
-        "PBT-GF30",
-        "Injection Molding",
-        "Ultrasonic Welding",
-        "O-Ring Glands",
-        "Vibration Damping",
-        "DFM",
-        "Tooling Engineering",
-        "Hardware Manufacturing"
-      ],
-      "featured": false
-    },
-    {
-      "id": "post-020",
-      "slug": "ip65-automotive-sensor-design",
-      "title": "IP65 Automotive Sensor Design",
-      "subtitle": "Automotive Grade PCB Architecture, Transducer Physics, Load Dump Transient Protection & IP65 Environmental Sealing.",
-      "excerpt": "A complete engineering guide to designing rugged, IP65/IP67-rated automotive sensors. Discover transducer physics, ISO 7637-2 / ISO 16750-2 load dump transient suppression, reverse-battery protection, automotive LIN / CAN Bus analog front-ends, silicone O-ring sealing gland geometry, and vibration qualification.",
-      "category": "Hardware & Manufacturing",
-      "type": "Engineering Guide",
-      "author": {
-        "name": "Gayathri Boyapati",
-        "role": "Electronics Engineer, PCB & VLSI Specialist",
-        "avatar": "/avatars/gayatri.jpeg",
-        "bio": "Electronics Engineer & PCB/VLSI Design Specialist at SolveMpire. Leading custom electronics design, high-speed PCB layouts, power electronics, and embedded hardware integration.",
-        "slug": "gayathri-boyapati"
-      },
-      "coAuthors": [
-        {
-          "name": "Teja Mandapalli",
-          "role": "Co-Founder & Product Lead",
-          "avatar": "/teja.webp",
-          "bio": "Co-Founder & Product Lead at SolveMpire. Driving mechanical architecture, DFM validation, ergonomic product packaging, and bridging functional prototypes into scaled commercial manufacturing.",
-          "slug": "teja-mandapalli"
-        },
-        {
-          "name": "Hanish Jyosyabhatla",
-          "role": "Founder & CEO",
-          "avatar": "/hanish.webp",
-          "bio": "Founder & CEO at SolveMpire. Driving end-to-end hardware, embedded systems, custom automation, and product engineering from concept to scaled production.",
-          "slug": "hanish-jyosyabhatla"
-        }
-      ],
-      "publishedAt": "Aug 08, 2026",
-      "isoDate": "2026-08-08T00:00:00Z",
-      "readTime": "13 min read",
-      "tags": [
-        "Automotive Sensor",
-        "IP65 Sealing",
-        "Automotive PCB",
-        "ISO 7637",
-        "Load Dump Protection",
-        "LIN Bus",
-        "CAN Bus",
-        "Ultrasonic Sensor",
-        "Hardware Engineering",
-        "DFM"
       ],
       "featured": false
     }
