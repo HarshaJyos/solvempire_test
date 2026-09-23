@@ -3,12 +3,14 @@ import { whatIsEndToEndBlog } from "./what-is-end-to-end-product-engineering";
 import { physicalProductBlog } from "./how-to-develop-a-physical-product-from-idea-to-manufacturing";
 import { indiaProductEngineeringBlog } from "./product-engineering-company-in-india";
 import { customAutomatedMachineBlog } from "./how-to-build-a-custom-automated-machine";
+import { mechanicalElectronicsEmbeddedBlog } from "./mechanical-electronics-embedded-product-development";
 
 export const allBlogs: BlogArticleData[] = [
   whatIsEndToEndBlog,
   physicalProductBlog,
   indiaProductEngineeringBlog,
   customAutomatedMachineBlog,
+  mechanicalElectronicsEmbeddedBlog,
 ];
 
 export function getBlogArticleBySlug(slug: string): BlogArticleData | undefined {

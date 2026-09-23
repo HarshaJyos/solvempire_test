@@ -1,8 +1,36 @@
 {
   "page": 1,
   "totalPages": 1,
-  "totalPosts": 4,
+  "totalPosts": 5,
   "posts": [
+    {
+      "id": "post-005",
+      "slug": "mechanical-electronics-embedded-product-development",
+      "title": "Mechanical + Electronics + Embedded: The Trinity of Physical Product Development",
+      "excerpt": "Why 80% of hardware projects fail at the boundaries between CAD packaging, PCB routing, and firmware determinism—and how a unified engineering studio builds deployable machines.",
+      "category": "Product Development",
+      "type": "Engineering Guide",
+      "author": {
+        "name": "Lohith Medisetti",
+        "role": "Co-Founder & COO",
+        "avatar": "/lohith.webp",
+        "bio": "Co-Founder & COO at SolveMpire. Spearheading industrial manufacturing partnerships, DFM validation, factory supply chains, and turnkey multi-discipline product delivery."
+      },
+      "publishedAt": "Sep 23, 2026",
+      "isoDate": "2026-09-23T00:00:00Z",
+      "readTime": "9 min read",
+      "tags": [
+        "Hardware Engineering",
+        "Mechanical CAD",
+        "Custom PCB",
+        "Embedded Firmware",
+        "DFM",
+        "Mechatronics",
+        "Product Development",
+        "Supply Chain"
+      ],
+      "featured": true
+    },
     {
       "id": "post-001",
       "slug": "what-is-end-to-end-product-engineering",

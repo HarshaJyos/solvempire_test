@@ -1,9 +1,10 @@
 {
   "totalPages": 1,
-  "totalPosts": 4,
+  "totalPosts": 5,
   "postsPerPage": 6,
   "categories": [
     "All",
+    "Product Development",
     "Product Engineering",
     "Hardware & Manufacturing",
     "Product Strategy",
@@ -11,6 +12,7 @@
   ],
   "types": [
     "All Types",
+    "Engineering Guide",
     "Deep Dive",
     "Complete Guide",
     "Industry Guide",
