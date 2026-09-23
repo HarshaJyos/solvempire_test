@@ -54,7 +54,7 @@ export function IndiseaStickyStack() {
     <section className="relative py-20 bg-[var(--surface-canvas)] font-sans">
       <div className="indisea-wrap space-y-8">
         <div className="pb-4">
-          <span className="indisea-eyebrow">07 / why companies call us</span>
+          <span className="indisea-eyebrow">08 / WHY COMPANIES PARTNER WITH US</span>
         </div>
 
         {/* Sticky Stacked Cards */}
@@ -69,7 +69,7 @@ export function IndiseaStickyStack() {
                 <div className="col-span-12 lg:col-span-8 space-y-6">
                   <div className="flex items-center gap-3">
                     <span className="font-mono text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-none bg-white/20 backdrop-blur-xs">
-                      07 // WHY COMPANIES CALL US
+                      08 // WHY COMPANIES PARTNER WITH US
                     </span>
                     <span className="font-mono text-xs font-bold uppercase tracking-widest text-white/80">
                       {panel.reasonNumber}

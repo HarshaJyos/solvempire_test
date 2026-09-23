@@ -10,7 +10,7 @@ export function IndiseaSystemTopology() {
       <div className="indisea-wrap space-y-16">
         {/* Eyebrow */}
         <div>
-          <span className="indisea-eyebrow">05 / what changes</span>
+          <span className="indisea-eyebrow">05 / UNIFIED SYSTEM TOPOLOGY</span>
         </div>
 
         {/* 12-Column Grid */}

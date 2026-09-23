@@ -35,7 +35,7 @@ export function IndiseaLiveWall() {
   return (
     <section id="live-wall" className="py-20 sm:py-28 overflow-hidden bg-[var(--surface-canvas)] font-sans border-y border-[var(--border-hairline)]">
       <div className="indisea-wrap pb-8">
-        <span className="indisea-eyebrow">02 / live deployments &amp; engineering stack</span>
+        <span className="indisea-eyebrow">02 / ACTIVE HARDWARE &amp; TECHNOLOGY STACK</span>
       </div>
 
       <div className="space-y-4">

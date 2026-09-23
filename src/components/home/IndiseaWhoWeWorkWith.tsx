@@ -19,7 +19,7 @@ export function IndiseaWhoWeWorkWith() {
         {/* Asymmetric Split */}
         <div className="indisea-grid items-start">
           <div className="col-span-12 lg:col-span-3">
-            <span className="indisea-eyebrow">09 / who we work with</span>
+            <span className="indisea-eyebrow">10 / CLIENTS &amp; ECOSYSTEM PARTNERS</span>
           </div>
 
           <div className="col-span-12 lg:col-span-9">

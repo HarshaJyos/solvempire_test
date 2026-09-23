@@ -10,7 +10,7 @@ export function IndiseaWhoWeAre() {
         {/* Asymmetric 2-Column Split */}
         <div className="indisea-grid items-start">
           <div className="col-span-12 lg:col-span-3">
-            <span className="indisea-eyebrow">03 / who we are</span>
+            <span className="indisea-eyebrow">03 / STUDIO POSITIONING &amp; DIRECT OWNERSHIP</span>
           </div>
 
           <div className="col-span-12 lg:col-span-9 space-y-8">

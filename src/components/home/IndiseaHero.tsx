@@ -10,7 +10,7 @@ export function IndiseaHero() {
       <div className="indisea-wrap relative z-10 space-y-8 sm:space-y-12">
         {/* Eyebrow Label */}
         <div>
-          <span className="indisea-eyebrow">01 / hero</span>
+          <span className="indisea-eyebrow">01 / INTEGRATED PRODUCT ENGINEERING</span>
         </div>
 
         {/* Indisea-Style Display Headline with Beautiful Sharp Highlight Badges */}

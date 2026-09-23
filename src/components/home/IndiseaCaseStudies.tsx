@@ -15,7 +15,7 @@ export function IndiseaCaseStudies() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="space-y-3">
-            <span className="indisea-eyebrow">06 / featured case studies</span>
+            <span className="indisea-eyebrow">07 / PRODUCTION DOSSIERS &amp; CASE STUDIES</span>
             <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08]">
               Real-World Systems. <br />
               <span className="text-[#1F56C6]">Built, Tested &amp; Shipped.</span>

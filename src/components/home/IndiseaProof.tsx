@@ -28,7 +28,7 @@ export function IndiseaProof() {
     <section className="py-24 sm:py-32 bg-[var(--surface-card)] font-sans border-y border-[var(--border-hairline)]">
       <div className="indisea-wrap space-y-16">
         <div>
-          <span className="indisea-eyebrow">10 / proof</span>
+          <span className="indisea-eyebrow">11 / VERIFIED CLIENT TESTIMONIALS &amp; PROOF</span>
           <h2 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-[56px] uppercase text-[var(--text-heading)] tracking-tight leading-[1.08] mt-4">
             What our engineering <br />
             partners are saying.

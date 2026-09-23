@@ -52,7 +52,7 @@ export function IndiseaWhatYouGet() {
     <section className="py-24 sm:py-32 bg-[var(--surface-canvas)] font-sans">
       <div className="indisea-wrap space-y-12 sm:space-y-16">
         <div>
-          <span className="indisea-eyebrow">08 / what you get</span>
+          <span className="indisea-eyebrow">09 / THE SOLVEMPIRE ADVANTAGE</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">

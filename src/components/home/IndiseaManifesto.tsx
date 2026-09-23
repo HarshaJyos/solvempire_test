@@ -8,7 +8,7 @@ export function IndiseaManifesto() {
       <div className="indisea-wrap space-y-10 sm:space-y-14">
         {/* Eyebrow */}
         <div>
-          <span className="indisea-eyebrow">04 / the problem</span>
+          <span className="indisea-eyebrow">04 / THE HARDWARE EXECUTION BOTTLENECK</span>
         </div>
 
         {/* Headline with Clean Line-Height & Uppercase */}
