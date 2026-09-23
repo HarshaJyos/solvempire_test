@@ -34,7 +34,7 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
     featured: true,
   },
   takeaways: [
-    "Industrial machine design begins with cycle time (takt time) and kinematic inertia matching: matching motor-to-load inertia ratios ($J_L / J_M \\le 5:1$) prevents resonance and positioning jitter.",
+    "Industrial machine design begins with cycle time (takt time) and kinematic inertia matching: matching motor-to-load inertia ratios (J_load / J_motor ≤ 5:1) prevents resonance and positioning jitter.",
     "Structural machine frames require rigorous deflection calculations under peak dynamic acceleration; welded tubular steel or heavy T-slot aluminum must isolate mechanical vibrations from precision linear guideways.",
     "Electrical power architecture must strictly separate 230V/415V mains power from 24V DC sensor logic and 3.3V/5V microcontroller signals using optocouplers, snubber circuits, and star grounding.",
     "For specialized commercial kiosks and proprietary machinery, custom multi-layer microcontrollers (STM32/ESP32 running FreeRTOS) deliver 70% lower BOM cost and greater fleet autonomy than generic PLCs.",
@@ -140,14 +140,14 @@ export const howToDesignIndustrialMachineBlog: BlogArticleData = {
     },
     {
       type: "paragraph",
-      text: "Selecting the wrong motor is the #1 reason custom machines fail during commissioning. Motor sizing requires calculating both continuous torque (to overcome friction and gravity) and peak acceleration torque ($T = J \\cdot \\alpha$):",
+      text: "Selecting the wrong motor is the #1 reason custom machines fail during commissioning. Motor sizing requires calculating both continuous torque (to overcome friction and gravity) and peak acceleration torque (T = J · α):",
     },
     {
       type: "bullets",
       items: [
-        "Inertia Ratio Matching: The ratio of reflected load inertia to motor rotor inertia ($J_{load} / J_{motor}$) should strictly not exceed 5:1 for high-dynamic positioning or 10:1 for general automation. High inertia ratios cause servo hunting, ringing, and violent mechanical oscillation.",
+        "Inertia Ratio Matching: The ratio of reflected load inertia to motor rotor inertia (J_load / J_motor) should strictly not exceed 5:1 for high-dynamic positioning or 10:1 for general automation. High inertia ratios cause servo hunting, ringing, and violent mechanical oscillation.",
         "Stepper vs. Closed-Loop Servo: Stepper motors provide high holding torque at low speeds (<600 RPM) at low cost. AC brushless servomotors provide flat torque curves up to 3,000 RPM, closed-loop encoder feedback, and absolute positional accuracy for high-speed machinery.",
-        "Planetary Gearboxes: Utilizing low-backlash (<5 arc-min) planetary gearheads to multiply torque and reduce reflected inertia by the square of the gear ratio ($J_{reflected} = J_{load} / N^2$).",
+        "Planetary Gearboxes: Utilizing low-backlash (<5 arc-min) planetary gearheads to multiply torque and reduce reflected inertia by the square of the gear ratio (J_reflected = J_load / N²).",
       ],
     },
     {
